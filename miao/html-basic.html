@@ -81,18 +81,34 @@
   <form action="">
     <dl>
       <dt>性别</dt>
-      <dd><input type="radio" name="gender">男
-        <input type="radio" name="gender">女</dd>
+      <dd>
+        <label><input type="radio" name="gender"> 男</label>
+        <label><input type="radio" name="gender"> 女</label>
+      </dd>
       <dt>年龄</dt>
-      <dd><input type="select" name="age"></dd>
+      <dd><select name="age" id="">
+          <option value="" hidden selected>请选择</option>
+          <optgroup label="少年">
+            <option value="">1-6</option>
+            <option value="">7-12</option>
+          </optgroup>
+          <optgroup label="青年">
+            <option value="">13-15</option>
+            <option value="">16-18</option>
+          </optgroup>
+          <optgroup label="壮年">
+            <option value="">19-22</option>
+            <option value="">23-30</option>
+          </optgroup>
+        </select></dd>
       <dt>生日</dt>
       <dd><input type="date" name="birthday"></dd>
       <dt>生辰</dt>
-      <dd><input type="time" name="time"></dd>
+      <dd><input type="time" name="birthtime"></dd>
       <dt>照片</dt>
       <dd>
         <label>
-          "点我上传照片，我比文件上传按钮好看"
+          点我上传照片，我比文件上传按钮好看
           <input hidden type="file" name id>
         </label>
       </dd>
@@ -101,14 +117,63 @@
       <dt>自我介绍</dt>
       <dd><textarea name="self" id="" cols="30" rows="10"><textarea></textarea></dd>
     </dl>
+    <fieldset disabled>
+      <legend>这里面的全部禁用了</legend>
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </fieldset>
+    <button>提交</button>
+    <button type="reset">重置</button>
   </form>
+  <table border=1>
+    <caption>货品列表</caption>
+    <thead>
+      <th>编号</th>
+      <th bgcolor="red">品名</th>
+      <th>进价</th>
+      <th>出价</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td bgcolor="red">苹果</td>
+        <td rowspan=2>5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td bgcolor="red">桔子</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td bgcolor="red">香蕉</td>
+        <td>5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td bgcolor="red">山竹</td>
+        <td>5</td>
+        <td>8</td>
+      </tr>
+    </tbody>
+  </table>
 
   <hr>
   <img src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" title="猫头鹰"
     width="300px" alt="图片加载失败">
 
   <hr />
-  <p><a href="http://www.mi.com">点击我会在下面的frame里打开小米商场，但为什么打不开呢?</a></p>
+  <p><a href="http://www.mi.com" target="frame1">点击我会在下面的frame里打开小米商场，但为什么打不开呢?</a></p>
+  <iframe src="http://nodejs.org/en" frameborder="0" name="frame1">
+    记载失败
+  </iframe>
+  <p>怎样&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在这两个字之间空这么大呢</p>
+  <p>怎样在页面中显示下面的内容呢？</p>
+  <P>&lt;span>&lt;/span></P>
 
 </body>
 
