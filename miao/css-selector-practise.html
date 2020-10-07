@@ -5,13 +5,28 @@
   <meta charset="utf-8">
   <title>Document</title>
   <style>
+    body > p:first-child {
+      color: red;
+    }
+    body > .a.c > span {
+      color: red;
+    }
+    body > .a.c > span > :nth-child(1) {
+      color: green;
+    }
+    body > .a.c > span > :nth-child(2) {
+      color: blue;
+    }
+    p+.a:focus {
+      color: blue;
+    }
     p+.a:hover {
       color: red;
     }
-
     p+.a:active {
       color: green;
     }
+
 
     /* + 即前面有p的a 被选择 */
 
@@ -23,15 +38,15 @@
       color: orange;
     }
 
-    body>div:first-of-type [href^="mail"i] {
+    body>div:first-of-type [href^="mailto:"i] {
       color: blue;
     }
 
-    body>div:first-of-type [href^="tel"i] {
+    body>div:first-of-type [href^="tel:"i] {
       color: yellow;
     }
 
-    body>div:first-of-type [href$="pdf"i] {
+    body>div:first-of-type [href$=".pdf"i] {
       font-size: 30px;
     }
 
@@ -48,7 +63,7 @@
 
     }
 
-    .b li:nth-child(-n + 65) {
+    .b li:nth-child(n + 65) {
       color: green;
     }
 
@@ -61,9 +76,9 @@
     }
 
     .prime>ul>li:nth-child(2n + 4),
-    .prime>ul>li:nth-child(3n + 6),
-    .prime>ul>li:nth-child(5n + 10),
-    .prime>ul>li:nth-child(7n + 14) {
+    .prime>ul>li:nth-child(3n + 9),
+    .prime>ul>li:nth-child(5n + 25),
+    .prime>ul>li:nth-child(7n + 49) {
       color: purple;
     }
 
