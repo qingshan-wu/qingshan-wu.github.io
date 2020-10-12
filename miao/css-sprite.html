@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-sprite</title>
+  <style>
+    .icon {
+      border: 1px dotted red;
+      background-repeat: repeat-x;
+      background-image: url(https://www.google.com/images/nav_logo299_hr.webp);
+    }
+    .icon-i {
+      width: 30px;
+      height: 30px;
+      background-position: -211px -195px;
+    }
+    .icon-star {
+      width: 23px;
+      height: 23px;
+      background-position: -254px -552px;
+    }
+    .icon-google {
+      width: 106px;
+      height: 70px;
+      background-position: -80px -742px;
+    }
+    .gamer {
+      width: 101px;
+      height: 157px;
+      background-position: -178px 0;
+      background-image: url(https://marionettestudio.com/wp-content/uploads/2016/10/sprite-sheet-animations.png);
+    }
+    .gamer:focus {
+      width: 114px;
+      background-position: -511px 0;
+    }
+    .gamer:hover {
+      width: 129px;
+      background-position: -273px 0;
+    }
+    .gamer:active {
+      width: 114px;
+      background-position: -397px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="icon icon-i"></div>
+  <div class="icon icon-star"></div>
+  <div class="icon icon-google"></div>
+  <h4>按住拉弓拖到空白处，松开射箭</h4>
+  <div class="gamer" tabindex="1"></div>
+</body>
+</html>
