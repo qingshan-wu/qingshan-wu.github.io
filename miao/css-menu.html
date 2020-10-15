@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>css-menu</title>
+  <style>
+    * {
+      xbackground-color: rgba(0, 0, 0, 0.1);
+      xbox-shadow: 0 0 1px red;
+      xbox-sizing: border-box;
+    }
+
+    body {
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      position: relative;
+      color: #333;
+      padding: 3px 10px;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      padding: 5px 0px;
+      background-color: #ccc;
+    }
+
+    ul ul {
+      display: none;
+      box-shadow: 1px 1px 1px #0005;
+    } /* 次级菜单隐藏 */
+
+    .menu>li {
+      display: inline;
+      line-height: 20px;
+      margin: 0px 2px;
+      border: 1px solid #aaa;
+      background-color: #eee;
+    }
+
+    ul ul li {
+      border: 1px solid transparent;
+      padding: 3px 20px;
+
+    } /* 次级表单border透明，为了避免选中显示边框ul变长 */
+
+    ul ul li:hover>ul {
+      display: block;
+      position: absolute;
+      left: calc(100% + 2px);
+      top: -1px;
+    } /* 次级菜单横向右侧拉出 */
+
+    li:hover>ul {
+      display: block;
+      white-space: nowrap;
+      position: absolute;
+      top: 28px;
+      left: -1px;
+      background-color: #eee;
+      border: 1px solid gray;
+    } /* 主菜单下拉 */
+
+    li:hover {
+      background-color: #06f;
+      border: 1px inset gray;
+      color: #fff;
+    }
+
+    ul ul li:hover {
+      border: 1px solid black;
+    } /* 子菜单下被hover显示边框 */
+  </style>
+</head>
+
+<body>
+  <main>
+    <ul class="menu">
+      <li>文件
+        <ul>
+          <li>新建</li>
+          <li>新窗口
+            <ul>
+              <li>十六</li>
+              <li>二十六</li>
+              <li>三十六</li>
+              <li>四百六十六
+                <ul>
+                  <li>aabb</li>
+                  <li>bbcc</li>
+                  <li>ccdd</li>
+                </ul>
+              </li>
+              <li>七百八十八点八</li>
+            </ul>
+          </li>
+          <li>打开</li>
+          <li>保存</li>
+          <li>另存为</li>
+          <li>页面设置</li>
+          <li>打印</li>
+          <li>退出</li>
+        </ul>
+      </li>
+      <li>编辑
+        <ul>
+          <li>撤销
+            <ul>
+              <li>剪切</li>
+              <li>复制</li>
+              <li>粘贴</li>
+            </ul>
+          </li>
+          <li>剪切</li>
+          <li>复制</li>
+          <li>粘贴</li>
+          <li>删除</li>
+          <li>使用bing搜索</li>
+          <li>查找</li>
+          <li>查找下一个</li>
+          <li>查找上一个</li>
+          <li>替换</li>
+          <li>转到</li>
+          <li>全选</li>
+          <li>时间/日期</li>
+
+        </ul>
+      </li>
+      <li>格式
+        <ul>
+          <li>自动换行
+            <ul>
+              <li>换行</li>
+              <li>回车</li>
+              <li>换行回车</li>
+            </ul>
+          </li>
+          <li>字体</li>
+          <li>美化</li>
+        </ul>
+      </li>
+    </ul>
+  </main>
+
+
+</body>
+
+</html>
