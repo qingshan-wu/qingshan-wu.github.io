@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>button</title>
+  <style>
+    * {
+      xbox-shadow: 0 0 1px red;
+      box-sizing: border-box;
+    }
+    main {
+      position: relative;
+      width: 90px; height: 50px;
+      border-radius: 25px;
+    }
+    div {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 90px; height: 50px;
+      border-radius: 25px;
+      border: 1px solid #999a;
+      transition: .2s .1s;
+    }
+    label {
+      position: absolute;
+      top: 0; bottom: 0; left: 4px;
+      margin: auto;
+      width: 42px; height: 42px;
+      border-radius: 21px;
+      background-color: #fff;
+      transition: .3s;
+      box-shadow: 1px 2px 8px #999d;
+    }
+    input {
+      display: none;
+    }
+    input:checked ~ label {
+      left: 45px;
+    }
+    input:checked ~ div {
+      background-color: rgb(48,243,76);
+      border: 1px solid transparent;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <input type="checkbox" id="a">
+    <div></div>
+    <label for="a"></label>
+  </main>
+</body>
+</html>
