@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oald-position</title>
+  <style>
+    *{
+      box-shadow: 0 0 1px red;
+    }
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    aside {
+      position: absolute;
+      top: 0;  bottom: 0;
+      width: 16%;  height: 100vh;
+    }
+    .left {
+      left: 0;
+      width: 18%;
+    }
+    .middle {
+      right: 16%;
+    }
+    .right {
+      right: 0;
+    }
+    main {
+      position: absolute;
+      top: 0;  bottom: 0;  left: 18%;  right: 30%;
+    }
+  </style>
+</head>
+<body>
+  <aside class="left">oald</aside>
+  <main>something</main>
+  <aside class="right">History</aside>
+  <aside class="middle">Vocabulary</aside>
+
+</body>
+</html>
