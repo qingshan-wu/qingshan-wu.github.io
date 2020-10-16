@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      border: 2px solid red;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0;
+      line-height: 400px;
+    }
+    img {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      vertical-align: middle;
+      border: 1px solid black;
+    }
+    .a img {
+      object-fit: fill;
+    }
+    .b img {
+      object-fit: contain;
+    }
+    .c img {
+      object-fit: scale-down;
+    }
+  </style>
+</head>
+<body>
+  <div class="a">x
+    <img src="https://www.netcarshow.com/Hummer-H3_Alpha-2008-800-01.jpg" alt="">
+  </div>
+  <div class="b"><img src="https://www.netcarshow.com/Lexus-LC_Convertible_UK-Version-2021-800-02.jpg" alt=""></div>
+  <div class="c"><img src="https://www.netcarshow.com/Seat-Cupra_Leon_Sportstourer-2021-800-01.jpg" alt=""></div>
+</body>
+</html>
