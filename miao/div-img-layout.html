@@ -5,39 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    div {
-      width: 400px;
-      height: 400px;
-      margin: 20px auto;
-      border: 2px solid red;
-      text-align: center;
+    * {
+      box-shadow: 0 0  1px red;
+    }
+
+    section.a {
+      width: 200px; height: 200px;
+      display: table-cell;
       vertical-align: middle;
-      font-size: 0;
-      line-height: 400px;
     }
-    img {
-      display: inline-block;
-      width: 200px;
-      height: 200px;
-      vertical-align: middle;
-      border: 1px solid black;
+    section.a > div {
+      margin: auto;
+      width: 50%;
     }
-    .a img {
-      object-fit: fill;
+/* div内部不定高度的，由内容撑开，居中 */
+
+    section.b {
+      width: 500px; height: 200px;
+      position: relative;
     }
-    .b img {
+    section.b > img {
+      max-width: 100%;
+      max-height: 100%;
+      top: 0; left: 0;  right: 0; bottom: 0;
+      margin: auto;
+      position: absolute;
+    }
+/* .b .c 图片比例不变 仍居中 上下长宽不一 */
+    section.c {
+      width: 300px; height: 400px;
+      position: relative;
+    }
+    section.c > img {
+      max-width: 100%;
+      max-height: 100%;
+      top: 0; left: 0;  right: 0; bottom: 0;
+      margin:auto;
+      position: absolute;
+    }
+
+    section.d {
+      width: 500px; height: 500px;
+    }
+    section.d > img {
+      width: 500px; height: 400px;
       object-fit: contain;
     }
-    .c img {
-      object-fit: scale-down;
+    /* 图片比例不变,图片全包含 */
+    section.e {
+      width: 700px; height: 500px;
+    }
+    section.e > img {
+      width: 700px; height: 500px;
+      object-fit: contain;
     }
   </style>
 </head>
 <body>
-  <div class="a">x
+  <section class="a">
+    <div>Lorem ipsum lorem dolor sit amet.</div>
+  </section>
+  <section class="b">
     <img src="https://www.netcarshow.com/Hummer-H3_Alpha-2008-800-01.jpg" alt="">
-  </div>
-  <div class="b"><img src="https://www.netcarshow.com/Lexus-LC_Convertible_UK-Version-2021-800-02.jpg" alt=""></div>
-  <div class="c"><img src="https://www.netcarshow.com/Seat-Cupra_Leon_Sportstourer-2021-800-01.jpg" alt=""></div>
+  </section>
+  <section class="c">
+    <img src="https://tse4-mm.cn.bing.net/th/id/OIP.zmZas5BRavCfBZ3oGDe76QHaLH?w=182&h=273&c=7&o=5&dpr=1.12&pid=1.7" alt="">
+  </section>
+  <section class="d">
+    <img src="https://preview.netcarshow.com/Seat-Cupra_Leon_Sportstourer-2021-800-01.jpg" alt="">
+  </section>
+  <section class="e">
+    <img src="https://tse3-mm.cn.bing.net/th/id/OIP.j7h0CAQ0gCg4acP_FrUXxAHaLG?w=182&h=273&c=7&o=5&dpr=1.12&pid=1.7" alt="">
+  </section>
+
 </body>
 </html>
