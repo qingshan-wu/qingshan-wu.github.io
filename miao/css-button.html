@@ -14,42 +14,73 @@
       width: 90px; height: 50px;
       border-radius: 25px;
     }
-    div {
+    label.bottom {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       width: 90px; height: 50px;
-      border-radius: 25px;
-      border: 1px solid #999a;
-      transition: .2s .1s;
-    }
-    label {
-      position: absolute;
-      top: 0; bottom: 0; left: 4px;
       margin: auto;
-      width: 42px; height: 42px;
-      border-radius: 21px;
+      border-radius: 25px;
+      background-color: rgb(48,243,76);
+    }
+    label.top {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 90px; height: 50px;
+      margin: auto;
+      border-radius: 25px;
+      border: 1px solid #9995;
+      background-color: #fff;
+      transition: .3s;
+      z-index: 10;
+    }
+    label.button {
+      position: absolute;
+      top: 0; bottom: 0; left: 3px;
+      margin: auto;
+      width: 44px; height: 44px;
+      border-radius: 22px;
       background-color: #fff;
       transition: .3s;
       box-shadow: 1px 2px 8px #999d;
+      z-index: 10;
+    }
+    .button2 {
+      position: absolute;
+      top: 0; bottom: 0; left: 3px;
+      margin: auto;
+      width: 44px; height: 44px;
+      border-radius: 22px;
+      background-color: #fff;
+      transition: .3s;
+      xbox-shadow: 1px 2px 8px #999d;
+      z-index: 100;
+      xbackground-color: #3333;
+      transition: .4s;
     }
     input {
       display: none;
     }
-    input:checked ~ label {
-      left: 45px;
+    input:checked ~ label.button {
+      left: 43px;
     }
-    input:checked ~ div {
-      background-color: rgb(48,243,76);
+    input:checked ~ label.button2 {
+      left: 43px;
+    }
+    input:checked ~ label.top {
       border: 1px solid transparent;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 0; height: 0; margin: auto;
     }
-
   </style>
 </head>
 <body>
   <main>
     <input type="checkbox" id="a">
-    <div></div>
-    <label for="a"></label>
+    <label class="top" for="a"></label>
+    <label class="bottom" for="a"></label>
+    <label class="button" for="a"></label>
+    <label class="button2" for="a"></label>
   </main>
 </body>
 </html>
