@@ -23,30 +23,60 @@
       border-bottom: 2px solid #dee2e6;
     }
     .table tbody tr {
-      border-bottom: 1px solid #dee2e6;
+      border-top: 1px solid #dee2e6;
     }
 
     .table-dark {
       color: white;
       background-color: rgb(52,58,64);
     }
-    .table thead tr, .table tbody tr {
+    .table-dark.table thead tr,
+    .table-dark.table tbody tr {
       border-color: rgb(69,77,85);
-    }
+    } /* 黑色主题的border */
 
     .table-striped tbody tr:nth-child(odd) {
       background-color: rgb(242,242,242);
-    }
+    } /* 白色主题，仍可见striped */
 
     .table-dark.table-striped tbody tr:nth-child(odd) {
       background-color: rgb(62,68,74);
+    } /* 黑色主题，仍可见striped */
+
+    .table-sm th,
+    .table-sm td {
+      padding: 5px;
+    } /* 小表格 */
+
+    .table-bordered {
+      border: 1px solid rgb(222,226,230);
     }
+    .table-bordered th,
+    .table-bordered td {
+      border: 1px solid rgb(222,226,230);
+    }
+    x.table-dark .table-bordered {
+      border: 1px solid rgb(69,77,85);
+    }
+    .table-dark.table-bordered th,
+    .table-dark.table-bordered td {
+      border: 1px solid rgb(69,77,85);
+    } /* dark模式下的列边框 */
 
+    table.table-borderless tr {
+      border: none;
+    } /* 边框去掉 */
 
+    .table-hover  tbody tr:hover {
+      background-color: rgb(236,236,236);
+    }
+    .table-dark.table-hover tbody tr:hover {
+      background-color: rgb(67,73,78);
+    } /* 悬浮变色 */
   </style>
 </head>
 <body>
-  <table class="table xtable-dark table-striped">
+  <table class="table table-dark table-striped xtable-sm xtable-bordered xtable-borderless table-hover">
     <thead>
       <tr>
         <th scope="col">#</th>
