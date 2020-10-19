@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>font-zoom</title>
+  <style>
+    * {
+      box-shadow: 0 0 1px red;
+    }
+    .a {
+      height: 100px;
+      display: table-cell;
+      vertical-align: bottom;
+      transition: 1s;
+    }
+    .a:hover {
+      font-size: 70px;
+    }
+
+    .b {
+      height: 100px;
+      position: relative;
+    }
+    .b > span {
+      position: absolute;
+      left: 0;  bottom: 0;
+      transition: 1s;
+    }
+    .b:hover {
+      font-size: 70px;
+    }
+
+    .c {
+      height: 100px;
+      vertical-align: middle;
+      transition: 1s;
+    }
+    .c::after {
+      height: 100px; width: 5px;
+      background-color: red;
+      line-height: 100px;
+      vertical-align: bottom;
+    }
+    .c:hover {
+      font-size: 70px;
+    }
+
+    .d > div{
+      height: 100px;
+      display: table-cell;
+      vertical-align: bottom;
+      transition: .5s .03s;
+      padding: 9px;
+      font-size: 30px;
+    }
+    .d > div:hover {
+      font-size: 70px;
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="a">订阅博客</div>
+  <div class="b"><span>订阅博客</span></div>
+  <div class="c">订阅博客</div>
+  <div class="d">
+    <div>订</div>
+    <div>阅</div>
+    <div>博</div>
+    <div>客</div>
+  </div>
+</body>
+</html>
