@@ -70,6 +70,25 @@
       width: 0; height: 0; margin: auto;
     }
     /* rename for git */
+
+    .change-width label.button {
+      box-sizing: content-box;
+      position: absolute;
+      top: 0; bottom: 0; left: 10px;
+      margin: auto; padding: 0 15px;
+      width: 110px; height: 140px;
+      border-radius: 70px;
+      background-color: #fff;
+      transition:left .5s, width .4s .2s, padding .4s;
+      box-shadow: 1px 2px 8px #999d;
+      z-index: 10;
+    }
+    .change-width input:checked ~ label.button {
+      left: 120px;
+      padding: 0 0;
+      width: 140px;
+      transition: left .6s, width .4s, padding .4s .2s;
+    }
   </style>
 </head>
 <body>
@@ -79,6 +98,13 @@
     <label class="bottom" for="a"></label>
     <label class="button" for="a"></label>
     <label class="button2" for="a"></label>
+  </main>
+  <p>second</p>
+  <main class="change-width">
+    <input type="checkbox" id="b">
+    <label class="top" for="b"></label>
+    <label class="bottom" for="b"></label>
+    <label class="button" for="b"></label>
   </main>
 </body>
 </html>
