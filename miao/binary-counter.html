@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>binary-counter</title>
+  <style>
+    [name="b128"]:checked {
+      counter-increment: bin 128;
+    }
+    [name="b64"]:checked {
+      counter-increment: bin 64;
+    }
+    [name="b32"]:checked {
+      counter-increment: bin 32;
+    }
+    [name="b16"]:checked {
+      counter-increment: bin 16;
+    }
+    [name="b8"]:checked {
+      counter-increment: bin 8;
+    }
+    [name="b4"]:checked {
+      counter-increment: bin 4;
+    }
+    [name="b2"]:checked {
+      counter-increment: bin 2;
+    }
+    [name="b1"]:checked {
+      counter-increment: bin 1;
+    }
+    span::after {
+      content: "结果是:" counter(bin);
+    }
+  </style>
+</head>
+<body>
+  <span>
+  <input type="checkbox" name="b128">
+  <input type="checkbox" name="b64">
+  <input type="checkbox" name="b32">
+  <input type="checkbox" name="b16">
+  <input type="checkbox" name="b8">
+  <input type="checkbox" name="b4">
+  <input type="checkbox" name="b2">
+  <input type="checkbox" name="b1">
+</span>
+</body>
+</html>

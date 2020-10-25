@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      background-color: rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style: none;
+      margin: 20px;
+      padding: 10px;
+
+    }
+    li {
+      display: inline-block;
+      position: relative;
+      color: white;
+      background-color: blue;
+
+    }
+    li:first-child::after {
+      content: "折扣特卖";
+      position: absolute;
+      top: -15px;  left: 50%;
+      white-space: nowrap;
+      font-size: 10px;
+      background-color: rgb(255,142,0);
+      z-index: 8;
+    }
+    li:first-child::before {
+      content: "";
+      width: 0;  height: 0;
+      position: absolute;
+      left: 50%;
+      border: 2px solid rgb(255,142,0);
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>国内机票</li>
+    <li>火车票</li>
+    <li>酒店</li>
+  </ul>
+</body>
+</html>
