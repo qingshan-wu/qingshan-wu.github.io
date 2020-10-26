@@ -144,12 +144,13 @@ li.download:hover::before {
 .sign_in li:last-child:hover .cart {
   height: 100px;
 }
-
+.bgc {
+  background-color: #fff;
+  padding-bottom: 22px;
+}
 main {
   width: 1226px;
   margin: auto;
-  xpadding: 0 calc(50vw - 613px) 25px;
-  background-color: white;
 }
 
 .logo {
@@ -225,17 +226,19 @@ li a {
 #search:hover {
   border-color: rgb(176, 176, 176);
 }
+
 .good {
   position: absolute;  left: 0;  right: 0; /* 最近定位的祖先元素： body */
   width: 1226px;  height: 0;
   margin: auto;
-  xpadding: 0 calc(50vw - 613px);
+  padding: 0 calc(50% - 613px); /* 为了出现超出边界背景白 */
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 2px 5px #bbba;
   border-top: 2px solid #eee;
   clip-path: inset(2px 0 0 0);
   transition: .3s .2s;
+  z-index: 1000;
 }
 /* 子菜单弹出框 */
 .good ul {
@@ -256,6 +259,7 @@ li a {
   padding: 35px 12px 0;
   position: relative;
 }
+
 
 .good ul li:nth-child(-n + 6):before {
   content: "";
@@ -284,18 +288,131 @@ li:hover~.good,
   height: 230px;
   clip-path: inset(0 0 -5px 0);
 } /* 保证弹出后，鼠标hover到菜单，菜单不收回 */
-
+main ul {
+  margin-bottom: 2px;
+} /* 保证弹出后收回，不会露出下方轮播图 */
+.slider-column {
+  position: relative;
+}
+/* 侧拉列表开始 */
 .column {
-  float: left;
+  position: absolute;
+  top: 0px;
   width: 234px;  height: 420px;
   padding: 20px 0;
   color: white;
-  background-color: #eee4;
+  background-color: rgba(105,101,101,.6);
+  z-index:100;
 }
+.column li {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 30px;
+  position: relative;
+  cursor: pointer;
+}
+.column li:after {
+  content: ">";
+  position: absolute;
+  right: 1.5em;
+}
+.column li:hover {
+  background-color: rgb(255,103,0);
+}
+/* 侧拉列表结束 */
+/* 轮播图开始 */
 .slider_wrapper {
   width: 100%;  height: 460px;
   background-color: rgb(250,87,68);
 }
+.slider_wrapper input {
+  display: none;
+}
+.slider_wrapper ul {
+  position: relative;
+  width: 100%;  height: 100%;
+}
+.slider_wrapper li {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: .6s;
+}
+.slider_wrapper img {
+  width: 100%;  height: 100%;
+}
+
+.slider_wrapper li label {
+  position: absolute;
+  display: block;
+  width: 30px;  height: 50px;
+  top: 0;  bottom: 0;
+  margin: auto;
+  line-height: 50px;
+  text-align: center;
+  font-style: 18px;
+  color: #fff0;
+}
+.slider_wrapper li:hover label {
+  color: #fff;
+  background-color: #3333;
+  transition: .2s
+}
+
+.slider_wrapper li label:hover {
+  color: #000;
+  background-color: #fff9;
+}
+
+.slider_wrapper li label:nth-child(2) {
+  left: 234px;
+  border-radius: 0 10px 10px 0;
+}
+
+.slider_wrapper li label:nth-child(3) {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+input:nth-child(1):checked~ul li:nth-child(1),
+input:nth-child(2):checked~ul li:nth-child(2),
+input:nth-child(3):checked~ul li:nth-child(3),
+input:nth-child(4):checked~ul li:nth-child(4),
+input:nth-child(5):checked~ul li:nth-child(5) {
+  opacity: 1;
+  z-index: 6;
+}
+.indicator-wrapper {
+  position: absolute;
+  bottom: 7px;
+  width: 100%;  height: 20px;
+  z-index: 10;
+  text-align: right;
+}
+.indicator {
+  display: inline-block;
+  padding: 0 2px;
+  font-size:0;
+  border-radius: 6px;
+  background-color: #fff3;
+}
+.indicator label {
+  display: inline-block;
+  width: 6px; height:6px;
+  margin: 2px 2px;
+  font-size: 10px;
+  border-radius: 3px;
+  background-color: #fff8;
+}
+input:nth-child(1):checked~.indicator-wrapper label:nth-child(1),
+input:nth-child(2):checked~.indicator-wrapper label:nth-child(2),
+input:nth-child(3):checked~.indicator-wrapper label:nth-child(3),
+input:nth-child(4):checked~.indicator-wrapper label:nth-child(4),
+input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
+  background-color: #ff0d;
+}
+/* 轮播图结束 */
+
 .flex-menu {
   display: flex;
   width: 100%;  height: 170px;
@@ -336,6 +453,7 @@ li:hover~.good,
   font-size: 22px;
   color: rgb(51,51,51);
 }/* page-content下的所有小标题 */
+
 .flashsale .container ul {
   display: flex;
   justify-content: space-between;

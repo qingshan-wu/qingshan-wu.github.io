@@ -40,8 +40,10 @@
       </section>
     </div>
   </header>
-  <main>
-    <div class="home">
+  <!-- 白色背景区 -->
+  <div class="bgc">
+    <main>
+      <div class="home">
       <div class="logo"></div>
       <label for="search"></label>
       <input type="text" id="search">
@@ -86,10 +88,76 @@
           </ul>
         </div>
       </ul>
-    </div>
-    <div class="column"></div>
-    <div class="slider_wrapper"></div>
-    <div class="flex-menu">
+      </div>
+      <div class="slider-column">
+        <!-- 轮播图开始 -->
+        <div class="slider_wrapper">
+          <input type="radio" checked name="slider" id="1">
+          <input type="radio" name="slider" id="2">
+          <input type="radio" name="slider" id="3">
+          <input type="radio" name="slider" id="4">
+          <input type="radio" name="slider" id="5">
+          <ul>
+          <li><a href="#"><img
+                src="images/3d9f8cf47b5eeb286a83e6e95a60105a.webp"
+                alt=""></a>
+            <label for="5"> < </label>
+            <label for="2"> > </label>
+          </li>
+          <li><a href="#"><img
+                src="images/fdd30e55069adb64bb354d4f8d9f9b60.jpg"
+                alt=""></a>
+            <label for="1"> < </label>
+            <label for="3"> > </label>
+          </li>
+          <li><a href="#"><img
+                src="images/a17f560beb1abe201b6b1f123cc1d5d9.webp"
+                alt=""></a>
+            <label for="2"> < </label>
+            <label for="4"> > </label>
+          </li>
+          <li><a href="#"><img
+                src="images/9ebff5f5c1f52f2dbdd611897adbefd4.webp"
+                alt=""></a>
+            <label for="3"> < </label>
+            <label for="5"> > </label>
+          </li>
+          <li><a href="#"><img
+                src="images/0ef4160c861b998239bce9adb82341e7.webp"
+                alt=""></a>
+            <label for="4"> < </label>
+            <label for="1"> > </label>
+          </li>
+          </ul>
+          <div class="indicator-wrapper">
+            <div class="indicator">
+              <label for="1"></label>
+              <label for="2"></label>
+              <label for="3"></label>
+              <label for="4"></label>
+              <label for="5"></label>
+            </div>
+          </div>
+        </div>
+        <!-- 轮播图结束 -->
+        <!-- 侧拉菜单开始 -->
+        <div class="column">
+          <ul>
+            <li>手机 电话卡</li>
+            <li>电视 盒子</li>
+            <li>笔记本 显示器</li>
+            <li>家电 插线板</li>
+            <li>出行 穿戴</li>
+            <li>智能 路由器</li>
+            <li>电源 配件</li>
+            <li>健康 儿童</li>
+            <li>耳机 音箱</li>
+            <li>生活 箱包</li>
+          </ul>
+        </div>
+        <!-- 侧拉菜单结束 -->
+      </div>
+      <div class="flex-menu">
       <div class="a">
         <ul>
           <li></li>
@@ -103,8 +171,10 @@
       <div></div>
       <div></div>
       <div></div>
-    </div>
-  </main>
+      </div>
+    </main>
+  </div>
+  <!-- 内容flex -->
   <div class="page_content">
     <div class="flashsale">
       <span>小米闪购</span>
@@ -152,29 +222,43 @@
             <div class="img-wrapper">
               <img src="images/c892a7640f58032489cbff8a948b50f9.webp" alt="">
             </div>
+            <p class="title">小米10 至尊版</p>
+            <p class="desc">120X 变焦/120W秒充/120Hz屏幕</p>
+            <p class="price">5299元起</p>
           </li>
           <li>
             <div class="img-wrapper"><img src="images/8729282b199b3ec51e31c1b6b15f3f93.webp" alt="">
             </div>
+            <p class="title">Redmi K30 至尊版</p>
+            <p class="desc">120hz弹出全面屏，天玑1000+旗舰处理器</p>
+            <p class="price">5299元起</p>
           </li>
           <li>
             <div class="img-wrapper"><img src="images/0099822e42b4428cb25c4cdebc6ca53d.webp" alt="">
             </div>
+            <p class="title">腾讯黑鲨3S</p>
+            <p class="desc">骁龙865处理器，120Hz刷新率</p>
+            <p class="price">3799元起<del>3999元</del></p>
           </li>
           <li>
             <div class="img-wrapper">
               <img src="images/d037b19b924fdf15b1cc9e671d6628fe.webp" alt="">
             </div>
+            <p class="title">小米10 至尊版</p>
+            <p class="desc">120X 变焦/120W秒充/120Hz屏幕</p>
+            <p class="price">5299元起</p>
           </li>
           <li>
             <div class="img-wrapper">
               <img src="images/7cfdbce40301133a287e9e57faa37bdf.webp" alt="">
             </div>
+            <p class="title">Redmi K30 至尊版</p>
+            <p class="desc">120hz弹出全面屏，天玑1000+旗舰处理器</p>
+            <p class="price">5299元起</p>
           </li>
         </ul>
       </div>
     </div>
-
   </div>
 
 </body>
