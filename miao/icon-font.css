@@ -1,0 +1,107 @@
+@font-face {
+  font-family: FontAwesome;
+  src: url(fontawesome-webfont.woff2);
+}
+
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+}
+
+.fa-lg {
+  font-size: 1.5em;
+  line-height: 0.6666666;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+div:nth-of-type(3) span::before {
+  content: "\f005";
+}
+
+div:nth-of-type(2) span::before {
+  content: "\f083";
+}
+
+div:nth-of-type(1) span::before {
+  content: "\f002";
+}
+
+ul.a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+ul.a li {
+  zoom: 2;
+  display: inline-block;
+}
+
+ul.a li::before {
+  content: "\f006";
+}
+
+ul.a li:hover::before {
+  content: "\f005";
+}
+
+ul.a li:hover ~ li::before {
+  content: "\f005";
+}
+
+div.c {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+div.c input {
+  display: none;
+}
+
+div.c label {
+  zoom: 2;
+}
+
+div.c label::before {
+  content: "\f006";
+}
+
+div.c label:hover::before {
+  content: "\f005";
+}
+
+div.c label:hover ~ label::before {
+  content: "\f005";
+}
+
+input:nth-child(1):checked ~ label:nth-of-type(n)::before {
+  content: "\f005";
+}
+
+input:nth-child(2):checked ~ label:nth-of-type(n + 2)::before {
+  content: "\f005";
+}
+
+input:nth-child(3):checked ~ label:nth-of-type(n + 3)::before {
+  content: "\f005";
+}
+
+input:nth-child(4):checked ~ label:nth-of-type(n + 4)::before {
+  content: "\f005";
+}
+
+input:nth-child(5):checked ~ label:nth-of-type(n + 5)::before {
+  content: "\f005";
+}
