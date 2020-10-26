@@ -345,33 +345,25 @@ main ul {
 .slider_wrapper li label {
   position: absolute;
   display: block;
-  width: 30px;  height: 50px;
+  width: 41px;  height: 69px;
   top: 0;  bottom: 0;
   margin: auto;
-  line-height: 50px;
+  line-height: 69px;
   text-align: center;
-  font-style: 18px;
-  color: #fff0;
-}
-.slider_wrapper li:hover label {
-  color: #fff;
-  background-color: #3333;
-  transition: .2s
+  font-size: 45px;
+  color: rgb(155,155,155);
 }
 
 .slider_wrapper li label:hover {
-  color: #000;
-  background-color: #fff9;
+  color: white;
+  background-color: #0005;
 }
 
 .slider_wrapper li label:nth-child(2) {
   left: 234px;
-  border-radius: 0 10px 10px 0;
 }
-
 .slider_wrapper li label:nth-child(3) {
   right: 0;
-  border-radius: 10px 0 0 10px;
 }
 
 input:nth-child(1):checked~ul li:nth-child(1),

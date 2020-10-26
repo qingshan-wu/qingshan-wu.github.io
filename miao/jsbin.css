@@ -1,0 +1,45 @@
+#ea-wrapper {
+  display: none;
+}
+
+#live#live > iframe {
+  border: 10px solid gray;
+    /* background-color: lime; */
+    padding: 0;
+    margin-top: 35px;
+    height: calc(100% -35px);
+}
+.label .option {
+  margin-left: -200px;
+}
+@media (max-width: 735px) {
+  #live#live > iframe {
+    height: 100%;
+    margin: 0;
+  }
+  .menu.inline-menu {
+    display: none;
+  }
+  #source {
+    bottom: 0;
+  }
+  #bin {
+    top: 23px;
+  }
+  #control {
+    height: 23px
+  }
+  #control #panels > a.button {
+    height: 23px;
+    line-height: 23px;
+  }
+  /* jsbin小桶 */
+  .mobile-nav-trigger {
+    height: 23px;
+  }
+  .mobile-nav-trigger img {
+    padding-top: 0;
+    height: 23px;
+  }
+  /* jsbin小桶 */
+}

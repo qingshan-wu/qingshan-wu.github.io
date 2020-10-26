@@ -1,0 +1,113 @@
+section {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 0;
+}
+
+section input {
+  display: none;
+}
+
+section ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+section ul li {
+  position: absolute;
+  list-style-type: none;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: .6s;
+}
+
+section ul li img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+section ul li label {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  line-height: 50px;
+  text-align: center;
+  font-style: 18px;
+  color: #fff0;
+}
+
+section ul li label::nth-child(2) {
+  left: 0;
+  border-radius: 0 10px 10px 0;
+}
+
+section ul li label:nth-child(3) {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+section ul li label:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+section ul li:hover label {
+  color: #fff;
+  background-color: #333;
+  transition: .2s;
+}
+
+section .indicator-wrapper {
+  position: absolute;
+  bottom: 7px;
+  width: 100%;
+  height: 20px;
+  z-index: 10;
+  text-align: center;
+}
+
+section .indicator-wrapper .indicator {
+  display: inline-block;
+  padding: 0 2px;
+  font-size: 0;
+  border-radius: 6px;
+  background-color: #fff3;
+}
+
+section .indicator-wrapper .indicator label {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 2px 2px;
+  font-size: 10px;
+  border-radius: 3px;
+  background-color: #fff8;
+}
+
+input:nth-child(1):checked ~ ul li:nth-child(1),
+input:nth-child(2):checked ~ ul li:nth-child(2),
+input:nth-child(3):checked ~ ul li:nth-child(3),
+input:nth-child(4):checked ~ ul li:nth-child(4),
+input:nth-child(5):checked ~ ul li:nth-child(5) {
+  opacity: 1;
+  z-index: 6;
+}
+
+input:nth-child(1):checked ~ .indicator-wrapper label:nth-child(1),
+input:nth-child(2):checked ~ .indicator-wrapper label:nth-child(2),
+input:nth-child(3):checked ~ .indicator-wrapper label:nth-child(3),
+input:nth-child(4):checked ~ .indicator-wrapper label:nth-child(4),
+input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
+  background-color: #ff0d;
+}
