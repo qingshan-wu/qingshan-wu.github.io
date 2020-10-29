@@ -534,6 +534,14 @@ main {
   background-color: #000;
 }
 
+.slider-column .slider_wrapper li label:nth-child(2) {
+  left: 234px;
+}
+
+.slider-column .slider_wrapper li label:nth-child(3) {
+  right: 0;
+}
+
 .slider-column .slider_wrapper .indicator-wrapper {
   position: absolute;
   bottom: 7px;
@@ -559,14 +567,6 @@ main {
   font-size: 10px;
   border-radius: 3px;
   background-color: #fff8;
-}
-
-.slider_wrapper li label:nth-child(2) {
-  left: 234px;
-}
-
-.slider_wrapper li label:nth-child(3) {
-  right: 0;
 }
 
 input:nth-child(1):checked ~ ul li:nth-child(1),
@@ -724,11 +724,11 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   color: #f95846;
 }
 
-.flashsale .container .pre {
+.flashsale .container label.pre {
   right: 36px;
 }
 
-.flashsale .container .next {
+.flashsale .container label.next {
   right: 0;
 }
 
@@ -738,9 +738,10 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 
 .flashsale input {
   display: none;
+  /* 被checked之后，进入下一个层级，
+    引导checked的label opacity降低,下一个label升高 */
 }
 
-/* 被checked之后，进入下一个层级，引导checked的label opacity降低 */
 .flashsale input:nth-child(1):checked ~ .container #a1 {
   opacity: 1;
   color: #e1e1e0;

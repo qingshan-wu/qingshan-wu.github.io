@@ -438,6 +438,14 @@ main {
         }
       }
     } /* 图片 */
+    li {
+      label:nth-child(2) {
+        left: 234px;
+      }
+      label:nth-child(3) {
+        right: 0;
+      }
+    }
     .indicator-wrapper {
       position: absolute;
       bottom: 7px;
@@ -461,12 +469,6 @@ main {
       }
     } /* 右下角标签 */
   }
-}
-.slider_wrapper li label:nth-child(2) {
-  left: 234px;
-}
-.slider_wrapper li label:nth-child(3) {
-  right: 0;
 }
 input:nth-child(1):checked~ul li:nth-child(1),
 input:nth-child(2):checked~ul li:nth-child(2),
@@ -549,7 +551,6 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
   margin: 4px auto;
   overflow: hidden;
 }
-
 .flashsale {
   position: relative;
   .time-to-shop {
@@ -589,99 +590,98 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
       &:hover {
         color: rgb(249,88,70);
       }
-    }
-    .pre {
-      right: 36px;
-    }
-    .next {
-      right: 0;
+      &.pre {
+        right: 36px;
+      }
+      &.next {
+        right: 0;
+      }
     }
     #a1 {
       opacity: 0;
     }
   }
-}
-.flashsale input {
-  display: none;
-}
-/* 被checked之后，进入下一个层级，引导checked的label opacity降低 */
-.flashsale input:nth-child(1):checked ~ .container {
-  #a1 {
-    opacity: 1;
-    color: rgb(225,225,224);
-    z-index: 1000;
-  }
-  #a2 {
-    opacity: 0;
-    z-index: 1000;
-  }
-  ul {
-    margin-left: 0;
-  }
-}
-.flashsale input:nth-child(2):checked ~ .container {
-  #a3, #a4 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  #a1, #a2 {
-    opacity: 0;
-    z-index: 0;
-  }
-  ul {
-    margin-left: -992px;
-  }
-}
-.flashsale input:nth-child(3):checked ~ .container {
-  #a5, #a6 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  ul {
-    margin-left: -1984px;
-  }
-
-}
-.flashsale input:nth-child(4):checked ~ .container {
-  #a7, #a8 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  ul {
-    margin-left: -2976px;
-  }
-
-}
-.flashsale input:nth-child(5):checked ~ .container {
-  #a9, #a10 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  ul {
-    margin-left: -3966px;
-  }
-}
-.flashsale input:nth-child(6):checked ~ .container {
-  #a11, #a12 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  ul {
-    margin-left: -4958px;
-  }
-}
-.flashsale input:nth-child(7):checked ~ .container {
-  #a13 {
-    opacity: 1;
-    z-index: 1000;
-  }
-  #a14 {
-    opacity: 1;
-    color: rgb(225,225,225);
-    z-index: 1000;
-  }
-  ul {
-    margin-left: -5454px;
+  input {
+    display: none;
+    /* 被checked之后，进入下一个层级，
+    引导checked的label opacity降低,下一个label升高 */
+    &:nth-child(1):checked ~ .container {
+      #a1 {
+        opacity: 1;
+        color: rgb(225,225,224);
+        z-index: 1000;
+      }
+      #a2 {
+        opacity: 0;
+        z-index: 1000;
+      }
+      ul {
+        margin-left: 0;
+      }
+    }
+    &:nth-child(2):checked ~ .container {
+      #a3, #a4 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      #a1, #a2 {
+        opacity: 0;
+        z-index: 0;
+      }
+      ul {
+        margin-left: -992px;
+      }
+    }
+    &:nth-child(3):checked ~ .container {
+      #a5, #a6 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      ul {
+        margin-left: -1984px;
+      }
+    }
+    &:nth-child(4):checked ~ .container {
+      #a7, #a8 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      ul {
+        margin-left: -2976px;
+      }
+    }
+    &:nth-child(5):checked ~ .container {
+      #a9, #a10 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      ul {
+        margin-left: -3966px;
+      }
+    }
+    &:nth-child(6):checked ~ .container {
+      #a11, #a12 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      ul {
+        margin-left: -4958px;
+      }
+    }
+    &:nth-child(7):checked ~ .container {
+      #a13 {
+        opacity: 1;
+        z-index: 1000;
+      }
+      #a14 {
+        opacity: 1;
+        color: rgb(225,225,225);
+        z-index: 1000;
+      }
+      ul {
+        margin-left: -5454px;
+      }
+    }
   }
 }
 
