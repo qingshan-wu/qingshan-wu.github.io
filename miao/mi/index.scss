@@ -24,6 +24,10 @@ html {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 /* ↑ 重置项 */
@@ -321,7 +325,7 @@ main {
           .title {
             margin: 0;
             padding: 35px 12px 0;
-            color: rgb(255,103,0)
+            color: rgb(255,103,0);
           }
         }
       }
@@ -535,7 +539,9 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
     }
   }
 }
-
+span {
+  color: #333333;
+}
 .page_content {
   width: 1226px;
   margin: auto;
@@ -689,11 +695,13 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
   height: 120px;
   margin: 22px 0;
 } /* 广告 */
-/*手机悬浮开始*/
-.container_phone {
+.container-good {
   width: 1226px;  height: 614px;
   text-align: center;
   font-size: 14px;
+} /* 中间含有container-good布局属性 */
+/*手机悬浮开始*/
+.container_phone {
   .big {
     float: left;
     position: relative;
@@ -750,3 +758,74 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
   }
 }
 /*手机悬浮结束*/
+/* 切换热门和电视影音 */
+.tv-more-wrapper {
+  position: relative;
+  >span {
+    box-sizing: border-box;
+    position: absolute;
+    right: 0; top: -45px;
+    font-size: 16px;
+    line-height: 30px;  height: 30px;
+    color: #333333;
+    border-bottom: 2px solid transparent;
+    transition: color 1s 9999s,border-bottom 0s 9999s;
+  }
+  >span:first-child {
+    right: 64px;
+    margin-right: 30px;
+  }
+  .container_jiadian {
+    position : absolute;
+    visibility: hidden;
+    transition: visibility 99999s 9999s;
+    ul {
+      width: 1226px; height: 614px;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      align-content: space-between;
+      li {
+        width: 234px;  height: 300px;
+        background-color: #fff;
+        &:nth-last-child(-n + 2) {
+          height: 143px;
+        }
+        &:hover {
+          transition: .3s;
+          transform: translateY(-3px);
+          box-shadow: 0 14px 15px rgb(227,227,227);;
+        }
+      }
+    }
+  }
+  .hot {
+    visibility: visible;
+  }/* 初次加载，默认加载热门 */
+  /* 悬停停留开始 */
+  &:hover>span {
+    color: #333333;
+    text-decoration: none;
+    transition: none;
+  }
+  >span:hover {
+    color: rgb(255,103,0);
+    border-bottom: 2px solid rgb(255,103,0);
+    transition: none;
+  }
+  >span:hover ~ div{
+    visibility: hidden;
+    transition: none;
+  }/* hover时所有div hidden，下方选择器选中才visible */
+  /* 顺序不能变 */
+  >.bbb:hover ~ .tv-music {
+    visibility: visible;
+    transition: none;
+  }
+  >.aaa:hover ~ .hot {
+    visibility: visible;
+    transition: none;
+  }
+  /* 悬停停留结束 */
+}
+/* 切换热门和电视影音结束 */
