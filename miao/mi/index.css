@@ -10,26 +10,28 @@
   src: url(fontawesome-webfont.woff2);
 }
 
-.fa {
+html .fa {
   font-family: FontAwesome;
 }
 
-a {
+html a {
   text-decoration: none;
+  color: inherit;
 }
 
-body {
+html body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
 }
 
-ul {
+html ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+/* ↑ 重置项 */
 .topimg {
   width: 100%;
   height: 120px;
@@ -163,12 +165,12 @@ ul {
   position: relative;
 }
 
+/* 白色背景区 */
 main {
   width: 1226px;
   margin: auto;
 }
 
-/* logo */
 .home {
   width: 1226px;
   /* 服务，社区，右浮动，复刻navlist li */
@@ -389,6 +391,7 @@ main {
   position: relative;
   /* 侧拉列表开始 */
   /* 侧拉列表结束 */
+  /* 轮播图开始 */
 }
 
 .slider-column .column {
@@ -485,6 +488,9 @@ main {
   width: 100%;
   height: 460px;
   background-color: #fa5744;
+  /* radio */
+  /* 图片 */
+  /* 右下角标签 */
 }
 
 .slider-column .slider_wrapper input {
@@ -528,7 +534,33 @@ main {
   background-color: #000;
 }
 
-/* 轮播图开始 */
+.slider-column .slider_wrapper .indicator-wrapper {
+  position: absolute;
+  bottom: 7px;
+  width: 100%;
+  height: 20px;
+  z-index: 10;
+  text-align: right;
+}
+
+.slider-column .slider_wrapper .indicator-wrapper .indicator {
+  display: inline-block;
+  padding: 0 2px;
+  font-size: 0;
+  border-radius: 6px;
+  background-color: #fff3;
+}
+
+.slider-column .slider_wrapper .indicator-wrapper .indicator label {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 2px 2px;
+  font-size: 10px;
+  border-radius: 3px;
+  background-color: #fff8;
+}
+
 .slider_wrapper li label:nth-child(2) {
   left: 234px;
 }
@@ -544,33 +576,6 @@ input:nth-child(4):checked ~ ul li:nth-child(4),
 input:nth-child(5):checked ~ ul li:nth-child(5) {
   opacity: 1;
   z-index: 6;
-}
-
-.indicator-wrapper {
-  position: absolute;
-  bottom: 7px;
-  width: 100%;
-  height: 20px;
-  z-index: 10;
-  text-align: right;
-}
-
-.indicator-wrapper .indicator {
-  display: inline-block;
-  padding: 0 2px;
-  font-size: 0;
-  border-radius: 6px;
-  background-color: #fff3;
-}
-
-.indicator-wrapper .indicator label {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin: 2px 2px;
-  font-size: 10px;
-  border-radius: 3px;
-  background-color: #fff8;
 }
 
 input:nth-child(1):checked ~ .indicator-wrapper label:nth-child(1),
@@ -594,6 +599,16 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   width: 316px;
   height: 170px;
   background-color: lime;
+  transition: .3s;
+}
+
+.flex-menu div:hover {
+  box-shadow: 0 2px 25px rgba(120, 120, 120, 0.4);
+}
+
+.flex-menu div img {
+  width: 100%;
+  height: 100%;
 }
 
 .flex-menu .a {
@@ -611,59 +626,37 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 }
 
 .flex-menu .a ul li {
+  box-sizing: border-box;
   width: 70px;
   height: 82px;
   margin: 0 3px;
+  padding-top: 15px;
   align-items: stretch;
+  color: white;
+  opacity: 0.7;
+  transition: .12s;
+}
+
+.flex-menu .a ul li:hover {
+  opacity: 1;
+}
+
+.flex-menu .a ul li img {
+  width: 24px;
+  height: 24px;
+  margin: 0 23px 4px;
+}
+
+.flex-menu .a ul li span {
+  display: block;
+  font-size: 13px;
+  text-align: center;
 }
 
 .page_content {
   width: 1226px;
   margin: auto;
-}
-
-.flash_sale {
-  margin: 4px auto;
-}
-
-.flashsale {
-  position: relative;
-}
-
-.flashsale .time-to-shop {
-  float: left;
-  width: 234px;
-  height: 339px;
-  background-color: lime;
-}
-
-.flashsale .container {
-  overflow: hidden;
-  /* 隐藏21 */
-}
-
-.flashsale .container ul {
-  white-space: nowrap;
-  font-size: 0;
-}
-
-.flashsale .container ul li {
-  font-size: 12px;
-  display: inline-block;
-  width: 234px;
-  height: 339px;
-  margin-left: 14px;
-}
-
-.time-to-go {
-  width: 234px;
-  height: 339px;
-  background-color: lime;
-}
-
-.ad {
-  height: 120px;
-  margin: 22px 0;
+  /* page-content下的所有小标题 */
 }
 
 .page_content span {
@@ -674,7 +667,166 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   color: #333333;
 }
 
-/* page-content下的所有小标题 */
+.flash_sale {
+  margin: 4px auto;
+  overflow: hidden;
+}
+
+.flashsale {
+  position: relative;
+}
+
+.flashsale .time-to-shop {
+  position: absolute;
+  left: 0;
+  width: 234px;
+  height: 339px;
+  background-color: lime;
+  z-index: 100;
+}
+
+.flashsale .container {
+  position: relative;
+  margin-left: 234px;
+}
+
+.flashsale .container ul {
+  position: relative;
+  white-space: nowrap;
+  font-size: 0;
+  background-color: yellow;
+  transition: margin-left .5s;
+}
+
+.flashsale .container ul li {
+  font-size: 90px;
+  display: inline-block;
+  width: 234px;
+  height: 339px;
+  margin-left: 14px;
+}
+
+.flashsale .container label {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  top: -40px;
+  width: 36px;
+  height: 24px;
+  line-height: 22px;
+  font-size: 24px;
+  color: #b0b0b0;
+  border: 1px solid #b0b0b0;
+  text-align: center;
+}
+
+.flashsale .container label:hover {
+  color: #f95846;
+}
+
+.flashsale .container .pre {
+  right: 36px;
+}
+
+.flashsale .container .next {
+  right: 0;
+}
+
+.flashsale .container #a1 {
+  opacity: 0;
+}
+
+.flashsale input {
+  display: none;
+}
+
+/* 被checked之后，进入下一个层级，引导checked的label opacity降低 */
+.flashsale input:nth-child(1):checked ~ .container #a1 {
+  opacity: 1;
+  color: #e1e1e0;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(1):checked ~ .container #a2 {
+  opacity: 0;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(1):checked ~ .container ul {
+  margin-left: 0;
+}
+
+.flashsale input:nth-child(2):checked ~ .container #a3, .flashsale input:nth-child(2):checked ~ .container #a4 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(2):checked ~ .container #a1, .flashsale input:nth-child(2):checked ~ .container #a2 {
+  opacity: 0;
+  z-index: 0;
+}
+
+.flashsale input:nth-child(2):checked ~ .container ul {
+  margin-left: -992px;
+}
+
+.flashsale input:nth-child(3):checked ~ .container #a5, .flashsale input:nth-child(3):checked ~ .container #a6 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(3):checked ~ .container ul {
+  margin-left: -1984px;
+}
+
+.flashsale input:nth-child(4):checked ~ .container #a7, .flashsale input:nth-child(4):checked ~ .container #a8 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(4):checked ~ .container ul {
+  margin-left: -2976px;
+}
+
+.flashsale input:nth-child(5):checked ~ .container #a9, .flashsale input:nth-child(5):checked ~ .container #a10 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(5):checked ~ .container ul {
+  margin-left: -3966px;
+}
+
+.flashsale input:nth-child(6):checked ~ .container #a11, .flashsale input:nth-child(6):checked ~ .container #a12 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(6):checked ~ .container ul {
+  margin-left: -4958px;
+}
+
+.flashsale input:nth-child(7):checked ~ .container #a13 {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(7):checked ~ .container #a14 {
+  opacity: 1;
+  color: #e1e1e1;
+  z-index: 1000;
+}
+
+.flashsale input:nth-child(7):checked ~ .container ul {
+  margin-left: -5454px;
+}
+
+.ad {
+  height: 120px;
+  margin: 22px 0;
+}
+
+/* 广告 */
 /*手机悬浮开始*/
 .container_phone {
   width: 1226px;
@@ -692,6 +844,12 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   margin: 0;
   transition: .3s;
   cursor: pointer;
+}
+
+.container_phone li:hover,
+.container_phone .big:hover {
+  top: -3px;
+  box-shadow: 0 14px 15px #e3e3e3;
 }
 
 .container_phone ul {
@@ -742,12 +900,6 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 .container_phone ul li .price del {
   text-decoration: line-through;
   color: #b0b0b0;
-}
-
-.container_phone li:hover,
-.container_phone .big:hover {
-  top: -3px;
-  box-shadow: 0 14px 15px #e3e3e3;
 }
 
 /*手机悬浮结束*/
