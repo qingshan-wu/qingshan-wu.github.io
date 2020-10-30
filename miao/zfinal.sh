@@ -4,5 +4,5 @@
  # @Description  : ---
  # @明天也是美好的一天 (ﾟДﾟ)ﾊｧ?
 ###
-cd ..
+cd ../..
 sh autoGitPush.sh
