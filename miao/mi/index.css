@@ -661,10 +661,6 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   text-align: center;
 }
 
-span {
-  color: #333333;
-}
-
 .page_content {
   width: 1226px;
   margin: auto;
@@ -847,6 +843,10 @@ span {
   font-size: 14px;
 }
 
+.container-good span {
+  color: #333333;
+}
+
 /* 中间含有container-good布局属性 */
 /*手机悬浮开始*/
 .container_phone .big {
@@ -920,14 +920,14 @@ span {
 /* 切换热门和电视影音 */
 .tv-more-wrapper {
   position: relative;
+  /* 共有特性 */
   /* 初次加载，默认加载热门 */
   /* 悬停停留开始 */
-  /* hover时所有div hidden，下方选择器选中才visible */
   /* 顺序不能变 */
   /* 悬停停留结束 */
 }
 
-.tv-more-wrapper > span {
+.tv-more-wrapper .ab {
   box-sizing: border-box;
   position: absolute;
   right: 0;
@@ -935,12 +935,12 @@ span {
   font-size: 16px;
   line-height: 30px;
   height: 30px;
-  color: #333333;
+  color: #333;
   border-bottom: 2px solid transparent;
   transition: color 1s 9999s,border-bottom 0s 9999s;
 }
 
-.tv-more-wrapper > span:first-child {
+.tv-more-wrapper .aaa {
   right: 64px;
   margin-right: 30px;
 }
@@ -980,30 +980,40 @@ span {
   visibility: visible;
 }
 
-.tv-more-wrapper:hover > span {
+.tv-more-wrapper:hover {
+  /* hover时所有div hidden，下方选择器选中才visible */
+}
+
+.tv-more-wrapper:hover div div {
+  visibility: hidden;
+  transition: none;
+}
+
+.tv-more-wrapper:hover .ab {
   color: #333333;
   text-decoration: none;
   transition: none;
 }
 
-.tv-more-wrapper > span:hover {
+.tv-more-wrapper .music-wrapper:hover .tv-music {
+  visibility: visible;
+  transition: none;
+}
+
+.tv-more-wrapper .music-wrapper:hover .bbb {
   color: #ff6700;
   border-bottom: 2px solid #ff6700;
   transition: none;
 }
 
-.tv-more-wrapper > span:hover ~ div {
-  visibility: hidden;
-  transition: none;
-}
-
-.tv-more-wrapper > .bbb:hover ~ .tv-music {
+.tv-more-wrapper .hot-wrapper:hover .hot {
   visibility: visible;
   transition: none;
 }
 
-.tv-more-wrapper > .aaa:hover ~ .hot {
-  visibility: visible;
+.tv-more-wrapper .hot-wrapper:hover .aaa {
+  color: #ff6700;
+  border-bottom: 2px solid #ff6700;
   transition: none;
 }
 
