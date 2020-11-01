@@ -800,11 +800,12 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
         box-sizing: border-box;
         width: 234px;  height: 300px;
         background-color: #fff;
+        transition: transform .3s;
         &:nth-last-child(-n + 2) {
           height: 143px;
         }
         &:hover {
-          transition: .3s;
+
           transform: translateY(-3px);
           box-shadow: 0 14px 15px rgb(227,227,227);;
         }

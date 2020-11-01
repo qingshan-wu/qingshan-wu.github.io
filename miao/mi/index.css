@@ -978,6 +978,7 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   width: 234px;
   height: 300px;
   background-color: #fff;
+  transition: transform .3s;
 }
 
 .tv-more-wrapper .container_jiadian ul li:nth-last-child(-n + 2) {
@@ -985,7 +986,6 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 }
 
 .tv-more-wrapper .container_jiadian ul li:hover {
-  transition: .3s;
   transform: translateY(-3px);
   box-shadow: 0 14px 15px #e3e3e3;
 }

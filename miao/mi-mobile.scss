@@ -1,0 +1,43 @@
+* {
+  box-shadow: 0 0 1px red;
+  xbackground-color: rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+/* 重置 */
+html {
+  font-size: 100px;  /* 1rem */
+  body {
+    margin: 0;
+    padding: 0;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul{
+      margin: 0; padding: 0;
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+header {
+  width: 100%;
+  .app {
+    width: 100%;  height: 84px;
+    .logo img {
+      width: 48px;
+      }
+    }
+  .nav {
+    height: 56px;
+    line-height: 56px;
+    font-size: 0;
+    li {
+      color: rgb(116, 116, 116);
+      font-size: 26px;
+      padding: 0 25px;
+    }
+  }
+}

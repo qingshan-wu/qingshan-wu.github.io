@@ -1,0 +1,57 @@
+* {
+  background-color: rgba(0,0,0,0.1);
+  box-shadow: 0 0 1px red;
+}
+ul {
+  list-style: none;
+  margin: 0;  padding: 0;
+  display: flex;
+  width: 100%;  height: 100%;
+  justify-content: space-between;
+}
+section {
+  position: relative;
+  width: 700px;  height: 300px;
+  margin-top: 50px;
+  span {
+    color: green;
+    position: absolute;
+    top: -30px;
+    transition: color 0s 9999s;
+  }
+  .a span {
+    right: 50px;
+    color: red;
+  }
+  .b span {
+    right: 0;
+  }
+  div div {
+    position: absolute;
+    top: 0;  right: 0;
+    width: 100%; height: 100%;
+    visibility: hidden;
+    transition: visibility 0s 9999s;  /* 当鼠标不在hover时，选中选择器，继续显示最近被显示的内容 */
+  }/* 定位重叠 */
+  .a div {
+    visibility: visible;  /* 刷新时默认显示的 */
+  }
+  &:hover span {
+    color: green;
+    transition: none;
+  }/* 重置span颜色 */
+  .a:hover span,
+  .b:hover span {
+    color: red;
+  }
+  &:hover div div {
+    visibility: hidden;
+    transition: none;
+  }
+  .a:hover div,
+  .b:hover div{
+    visibility: visible;
+    transition: none;
+  }
+}
+//span 和 div 为兄弟元素，以父元素为纽带，单独被选中时都代表父元素被选中，所以对方的显示样式也会变化；
