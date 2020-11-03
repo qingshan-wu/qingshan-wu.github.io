@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-marquee</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+    div {
+      width: 30px;  height: 30px;
+      background-color: #fff;
+      transform: translatex(300px);
+      animation: move 3s infinite linear;
+    }
+    @keyframes move {
+      from {
+        transform: translatex(0);
+      }
+      to {
+        transform: translatex(100vw); /* 屏幕越宽，走得越着急 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>mar</div>
+</body>
+</html>
