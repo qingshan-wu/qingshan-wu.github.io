@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>around</title>
+  <style>
+    * {
+      xbackground-color: rgba(0,0,0,0.1);
+      xbox-shadow: 0 0 1px red;;
+    }
+
+    body>div {
+      margin: 80px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-image: conic-gradient(white, deepskyblue);
+      animation: rotatingboss 5s infinite linear;
+    }
+    @keyframes rotatingboss {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    /* ===================================== */
+    @keyframes rotating {
+      to {
+        transform: rotate(0);
+      }
+      from {
+        transform: rotate(360deg);
+      }
+    }
+    div.square {
+      width: 30px;
+      height: 30px;
+      background-color: mediumaquamarine;
+      animation: rotating 5s infinite linear;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="square"></div>
+  </div>
+
+</body>
+</html>
