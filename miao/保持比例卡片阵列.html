@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zhenlie</title>
+  <style>
+    * {
+      box-shadow: inset 0 0 1px red;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    div {
+      width: 100px;
+      flex-grow: 1;
+    }
+    div::after {
+      content: "";
+      display: block;
+      padding-bottom: 70%; /* 百分比乘以父元素的宽度 */
+    }
+    div:nth-last-child(-n + 16) {
+      xheight: 10px;
+      height: 0px
+    }
+    /* 16来自于这个卡片宽度下，最宽窗口能占下的卡片个数， */
+    /* 应用场景 百度图片？ */
+  </style>
+</head>
+<body>
+  <section>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+
+</body>
+</html>
