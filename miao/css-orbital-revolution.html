@@ -6,19 +6,19 @@
   <title>around</title>
   <style>
     * {
-      xbackground-color: rgba(0,0,0,0.1);
-      xbox-shadow: 0 0 1px red;;
+      background-color: rgba(0,0,0,0.1);
+      box-shadow: 0 0 1px red;;
     }
 
     body>div {
-      margin: 80px;
+      margin: 80px auto;
       width: 200px;
       height: 200px;
       border-radius: 50%;
       background-image: conic-gradient(white, deepskyblue);
-      animation: rotatingboss 5s infinite linear;
+      animation: rotating 5s infinite linear;
     }
-    @keyframes rotatingboss {
+    @keyframes rotating {
       from {
         transform: rotate(0);
       }
@@ -27,19 +27,26 @@
       }
     }
     /* ===================================== */
-    @keyframes rotating {
-      to {
-        transform: rotate(0);
-      }
-      from {
-        transform: rotate(360deg);
-      }
-    }
     div.square {
       width: 30px;
       height: 30px;
       background-color: mediumaquamarine;
-      animation: rotating 5s infinite linear;
+      animation: rotating 5s infinite linear reverse;
+    }
+/* ========================================== */
+    div.b {
+      margin: -200px auto;
+      background-color: olive;
+      width: 40px;  height: 40px;
+      animation: ro 5s linear infinite;
+    }
+    @keyframes ro {
+      from {
+        transform: rotate(0deg) translatex(120px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translatex(120px) rotate(-360deg);
+      }
     }
   </style>
 </head>
@@ -47,6 +54,8 @@
   <div>
     <div class="square"></div>
   </div>
+<!-- ========================== -->
+  <div class="b"></div>
 
 </body>
 </html>

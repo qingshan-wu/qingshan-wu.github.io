@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cube-expand</title>
+  <style>
+    * {
+      background-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 1px red;
+    }
+    section {
+      width: 400px;  height: 300px; margin: auto;
+    }
+    .cube {
+      position: relative;
+      width: 400px;  height: 300px; margin: 100px auto;
+      transform-style:preserve-3d;
+      animation: rolling 700s infinite;
+      transform-origin: 100px 100px 100px;
+    }
+    .cube>div {
+      width: 200px;  height: 200px;
+      position: absolute;
+      font-size: 80px;
+      text-align: center;
+      line-height: 200px;
+      transition: 1s;
+
+    }
+    .a1 {
+      transform: rotatey(-90deg);
+      transform-origin: left;
+      background-color: red;
+    }
+    .a2 {
+      transform: rotatey(90deg);
+      transform-origin: right;
+    }
+    .a3 {
+      transform: rotatex(90deg);
+      transform-origin: top;
+    }
+    .a4 {
+      transform: rotatex(-90deg);
+      transform-origin: bottom;
+    }
+    .a5 {
+      transform: translatez(200px);
+    }
+    .a6 {
+      transform: rotatey(180deg);
+    }
+    section:hover .cube {
+      animation: rolling 500s infinite;
+    }
+    @keyframes rolling {
+      from {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      }
+      to {
+        transform: rotateX(36000deg) rotateY(36000deg) rotateZ(36000deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="cube">
+      <div class="a1">1</div>
+      <div class="a2">2</div>
+      <div class="a3">3</div>
+      <div class="a4">4</div>
+      <div class="a5">5</div>
+      <div class="a6">6</div>
+    </div>
+  </section>
+</body>
+</html>
