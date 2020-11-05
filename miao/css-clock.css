@@ -7,13 +7,16 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  border: 1px solid red;
+}
+
 section {
   width: 400px;
   height: 400px;
   margin: 200px auto;
   position: relative;
   border-radius: 50%;
-  xborder: 1px solid black;
   /* 所有的元素都是叠加的，所以绝对定位 */
 }
 
@@ -41,6 +44,21 @@ section div div::before {
   content: '';
   position: absolute;
   margin: auto;
+}
+
+section .out {
+  position: absolute;
+  width: 406px;
+  height: 406px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: conic-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);
+  -webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
 }
 
 section .pan div::after {
@@ -84,6 +102,46 @@ section .sec div::before {
   background-color: red;
 }
 
+section .sec .circle {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: red;
+}
+
+section .min {
+  animation: m 3600s steps(360) infinite;
+}
+
+section .min div::after {
+  bottom: 167px;
+  left: 0;
+  right: 0;
+  width: 8px;
+  height: 187px;
+  background-color: black;
+}
+
+section .hour {
+  animation: h 43200s linear infinite;
+}
+
+section .hour div::after {
+  bottom: 175px;
+  left: 0;
+  right: 0;
+  width: 12px;
+  height: 130px;
+  background-color: black;
+}
+
 @keyframes second {
   from {
     transform: rotatez(0deg);
@@ -97,20 +155,38 @@ section .sec div::before {
   0% {
     transform: rotate(0);
   }
-  3% {
-    transform: rotate(1.5deg);
+  4% {
+    transform: rotate(2deg);
   }
-  6% {
+  8% {
     transform: rotate(0);
   }
-  9% {
-    transform: rotate(-0.8deg);
-  }
   12% {
+    transform: rotate(-1deg);
+  }
+  16% {
     transform: rotate(0);
   }
   100% {
     transform: rotate(0);
+  }
+}
+
+@keyframes m {
+  0% {
+    transform: rotateZ(60deg);
+  }
+  100% {
+    transform: rotateZ(420deg);
+  }
+}
+
+@keyframes h {
+  0% {
+    transform: rotateZ(-60deg);
+  }
+  100% {
+    transform: rotateZ(300deg);
   }
 }
 
@@ -353,3 +429,5 @@ section .sec div::before {
 .pan div:nth-child(60) {
   transform: rotatez(360deg);
 }
+
+/* 表盘 */

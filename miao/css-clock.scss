@@ -2,15 +2,21 @@
   xbackground-color: rgba(0, 0 , 0, 0.1);
 }
 $sec-color: red;
+$sec-length: 200px;
+$min-length: 187px;
+$hour-length: 130px;
 html {
   box-sizing: border-box;
 }
+body {
+  border: 1px solid red;
+}
+
 section {
   width: 400px;  height: 400px;
   margin: 200px auto;
   position: relative;
   border-radius: 50%;
-  xborder: 1px solid black;
   div {
     width: 100%;  height: 100%;
     position: absolute;
@@ -27,7 +33,17 @@ section {
         margin: auto;
       }
     }
-  } /* 所有的元素都是叠加的，所以绝对定位 */
+  }
+  /* 所有的元素都是叠加的，所以绝对定位 */
+  .out {
+    position: absolute;
+    width: 406px;  height: 406px;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;  margin-left: -3px;
+    border-radius: 50%;
+    background: conic-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);
+    -webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
+  }
   .pan {
     div::after {
       background-color: #000;
@@ -44,15 +60,40 @@ section {
       animation: second-son 1s ease-out infinite;
       &::after {
         top: 35px; left: 0; right: 0;
-        width: 5px;  height: 200px;
+        width: 5px;  height: $sec-length;
         background-color: $sec-color;
       }
       &::before {
-        top: 45px; left: 0; right: 0;
+        top: 45px;  left: 0;  right: 0;
         width: 35px;  height: 35px;
         border-radius: 50%;
         background-color: $sec-color;
       }
+    }
+    .circle {
+      display: block;
+      position: absolute;
+      top: 0;  left: 0;  right: 0;  bottom: 0;
+      width: 22px;  height: 22px;
+      margin: auto;
+      border-radius: 50%;
+      background-color: $sec-color;
+    }
+  }
+  .min {
+    animation: m 3600s steps(360) infinite;
+    div::after{
+      bottom: 167px;  left: 0;  right: 0;
+      width: 8px;  height: $min-length;
+      background-color: black;
+    }
+  }
+  .hour {
+    animation: h 43200s linear infinite;
+    div::after{
+      bottom:  175px;  left: 0;  right: 0;
+      width: 12px;  height: $hour-length;
+      background-color: black;
     }
   }
 }
@@ -68,29 +109,41 @@ section {
   0% {
     transform: rotate(0);
   }
-  3% {
-    transform: rotate(1.5deg);
+  4% {
+    transform: rotate(2deg);
   }
-  6% {
+  8% {
     transform: rotate(0);
   }
-  9% {
-    transform: rotate(-0.8deg);
-  }
   12% {
+    transform: rotate(-1deg);
+  }
+  16% {
     transform: rotate(0);
   }
   100% {
     transform: rotate(0);
   }
 }
-
-
-
-
+@keyframes m {
+  0%{
+    transform: rotateZ(60deg);
+  }
+  100% {
+    transform: rotateZ(420deg);
+  }
+}
+@keyframes h {
+  0%{
+    transform: rotateZ(-60deg);
+  }
+  100% {
+    transform: rotateZ(300deg);
+  }
+}
 
 @for $i from 1 through 60 {
   .pan div:nth-child(#{$i}) {
     transform: rotatez($i * 6deg);
   }
-}
+}/* 表盘 */
