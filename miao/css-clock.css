@@ -48,17 +48,17 @@ section div div::before {
 
 section .out {
   position: absolute;
-  width: 406px;
-  height: 406px;
+  width: 400px;
+  height: 400px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
-  margin-left: -3px;
   border-radius: 50%;
-  background: conic-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);
-  -webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
+  xbackground-image: linear-gradient(135deg, #FFCF71 10%, #2376DD 100%);
+  background-image: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);
+  x-webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
 }
 
 section .pan div::after {

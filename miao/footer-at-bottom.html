@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>footer-at-bottom</title>
+  <style>
+    * {
+      background-color: rgba(0,0,0,0.1);
+      box-shadow: 0 0 1px red;;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      display: flow-root; /* flex类似，定于内部的布局 */
+      min-height: 100%;
+      margin: 0;
+      position: relative;
+      box-sizing: border-box;
+      padding-bottom: 23px; /* 为了不和底线重叠，高度高于底线高度 */
+    }
+    footer {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis suscipit aliquam error, in voluptatibus et sequi eaque quod vel distinctio porro quos repellat omnis vero sunt dolore doloribus rem? Minus!</p>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo.</p>
+  <footer>叶卡捷琳娜同志，这是我们的底线</footer>
+</body>
+</html>
