@@ -1,0 +1,96 @@
+* {
+  xbackground-color: rgba(0, 0 , 0, 0.1);
+}
+$sec-color: red;
+html {
+  box-sizing: border-box;
+}
+section {
+  width: 400px;  height: 400px;
+  margin: 200px auto;
+  position: relative;
+  border-radius: 50%;
+  xborder: 1px solid black;
+  div {
+    width: 100%;  height: 100%;
+    position: absolute;
+    top: 0;  bottom: 0; left: 0; right: 0;
+    div {
+      &::after {
+        content: '';
+        position: absolute;
+        margin: auto;
+      } /* 两层下的div选中最末尾的伪元素，都是绝对 */
+      &::before {
+        content: '';
+        position: absolute;
+        margin: auto;
+      }
+    }
+  } /* 所有的元素都是叠加的，所以绝对定位 */
+  .pan {
+    div::after {
+      background-color: #000;
+      top: 0; left: 0; right: 0;
+      width: 4px; height: 15px;
+    }
+    div:nth-child(5n)::after {
+      width: 9px;  height: 30px;
+    }
+  }
+  .sec {
+    animation: second 60s infinite steps(60);
+    div {
+      animation: second-son 1s ease-out infinite;
+      &::after {
+        top: 35px; left: 0; right: 0;
+        width: 5px;  height: 200px;
+        background-color: $sec-color;
+      }
+      &::before {
+        top: 45px; left: 0; right: 0;
+        width: 35px;  height: 35px;
+        border-radius: 50%;
+        background-color: $sec-color;
+      }
+    }
+  }
+}
+@keyframes second {
+  from {
+    transform: rotatez(0deg);
+  }
+  to {
+    transform: rotatez(360deg);
+  }
+}
+@keyframes second-son {
+  0% {
+    transform: rotate(0);
+  }
+  3% {
+    transform: rotate(1.5deg);
+  }
+  6% {
+    transform: rotate(0);
+  }
+  9% {
+    transform: rotate(-0.8deg);
+  }
+  12% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+
+
+
+
+@for $i from 1 through 60 {
+  .pan div:nth-child(#{$i}) {
+    transform: rotatez($i * 6deg);
+  }
+}
