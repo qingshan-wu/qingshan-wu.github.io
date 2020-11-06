@@ -35,16 +35,24 @@ section {
     }
   }
   /* 所有的元素都是叠加的，所以绝对定位 */
-  .out {
+  .out, .out-under {
     position: absolute;
     width: 400px;  height: 400px;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
     border-radius: 50%;
-    xbackground-image: linear-gradient( 135deg, #FFCF71 10%, #2376DD 100%);
-    background-image: linear-gradient( 135deg, #81FFEF 10%, #F067B4 100%);
-    x-webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
+    background-size: 200% 200%;
+    background-position: 0 0;
   }
+  .out-under {
+    background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
+    animation: bg 5s infinite ease-in alternate-reverse;
+  }
+  .out {
+    background-image: linear-gradient( 135deg, #81FFEF 10%, #F067B4 100%);
+    animation: bg 5s infinite ease-in-out alternate;
+  }
+
   .pan {
     div::after {
       background-color: #000;
@@ -148,3 +156,26 @@ section {
     transform: rotatez($i * 6deg);
   }
 }/* 表盘 */
+
+@keyframes bg {
+  0% {
+      background-position: 0 0;
+      opacity: 1;
+  }
+  25% {
+    background-position: 100% 0;
+    opacity: .75;
+  }
+  50% {
+    background-position: 100% 100%;
+    opacity: .50;
+  }
+  75% {
+    background-position: 0 100%;
+    opacity: .25;
+  }
+  100% {
+    background-position: 0 0;
+    opacity: .02;
+  }
+}

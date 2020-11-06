@@ -46,7 +46,7 @@ section div div::before {
   margin: auto;
 }
 
-section .out {
+section .out, section .out-under {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -56,9 +56,18 @@ section .out {
   right: 0;
   margin: auto;
   border-radius: 50%;
-  xbackground-image: linear-gradient(135deg, #FFCF71 10%, #2376DD 100%);
+  background-size: 200% 200%;
+  background-position: 0 0;
+}
+
+section .out-under {
+  background-image: linear-gradient(135deg, #3B2667 10%, #BC78EC 100%);
+  animation: bg 5s infinite ease-in alternate-reverse;
+}
+
+section .out {
   background-image: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);
-  x-webkit-mask: radial-gradient(transparent, transparent 200px, #000 200px);
+  animation: bg 5s infinite ease-in-out alternate;
 }
 
 section .pan div::after {
@@ -431,3 +440,25 @@ section .hour div::after {
 }
 
 /* 表盘 */
+@keyframes bg {
+  0% {
+    background-position: 0 0;
+    opacity: 1;
+  }
+  25% {
+    background-position: 100% 0;
+    opacity: .75;
+  }
+  50% {
+    background-position: 100% 100%;
+    opacity: .50;
+  }
+  75% {
+    background-position: 0 100%;
+    opacity: .25;
+  }
+  100% {
+    background-position: 0 0;
+    opacity: .02;
+  }
+}
