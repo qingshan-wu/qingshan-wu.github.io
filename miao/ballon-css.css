@@ -1,0 +1,124 @@
+@charset "UTF-8";
+body {
+  background-color: #ffb641;
+  box-sizing: border-box;
+}
+
+section {
+  width: 300px;
+  margin: auto;
+}
+
+button {
+  display: block;
+  position: relative;
+  margin: 100px;
+  width: 230px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #b71212;
+  border-radius: .3em;
+  border: none;
+  /* 最基础的相同代码 */
+}
+
+button::before {
+  content: attr(aria-label);
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 30px;
+  border-radius: .2em;
+  background-color: #1c1812;
+  transition: .3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 5px solid #1c1812;
+  transition: .3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+button:hover::before,
+button:hover::after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* ================ */
+/* 选中默认但是没说明位置 */
+[aria-label]:not([data-ballon-pos])::before {
+  bottom: calc(100% + 10px);
+}
+
+[aria-label]:not([data-ballon-pos])::after {
+  border-color: #1c1812 transparent transparent;
+  top: -10px;
+  left: 110px;
+}
+
+/* =============== */
+[data-ballon-pos="up"] {
+  /* transform后面是缩回的位置 */
+}
+
+[data-ballon-pos="up"]::before {
+  bottom: calc(100% + 10px);
+  transform: translate(0, 15px);
+}
+
+[data-ballon-pos="up"]::after {
+  border-color: #1c1812 transparent transparent;
+  top: -10px;
+  left: 110px;
+  transform: translate(0, 15px);
+}
+
+[data-ballon-pos="down"]::before {
+  top: calc(100% + 10px);
+  transform: translate(0, -15px);
+}
+
+[data-ballon-pos="down"]::after {
+  border-color: transparent transparent #1c1812;
+  bottom: -10px;
+  left: 110px;
+  transform: translate(0, -15px);
+}
+
+[data-ballon-pos="left"]::before {
+  top: 0.6em;
+  right: calc(100% + 10px);
+  transform: translate(15px, 0);
+}
+
+[data-ballon-pos="left"]::after {
+  border-color: transparent transparent transparent #1c1812;
+  right: 100%;
+  top: 20px;
+  transform: translate(15px, 0);
+}
+
+[data-ballon-pos="right"]::before {
+  top: 0.6em;
+  left: calc(100% + 10px);
+  transform: translate(-15px, 0);
+}
+
+[data-ballon-pos="right"]::after {
+  border-color: transparent #1c1812 transparent transparent;
+  left: 100%;
+  top: 20px;
+  transform: translate(-15px, 0);
+}

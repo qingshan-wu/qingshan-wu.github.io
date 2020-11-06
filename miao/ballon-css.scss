@@ -1,0 +1,106 @@
+body {
+  background-color: rgb(255,182,65);
+  box-sizing: border-box;
+}
+section {
+  width: 300px;
+  margin: auto;
+}
+@mixin trans {
+  transition: .3s;
+  opacity: 0;
+  pointer-events: none;
+}
+@mixin tran-zero {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+button {
+  display: block;
+  position: relative;
+  margin: 100px;
+  width: 230px;  height: 50px;
+  font-size: 20px;  font-weight: bold;
+  color: white;
+  background-color: rgb(183,18,18);
+  border-radius: .3em;
+  border: none;
+  /* 最基础的相同代码 */
+  &::before {
+    content: attr(aria-label);
+    position: absolute;
+    width: 100px;  height: 30px;
+    font-size: 16px; font-weight: lighter;
+    line-height: 30px;
+    border-radius: .2em;
+    background-color: rgb(28,24,18);
+    @include trans;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;  height: 0;
+    border: 5px solid rgb(28,24,18);
+    @include trans;
+  }
+}
+button:hover::before,
+button:hover::after {
+  @include tran-zero;
+}
+/* ================ */
+/* 选中默认但是没说明位置 */
+[aria-label]:not([data-ballon-pos]) {
+  &::before{
+    bottom: calc(100% + 10px);
+  }
+  &::after{
+    border-color: rgb(28,24,18) transparent transparent;
+    top: -10px; left: 110px;
+  }
+}
+/* =============== */
+[data-ballon-pos="up"] {
+  &::before {
+    bottom: calc(100% + 10px);
+    transform: translate(0, 15px);
+  }
+  &::after {
+    border-color: rgb(28,24,18) transparent transparent;
+    top: -10px; left: 110px;
+    transform: translate(0, 15px);
+  }/* transform后面是缩回的位置 */
+}
+[data-ballon-pos="down"] {
+  &::before {
+    top: calc(100% + 10px);
+    transform: translate(0, -15px);
+  }
+  &::after {
+    border-color:  transparent transparent rgb(28,24,18);
+    bottom: -10px; left: 110px;
+    transform: translate(0, -15px);
+  }
+}
+[data-ballon-pos="left"] {
+  &::before {
+    top:0.6em; right: calc(100% + 10px);
+    transform: translate(15px, 0);
+  }
+  &::after {
+    border-color:  transparent transparent transparent rgb(28,24,18);
+    right: 100%;  top: 20px;
+    transform: translate(15px, 0);
+  }
+}
+[data-ballon-pos="right"] {
+  &::before {
+    top:0.6em; left: calc(100% + 10px);
+    transform: translate(-15px, 0);
+  }
+  &::after {
+    border-color:  transparent  rgb(28,24,18) transparent transparent;
+    left: 100%;  top: 20px;
+    transform: translate(-15px, 0);
+  }
+}
