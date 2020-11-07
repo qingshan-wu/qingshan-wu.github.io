@@ -1,6 +1,6 @@
 * {
-  xbox-shadow: 0 0 1px red;
-  xbackground-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px red;
+  background-color: rgba(0, 0, 0, 0.1);
   outline: none;
 }
 @font-face {
@@ -614,10 +614,10 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
         display: block;
         top: -40px;
         width: 36px; height: 24px;
-        line-height: 22px;
+        line-height: 20px;
         font-size: 24px;
         color: rgb(176,176,176);
-        border: 1px solid rgb(176,176,176);
+        border: 1px solid rgb(224,224,224);
         text-align: center;
         &:hover {
           color: rgb(249,88,70);
@@ -918,3 +918,83 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
   }
   /* 悬停停留结束 */
 }/*===========*/
+
+/* 轮播图特效 */
+.scroll {
+  width: 1226px;  height: 460px;
+
+  ul {
+    display: flex;
+    li {
+      width: 20%;  height: 460px;
+      overflow: hidden;
+      position: relative;
+      xborder: 1px solid black;
+      div {
+        width: 100%; height: 100%;
+        background-size: 1226px;
+        position: absolute;
+        top: 0; right: 0; bottom: 0;
+        left: -100%;
+      }
+      div:nth-child(1) {
+        background-image: url(images/3d9f8cf47b5eeb286a83e6e95a60105a.webp);
+      }
+      div:nth-child(2) {
+        background-image: url(images/fdd30e55069adb64bb354d4f8d9f9b60.jpg);
+      }
+      div:nth-child(3) {
+        background-image: url(images/a17f560beb1abe201b6b1f123cc1d5d9.webp);
+      }
+      div:nth-child(4) {
+        background-image: url(images/9ebff5f5c1f52f2dbdd611897adbefd4.webp);
+      }
+      div:nth-child(5) {
+        background-image: url(images/0ef4160c861b998239bce9adb82341e7.webp);
+      }
+      /* 设置缓动效果 */
+      &:nth-child(1) div {
+        background-position: 0 0;
+        transition: .5s;
+        animation: leave .6s;
+      }
+      &:nth-child(2) div {
+        background-position: -100% 0;
+        transition: .55s;
+        animation: leave .65s;
+      }
+      &:nth-child(3) div {
+        background-position: -200% 0;
+        transition: .6s;
+        animation: leave .7s;
+      }
+      &:nth-child(4) div {
+        background-position: -300% 0;
+        transition: .65s;
+        animation: leave .75s;
+      }
+      &:nth-child(5) div {
+        background-position: -400% 0;
+        transition: .7s;
+        animation: leave .8s;
+      }
+    }
+  }
+  input:nth-child(1):checked ~ ul div:nth-child(1),
+  input:nth-child(2):checked ~ ul div:nth-child(2),
+  input:nth-child(3):checked ~ ul div:nth-child(3),
+  input:nth-child(4):checked ~ ul div:nth-child(4),
+  input:nth-child(5):checked ~ ul div:nth-child(5) {
+    left: 0;
+    z-index: 100;
+    animation: none;
+  }
+}
+@keyframes leave {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
