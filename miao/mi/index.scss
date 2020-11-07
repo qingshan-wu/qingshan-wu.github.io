@@ -4,12 +4,13 @@
   outline: none;
 }
 @font-face {
-  font-family: FontAwesome;
+  font-family: FA;
   src: url(fontawesome-webfont.woff2);
 }
 html {
   .fa {
-    font-family: FontAwesome;
+    xdisplay: inline-block;
+    font-family: FA;
   }
   a {
     text-decoration: none;
@@ -48,13 +49,14 @@ html {
   height: 40px;
   min-width: 1226px; /* 无论有无滚动条都有黑色背景 */
   background-color: rgb(51, 51, 51);
-
+  /* section目的：内容在中间，通栏黑色 */
   section {
     width: 1226px;
     height: 100%;
     margin: auto;
     padding: 0;
-
+    display: flex;
+    justify-content: space-between;
     li {
       display: inline-block;
       margin: 0 .5em;
@@ -117,14 +119,17 @@ html {
     }
   }
   .sign_in {
-    float: right;
-    margin-top: -40px;
     li:last-child {
       position: relative;
       margin-right: 0;
-      padding: 0 2em;
+      padding: 0 1.2em 0 3.2em;
       background-color: rgb(66, 66, 66);
       transition: .1s .35s;
+      &::before {
+        content: "\f217";
+        position: absolute; left: 0.8em;
+        font-size: 20px;
+      }
       .cart {
         width: 318px;
         height: 0;
@@ -201,6 +206,18 @@ main {
     &:hover input{
       border-color: rgb(176,176,176);
     }
+    .search-icon {
+      pointer-events: none;
+    }/* 避免鼠标悬停在放大镜上而无法触发submit悬停 */
+    .search-icon::before {
+      position: absolute;
+      content: "\f002";
+      font-size: 18px;
+      color: rgb(97,97,97);
+      right: .9em;  top: .9em;
+      transition: .2s;
+
+    }/* 搜索框里放大镜 */
     input {
       font-size: 12px;
       box-sizing: border-box;
@@ -239,6 +256,9 @@ main {
         color: white;
         background-color: rgb(255,103,0);
         border-color: rgb(255,103,0);
+        ~ .search-icon::before {
+          color: white;
+        }
       }
     }
     .sugestion {
@@ -556,148 +576,176 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
 .flash_sale {
   margin: 4px auto;
   overflow: hidden;
-}
-/* 滚动轮播图 */
-.flashsale {
-  position: relative;
-  .time-to-shop {
-    position: absolute;
-    left: 0;
-    width: 234px;  height: 339px;
-    background-color: lime;
-    z-index: 100;
-    img {
-      width: 100%;  height: 100%;
-    }
-  }
-  .container {
+  .flashsale {
     position: relative;
-    margin-left: 234px;
-    ul {
+    .time-to-shop {
+      position: absolute;
+      left: 0;
+      width: 234px;  height: 339px;
+      background-color: lime;
+      z-index: 100;
+      img {
+        width: 100%;  height: 100%;
+      }
+    }
+    .container {
       position: relative;
-      white-space: nowrap;
-      font-size: 0;
-      transition: margin-left .5s;
-      li{
-        font-size: 90px;
-        display: inline-block;
-        width: 234px;  height: 339px;
-        margin-left: 14px;
-        background-color: yellow;
-        cursor: pointer;
-        img {
-          width: 100%;  height: 100%;
+      margin-left: 234px;
+      ul {
+        position: relative;
+        white-space: nowrap;
+        font-size: 0;
+        transition: margin-left .5s;
+        li{
+          font-size: 90px;
+          display: inline-block;
+          width: 234px;  height: 339px;
+          margin-left: 14px;
+          background-color: yellow;
+          cursor: pointer;
+          img {
+            width: 100%;  height: 100%;
+          }
+        }
+      }
+      label {
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        top: -40px;
+        width: 36px; height: 24px;
+        line-height: 22px;
+        font-size: 24px;
+        color: rgb(176,176,176);
+        border: 1px solid rgb(176,176,176);
+        text-align: center;
+        &:hover {
+          color: rgb(249,88,70);
+        }
+        &.pre {
+          right: 36px;
+        }
+        &.next {
+          right: 0;
+        }
+      }
+      #a1 {
+        opacity: 0;
+      }
+    }
+    input {
+      display: none;
+      /* 被checked之后，进入下一个层级，
+      引导checked的label opacity降低,下一个label升高 */
+      &:nth-child(1):checked ~ .container {
+        #a1 {
+          opacity: 1;
+          color: rgb(225,225,224);
+          z-index: 1000;
+        }
+        #a2 {
+          opacity: 0;
+          z-index: 1000;
+        }
+        ul {
+          margin-left: 0;
+        }
+      }
+      &:nth-child(2):checked ~ .container {
+        #a3, #a4 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        #a1, #a2 {
+          opacity: 0;
+          z-index: 0;
+        }
+        ul {
+          margin-left: -992px;
+        }
+      }
+      &:nth-child(3):checked ~ .container {
+        #a5, #a6 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        ul {
+          margin-left: -1984px;
+        }
+      }
+      &:nth-child(4):checked ~ .container {
+        #a7, #a8 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        ul {
+          margin-left: -2976px;
+        }
+      }
+      &:nth-child(5):checked ~ .container {
+        #a9, #a10 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        ul {
+          margin-left: -3966px;
+        }
+      }
+      &:nth-child(6):checked ~ .container {
+        #a11, #a12 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        ul {
+          margin-left: -4958px;
+        }
+      }
+      &:nth-child(7):checked ~ .container {
+        #a13 {
+          opacity: 1;
+          z-index: 1000;
+        }
+        #a14 {
+          opacity: 1;
+          color: rgb(225,225,225);
+          z-index: 1000;
+        }
+        ul {
+          margin-left: -5454px;
         }
       }
     }
-    label {
-      box-sizing: border-box;
-      position: absolute;
-      display: block;
-      top: -40px;
-      width: 36px; height: 24px;
-      line-height: 22px;
-      font-size: 24px;
-      color: rgb(176,176,176);
-      border: 1px solid rgb(176,176,176);
-      text-align: center;
+  }
+}/* 滚动轮播图 */
+
+.phone-more {
+  width: 100%;  height: 58px;
+  span {
+    float: left;
+  }
+  .more {
+    width: 92px;  height: 58px; line-height: 58px;
+    float: right;
+    position: relative;
+    a {
+      font-size: 16px;
+      transition: .3s;
       &:hover {
-        color: rgb(249,88,70);
+        color: rgb(255,103,0);
+        &::after {
+          color: rgb(255,103,0);
+        }
       }
-      &.pre {
-        right: 36px;
-      }
-      &.next {
-        right: 0;
-      }
-    }
-    #a1 {
-      opacity: 0;
-    }
-  }
-  input {
-    display: none;
-    /* 被checked之后，进入下一个层级，
-    引导checked的label opacity降低,下一个label升高 */
-    &:nth-child(1):checked ~ .container {
-      #a1 {
-        opacity: 1;
-        color: rgb(225,225,224);
-        z-index: 1000;
-      }
-      #a2 {
-        opacity: 0;
-        z-index: 1000;
-      }
-      ul {
-        margin-left: 0;
-      }
-    }
-    &:nth-child(2):checked ~ .container {
-      #a3, #a4 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      #a1, #a2 {
-        opacity: 0;
-        z-index: 0;
-      }
-      ul {
-        margin-left: -992px;
-      }
-    }
-    &:nth-child(3):checked ~ .container {
-      #a5, #a6 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      ul {
-        margin-left: -1984px;
-      }
-    }
-    &:nth-child(4):checked ~ .container {
-      #a7, #a8 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      ul {
-        margin-left: -2976px;
-      }
-    }
-    &:nth-child(5):checked ~ .container {
-      #a9, #a10 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      ul {
-        margin-left: -3966px;
-      }
-    }
-    &:nth-child(6):checked ~ .container {
-      #a11, #a12 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      ul {
-        margin-left: -4958px;
-      }
-    }
-    &:nth-child(7):checked ~ .container {
-      #a13 {
-        opacity: 1;
-        z-index: 1000;
-      }
-      #a14 {
-        opacity: 1;
-        color: rgb(225,225,225);
-        z-index: 1000;
-      }
-      ul {
-        margin-left: -5454px;
+      &::after {
+        position: absolute;
+        right: 3px;
+        content: "\f138";
+        transition: .3s;
+        font-size: 23px;  color: rgb(176,176,176);
       }
     }
   }
-}/*===========*/
+}/* 手机和查看全部 */
 
 .ad {
   height: 120px;
@@ -868,6 +916,5 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
       transition: none;
     }
   }
-
   /* 悬停停留结束 */
 }/*===========*/

@@ -6,12 +6,13 @@
 }
 
 @font-face {
-  font-family: FontAwesome;
+  font-family: FA;
   src: url(fontawesome-webfont.woff2);
 }
 
 html .fa {
-  font-family: FontAwesome;
+  xdisplay: inline-block;
+  font-family: FA;
 }
 
 html a {
@@ -57,6 +58,7 @@ html ul li {
   min-width: 1226px;
   /* 无论有无滚动条都有黑色背景 */
   background-color: #333333;
+  /* section目的：内容在中间，通栏黑色 */
 }
 
 .menu section {
@@ -64,6 +66,8 @@ html ul li {
   height: 100%;
   margin: auto;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu section li {
@@ -130,17 +134,19 @@ html ul li {
   left: 35%;
 }
 
-.menu .sign_in {
-  float: right;
-  margin-top: -40px;
-}
-
 .menu .sign_in li:last-child {
   position: relative;
   margin-right: 0;
-  padding: 0 2em;
+  padding: 0 1.2em 0 3.2em;
   background-color: #424242;
   transition: .1s .35s;
+}
+
+.menu .sign_in li:last-child::before {
+  content: "\f217";
+  position: absolute;
+  left: 0.8em;
+  font-size: 20px;
 }
 
 .menu .sign_in li:last-child .cart {
@@ -226,10 +232,26 @@ main {
   margin-top: 25px;
   font-size: 0;
   position: relative;
+  /* 避免鼠标悬停在放大镜上而无法触发submit悬停 */
+  /* 搜索框里放大镜 */
 }
 
 .home form:hover input {
   border-color: #b0b0b0;
+}
+
+.home form .search-icon {
+  pointer-events: none;
+}
+
+.home form .search-icon::before {
+  position: absolute;
+  content: "\f002";
+  font-size: 18px;
+  color: #616161;
+  right: .9em;
+  top: .9em;
+  transition: .2s;
 }
 
 .home form input {
@@ -278,6 +300,10 @@ main {
   color: white;
   background-color: #ff6700;
   border-color: #ff6700;
+}
+
+.home form [type="submit"]:hover ~ .search-icon::before {
+  color: white;
 }
 
 .home form .sugestion {
@@ -680,12 +706,11 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   overflow: hidden;
 }
 
-/* 滚动轮播图 */
-.flashsale {
+.flash_sale .flashsale {
   position: relative;
 }
 
-.flashsale .time-to-shop {
+.flash_sale .flashsale .time-to-shop {
   position: absolute;
   left: 0;
   width: 234px;
@@ -694,24 +719,24 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   z-index: 100;
 }
 
-.flashsale .time-to-shop img {
+.flash_sale .flashsale .time-to-shop img {
   width: 100%;
   height: 100%;
 }
 
-.flashsale .container {
+.flash_sale .flashsale .container {
   position: relative;
   margin-left: 234px;
 }
 
-.flashsale .container ul {
+.flash_sale .flashsale .container ul {
   position: relative;
   white-space: nowrap;
   font-size: 0;
   transition: margin-left .5s;
 }
 
-.flashsale .container ul li {
+.flash_sale .flashsale .container ul li {
   font-size: 90px;
   display: inline-block;
   width: 234px;
@@ -721,12 +746,12 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   cursor: pointer;
 }
 
-.flashsale .container ul li img {
+.flash_sale .flashsale .container ul li img {
   width: 100%;
   height: 100%;
 }
 
-.flashsale .container label {
+.flash_sale .flashsale .container label {
   box-sizing: border-box;
   position: absolute;
   display: block;
@@ -740,109 +765,149 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   text-align: center;
 }
 
-.flashsale .container label:hover {
+.flash_sale .flashsale .container label:hover {
   color: #f95846;
 }
 
-.flashsale .container label.pre {
+.flash_sale .flashsale .container label.pre {
   right: 36px;
 }
 
-.flashsale .container label.next {
+.flash_sale .flashsale .container label.next {
   right: 0;
 }
 
-.flashsale .container #a1 {
+.flash_sale .flashsale .container #a1 {
   opacity: 0;
 }
 
-.flashsale input {
+.flash_sale .flashsale input {
   display: none;
   /* 被checked之后，进入下一个层级，
-    引导checked的label opacity降低,下一个label升高 */
+      引导checked的label opacity降低,下一个label升高 */
 }
 
-.flashsale input:nth-child(1):checked ~ .container #a1 {
+.flash_sale .flashsale input:nth-child(1):checked ~ .container #a1 {
   opacity: 1;
   color: #e1e1e0;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(1):checked ~ .container #a2 {
+.flash_sale .flashsale input:nth-child(1):checked ~ .container #a2 {
   opacity: 0;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(1):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(1):checked ~ .container ul {
   margin-left: 0;
 }
 
-.flashsale input:nth-child(2):checked ~ .container #a3, .flashsale input:nth-child(2):checked ~ .container #a4 {
+.flash_sale .flashsale input:nth-child(2):checked ~ .container #a3, .flash_sale .flashsale input:nth-child(2):checked ~ .container #a4 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(2):checked ~ .container #a1, .flashsale input:nth-child(2):checked ~ .container #a2 {
+.flash_sale .flashsale input:nth-child(2):checked ~ .container #a1, .flash_sale .flashsale input:nth-child(2):checked ~ .container #a2 {
   opacity: 0;
   z-index: 0;
 }
 
-.flashsale input:nth-child(2):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(2):checked ~ .container ul {
   margin-left: -992px;
 }
 
-.flashsale input:nth-child(3):checked ~ .container #a5, .flashsale input:nth-child(3):checked ~ .container #a6 {
+.flash_sale .flashsale input:nth-child(3):checked ~ .container #a5, .flash_sale .flashsale input:nth-child(3):checked ~ .container #a6 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(3):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(3):checked ~ .container ul {
   margin-left: -1984px;
 }
 
-.flashsale input:nth-child(4):checked ~ .container #a7, .flashsale input:nth-child(4):checked ~ .container #a8 {
+.flash_sale .flashsale input:nth-child(4):checked ~ .container #a7, .flash_sale .flashsale input:nth-child(4):checked ~ .container #a8 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(4):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(4):checked ~ .container ul {
   margin-left: -2976px;
 }
 
-.flashsale input:nth-child(5):checked ~ .container #a9, .flashsale input:nth-child(5):checked ~ .container #a10 {
+.flash_sale .flashsale input:nth-child(5):checked ~ .container #a9, .flash_sale .flashsale input:nth-child(5):checked ~ .container #a10 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(5):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(5):checked ~ .container ul {
   margin-left: -3966px;
 }
 
-.flashsale input:nth-child(6):checked ~ .container #a11, .flashsale input:nth-child(6):checked ~ .container #a12 {
+.flash_sale .flashsale input:nth-child(6):checked ~ .container #a11, .flash_sale .flashsale input:nth-child(6):checked ~ .container #a12 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(6):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(6):checked ~ .container ul {
   margin-left: -4958px;
 }
 
-.flashsale input:nth-child(7):checked ~ .container #a13 {
+.flash_sale .flashsale input:nth-child(7):checked ~ .container #a13 {
   opacity: 1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(7):checked ~ .container #a14 {
+.flash_sale .flashsale input:nth-child(7):checked ~ .container #a14 {
   opacity: 1;
   color: #e1e1e1;
   z-index: 1000;
 }
 
-.flashsale input:nth-child(7):checked ~ .container ul {
+.flash_sale .flashsale input:nth-child(7):checked ~ .container ul {
   margin-left: -5454px;
 }
 
-/*===========*/
+/* 滚动轮播图 */
+.phone-more {
+  width: 100%;
+  height: 58px;
+}
+
+.phone-more span {
+  float: left;
+}
+
+.phone-more .more {
+  width: 92px;
+  height: 58px;
+  line-height: 58px;
+  float: right;
+  position: relative;
+}
+
+.phone-more .more a {
+  font-size: 16px;
+  transition: .3s;
+}
+
+.phone-more .more a:hover {
+  color: #ff6700;
+}
+
+.phone-more .more a:hover::after {
+  color: #ff6700;
+}
+
+.phone-more .more a::after {
+  position: absolute;
+  right: 3px;
+  content: "\f138";
+  transition: .3s;
+  font-size: 23px;
+  color: #b0b0b0;
+}
+
+/* 手机和查看全部 */
 .ad {
   height: 120px;
   margin: 22px 0;
