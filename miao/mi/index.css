@@ -1,7 +1,7 @@
 @charset "UTF-8";
 * {
-  box-shadow: 0 0 1px red;
-  background-color: rgba(0, 0, 0, 0.1);
+  xbox-shadow: 0 0 1px red;
+  xbackground-color: rgba(0, 0, 0, 0.1);
   outline: none;
 }
 
@@ -1116,8 +1116,10 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 /*===========*/
 /* 轮播图特效 */
 .scroll {
+  margin-top: 15px;
   width: 1226px;
   height: 460px;
+  position: relative;
 }
 
 .scroll ul {
@@ -1194,6 +1196,10 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   animation: leave .8s;
 }
 
+.scroll input {
+  display: none;
+}
+
 .scroll input:nth-child(1):checked ~ ul div:nth-child(1),
 .scroll input:nth-child(2):checked ~ ul div:nth-child(2),
 .scroll input:nth-child(3):checked ~ ul div:nth-child(3),
@@ -1202,6 +1208,35 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   left: 0;
   z-index: 100;
   animation: none;
+}
+
+.scroll .scroll-label {
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll .scroll-label label {
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+  border-radius: 20px;
+  z-index: 300;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: .3s;
+}
+
+.scroll input:nth-child(1):checked ~ .scroll-label label:nth-child(1),
+.scroll input:nth-child(2):checked ~ .scroll-label label:nth-child(2),
+.scroll input:nth-child(3):checked ~ .scroll-label label:nth-child(3),
+.scroll input:nth-child(4):checked ~ .scroll-label label:nth-child(4),
+.scroll input:nth-child(5):checked ~ .scroll-label label:nth-child(5) {
+  width: 17px;
+  height: 10px;
+  background-color: rgba(254, 80, 56, 0.8);
 }
 
 @keyframes leave {
