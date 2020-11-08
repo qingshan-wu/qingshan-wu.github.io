@@ -621,6 +621,142 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 }
 
 /* 轮播图结束 */
+/* 缓动轮播图特效 */
+.scroll {
+  margin-top: 15px;
+  width: 1226px;
+  height: 460px;
+  position: relative;
+}
+
+.scroll ul {
+  display: flex;
+}
+
+.scroll ul li {
+  width: 20%;
+  height: 460px;
+  overflow: hidden;
+  position: relative;
+  xborder: 1px solid black;
+  /* 设置缓动效果 */
+}
+
+.scroll ul li div {
+  width: 100%;
+  height: 100%;
+  background-size: 1226px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -100%;
+}
+
+.scroll ul li div:nth-child(1) {
+  background-image: url(images/3d9f8cf47b5eeb286a83e6e95a60105a.webp);
+}
+
+.scroll ul li div:nth-child(2) {
+  background-image: url(images/fdd30e55069adb64bb354d4f8d9f9b60.jpg);
+}
+
+.scroll ul li div:nth-child(3) {
+  background-image: url(images/a17f560beb1abe201b6b1f123cc1d5d9.webp);
+}
+
+.scroll ul li div:nth-child(4) {
+  background-image: url(images/9ebff5f5c1f52f2dbdd611897adbefd4.webp);
+}
+
+.scroll ul li div:nth-child(5) {
+  background-image: url(images/0ef4160c861b998239bce9adb82341e7.webp);
+}
+
+.scroll ul li:nth-child(1) div {
+  background-position: 0 0;
+  transition: left .75s;
+  animation: leave .8s;
+}
+
+.scroll ul li:nth-child(2) div {
+  background-position: -100% 0;
+  transition: left .8s;
+  animation: leave .9s;
+}
+
+.scroll ul li:nth-child(3) div {
+  background-position: -200% 0;
+  transition: left .9s;
+  animation: leave 1s;
+}
+
+.scroll ul li:nth-child(4) div {
+  background-position: -300% 0;
+  transition: left 1.15s;
+  animation: leave 1.2s;
+}
+
+.scroll ul li:nth-child(5) div {
+  background-position: -400% 0;
+  transition: left 1.2s;
+  animation: leave 1.35s;
+}
+
+.scroll input {
+  display: none;
+}
+
+.scroll input:nth-child(1):checked ~ ul div:nth-child(1),
+.scroll input:nth-child(2):checked ~ ul div:nth-child(2),
+.scroll input:nth-child(3):checked ~ ul div:nth-child(3),
+.scroll input:nth-child(4):checked ~ ul div:nth-child(4),
+.scroll input:nth-child(5):checked ~ ul div:nth-child(5) {
+  left: 0;
+  z-index: 100;
+  animation: none;
+  box-shadow: 0px 50px 30px black;
+}
+
+.scroll .scroll-label {
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll .scroll-label label {
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+  border-radius: 20px;
+  z-index: 300;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: .3s;
+}
+
+.scroll input:nth-child(1):checked ~ .scroll-label label:nth-child(1),
+.scroll input:nth-child(2):checked ~ .scroll-label label:nth-child(2),
+.scroll input:nth-child(3):checked ~ .scroll-label label:nth-child(3),
+.scroll input:nth-child(4):checked ~ .scroll-label label:nth-child(4),
+.scroll input:nth-child(5):checked ~ .scroll-label label:nth-child(5) {
+  width: 17px;
+  height: 10px;
+  background-color: rgba(254, 80, 56, 0.8);
+}
+
+@keyframes leave {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* ============= */
 .flex-menu {
   display: flex;
   width: 100%;
@@ -1002,7 +1138,6 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   /* 初次加载，默认加载热门 */
   /* 悬停停留开始 */
   /* 顺序不能变 */
-  /* 悬停停留结束 */
 }
 
 .tv-more-wrapper .ab {
@@ -1046,10 +1181,6 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   transition: transform .3s;
 }
 
-.tv-more-wrapper .container_jiadian ul li:nth-last-child(-n + 2) {
-  height: 143px;
-}
-
 .tv-more-wrapper .container_jiadian ul li:hover {
   transform: translateY(-3px);
   box-shadow: 0 14px 15px #e3e3e3;
@@ -1062,6 +1193,7 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 }
 
 .tv-more-wrapper .container_jiadian ul li:nth-last-child(-n + 2) {
+  height: 143px;
   padding: 30px 15px;
 }
 
@@ -1091,22 +1223,13 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
   transition: none;
 }
 
-.tv-more-wrapper .music-wrapper:hover .tv-music {
-  visibility: visible;
-  transition: none;
-}
-
-.tv-more-wrapper .music-wrapper:hover .bbb {
-  color: #ff6700;
-  border-bottom: 2px solid #ff6700;
-  transition: none;
-}
-
+.tv-more-wrapper .music-wrapper:hover .tv-music,
 .tv-more-wrapper .hot-wrapper:hover .hot {
   visibility: visible;
   transition: none;
 }
 
+.tv-more-wrapper .music-wrapper:hover .bbb,
 .tv-more-wrapper .hot-wrapper:hover .aaa {
   color: #ff6700;
   border-bottom: 2px solid #ff6700;
@@ -1114,136 +1237,7 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 }
 
 /*===========*/
-/* 轮播图特效 */
-.scroll {
-  margin-top: 15px;
-  width: 1226px;
-  height: 460px;
-  position: relative;
-}
-
-.scroll ul {
-  display: flex;
-}
-
-.scroll ul li {
-  width: 20%;
-  height: 460px;
-  overflow: hidden;
-  position: relative;
-  xborder: 1px solid black;
-  /* 设置缓动效果 */
-}
-
-.scroll ul li div {
-  width: 100%;
-  height: 100%;
-  background-size: 1226px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: -100%;
-}
-
-.scroll ul li div:nth-child(1) {
-  background-image: url(images/3d9f8cf47b5eeb286a83e6e95a60105a.webp);
-}
-
-.scroll ul li div:nth-child(2) {
-  background-image: url(images/fdd30e55069adb64bb354d4f8d9f9b60.jpg);
-}
-
-.scroll ul li div:nth-child(3) {
-  background-image: url(images/a17f560beb1abe201b6b1f123cc1d5d9.webp);
-}
-
-.scroll ul li div:nth-child(4) {
-  background-image: url(images/9ebff5f5c1f52f2dbdd611897adbefd4.webp);
-}
-
-.scroll ul li div:nth-child(5) {
-  background-image: url(images/0ef4160c861b998239bce9adb82341e7.webp);
-}
-
-.scroll ul li:nth-child(1) div {
-  background-position: 0 0;
-  transition: .5s;
-  animation: leave .6s;
-}
-
-.scroll ul li:nth-child(2) div {
-  background-position: -100% 0;
-  transition: .55s;
-  animation: leave .65s;
-}
-
-.scroll ul li:nth-child(3) div {
-  background-position: -200% 0;
-  transition: .6s;
-  animation: leave .7s;
-}
-
-.scroll ul li:nth-child(4) div {
-  background-position: -300% 0;
-  transition: .65s;
-  animation: leave .75s;
-}
-
-.scroll ul li:nth-child(5) div {
-  background-position: -400% 0;
-  transition: .7s;
-  animation: leave .8s;
-}
-
-.scroll input {
-  display: none;
-}
-
-.scroll input:nth-child(1):checked ~ ul div:nth-child(1),
-.scroll input:nth-child(2):checked ~ ul div:nth-child(2),
-.scroll input:nth-child(3):checked ~ ul div:nth-child(3),
-.scroll input:nth-child(4):checked ~ ul div:nth-child(4),
-.scroll input:nth-child(5):checked ~ ul div:nth-child(5) {
-  left: 0;
-  z-index: 100;
-  animation: none;
-}
-
-.scroll .scroll-label {
-  position: absolute;
-  width: 100%;
-  height: 35px;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.scroll .scroll-label label {
-  width: 10px;
-  height: 10px;
-  margin: 2px;
-  border-radius: 20px;
-  z-index: 300;
-  background-color: rgba(255, 255, 255, 0.2);
-  transition: .3s;
-}
-
-.scroll input:nth-child(1):checked ~ .scroll-label label:nth-child(1),
-.scroll input:nth-child(2):checked ~ .scroll-label label:nth-child(2),
-.scroll input:nth-child(3):checked ~ .scroll-label label:nth-child(3),
-.scroll input:nth-child(4):checked ~ .scroll-label label:nth-child(4),
-.scroll input:nth-child(5):checked ~ .scroll-label label:nth-child(5) {
-  width: 17px;
-  height: 10px;
-  background-color: rgba(254, 80, 56, 0.8);
-}
-
-@keyframes leave {
-  from {
-    left: 0;
-  }
-  to {
-    left: 100%;
-  }
+/* backface */
+#backface-back li {
+  transform: rotatey(180deg);
 }
