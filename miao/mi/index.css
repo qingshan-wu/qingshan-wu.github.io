@@ -826,6 +826,7 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 .page_content {
   width: 1226px;
   margin: auto;
+  padding-bottom: 12px;
   /* page-content下的所有小标题 */
 }
 
@@ -1238,6 +1239,236 @@ input:nth-child(5):checked ~ .indicator-wrapper label:nth-child(5) {
 
 /*===========*/
 /* backface */
-#backface-back li {
+#rolling .backface-wrapper .backface li,
+#rolling .backface-wrapper2 .backface2 li {
+  backface-visibility: hidden;
   transform: rotatey(180deg);
+  xtransition: transform 99s;
+  animation: rollingin .3s;
+}
+
+#rolling .backface-wrapper:hover .backface li,
+#rolling .backface-wrapper2:hover .backface2 li {
+  transition: .3s;
+  transform: rotatey(0deg);
+}
+
+#rolling .backface-wrapper:hover .backface li:hover,
+#rolling .backface-wrapper2:hover .backface2 li:hover {
+  transform: translateY(-3px);
+}
+
+@keyframes rollingin {
+  from {
+    transform: rotatey(0);
+  }
+  to {
+    transform: rotatey(180deg);
+  }
+}
+
+.video {
+  height: 285px;
+  /* 替换掉container-good的高度 */
+}
+
+.video ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.video ul li {
+  width: 296px;
+  height: 100%;
+  margin-bottom: 14px;
+  transition: transform .3s;
+}
+
+.video ul li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 15px #e3e3e3;
+}
+
+.video ul li:nth-child(1) div {
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/101b19aca4bb489bcef0f503e44ec866.jpg?thumb=1&w=296&h=180&f=webp&q=90);
+}
+
+.video ul li:nth-child(2) div {
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/96563e75833ba4563bd469dd28203b09.jpg?thumb=1&w=296&h=180&f=webp&q=90);
+}
+
+.video ul li:nth-child(3) div {
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2fd26bb99b723337a2f8eaba84f7d5bb.jpg?thumb=1&w=296&h=180&f=webp&q=90);
+}
+
+.video ul li:nth-child(4) div {
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a8dd25cab48c60fc6387b9001eddc3f9.jpg?thumb=1&w=296&h=180&f=webp&q=90);
+}
+
+.video ul li div {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 28px;
+}
+
+.video ul li span {
+  font-size: 14px;
+  height: 21px;
+  line-height: 21px;
+}
+
+.footer {
+  height: 579px;
+}
+
+.site-footer {
+  height: 332px;
+  background-color: #fff;
+}
+
+.site-footer .container {
+  width: 1226px;
+  height: 100%;
+  margin: auto;
+}
+
+.site-footer .container ul {
+  height: 25px;
+  padding: 27px 0;
+  display: flex;
+  color: #616161;
+  justify-content: space-around;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.site-footer .container ul i {
+  margin-right: 6px;
+  font-size: 24px;
+  font-style: normal;
+  line-height: 24px;
+  vertical-align: -4px;
+}
+
+.site-footer .container ul li:nth-child(1) i::before {
+  content: "\f0ad";
+}
+
+.site-footer .container ul li:nth-child(2) i::before {
+  content: "\f0e2";
+}
+
+.site-footer .container ul li:nth-child(3) i::before {
+  content: "\f1da";
+}
+
+.site-footer .container ul li:nth-child(4) i::before {
+  content: "\f06b";
+}
+
+.site-footer .container ul li:nth-child(5) i::before {
+  content: "\f124";
+}
+
+.site-footer .container ul li:hover {
+  transition: .2s;
+  color: #f25807;
+}
+
+.site-footer .container .footer-link {
+  width: 100%;
+  height: 172px;
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  color: #424242;
+}
+
+.site-footer .container .footer-link dt {
+  font-size: 14px;
+  margin: -1px 0 26px;
+  color: inherit;
+}
+
+.site-footer .container .footer-link dd {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #333333;
+}
+
+.site-footer .container .footer-link dd:hover {
+  color: #f25807;
+}
+
+.site-footer .container .footer-link .col-contact {
+  width: 251px;
+  height: 111px;
+  border-left: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.site-footer .container .footer-link .col-contact p {
+  font-size: 12px;
+  line-height: 1;
+  margin: 0 0 5px;
+  color: inherit;
+}
+
+.site-footer .container .footer-link .col-contact .phone {
+  color: #ff6700;
+  font-size: 22px;
+}
+
+.site-footer .container .footer-link .col-contact .kefu {
+  display: inline-block;
+  width: 120px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #f25807;
+  color: #f25807;
+  font-size: 12px;
+  line-height: 28px;
+  transition: .3s;
+}
+
+.site-footer .container .footer-link .col-contact .kefu em::before {
+  transition: .3s;
+  margin-right: 3px;
+  vertical-align: 1px;
+  font-style: normal;
+  content: "\f27a";
+}
+
+.site-footer .container .footer-link .col-contact .kefu:hover {
+  background-color: #f25807;
+  color: white;
+}
+
+.site-footer .container .footer-link .col-contact .kefu:hover em::before {
+  color: white;
+}
+
+.site-footer .container .footer-link .col-contact .follow {
+  font-size: inherit;
+  margin-top: 10px;
+}
+
+.site-footer .container .footer-link .col-contact .follow i {
+  width: 20px;
+  height: 20px;
+  font-style: normal;
+  font-size: 1.5em;
+  vertical-align: -3px;
+  margin: -3px 0 0 6px;
+}
+
+.site-footer .container .footer-link .col-contact .follow a:nth-child(1) i::before {
+  content: "\f081";
+  font-size: 1.2em;
+}
+
+.site-footer .container .footer-link .col-contact .follow a:nth-child(2) i::before {
+  content: "\f1d7";
 }
