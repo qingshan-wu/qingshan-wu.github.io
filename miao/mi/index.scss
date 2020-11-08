@@ -371,10 +371,10 @@ main {
       font-size: 14px;
       padding-left: 30px;
       cursor: pointer;
-      &::after {
-        xcontent: ">";
-        xposition: absolute;
-        xright: 1.5em;
+      a::after {
+        content: "\f054";
+        position: absolute;
+        right: 1.5em;
       }
       a {
         color: white;
@@ -726,24 +726,32 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
         display: block;
         top: -40px;
         width: 36px; height: 24px;
-        line-height: 20px;
-        font-size: 24px;
         color: rgb(176,176,176);
         border: 1px solid rgb(224,224,224);
         text-align: center;
         &:hover {
           color: rgb(249,88,70);
         }
+        &::before {
+          display: block;
+          height: 100%;
+          line-height: 24px;
+          font-size: 12px;
+        }
         &.pre {
           right: 36px;
+          &::before {
+            content:"\f053";
+          }
         }
         &.next {
           right: 0;
+          &::before {
+            content:"\f054";
+          }
         }
       }
-      #a1 {
-        opacity: 0;
-      }
+
     }
     input {
       display: none;
@@ -751,12 +759,10 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
       引导checked的label opacity降低,下一个label升高 */
       &:nth-child(1):checked ~ .container {
         #a1 {
-          opacity: 1;
           color: rgb(225,225,224);
-          z-index: 1000;
         }
-        #a2 {
-          opacity: 0;
+        #a1,#a2 {
+          opacity: 1;
           z-index: 1000;
         }
         ul {
@@ -767,10 +773,6 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
         #a3, #a4 {
           opacity: 1;
           z-index: 1000;
-        }
-        #a1, #a2 {
-          opacity: 0;
-          z-index: 0;
         }
         ul {
           margin-left: -992px;
@@ -813,14 +815,12 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
         }
       }
       &:nth-child(7):checked ~ .container {
-        #a13 {
+        #a13, #a14{
           opacity: 1;
           z-index: 1000;
         }
         #a14 {
-          opacity: 1;
           color: rgb(225,225,225);
-          z-index: 1000;
         }
         ul {
           margin-left: -5454px;
@@ -1050,9 +1050,14 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
       width: 296px; height:100%;
       margin-bottom: 14px;
       transition: transform .3s;
+      background-color: #fff;
       &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 14px 15px rgb(227,227,227);;
+        box-shadow: 0 14px 15px rgb(227,227,227);
+        .fa {
+          border-color: rgb(255,103,0);
+          background-color: rgb(255,103,0);
+        }
       }
       &:nth-child(1) div{
         background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/101b19aca4bb489bcef0f503e44ec866.jpg?thumb=1&w=296&h=180&f=webp&q=90);
@@ -1069,6 +1074,25 @@ input:nth-child(5):checked~.indicator-wrapper label:nth-child(5) {
       div {
         width: 100%; height: 180px;
         margin-bottom: 28px;
+        position: relative;
+        span {
+          position: absolute;
+          width: 32px; height: 20px;
+          border-radius: 20px;
+          border: 2px solid;
+          left: 1.5em; bottom: .7em;
+          color: white;
+          &::before {
+            position: absolute;
+            content: "\f0da";
+            font-size: 1.4em;
+            font-weight: bold;
+            height: 20px;
+            left: .7em; bottom: 0;
+            color:inherit;
+          }
+        }
+
       }
       span {
         font-size: 14px;
