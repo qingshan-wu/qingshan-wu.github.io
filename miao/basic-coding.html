@@ -324,7 +324,7 @@ debugger
 </script>
 
 <!-- ================ -->
-
+<!-- 学生平均年龄 -->
 <script type="norun" id="ch0105/01">
   var n = Number(prompt("请输入学生人数",""));
   var i = 1;
@@ -336,9 +336,8 @@ debugger
   var average = persons.reduce(function(a,b){ return a + b;}) / n
   console.log(average.toFixed(2))
 </script>
-
-
-<script xtype="norun" id="ch0105/02">
+<!-- 02.结余 -->
+<script type="norun" id="ch0105/02">
   var i = 1
   var balances = []
   while (i <= 12) {
@@ -347,6 +346,18 @@ debugger
   };
   var sum = balances.reduce(function(a,b){ return a + b;});
   console.log("$"+(sum / 12).toFixed(2));
+</script>
+<!-- 03.均值 -->
+<script xtype="norun" id="ch0105/03">
+  var n = Number(prompt("请输入小于100的样本容量：",""))
+  var i = 1
+  var samples = []
+  while (i <= n) {
+    samples.push(Number(prompt("请输入第" + i + "个样本数据","")));
+    i++
+  };
+  var average = samples.reduce(function(a,b){ return a + b;}) / n;
+  console.log(average.toFixed(4));
 </script>
 
 
