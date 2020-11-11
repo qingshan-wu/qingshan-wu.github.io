@@ -458,7 +458,7 @@ debugger
 </script>
 
 <!-- 10.满足条件的数累加 -->
-<script xtype="norun" id="ch0105/10">
+<script type="norun" id="ch0105/10">
   var m = Number(prompt("请输入m："))
   var n = Number(prompt("请输入n："))
   var sum = 0
@@ -471,8 +471,98 @@ debugger
 
 <!-- 11.整数的个数 -->
 <script type="norun" id="ch0105/11">
-  var m = Number(prompt("请输入k："))
+  var k = Number(prompt("请输入k："))
+  var i = 1
+  var one = 0
+  var five = 0
+  var ten = 0
+  while (i <= k) {
+    num = Number(prompt("请输入第" + i +"个数："));
+    one = one + (num == 1 ? 1 : 0)
+    five = five + (num == 5 ? 1 : 0)
+    ten = ten + (num == 10 ? 1 : 0)
+    i++
+  }
+  console.log(one,five,ten)
+</script>
 
+<!-- 12.指定数字相同的数的个数 -->
+<script type="norun" id="ch0105/12">
+  var n = Number(prompt("请输入N："))
+  var m = Number(prompt("请输入m："))
+  var i = 1
+  var time = 0
+  while (i <= n) {
+    num = Number(prompt("请输入第" + i +"个数："));
+    time = time + (num == m ? 1 : 0)
+    i++
+  }
+  console.log(time)
+</script>
 
+<!-- 13.乘方计算 -->
+<script type="norun" id="ch0105/13">
+  var a = Number(prompt("请输入a："))
+  var n = Number(prompt("请输入n："))
+  var i = 0
+  var result = 1
+  while (i < n) {
+    result = result * a
+    i++
+  }
+  console.log(result)
+</script>
 
+<!-- 14.人口增长问题 -->
+<script type="norun" id="ch0105/14">
+  var x = Number(prompt("请输入人口基数："))
+  var n = Number(prompt("请输入年数："))
+  var i = 0
+  while (i < n) {
+    x = x * 1.001
+    i++
+  }
+  console.log(x.toFixed(4))
+</script>
+
+<!-- 15.银行利息 -->
+<script type="norun" id="ch0105/15">
+  var r = Number(prompt("请输入复合年利率："))
+  var m = Number(prompt("请输入现有总值："))
+  var y = Number(prompt("请输入投资年数："))
+  var i = 0
+  while (i < y) {
+    m = m * (1 + r / 100)
+    i++
+  }
+  console.log(Math.floor(m))
+</script>
+
+<!-- 16.买房子 -->
+<script type="norun" id="ch0105/16">
+  var n = Number(prompt("请输入年薪："))
+  var k = Number(prompt("房价增长k:"))
+  var m = 1
+  var price = 200
+  var money = n
+  while (money < price) {
+    price = price * (1 + k / 100)
+    money = money + n
+    m++
+  }
+  console.log(Math.floor(m))
+</script>
+
+<!-- 17.斐波那契数列 -->
+<script xtype="norun" id="ch0105/17">
+  var k = Number(prompt("请输入k："))
+  var nk = 1
+  var i = 0
+  var mk = 1
+  while (i < k) {
+    mk = nk //上一项数列
+    nk = nk + mk
+    i++
+  }
+  console.log(nk)
 </script>
