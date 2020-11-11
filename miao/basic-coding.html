@@ -325,7 +325,7 @@ debugger
 
 <!-- ================ -->
 
-<script xtype="norun" id="ch0105/01">
+<script type="norun" id="ch0105/01">
   var n = Number(prompt("请输入学生人数",""));
   var i = 1;
   var persons = [];
@@ -338,10 +338,15 @@ debugger
 </script>
 
 
-<script type="norun" id="ch0105/02">
-  var arr = prompt().split('\n').map(function(ai){return Number(ai);});
-  var sum = arr.reduce(function(a,b){ return a + b;});
-  console.log("$"+( sum / arr.length).toFixed(2));
+<script xtype="norun" id="ch0105/02">
+  var i = 1
+  var balances = []
+  while (i <= 12) {
+    balances.push(Number(prompt("请输入第" + i + "个月的结余","")));
+    i++
+  };
+  var sum = balances.reduce(function(a,b){ return a + b;});
+  console.log("$"+(sum / 12).toFixed(2));
 </script>
 
 
