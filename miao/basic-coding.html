@@ -333,8 +333,8 @@ debugger
     persons.push(Number(prompt("请输入第" + i + "名学生的年龄","")))
     i++
   };
-  var average = persons.reduce(function(a,b){ return a + b;}) / n.toFixed(2)
-  console.log(average)
+  var average = persons.reduce(function(a,b){ return a + b;}) / n
+  console.log(average.toFixed(2))
 </script>
 
 
