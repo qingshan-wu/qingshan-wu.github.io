@@ -324,6 +324,7 @@ debugger
 </script>
 
 <!-- ================ -->
+
 <!-- 学生平均年龄 -->
 <script type="norun" id="ch0105/01">
   var n = Number(prompt("请输入学生人数",""));
@@ -336,6 +337,7 @@ debugger
   var average = persons.reduce(function(a,b){ return a + b;}) / n
   console.log(average.toFixed(2))
 </script>
+
 <!-- 02.结余 -->
 <script type="norun" id="ch0105/02">
   var i = 1
@@ -347,8 +349,9 @@ debugger
   var sum = balances.reduce(function(a,b){ return a + b;});
   console.log("$"+(sum / 12).toFixed(2));
 </script>
+
 <!-- 03.均值 -->
-<script xtype="norun" id="ch0105/03">
+<script type="norun" id="ch0105/03">
   var n = Number(prompt("请输入小于100的样本容量：",""))
   var i = 1
   var samples = []
@@ -360,6 +363,19 @@ debugger
   console.log(average.toFixed(4));
 </script>
 
+<!-- 04.求整数的和与均值 -->
+<script xtype="norun" id="ch0105/04">
+  var n = Number(prompt("请输入整数数量：",""))
+  var i = 1
+  var nums = []
+  while (i <= n) {
+    nums.push(Number(prompt("请输入第" + i + "个整数","")));
+    i++
+  };
+  var sum = nums.reduce(function(a,b){ return a + b;})
+  var average = Number(sum / n);
+  console.log(sum,average.toFixed(5));
+</script>
 
 
 
