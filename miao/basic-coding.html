@@ -64,7 +64,7 @@
 <script type="norun" id="ch0103/11">
   var a = prompt()
   var b = prompt()
-  console.log((a / b).toFixed(4));
+  console.log((a % b).toFixed(4));
 </script>
 
 <script type="norun" id="ch0103/12">
@@ -83,7 +83,7 @@
 <script type="norun" id="ch0103/14">
   var h = prompt()
   var r = prompt()
-  var v = 3.14159 * r * r * h * 1000;
+  var v = Math.PI * r * r * h / 1000;
   console.log(Math.ceil(20 / v));
 </script>
 
@@ -99,20 +99,31 @@
   var y1 = prompt()
   var x2 = prompt()
   var y2 = prompt()
-  console.log(Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2)));
+  console.log(Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2)).toFixed(3));
 </script>
 
 <script type="norun" id="ch0103/17">
-  var a = prompt()
-  var b = prompt()
-  console.log((0.5 * a * b).toFixed(2));
+  var x1 = prompt()
+  var y1 = prompt()
+  var x2 = prompt()
+  var y2 = prompt()
+  var x3 = prompt()
+  var y3 = prompt()
+  var a = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+  var b = Math.sqrt((x1 - x3) ** 2 + (y1 - y3) ** 2)
+  var c = Math.sqrt((x3 - x2) ** 2 + (y3 - y2) ** 2)
+  var p = (a + b + c) / 2
+  var s = Math.sqrt(p * (p - a) * (p - b) * (p - c))
+  console.log(s)
 </script>
 
 <script type="norun" id="ch0103/18">
-  var a1 = prompt()
-  var a2 = prompt()
-  var n = prompt()
-  console.log(a1 + (n - 1) * (a2 - a1));
+debugger
+  var a = Number(prompt());
+  var b = Number(prompt());
+  var n = Number(prompt());
+  var c = (n - 1) * (b - a) + a;
+  console.log(c);
 </script>
 
 <script type="norun" id="ch0103/19">
@@ -179,21 +190,22 @@
 </script>
 
 <script type="norun" id="ch0104/09">
-  var b = prompt();
-  var flag = flase;
-  if (b % 3 == 0) {
-    flag = true;
-    console.log("3");
-  }
-  if (b % 5 == 0) {
-    flag = true;
-    console.log("5");
-  }
-  if (b % 7 == 0) {
-    flag = true;
-    console.log("7");
-  }
-  if (!flag) {
+  var n = Number(prompt());
+  if (n % 3 === 0 && n % 5 === 0 && n % 7 === 0) {
+    console.log("3 5 7");
+  } else if (n % 15 == 0) {
+    console.log("3 5");
+  } else if (n % 21 == 0) {
+    console.log("3 7");
+  } else if (n % 35 == 0) {
+    console.log("5 7");
+  } else if (n % 3 == 0) {
+    console.log(3);
+  } else if (n % 5 == 0) {
+    console.log(5);
+  } else if (n % 7 == 0) {
+    console.log(7);
+  } else {
     console.log("n");
   }
 
