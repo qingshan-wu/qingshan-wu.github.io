@@ -283,15 +283,22 @@ debugger
   console.log(x >= -1 && x <= 1 &&  y >= -1 && y <= 1 ? "yes" : "no" );
 </script>
 
-<script type="norun" id="ch0104/19">
+<script xtype="norun" id="ch0104/19">
   var x = Number(prompt())
   var y = Number(prompt())
   var o = prompt()
+  var result
+  if (y == 0 && o == "/"){
+    console.log("Divided by zero!");
+  }
+  if (o != "+" && o != "-" && o != "/" && o != "*"){
+    console.log("Invalid operator!");
+  }
   switch (o) {
-    case "+" : console.log(x + y);break;
-    case "-" : console.log(x - y);break;
-    case "*" : console.log(x * y);break;
-    case "/" : console.log(x / y);break;
+    case "+" : result = x + y;break;
+    case "-" : result = x - y;break;
+    case "*" : result = x * y;break;
+    case "/" : result = x / y;break;
   }
 </script>
 
