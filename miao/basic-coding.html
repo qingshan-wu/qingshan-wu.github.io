@@ -554,7 +554,7 @@ debugger
 </script>
 
 <!-- 17.斐波那契数列 -->
-<script xtype="norun" id="ch0105/17">
+<script type="norun" id="ch0105/17">
   var k = Number(prompt("请输入k："))
   var a = 0
   var b = 1
@@ -568,6 +568,23 @@ debugger
 </script>
 
 <!-- 18.鸡尾酒疗法 -->
-<script type="norun" id="ch0105/18">
+<script xtype="norun" id="ch0105/18">
+  var n = Number(prompt("请输入n："))
+  var i = 1
+  while (i <= n) {
+    data = Number(prompt("请输入第" + i +"行病历数："));
+    useful = Number(prompt("请输入第" + i +"行有效病历数："));
+    var x
+    var y
+    i == 1 ? x = useful / data : y = useful / data
+    if ((x < y && y - x < 0.005)||(x > y && x - y < 0.005)){
+      console.log("same")
+    }else if (x - y > 0.005) {
+      console.log("worse")
+    }else if (y - x > 0.005) {
+      console.log("better")
+    }
+    i++
+  }
 
 </script>
