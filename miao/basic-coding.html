@@ -568,7 +568,7 @@ debugger
 </script>
 
 <!-- 18.鸡尾酒疗法 -->
-<script xtype="norun" id="ch0105/18">
+<script type="norun" id="ch0105/18">
   var n = Number(prompt("请输入n："))
   var i = 1
   while (i <= n) {
@@ -586,5 +586,36 @@ debugger
     }
     i++
   }
+</script>
 
+<!-- 19.救援 -->
+<script xtype="norun" id="ch0105/19">
+  var n = Number(prompt("请输入屋顶数："))
+  var i = 1
+  var time = 0
+  while (i <= n ) {
+    var x = Number(prompt("请输入第"+i+"屋顶上的x坐标："))
+    var y = Number(prompt("请输入第"+i+"屋顶上的y坐标："))
+    var person = Number(prompt("请输入第"+i+"屋顶上的人数："))
+    var l = Math.sqrt(x ** 2 + y ** 2)
+    time = 2 * l / 50 + person * 1.5 + time
+    i++
+  }
+  console.log(Math.ceil(time))
+</script>
+
+<!-- 20.球弹跳高度的计算 -->
+<script xtype="norun" id="ch0105/20">
+  var n = Number(prompt("请输入屋顶数："))
+  var i = 1
+  var time = 0
+  while (i <= n ) {
+    var x = Number(prompt("请输入第"+i+"屋顶上的x坐标："))
+    var y = Number(prompt("请输入第"+i+"屋顶上的y坐标："))
+    var person = Number(prompt("请输入第"+i+"屋顶上的人数："))
+    var l = Math.sqrt(x ** 2 + y ** 2)
+    time = 2 * l / 50 + person * 1.5 + time
+    i++
+  }
+  console.log(Math.ceil(time))
 </script>
