@@ -327,11 +327,11 @@ debugger
 
 <!-- 学生平均年龄 -->
 <script type="norun" id="ch0105/01">
-  var n = Number(prompt("请输入学生人数",""));
+  var n = Number(prompt("请输入学生人数"));
   var i = 1;
   var persons = [];
   while (i <= n) {
-    persons.push(Number(prompt("请输入第" + i + "名学生的年龄","")))
+    persons.push(Number(prompt("请输入第" + i + "名学生的年龄")))
     i++
   };
   var average = persons.reduce(function(a,b){ return a + b;}) / n
@@ -343,7 +343,7 @@ debugger
   var i = 1
   var balances = []
   while (i <= 12) {
-    balances.push(Number(prompt("请输入第" + i + "个月的结余","")));
+    balances.push(Number(prompt("请输入第" + i + "个月的结余")));
     i++
   };
   var sum = balances.reduce(function(a,b){ return a + b;});
@@ -352,11 +352,11 @@ debugger
 
 <!-- 03.均值 -->
 <script type="norun" id="ch0105/03">
-  var n = Number(prompt("请输入小于100的样本容量：",""))
+  var n = Number(prompt("请输入小于100的样本容量："))
   var i = 1
   var samples = []
   while (i <= n) {
-    samples.push(Number(prompt("请输入第" + i + "个样本数据","")));
+    samples.push(Number(prompt("请输入第" + i + "个样本数据")));
     i++
   };
   var average = samples.reduce(function(a,b){ return a + b;}) / n;
@@ -365,11 +365,11 @@ debugger
 
 <!-- 04.求整数的和与均值 -->
 <script type="norun" id="ch0105/04">
-  var n = Number(prompt("请输入整数数量：",""))
+  var n = Number(prompt("请输入整数数量："))
   var i = 1
   var nums = []
   while (i <= n) {
-    nums.push(Number(prompt("请输入第" + i + "个整数","")));
+    nums.push(Number(prompt("请输入第" + i + "个整数")));
     i++
   };
   var sum = nums.reduce(function(a,b){ return a + b;})
@@ -378,25 +378,28 @@ debugger
 </script>
 
 <!-- 05.最高的分数 -->
-<script type="norun" id="ch0105/05">
-  var n = Number(prompt("请输入学生人数：",""))
-  var i = 1
-  var students = []
+<script xtype="norun" id="ch0105/05">
+  var n = Number(prompt("请输入学生人数："));
+  var i = 1;
+  var student;
+  var top = 0;
   while (i <= n) {
-    students.push(Number(prompt("请输入第" + i + "名学生的成绩","")));
-    i++
+    student = (Number(prompt("请输入第" + i + "名学生的成绩:")));
+    if (top < student){
+      top = student
+    }
+    i++;
   };
-  var top = students.reduce(function(max,p){ return Math.max(max, p);})
   console.log(top);
 </script>
 
 <!-- 06.最大跨度值 -->
 <script type="norun" id="ch0105/06">
-  var n = Number(prompt("请输入序列个数：",""))
+  var n = Number(prompt("请输入序列个数："))
   var i = 1
   var arr = []
   while (i <= n) {
-    arr.push(Number(prompt("请输入第" + i + "个非负整数","")));
+    arr.push(Number(prompt("请输入第" + i + "个非负整数")));
     i++
   };
   var max = arr.reduce(function(max,ai) {
@@ -410,15 +413,15 @@ debugger
 
 <!-- 07.奖牌计数 -->
 <script type="norun" id="ch0105/07">
-  var n = Number(prompt("请输入参加决赛项目的天数：", ""))
+  var n = Number(prompt("请输入参加决赛项目的天数："))
   var i = 1
   var gold = []
   var silver = []
   var bronze = []
   while (i <= n) {
-    gold.push(prompt("请输入第" + i +"天获得的金牌数：", ""))
-    silver.push(prompt("请输入第" + i +"天获得的银牌数：", ""))
-    bronze.push(prompt("请输入第" + i +"天获得的铜牌数：", ""))
+    gold.push(prompt("请输入第" + i +"天获得的金牌数："))
+    silver.push(prompt("请输入第" + i +"天获得的银牌数："))
+    bronze.push(prompt("请输入第" + i +"天获得的铜牌数："))
     i++
   }
   var sum = function(a,b){return a + b}
@@ -427,4 +430,10 @@ debugger
   var bronze_sum = gold.reduce(sum(su,b))
   var all = gold_sum + sliver_sum + bronze_sum
   console.log(gold_sum, sliver_sum, bronze_sum, all)
+</script>
+
+<!-- 08.多边形内角和 -->
+<script type="norun" id="ch0105/08">
+  var n = Number(prompt("请输入参加决赛项目的天数："))
+
 </script>
