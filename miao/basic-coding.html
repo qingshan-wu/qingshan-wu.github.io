@@ -325,12 +325,16 @@ debugger
 
 <!-- ================ -->
 
-<script type="norun" id="ch0105/01">
-  var number = prompt("输入学生人数","")
-  var a = prompt("输入学生年龄","")
-  var b = prompt("输入学生年龄","")
-  var class = [a,b]
-  console.log((class.reduce(function(a,b){ return a + b;}) / m).toFixed(2));
+<script xtype="norun" id="ch0105/01">
+  var n = Number(prompt("请输入学生人数",""));
+  var i = 1;
+  var persons = [];
+  while (i <= n) {
+    persons.push(Number(prompt("请输入第" + i + "名学生的年龄","")))
+    i++
+  };
+  var average = persons.reduce(function(a,b){ return a + b;}) / n.toFixed(2)
+  console.log(average)
 </script>
 
 
@@ -376,7 +380,7 @@ debugger
   console.log(max - min);
 </script>
 <!-- 奖牌计数 -->
-<script xtype="norun" id="ch0105/07">
+<script type="norun" id="ch0105/07">
   var n = Number(prompt("请输入参加决赛项目的天数：", ""))
   var i = 1
   var gold = []
@@ -386,6 +390,7 @@ debugger
     gold.push(prompt("请输入第" + i +"天获得的金牌数：", ""))
     silver.push(prompt("请输入第" + i +"天获得的银牌数：", ""))
     bronze.push(prompt("请输入第" + i +"天获得的铜牌数：", ""))
+    i++
   }
   var sum = function(a,b){return a + b}
   var gold_sum = gold.reduce(sum(su,g))
