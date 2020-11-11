@@ -378,7 +378,7 @@ debugger
 </script>
 
 <!-- 05.最高的分数 -->
-<script xtype="norun" id="ch0105/05">
+<script type="norun" id="ch0105/05">
   var n = Number(prompt("请输入学生人数："));
   var i = 1;
   var student;
@@ -419,9 +419,9 @@ debugger
   var silver = []
   var bronze = []
   while (i <= n) {
-    gold.push(prompt("请输入第" + i +"天获得的金牌数："))
-    silver.push(prompt("请输入第" + i +"天获得的银牌数："))
-    bronze.push(prompt("请输入第" + i +"天获得的铜牌数："))
+    gold.push(Number(prompt("请输入第" + i +"天获得的金牌数：")))
+    silver.push(Number(prompt("请输入第" + i +"天获得的银牌数：")))
+    bronze.push(Number(prompt("请输入第" + i +"天获得的铜牌数：")))
     i++
   }
   var sum = function(a,b){return a + b}
@@ -434,6 +434,45 @@ debugger
 
 <!-- 08.多边形内角和 -->
 <script type="norun" id="ch0105/08">
-  var n = Number(prompt("请输入参加决赛项目的天数："))
+  var n = Number(prompt("请输入多边形的边数："));
+  var i = 1;
+  var unknown = (n - 2) * 180;
+  while (i <= n-1) {
+    unknown = unknown -Number(prompt("请输入第" + i +"个内角度数："));
+  }
+  console.log(unknown)
+</script>
+
+<!-- 09.奇数和 -->
+<script type="norun" id="ch0105/09">
+  var m = Number(prompt("请输入m："))
+  var n = Number(prompt("请输入n："))
+  m = m % 2 ? m : m + 1
+  n = m % 2 ? n : n - 1
+  var sum = 0
+  while (m <= n) {
+    sum = sum + m;
+    m = m + 2;
+  }
+  console.log(sum)
+</script>
+
+<!-- 10.满足条件的数累加 -->
+<script xtype="norun" id="ch0105/10">
+  var m = Number(prompt("请输入m："))
+  var n = Number(prompt("请输入n："))
+  var sum = 0
+  while (m <= n) {
+    sum = sum + (m % 17 == 0 ? m : 0)
+    m++
+  }
+  console.log(sum)
+</script>
+
+<!-- 11.整数的个数 -->
+<script type="norun" id="ch0105/11">
+  var m = Number(prompt("请输入k："))
+
+
 
 </script>
