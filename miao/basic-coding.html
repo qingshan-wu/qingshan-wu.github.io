@@ -364,7 +364,7 @@ debugger
 </script>
 
 <!-- 04.求整数的和与均值 -->
-<script xtype="norun" id="ch0105/04">
+<script type="norun" id="ch0105/04">
   var n = Number(prompt("请输入整数数量：",""))
   var i = 1
   var nums = []
@@ -375,6 +375,19 @@ debugger
   var sum = nums.reduce(function(a,b){ return a + b;})
   var average = Number(sum / n);
   console.log(sum,average.toFixed(5));
+</script>
+
+<!-- 05.最高的分数 -->
+<script xtype="norun" id="ch0105/05">
+  var n = Number(prompt("请输入学生人数：",""))
+  var i = 1
+  var students = []
+  while (i <= n) {
+    students.push(Number(prompt("请输入第" + i + "名学生的成绩","")));
+    i++
+  };
+  var top = students.reduce(function(max,p){ return Math.max(max, p);})
+  console.log(top);
 </script>
 
 
