@@ -378,7 +378,7 @@ debugger
 </script>
 
 <!-- 05.最高的分数 -->
-<script xtype="norun" id="ch0105/05">
+<script type="norun" id="ch0105/05">
   var n = Number(prompt("请输入学生人数：",""))
   var i = 1
   var students = []
@@ -390,32 +390,15 @@ debugger
   console.log(top);
 </script>
 
-
-
-
-
-
-
-
-<script type="norun" id="ch0105/04">
-  var arr = prompt().split('\n').map(function(ai){return Number(ai);});
-  var a = arr[0];
-  arr.shift();
-  var sum = arr.reduce(function(a,b){ return a + b;});
-  var average = (sum / a).toFixed(5);
-  console.log(sum+" "+average);
-</script>
-<!-- 最大值 -->
-<script type="norun" id="ch0105/05">
-  var arr = prompt().split(' ').map(function(ai){return Number(ai);});
-  var top = arr.reduce(function(max,ai) {
-    return Math.max(max,ai);
-  });
-  console.log(top);
-</script>
-<!-- 最大跨度值 -->
+<!-- 06.最大跨度值 -->
 <script type="norun" id="ch0105/06">
-  var arr = prompt().split(' ').map(function(ai){return Number(ai);});
+  var n = Number(prompt("请输入序列个数：",""))
+  var i = 1
+  var arr = []
+  while (i <= n) {
+    arr.push(Number(prompt("请输入第" + i + "个非负整数","")));
+    i++
+  };
   var max = arr.reduce(function(max,ai) {
     return Math.max(max,ai);
   });
@@ -424,7 +407,8 @@ debugger
   });
   console.log(max - min);
 </script>
-<!-- 奖牌计数 -->
+
+<!-- 07.奖牌计数 -->
 <script type="norun" id="ch0105/07">
   var n = Number(prompt("请输入参加决赛项目的天数：", ""))
   var i = 1
