@@ -303,18 +303,24 @@ debugger
   console.log(result);
 </script>
 
-<script type="norun" id="ch0104/20">
+<script xtype="norun" id="ch0104/20">
   var a = Number(prompt())
   var b = Number(prompt())
   var c = Number(prompt())
-  var delta = b * b - 4 * a * c,
-  var d = (-b / 2 * a).toFixed(5);
-  var x1 = (-b + Math.sqrt(delta)) / 2 * a,
-  var x2 = (-b - Math.sqrt(delta)) / 2 * a,
-  var xushu = (Math.sqrt(-delta)/2 * a).toFixed(5);
-  if (delta == 0) console.log("x1=x2=", x1);
-  if (delta > 0) console.log("x1=",x1,";","x2=",x2);
-  if (delta < 0) console.log("x1=",d + "+" + xushu + "i",";","x2=",d + "-" + xushu + "i");
+  var delta = b * b - 4 * a * c
+  var d = (-b / 2 * a).toFixed(5)
+  var x1 = (-b + Math.sqrt(delta)) / 2 * a
+  var x2 = (-b - Math.sqrt(delta)) / 2 * a
+  var xushu = (Math.sqrt(-delta)/2 * a).toFixed(5)
+  if (delta == 0) {
+    console.log("x1=x2=", x1);
+  }
+  if (delta > 0) {
+    console.log("x1=",x1,";","x2=",x2);
+  }
+  if (delta < 0) {
+    console.log("x1=",d + "+" + xushu + "i",";","x2=",d + "-" + xushu + "i");
+  }
 </script>
 
 <!-- ================ -->
