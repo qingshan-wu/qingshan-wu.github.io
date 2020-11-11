@@ -354,7 +354,8 @@
 </script>
 <!-- 奖牌计数 -->
 <script type="norun" id="ch0105/07">
-  var arr = prompt().split('\n');/* .map(function(ai){return Number(ai);}) */
+  var arr = prompt().split('\n');
+  arr.shift(); //去掉第一行天数；
   var days = {};
   arr.forEach(function(ai, i) {
     days[i] = ai.split(' ').map(function(ai){return Number(ai);});

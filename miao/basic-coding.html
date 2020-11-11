@@ -303,7 +303,7 @@ debugger
   console.log(result);
 </script>
 
-<script xtype="norun" id="ch0104/20">
+<script type="norun" id="ch0104/20">
   var a = Number(prompt())
   var b = Number(prompt())
   var c = Number(prompt())
@@ -326,10 +326,11 @@ debugger
 <!-- ================ -->
 
 <script type="norun" id="ch0105/01">
-  var arr = prompt().split('\n').map(function(ai){return Number(ai);});
-  var m = arr[0];
-  arr.shift();
-  console.log((arr.reduce(function(a,b){ return a + b;}) / m).toFixed(2));
+  var number = prompt("输入学生人数","")
+  var a = prompt("输入学生年龄","")
+  var b = prompt("输入学生年龄","")
+  var class = [a,b]
+  console.log((class.reduce(function(a,b){ return a + b;}) / m).toFixed(2));
 </script>
 
 
@@ -375,15 +376,21 @@ debugger
   console.log(max - min);
 </script>
 <!-- 奖牌计数 -->
-<script type="norun" id="ch0105/07">
-  var arr = prompt().split('\n');/* .map(function(ai){return Number(ai);}) */
-  var days = {};
-  arr.forEach(function(ai, i) {
-    days[i] = ai.split(' ').map(function(ai){return Number(ai);});
-  });
-  var prides = [];
-  for (var pride in days) {
-    prides.push(days[pride].reduce(function(a, b) {return a + b}));
+<script xtype="norun" id="ch0105/07">
+  var n = Number(prompt("请输入参加决赛项目的天数：", ""))
+  var i = 1
+  var gold = []
+  var silver = []
+  var bronze = []
+  while (i <= n) {
+    gold.push(prompt("请输入第" + i +"天获得的金牌数：", ""))
+    silver.push(prompt("请输入第" + i +"天获得的银牌数：", ""))
+    bronze.push(prompt("请输入第" + i +"天获得的铜牌数：", ""))
   }
-  console.log(prides.join(" "), prides.reduce(function(a, b) {return a + b}));
+  var sum = function(a,b){return a + b}
+  var gold_sum = gold.reduce(sum(su,g))
+  var sliver_sum = gold.reduce(sum(su,s))
+  var bronze_sum = gold.reduce(sum(su,b))
+  var all = gold_sum + sliver_sum + bronze_sum
+  console.log(gold_sum, sliver_sum, bronze_sum, all)
 </script>
