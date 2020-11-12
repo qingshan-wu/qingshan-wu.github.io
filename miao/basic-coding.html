@@ -780,7 +780,7 @@ debugger
 
 
 <!-- 28.分离整数的各个数位 -->
-<script xtype="norun" id="ch0105/28">
+<script type="norun" id="ch0105/28">
   var n = Number(prompt("请输入一个整数:"))
   var arr = []
   while ( n != 0){
@@ -810,4 +810,48 @@ debugger
     final = -reverse(-n)
   }
   console.log(final)
+</script>
+
+<!-- 30.分离整数的各个数位 -->
+<script xtype="norun" id="ch0105/30">
+  var m = Number(prompt("请输入一个整数m:"))
+  var k = Number(prompt("请输入一个整数k(1 < k < 5):"))
+  var arr = []
+  var counter = 0
+  while ( m != 0){
+    arr.push(m % 10)
+    m = Math.floor(m / 10)
+  }
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i] == 3){
+      counter++
+    }
+  }
+  if (m % 19 == 0 && k == counter){
+    console.log("YES")
+  }else{
+    console.log("NO")
+  }
+</script>
+
+<!-- 31.分离整数的各个数位 -->
+<script xtype="norun" id="ch0105/31">
+  var m = Number(prompt("请输入一个整数m:"))
+  var k = Number(prompt("请输入一个整数k(1 < k < 5):"))
+  var arr = []
+  var counter = 0
+  while ( m != 0){
+    arr.push(m % 10)
+    m = Math.floor(m / 10)
+  }
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i] == 3){
+      counter++
+    }
+  }
+  if (m % 19 == 0 && k == counter){
+    console.log("YES")
+  }else{
+    console.log("NO")
+  }
 </script>
