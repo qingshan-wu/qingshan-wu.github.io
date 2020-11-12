@@ -883,7 +883,7 @@ debugger
 </script>
 
 <!-- 34.求阶乘的和 -->
-<script xtype="norun" id="ch0105/34">
+<script type="norun" id="ch0105/34">
   var n = Number(prompt("请输入正整数n(1 < n < 12):"))
   var sum = 0
   var fa = 1
@@ -895,4 +895,19 @@ debugger
     fa = 1 //重置factorial阶乘
   }
   console.log(sum)
+</script>
+
+<!-- 35.求出e的值 -->
+<script xtype="norun" id="ch0105/35">
+  var n = Number(prompt("请输入正整数n(2<=n<=15):"))
+  var e = 1
+  var fa = 1
+  for (var j = n; j > 0; j--){
+    for (var i = 1; i <= j; i++){
+      fa *= i
+    }
+    e += 1/fa
+    fa = 1 //重置factorial阶乘
+  }
+  console.log(e.toFixed(10))
 </script>
