@@ -813,7 +813,7 @@ debugger
 </script>
 
 <!-- 30.分离整数的各个数位 -->
-<script xtype="norun" id="ch0105/30">
+<script type="norun" id="ch0105/30">
   var m = Number(prompt("请输入一个整数m:"))
   var k = Number(prompt("请输入一个整数k(1 < k < 5):"))
   var arr = []
@@ -836,22 +836,22 @@ debugger
 
 <!-- 31.分离整数的各个数位 -->
 <script xtype="norun" id="ch0105/31">
-  var m = Number(prompt("请输入一个整数m:"))
-  var k = Number(prompt("请输入一个整数k(1 < k < 5):"))
-  var arr = []
-  var counter = 0
-  while ( m != 0){
-    arr.push(m % 10)
-    m = Math.floor(m / 10)
+  var n = Number(prompt("请输入灯的数量:"))
+  var m = Number(prompt("请输入人数:"))
+  var light = new Array(n+1);
+  for (var i = 0; i < n+1; i++){
+    light[i] = true   //初始灯全部亮起
   }
-  for (var i = 0; i < arr.length; i++){
-    if (arr[i] == 3){
-      counter++
+  for (var j = 1; j <= m; j++){ //j就是编号循环
+    for(var act = 0; act < n; act += j){ //每个灯的动作
+      light[act] = !light[act]
     }
   }
-  if (m % 19 == 0 && k == counter){
-    console.log("YES")
-  }else{
-    console.log("NO")
+  var offLight = []
+  for (var c = 1; c < n + 1; c++){
+    if (!light[c]){
+      offLight.push(c)    //灯灭就会将编号存入数组
+    }
   }
+  console.log(offLight.join(","))
 </script>
