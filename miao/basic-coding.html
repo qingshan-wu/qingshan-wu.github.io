@@ -924,7 +924,7 @@ debugger
 </script>
 
 <!-- 37.雇佣兵 -->
-<script xtype="norun" id="ch0105/37">
+<script type="norun" id="ch0105/37">
   var m = Number(prompt("请设置雇佣兵的体力最大值:"))
   var n = Number(prompt("请设置雇佣兵的战斗力:"))
   var x = Number(prompt("请设置雇佣兵能量元素数量:"))
@@ -939,4 +939,35 @@ debugger
     best = best >= n ? best : n
   }while(x < 0)
   console.log(best)
+</script>
+
+<!-- 38.计算多项式的导函数 -->
+<script type="norun" id="ch0105/38">
+  var n = Number(prompt("请多项式的最高次幂为n:"))
+  var n = Number(prompt("请设置雇佣兵的战斗力:"))
+  var x = Number(prompt("请设置雇佣兵能量元素数量:"))
+  var best = 0
+  do {
+    x -= Math.ceil(m / n)
+    for (var i = 0; i < m; i++){
+      if (i == n - 1){
+        n += 1
+      }
+    }
+    best = best >= n ? best : n
+  }while(x < 0)
+  console.log(best)
+</script>
+
+<!-- 39.与7无关的数 -->
+<script xtype="norun" id="ch0105/39">
+  var n = Number(prompt("请输入一个正整数n(n < 100):"))
+  var sum = 0
+  for (var i = n; i > 0; i--){
+    sum += i ** 2;
+    if (i % 7 == 0 || i % 10 == 7 || Math.floor(i % 100 / 10) == 7){
+      sum -= i ** 2;
+    }
+  }
+  console.log(sum)
 </script>
