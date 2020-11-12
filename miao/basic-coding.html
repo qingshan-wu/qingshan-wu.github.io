@@ -898,7 +898,7 @@ debugger
 </script>
 
 <!-- 35.求出e的值 -->
-<script xtype="norun" id="ch0105/35">
+<script type="norun" id="ch0105/35">
   var n = Number(prompt("请输入正整数n(2<=n<=15):"))
   var e = 1
   var fa = 1
@@ -910,4 +910,15 @@ debugger
     fa = 1 //重置factorial阶乘
   }
   console.log(e.toFixed(10))
+</script>
+
+<!-- 36.计算多项式的值 -->
+<script xtype="norun" id="ch0105/36">
+  var x = Number(prompt("请输入x:"))
+  var n = Number(prompt("请输入正整数n(n <= 1000000):"))
+  var sum = 1
+  for (var i = n; i > 0; i--){
+    sum += x ** i
+  }
+  console.log(sum.toFixed(2))
 </script>
