@@ -558,10 +558,8 @@ debugger
   var k = Number(prompt("请输入k："))
   var a = 0
   var b = 1
-  var i = 0
-  while (i < k) {
+  for (var i = 0; i < k; i++){
     i % 2 ? (a = a + b) : (b = b + a)
-    i++
   }
   var result = i % 2 ? b : a
   console.log(result)
@@ -749,25 +747,21 @@ debugger
 </script>
 
 <!-- 26.统计满足条件的4位数个数 -->
-<script type="norun" id="ch0105/26">
-  var n = Number(prompt("请输入血压测量次数："))
+<script xtype="norun" id="ch0105/26">
+  var n = Number(prompt("请输入四位数个数；"))
   var i = 1
-  var time = 0
-  var times = 0
-  while(i <= n){
-    var a = Number(prompt("第" + i + "次测量的收缩压；"))
-    var b = Number(prompt("第" + i + "次测量的舒张压；"))
-    if (a <= 140 && a >= 90 && b <= 90 && b >= 60) {
-      time = time + 1
-      if(time > times){
-        times = time
-      }
-    }else{
-      time = 0
+  var couter = 0
+  while (i <= n) {
+    var a = Math.floor(x / 1000)
+    var b = Math.floor((x - a * 1000)/100)
+    var c = Math.floor((x - a * 1000 - b * 100)/ 10)
+    var d = x - a * 1000 - b * 100 - c * 10
+    if (d - a - b - c > 0){
+      couter++
     }
     i++
   }
-  console.log(times)
+  console.log(couter)
 </script>
 
 
