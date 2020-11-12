@@ -1004,7 +1004,7 @@ debugger
 </script>
 
 <!-- 42.画矩形 -->
-<script xtype="norun" id="ch0105/42">
+<script type="norun" id="ch0105/42">
   var h = Number(prompt("请输入矩形的高:"))
   var w = Number(prompt("请输入矩形的宽:"))
   var legend = String(prompt("请输入用来画图的矩形符号:"))
@@ -1026,4 +1026,17 @@ debugger
     str += "\n"
   }
   console.log(str)
+</script>
+
+
+<!-- 43.质因数分解 -->
+<script xtype="norun" id="ch0105/43">
+  var n = Number(prompt("请输入一个正整数n:"))
+  var big_p
+  for (var i = 0; i < n / 2; i++){
+    if (n % i == 0){
+      big_p = Math.max(n / i, i)
+    }
+  }
+  console.log(big_p)
 </script>
