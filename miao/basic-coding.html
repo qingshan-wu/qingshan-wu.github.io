@@ -693,7 +693,7 @@ debugger
 </script>
 
 <!-- 24.正常血压 -->
-<script type="norun" id="ch0105/24">
+<script xtype="norun" id="ch0105/24">
   var n = Number(prompt("请输入血压测量次数："))
   var i = 1
   var time = 0
@@ -701,7 +701,7 @@ debugger
   while(i <= n){
     var a = Number(prompt("第" + i + "次测量的收缩压；"))
     var b = Number(prompt("第" + i + "次测量的舒张压；"))
-    if (a <= 140 && a >= 90 && b =< 90 && b >= 60) {
+    if (a <= 140 && a >= 90 && b <= 90 && b >= 60) {
       time = time + 1
       if(time > times){
         times = time
