@@ -973,13 +973,29 @@ debugger
 </script>
 
 <!-- 40.数1的个数 -->
-<script xtype="norun" id="ch0105/40">
+<script type="norun" id="ch0105/40">
   var n = Number(prompt("请输入一个正整数n(1 <= n <= 10000):"))
   var flag = 0
   for (var i = 1; i <= n; i++){
     if (i % 10 == 1 || Math.floor(i / 10) == 1) {
       flag++
       if (i % 10 == 1 && Math.floor(i / 10) == 1){  // 11是两个1
+        flag++
+      }
+    }
+  }
+  console.log(flag)
+</script>
+
+<!-- 41.数字统计 -->
+<script xtype="norun" id="ch0105/41">
+  var l = Number(prompt("请输入一个正整数L:"))
+  var r = Number(prompt("请输入一个正整数R:"))
+  var flag = 0
+  for (var i = l; i <= r; i++){
+    if (i % 10 == 2 || Math.floor(i / 10) == 2) {
+      flag++
+      if (i % 10 == 2 && Math.floor(i / 10) == 2){  //为同时满足的多加1
         flag++
       }
     }
