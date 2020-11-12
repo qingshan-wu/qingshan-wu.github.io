@@ -857,7 +857,7 @@ debugger
 </script>
 
 <!-- 32.分数序列和 -->
-<script xtype="norun" id="ch0105/32">
+<script type="norun" id="ch0105/32">
   var n = Number(prompt("请输入正整数n(n<=30):"))
   var q = 2
   var p = 1
@@ -868,6 +868,16 @@ debugger
     temp = q
     q += p
     p = temp
+  }
+  console.log(sum.toFixed(4))
+</script>
+
+<!-- 33.计算分数加减表达式的值 -->
+<script xtype="norun" id="ch0105/33">
+  var n = Number(prompt("请输入正整数n(1 <= n <= 1000):"))
+  var sum = 0
+  for (var i = 1; i <= n; i++){
+    i % 2 ? sum += 1 / i : sum -= 1 / i
   }
   console.log(sum.toFixed(4))
 </script>
