@@ -412,7 +412,7 @@ debugger
 </script>
 
 <!-- 07.奖牌计数 -->
-<script type="norun" id="ch0105/07">
+<script xtype="norun" id="ch0105/07">
   var n = Number(prompt("请输入参加决赛项目的天数："))
   var i = 1
   var gold = []
@@ -425,8 +425,8 @@ debugger
     i++
   }
   var gold_sum = gold.reduce(function(a,b){return a + b})
-  var sliver_sum = gold.reduce(function(a,b){return a + b})
-  var bronze_sum = gold.reduce(function(a,b){return a + b})
+  var sliver_sum = silver.reduce(function(a,b){return a + b})
+  var bronze_sum = bronze.reduce(function(a,b){return a + b})
   var all = gold_sum + sliver_sum + bronze_sum
   console.log(gold_sum, sliver_sum, bronze_sum, all)
 </script>
@@ -693,20 +693,23 @@ debugger
 </script>
 
 <!-- 24.正常血压 -->
-<script xtype="norun" id="ch0105/24">
+<script type="norun" id="ch0105/24">
   var n = Number(prompt("请输入血压测量次数："))
   var i = 1
   var time = 0
+  var times = 0
   while(i <= n){
     var a = Number(prompt("第" + i + "次测量的收缩压；"))
     var b = Number(prompt("第" + i + "次测量的舒张压；"))
     if (a < 140 && a > 90 && b < 90 && b > 60) {
       time = time + 1
+      if(time > times){
+        times = time
+      }
     }else{
-      if(time > times)
       time = 0
     }
-
+    i++
   }
-  console.log("End")
+  console.log(times)
 </script>
