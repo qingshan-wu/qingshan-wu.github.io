@@ -913,7 +913,7 @@ debugger
 </script>
 
 <!-- 36.计算多项式的值 -->
-<script xtype="norun" id="ch0105/36">
+<script type="norun" id="ch0105/36">
   var x = Number(prompt("请输入x:"))
   var n = Number(prompt("请输入正整数n(n <= 1000000):"))
   var sum = 1
@@ -921,4 +921,22 @@ debugger
     sum += x ** i
   }
   console.log(sum.toFixed(2))
+</script>
+
+<!-- 37.雇佣兵 -->
+<script xtype="norun" id="ch0105/37">
+  var m = Number(prompt("请设置雇佣兵的体力最大值:"))
+  var n = Number(prompt("请设置雇佣兵的战斗力:"))
+  var x = Number(prompt("请设置雇佣兵能量元素数量:"))
+  var best = 0
+  do {
+    x -= Math.ceil(m / n)
+    for (var i = 0; i < m; i++){
+      if (i == n - 1){
+        n += 1
+      }
+    }
+    best = best >= n ? best : n
+  }while(x < 0)
+  console.log(best)
 </script>
