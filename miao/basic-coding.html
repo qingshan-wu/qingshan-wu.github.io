@@ -424,10 +424,9 @@ debugger
     bronze.push(Number(prompt("请输入第" + i +"天获得的铜牌数：")))
     i++
   }
-  var sum = function(a,b){return a + b}
-  var gold_sum = gold.reduce(sum(su,g))
-  var sliver_sum = gold.reduce(sum(su,s))
-  var bronze_sum = gold.reduce(sum(su,b))
+  var gold_sum = gold.reduce(function(a,b){return a + b})
+  var sliver_sum = gold.reduce(function(a,b){return a + b})
+  var bronze_sum = gold.reduce(function(a,b){return a + b})
   var all = gold_sum + sliver_sum + bronze_sum
   console.log(gold_sum, sliver_sum, bronze_sum, all)
 </script>
@@ -439,6 +438,7 @@ debugger
   var unknown = (n - 2) * 180;
   while (i <= n-1) {
     unknown = unknown -Number(prompt("请输入第" + i +"个内角度数："));
+    i++
   }
   console.log(unknown)
 </script>
@@ -690,4 +690,23 @@ debugger
    j++
   }
   console.log(n - j)
+</script>
+
+<!-- 24.正常血压 -->
+<script xtype="norun" id="ch0105/24">
+  var n = Number(prompt("请输入血压测量次数："))
+  var i = 1
+  var time = 0
+  while(i <= n){
+    var a = Number(prompt("第" + i + "次测量的收缩压；"))
+    var b = Number(prompt("第" + i + "次测量的舒张压；"))
+    if (a < 140 && a > 90 && b < 90 && b > 60) {
+      time = time + 1
+    }else{
+      if(time > times)
+      time = 0
+    }
+
+  }
+  console.log("End")
 </script>
