@@ -834,8 +834,8 @@ debugger
   }
 </script>
 
-<!-- 31.分离整数的各个数位 -->
-<script xtype="norun" id="ch0105/31">
+<!-- 31.开关灯 -->
+<script type="norun" id="ch0105/31">
   var n = Number(prompt("请输入灯的数量:"))
   var m = Number(prompt("请输入人数:"))
   var light = new Array(n+1);
@@ -854,4 +854,20 @@ debugger
     }
   }
   console.log(offLight.join(","))
+</script>
+
+<!-- 32.分数序列和 -->
+<script xtype="norun" id="ch0105/32">
+  var n = Number(prompt("请输入正整数n(n<=30):"))
+  var q = 2
+  var p = 1
+  var sum = 0
+  var temp
+  for (var i = 0; i < n; i++){
+    sum = sum + q / p
+    temp = q
+    q += p
+    p = temp
+  }
+  console.log(sum.toFixed(4))
 </script>
