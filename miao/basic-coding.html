@@ -747,7 +747,7 @@ debugger
 </script>
 
 <!-- 26.统计满足条件的4位数个数 -->
-<script xtype="norun" id="ch0105/26">
+<script type="norun" id="ch0105/26">
   var n = Number(prompt("请输入四位数个数；"))
   var i = 1
   var couter = 0
@@ -762,6 +762,32 @@ debugger
     i++
   }
   console.log(couter)
+</script>
+
+<!-- 27.级数求和 -->
+<script type="norun" id="ch0105/27">
+  var k = Number(prompt("请输入整数k（1<=k<=15）:"))
+  var sn = 0
+  for (var i = 1; i < 10000; i++){
+    sn += 1/i
+    if (sn > k){
+      break
+    }
+  }
+  var n = i
+  console.log(n)
+</script>
+
+
+<!-- 28.分离整数的各个数位 -->
+<script xtype="norun" id="ch0105/28">
+  var n = Number(prompt("请输入一个整数:"))
+  var arr = []
+  while ( n != 0){
+    arr.push(n % 10)
+    n = Math.floor(n / 10)
+  }
+  console.log(arr.join(' '))
 </script>
 
 
