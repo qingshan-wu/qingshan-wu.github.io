@@ -1042,7 +1042,7 @@ debugger
 </script>
 
 <!-- 44.第n小的质数 -->
-<script xtype="norun" id="ch0105/44">
+<script type="norun" id="ch0105/44">
   var n = Number(prompt("请输入一个正整数n:"))
   var counter = 1
   for (var i = 2; i < 1000; i++){
@@ -1057,6 +1057,28 @@ debugger
     }//当n为1时；没有counter没有计数；counter初始值等于n
     if (counter == n){
       console.log(p)
+      break
+    }
+  }
+</script>
+
+<!-- 45.金币 -->
+<script xtype="norun" id="ch0105/45">
+  var days = Number(prompt("请输入一个正整数表示天数:"))
+  var money = 0
+  var counter = 0
+  for (var continued = 1; continued < 1000; continued++){
+    var day = 0
+    do{
+      money += continued
+      day++
+      counter++
+      if(counter == days){
+        break
+      }
+    }while(day < continued)
+    if(counter == days){
+      console.log(money)
       break
     }
   }
