@@ -873,11 +873,26 @@ debugger
 </script>
 
 <!-- 33.计算分数加减表达式的值 -->
-<script xtype="norun" id="ch0105/33">
+<script type="norun" id="ch0105/33">
   var n = Number(prompt("请输入正整数n(1 <= n <= 1000):"))
   var sum = 0
   for (var i = 1; i <= n; i++){
     i % 2 ? sum += 1 / i : sum -= 1 / i
   }
   console.log(sum.toFixed(4))
+</script>
+
+<!-- 34.求阶乘的和 -->
+<script xtype="norun" id="ch0105/34">
+  var n = Number(prompt("请输入正整数n(1 < n < 12):"))
+  var sum = 0
+  var fa = 1
+  for (var j = n; j > 0; j--){
+    for (var i = 1; i <= j; i++){
+      fa *= i
+    }
+    sum += fa
+    fa = 1 //重置factorial阶乘
+  }
+  console.log(sum)
 </script>
