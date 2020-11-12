@@ -988,7 +988,7 @@ debugger
 </script>
 
 <!-- 41.数字统计 -->
-<script xtype="norun" id="ch0105/41">
+<script type="norun" id="ch0105/41">
   var l = Number(prompt("请输入一个正整数L:"))
   var r = Number(prompt("请输入一个正整数R:"))
   var flag = 0
@@ -1001,4 +1001,29 @@ debugger
     }
   }
   console.log(flag)
+</script>
+
+<!-- 42.画矩形 -->
+<script xtype="norun" id="ch0105/42">
+  var h = Number(prompt("请输入矩形的高:"))
+  var w = Number(prompt("请输入矩形的宽:"))
+  var legend = String(prompt("请输入用来画图的矩形符号:"))
+  var emp = Number(prompt("请输入0或1，0代表空心，1代表实心:"))
+  var flag = 0
+  var str = ''
+  for(var i = 1; i <= h; i++){
+    for(var j = 1; j <= w; j++){
+      if (!emp){ //墙边必需是实心
+        if (i == 1 || i == h || j == 1 || j == w){
+          str += legend
+        }else{
+          str += " "
+        }
+      }else{
+        str += legend
+      }
+    }
+    str += "\n"
+  }
+  console.log(str)
 </script>
