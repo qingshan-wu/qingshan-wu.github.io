@@ -693,7 +693,7 @@ debugger
 </script>
 
 <!-- 24.正常血压 -->
-<script xtype="norun" id="ch0105/24">
+<script type="norun" id="ch0105/24">
   var n = Number(prompt("请输入血压测量次数："))
   var i = 1
   var time = 0
@@ -712,4 +712,81 @@ debugger
     i++
   }
   console.log(times)
+</script>
+
+<!-- 25.特殊自然数 -->
+<script type="norun" id="ch0105/25">
+  var seven = 1
+  var nine = 1
+  var nine_reverse = 1
+  var ten = 1
+  var i = 1
+  var reverse = function(x){
+    var result = 0
+    while(x != 0){//每次循环都将上次的进位，个位加上x的最后一位数
+      result = result * 10 + x % 10
+      x = Math.floor(x / 10) //每次循环都去掉最后一位数
+      //x=0退出循环
+    }
+    return result
+  }
+  // 去掉所有小于7的个位数的情况
+  var button = true
+  while (seven != nine_reverse || button ){
+    if(seven % 10 > 6){            //个位数到7十位数进1
+      seven = seven % 100 + 10 - 7;
+      if(seven % 100 > 69){        //十位数到70百位数进1
+        seven = seven % 1000 + 100 - 70;
+        if(seven % 1000 > 699){       //百位数到700千位数进1
+          seven = seven % 10000 + 1000 - 700
+        }
+      }
+    }else{
+      seven++
+    }
+    /* ========== */
+    if (nine % 10 > 8){            //个位数到9十位数进1
+      nine = nine % 100 + 10 - 9
+      if(nine % 100 > 89){        //十位数到90百位数进1
+        nine = nine % 1000 + 100 - 90
+        if(nine % 1000 > 899){       //百位数到900千位数进1
+          nine = nine % 10000 + 1000 - 900
+        }
+      }
+    }else{
+      nine++
+    }
+    /* ========== */
+    nine_reverse = reverse(nine)
+    ten++
+    i++
+    if (seven == nine_reverse && Math.floor(seven / 100) > 0) {
+      button = false
+    }
+
+    // buttom七进制的数到达三位才为真
+  }
+  console.log(ten,seven,nine)
+</script>
+
+
+<!-- 29.反转数字 -->
+<script xtype="norun" id="ch0105/29">
+  var n = Number(prompt("请输入整数："))
+  var reverse = function(x){
+    var result = 0
+    while(x != 0){//每次循环都将上次的进位，个位加上x的最后一位数
+      result = result * 10 + x % 10
+      x = Math.floor(x / 10) //每次循环都去掉最后一位数
+      //x=0退出循环
+    }
+    return result
+  }
+  var final
+  if (n > 0){
+    fanal = reverse(n)
+  }else{
+    final = -reverse(-n)
+  }
+  console.log(final)
 </script>
