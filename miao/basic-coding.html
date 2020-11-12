@@ -1030,7 +1030,7 @@ debugger
 
 
 <!-- 43.质因数分解 -->
-<script xtype="norun" id="ch0105/43">
+<script type="norun" id="ch0105/43">
   var n = Number(prompt("请输入一个正整数n:"))
   var big_p
   for (var i = 0; i < n / 2; i++){
@@ -1039,4 +1039,25 @@ debugger
     }
   }
   console.log(big_p)
+</script>
+
+<!-- 44.第n小的质数 -->
+<script xtype="norun" id="ch0105/44">
+  var n = Number(prompt("请输入一个正整数n:"))
+  var counter = 1
+  for (var i = 2; i < 1000; i++){
+    if (i % 2 != 0
+        && (i % 3 != 0 || i == 3)
+        && (i % 5 != 0 || i == 5)
+        && (i % 7 != 0 || i == 7)
+        && (i % 13 != 0 || i == 13)
+        && (i % 17 != 0 || i == 17)){
+      p = i
+      counter++
+    }//当n为1时；没有counter没有计数；counter初始值等于n
+    if (counter == n){
+      console.log(p)
+      break
+    }
+  }
 </script>
