@@ -960,6 +960,19 @@ debugger
 </script>
 
 <!-- 39.与7无关的数 -->
+<script type="norun" id="ch0105/39">
+  var n = Number(prompt("请输入一个正整数n(n < 100):"))
+  var sum = 0
+  for (var i = n; i > 0; i--){
+    sum += i ** 2;
+    if (i % 7 == 0 || i % 10 == 7 || Math.floor(i % 100 / 10) == 7){
+      sum -= i ** 2;
+    }
+  }
+  console.log(sum)
+</script>
+
+<!-- 39.与7无关的数 -->
 <script xtype="norun" id="ch0105/39">
   var n = Number(prompt("请输入一个正整数n(n < 100):"))
   var sum = 0
