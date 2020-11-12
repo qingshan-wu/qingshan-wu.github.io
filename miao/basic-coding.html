@@ -714,64 +714,65 @@ debugger
   console.log(times)
 </script>
 
+<script type="norun">
+  var reverse = function(x){
+    var a = String(x).split('')
+    return `${a[2]}${a[1]}${a[0]}`
+  }
+  var num = Number(prompt("请输入n"))
+  var result = reverse(num)
+  console.log(result)
+</script>
+
 <!-- 25.特殊自然数 -->
 <script type="norun" id="ch0105/25">
-  var seven = 1
-  var nine = 1
-  var nine_reverse = 1
-  var ten = 1
-  var i = 1
-  var reverse = function(x){
-    var result = 0
-    while(x != 0){//每次循环都将上次的进位，个位加上x的最后一位数
-      result = result * 10 + x % 10
-      x = Math.floor(x / 10) //每次循环都去掉最后一位数
-      //x=0退出循环
+  var a = 1
+  var b = 0
+  var c = 1
+  for (var i = 0; i < 1000; i++) {
+    if (c > 6){
+      c = 0
+      b++
+      if (b > 6){
+        b = 0
+        a++
+      }
+    }else{
+      c++
     }
-    return result
+    var ten = a * 81 + b * 9 + c
+    if (a * 81 + b * 9 + c == c * 49 + b * 7 + a){
+      break
+    }
   }
-  // 去掉所有小于7的个位数的情况
-  var button = true
-  while (seven != nine_reverse || button ){
-    if(seven % 10 > 6){            //个位数到7十位数进1
-      seven = seven % 100 + 10 - 7;
-      if(seven % 100 > 69){        //十位数到70百位数进1
-        seven = seven % 1000 + 100 - 70;
-        if(seven % 1000 > 699){       //百位数到700千位数进1
-          seven = seven % 10000 + 1000 - 700
-        }
-      }
-    }else{
-      seven++
-    }
-    /* ========== */
-    if (nine % 10 > 8){            //个位数到9十位数进1
-      nine = nine % 100 + 10 - 9
-      if(nine % 100 > 89){        //十位数到90百位数进1
-        nine = nine % 1000 + 100 - 90
-        if(nine % 1000 > 899){       //百位数到900千位数进1
-          nine = nine % 10000 + 1000 - 900
-        }
-      }
-    }else{
-      nine++
-    }
-    /* ========== */
-    nine_reverse = reverse(nine)
-    ten++
-    i++
-    if (seven == nine_reverse && Math.floor(seven / 100) > 0) {
-      button = false
-    }
+  console.log(ten,`${c}${b}${a}`,`${a}${b}${c}`)
+</script>
 
-    // buttom七进制的数到达三位才为真
+<!-- 26.统计满足条件的4位数个数 -->
+<script type="norun" id="ch0105/26">
+  var n = Number(prompt("请输入血压测量次数："))
+  var i = 1
+  var time = 0
+  var times = 0
+  while(i <= n){
+    var a = Number(prompt("第" + i + "次测量的收缩压；"))
+    var b = Number(prompt("第" + i + "次测量的舒张压；"))
+    if (a <= 140 && a >= 90 && b <= 90 && b >= 60) {
+      time = time + 1
+      if(time > times){
+        times = time
+      }
+    }else{
+      time = 0
+    }
+    i++
   }
-  console.log(ten,seven,nine)
+  console.log(times)
 </script>
 
 
 <!-- 29.反转数字 -->
-<script xtype="norun" id="ch0105/29">
+<script type="norun" id="ch0105/29">
   var n = Number(prompt("请输入整数："))
   var reverse = function(x){
     var result = 0
