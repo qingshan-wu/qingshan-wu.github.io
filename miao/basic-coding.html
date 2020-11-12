@@ -637,11 +637,34 @@ debugger
 
 <!-- 22.津津的储蓄计划 -->
 <script type="norun" id="ch0105/22">
-
+  var budgets = []
+  var saving = 0
+  var balance = 0
+  var months = []
+  for (var i = 0; i < 12; i++){
+    var month = i + 1
+    budgets.push(Number(prompt("请输入津津"+ month +"月的预算：")))
+    if (i == 0){
+      balance = 300 - budgets[i]  //第一个月
+    }else{
+      balance = 300 + balance - budgets[i]  //累加，加到超过100就溢出到saving
+      if (balance >= 100){
+        saving = saving + Math.floor(balance / 100) * 100
+        balance = balance - Math.floor(balance / 100) * 100
+      }else if (balance < 0){
+        months.push(-month)
+      }
+    }
+  }
+  if (months.length != 0){
+    console.log(months[0])
+  }else{
+    console.log(saving * 1.2 + balance)
+  }
 </script>
 
 <!-- 23.药房管理 -->
-<script xtype="norun" id="ch0105/23">
+<script type="norun" id="ch0105/23">
   var m = Number(prompt("请输入每天开始时的药品总量m："))
   var n = Number(prompt("这一天取药的人数n（0 < n <= 100）："))
   var i = 1
