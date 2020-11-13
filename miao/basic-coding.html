@@ -605,14 +605,10 @@ debugger
 <!-- 20.球弹跳高度的计算 -->
 <script type="norun" id="ch0105/20">
   var h = Number(prompt("请输入球的初始高度："))
-  var i = 0
-  var height = h
-  while (i < 10 ) {
-    height = height * 0.5
-    h = h + height * 2
-    i++
-  }
-  console.log(h.toFixed(4),height.toFixed(7))
+  var n = 10
+  var distance = h + (h / 2)*(1 - (0.5**(n - 1)))/ 0.5 * 2
+  var bounce = h * (0.5 ** n);
+  console.log(distance.toprecision(6),bounce.toprecision(6))
 </script>
 
 <!-- 21.角谷猜想 -->
@@ -747,7 +743,7 @@ debugger
 </script>
 
 <!-- 26.统计满足条件的4位数个数 -->
-<script xtype="norun" id="ch0105/26">
+<script type="norun" id="ch0105/26">
   var n = Number(prompt("请输入四位数个数；"))
   var count = 0
   for (var i = 0; i < n; i++){
