@@ -749,19 +749,15 @@ debugger
 <!-- 26.统计满足条件的4位数个数 -->
 <script xtype="norun" id="ch0105/26">
   var n = Number(prompt("请输入四位数个数；"))
-  var i = 1
-  var couter = 0
-  while (i <= n) {
+  var count = 0
+  for (var i = 0; i < n; i++){
     var a = Math.floor(n / 1000) % 10
     var b = Math.floor(n / 100) % 10
     var c = Math.floor(n / 10) % 10
     var d = n % 10
-    if (d - a - b - c > 0){
-      couter++
-    }
-    i++
+    if (d - a - b - c > 0) count++;
   }
-  console.log(couter)
+  console.log(count)
 </script>
 
 <!-- 27.级数求和 -->
