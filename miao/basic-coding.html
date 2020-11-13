@@ -657,6 +657,32 @@ debugger
   }
 </script>
 
+<!-- 22.津津的储蓄计划 不用数组-->
+<script xtype="norun" id="">
+  var sum = 0
+  var flag = false
+  var money = 0
+  for (var i = 1; i <= 12; i++){
+    money += 300
+    var budgets = Number(prompt("请输入津津"+ i +"月的预算："))
+    money -= budget
+    if (money < 0){
+      console.log(-i)
+      flag = true
+      break
+    }
+    if (money >= 100){
+      var left = money % 100
+      sum += money - left
+      money = left
+    }
+  }
+  if (!flag) {
+    console.log(sum * 1.2 + money)
+  }
+</script>
+
+
 <!-- 23.药房管理 -->
 <script type="norun" id="ch0105/23">
   var m = Number(prompt("请输入每天开始时的药品总量m："))
