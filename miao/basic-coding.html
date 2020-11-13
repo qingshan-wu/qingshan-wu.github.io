@@ -684,32 +684,18 @@ debugger
 
 
 <!-- 23.药房管理 -->
-<script type="norun" id="ch0105/23">
+<script xtype="norun" id="ch0105/23">
   var m = Number(prompt("请输入每天开始时的药品总量m："))
   var n = Number(prompt("这一天取药的人数n（0 < n <= 100）："))
-  var i = 1
-  var persons = []
-  while (i <= n) {
-    persons.push(Number(prompt("第" + i + "病人希望取走的药品数量：")))
-    i++
-  }
-  for (var i = 0; i < persons.length; i++){
-    for (var j = 0; j < persons.length - 1 - i; j++){
-      if (persons[j] > persons[j + 1]){
-        var temp = persons[j + 1]
-        persons[j + 1] = persons[j]
-        persons[j] = temp  //比较大值往后移
-      }
+  var c = 0
+  for (var i = 1; i <= n; i++){
+    var want = Number(prompt("请输入第"+ i +"个病人的需求量："))
+    if (m >= want) {
+      m -= want
+    }else{
+      c++
     }
   }
-  var balance = persons.map(function(person){
-    return m = m - person;  //映射出每个病人取完药后的剩余量
-  })
-  var j = 0
-  while (balance[j] > 0) {
-   j++
-  }
-  console.log(n - j)
 </script>
 
 <!-- 24.正常血压 -->
