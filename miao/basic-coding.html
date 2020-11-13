@@ -747,15 +747,15 @@ debugger
 </script>
 
 <!-- 26.统计满足条件的4位数个数 -->
-<script type="norun" id="ch0105/26">
+<script xtype="norun" id="ch0105/26">
   var n = Number(prompt("请输入四位数个数；"))
   var i = 1
   var couter = 0
   while (i <= n) {
-    var a = Math.floor(n / 1000)
-    var b = Math.floor((n - a * 1000)/100)
-    var c = Math.floor((n - a * 1000 - b * 100)/ 10)
-    var d = n - a * 1000 - b * 100 - c * 10
+    var a = Math.floor(n / 1000) % 10
+    var b = Math.floor(n / 100) % 10
+    var c = Math.floor(n / 10) % 10
+    var d = n % 10
     if (d - a - b - c > 0){
       couter++
     }
