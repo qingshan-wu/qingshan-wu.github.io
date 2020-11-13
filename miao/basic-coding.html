@@ -752,10 +752,10 @@ debugger
   var i = 1
   var couter = 0
   while (i <= n) {
-    var a = Math.floor(x / 1000)
-    var b = Math.floor((x - a * 1000)/100)
-    var c = Math.floor((x - a * 1000 - b * 100)/ 10)
-    var d = x - a * 1000 - b * 100 - c * 10
+    var a = Math.floor(n / 1000)
+    var b = Math.floor((n - a * 1000)/100)
+    var c = Math.floor((n - a * 1000 - b * 100)/ 10)
+    var d = n - a * 1000 - b * 100 - c * 10
     if (d - a - b - c > 0){
       couter++
     }
@@ -944,7 +944,7 @@ debugger
 <!-- 38.计算多项式的导函数 -->
 <script type="norun" id="ch0105/38">
   var n = Number(prompt("请多项式的最高次幂为n:"))
-  var n = Number(prompt("请设置雇佣兵的战斗力:"))
+  var m = Number(prompt("请设置雇佣兵的战斗力:"))
   var x = Number(prompt("请设置雇佣兵能量元素数量:"))
   var best = 0
   do {
