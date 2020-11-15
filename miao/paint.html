@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <canvas width="400" height="300"></canvas>
+  <canvas width="500" height="500"></canvas>
 </body>
 <script>
   var canvas = document.querySelector('canvas')
@@ -58,19 +58,163 @@
     dot (i, 50, "black")
   }
 
+  /* 画一条45度的斜线 */
+  /* for (var i = 0; i < 400; i++){
+    dot (i, i, "black")
+  }
+
+  for (var i = 0; i < 400; i++){
+    dot (i, i / Math.sqrt(3) , "black")
+  } */
+
+  /* 不用浮点运算的斜线 */
+  var dx = 8
+  var dy = 3   //斜率
+  var y = 0
+  var yy = 0
+
+  for (var i = 0; i < 400; i++){
+    dot (i, y, "olive")
+    yy += dy
+    if (yy > dx){
+      y++
+      yy -= dx
+    }
+  }
+
+   /* 不用浮点运算的圆 */
+  var x = 0
+  var y = r = 150
+  var rs = r * r
+  while(x <= y){ //x < y更靠近y轴    1/8圆
+
+
+    dot (x + 300, y + 300, "red")
+    dot (-x + 300, y + 300, "red")
+    dot (x + 300, -y + 300, "red")
+    dot (-x + 300, -y + 300, "red")
+    dot (x + 300, y + 300, "red")
+    dot (y + 300, x + 300, "red")
+    dot (-y + 300, x + 300, "red")
+    dot (y + 300, -x + 300, "red")
+    dot (-y + 300, -x + 300, "red")
+    x++
+    var y1 = y
+    var y2 = y - 1
+    var dy1 = x * x + y1 * y1
+    var dy2 = x * x + y2 * y2
+    if (Math.abs(dy1 - rs) < Math.abs(dy2 - rs)){
+      y = y1
+    }else{ //选择更接近绝对值最接近半径的点
+      y = y2
+    }
+  }
+
+
+   /* 不用浮点运算的圆 */
+   /* 实心 */
+  var x = 0
+  var y = r = 100
+  var rs = r * r
+  var r2 = 3
+  while(x <= y){ //x < y更靠近y轴    1/8圆
+    dot (x + 300, y + 300, "olive")
+    dot (-x + 300, y + 300, "olive")
+    dot (x + 300, -y + 300, "olive")
+    dot (-x + 300, -y + 300, "olive")
+    dot (x + 300, y + 300, "olive")
+    dot (y + 300, x + 300, "olive")
+    dot (-y + 300, x + 300, "olive")
+    dot (y + 300, -x + 300, "olive")
+    dot (-y + 300, -x + 300, "olive")
+    for (var i = y + 300 - 1; i > -y + 300; i--){
+      dot (x + 300, i, "red")
+    }
+    for (var i = y + 300 - 1; i > -y + 300; i--){
+      dot (-x + 300, i, "green")
+    }
+    for (var i = x + 300 - 1 ; i > -x + 300; i--){
+      dot (y + 300, i, "orange")
+    }
+    for (var i = x + 300 - 1; i > -x + 300; i--){
+      dot (-y + 300, i, "lime")
+    }
+
+
+    x++
+    var y1 = y
+    var y2 = y - 1
+    var dy1 = x * x + y1 * y1
+    var dy2 = x * x + y2 * y2
+    if (Math.abs(dy1 - rs) < Math.abs(dy2 - rs)){
+      y = y1
+    }else{ //选择更接近绝对值最接近半径的点
+      y = y2
+    }
+  }
+
+
+
+
+
+
   for (var i = 0; i < 400; i++){
     dot (i, 55, i % 2 ? "black" : "transparent")
   }
 
-  /* for (var x = 0; x < 400; x++){
-    for (var y = 0; y < 400; y++){
-      if ((x - 40) ** 2 + (y - 40) ** 2 = 30 ** 2){
-        dot (x, y, "black")
-      }else{
-        dot (x, y, "transparent")
+  dot(0,0,"black")
+  /* 画一条两个实点两个空点的虚线 */
+  for (var i = 0; i < 400; i++){
+      dot (4 * i, 60, "black")
+      dot (4 * i + 1, 60, "black")
+  }
+  for (var i = 0; i < 400; i++){
+    if(i % 4 < 2){
+      dot (i, 65, "black")
+    }
+  }
+
+  /* 画一条三个实点两个空点的虚线 */
+  for (var i = 0; i < 400; i++){
+    if(i % 5 < 3){
+      dot (i, 70, "black")
+    }
+  }
+  /* 画一个空心的圆 */
+  // for (var x = 0; x < 400; x++){
+  //   for (var y = 0; y < 300; y++){
+  //     if ((x - 100) ** 2 + (y - 100) ** 2 == 5 ** 2){
+  //       dot (x, y, "black")
+  //     }
+  //   }
+  // }
+
+  /* 画一个实心的圆 */
+  // for (var x = 0; x < 400; x++){
+  //   for (var y = 0; y < 300; y++){
+  //     if ((x - 120) ** 2 + (y - 100) ** 2 < 5 ** 2){
+  //       dot (x, y, "#"+224098)
+  //     }
+  //   }
+  // }
+
+  /* 画一个大小合适的sin(x)的图像 */
+  for (var x = 0; x < 500; x++){
+    dot (x, 270, "black")
+    dot(x, 12 * Math.sin(0.1 * x)+270,"black")
+    dot(x, 12 * Math.sin(0.1 * x)+269,"black")
+    dot(x - 1, 12 * Math.sin(0.1 * x)+271,"black")
+  }
+
+
+  /* 画一个实心矩形 */
+  for (var x = 0; x < 400; x++){
+    for (var y = 0; y < 300; y++){
+      if (x > 100 && x < 130 && y > 150 && y < 200){
+        dot (x, y, "#"+224098)
       }
     }
-  } */
+  }
 
 
 </script>
