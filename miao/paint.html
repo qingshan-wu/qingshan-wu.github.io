@@ -129,15 +129,11 @@
     dot (-y + 300, -x + 300, "olive")
     for (var i = y + 300 - 1; i > -y + 300; i--){
       dot (x + 300, i, "red")
-    }
-    for (var i = y + 300 - 1; i > -y + 300; i--){
       dot (-x + 300, i, "green")
-    }
-    for (var i = x + 300 - 1 ; i > -x + 300; i--){
-      dot (y + 300, i, "orange")
-    }
-    for (var i = x + 300 - 1; i > -x + 300; i--){
-      dot (-y + 300, i, "lime")
+      if (i > x + 300 || i < -x + 300){
+        dot (i, x + 300, "pink")
+        dot (i, -x + 300, "orange")
+      }
     }
 
 
@@ -201,9 +197,7 @@
   /* 画一个大小合适的sin(x)的图像 */
   for (var x = 0; x < 500; x++){
     dot (x, 270, "black")
-    dot(x, 12 * Math.sin(0.1 * x)+270,"black")
-    dot(x, 12 * Math.sin(0.1 * x)+269,"black")
-    dot(x - 1, 12 * Math.sin(0.1 * x)+271,"black")
+    dot( x , 5 * Math.sin(0.2 * x)+270,"black")
   }
 
 
