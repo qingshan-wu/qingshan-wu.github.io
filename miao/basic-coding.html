@@ -970,18 +970,34 @@ debugger
 </script>
 
 <!-- 40.数1的个数 -->
+
+  // var n = Number(prompt("请输入一个正整数n(1 <= n <= 10000):"))
+  // var flag = 0
+  // for (var i = 1; i <= n; i++){
+  //   if (i % 10 == 1 || Math.floor(i / 10) == 1) {
+  //     flag++
+  //     if (i % 10 == 1 && Math.floor(i / 10) == 1){  // 11是两个1
+  //       flag++
+  //     }
+  //   }
+  // }
+  // console.log(flag)
 <script type="norun" id="ch0105/40">
   var n = Number(prompt("请输入一个正整数n(1 <= n <= 10000):"))
-  var flag = 0
+  var count = 0
+  console.time('loop')
   for (var i = 1; i <= n; i++){
-    if (i % 10 == 1 || Math.floor(i / 10) == 1) {
-      flag++
-      if (i % 10 == 1 && Math.floor(i / 10) == 1){  // 11是两个1
-        flag++
+    var m = i
+    while (m > 0){ //从个位开始数一的个数
+      var digit = m % 10
+      if (digit === 1){
+        count++
       }
+      m = (m - digit) / 10
     }
   }
-  console.log(flag)
+  console.timeEnd('loop')
+  console.log(count)
 </script>
 
 <!-- 41.数字统计 -->
