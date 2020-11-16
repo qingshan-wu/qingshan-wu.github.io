@@ -1115,3 +1115,122 @@ debugger
     }
   }
 </script>
+
+<!-- sqrt: 求一个正数的平方根 -->
+<script type="norun" id="sqrt">
+  var sqrt = function(n){
+    return Math.sqrt(n)
+  }
+</script>
+
+<!-- narcissistic: 写一个函数判断一个数是否为水仙花数 -->
+<script type="norun" id="narcissistic">
+  var narcissistic = function(n){
+    var a = n % 10
+    var b = (n - a) % 100 / 10
+    var c = (n - a - b * 10) / 100
+    var result = a ** 3 + b ** 3 + c ** 3
+    if (result == n){
+      return true
+    }else{
+      return false
+    }
+  }
+</script>
+
+<!-- narcissistics:输出10000以内的所有水仙花数-->
+<script type="norun" id="narcissistics">
+  var narcissistic = function(){
+    for (var n = 100; n < 1000; n++){
+      var num = n
+      var sum = 0
+      while(num > 0){ //这个循环固定循环3次，因为n是三位数
+        sum += (num % 10) ** 3
+        num = (num - num % 10) / 10
+      }
+      if (sum == n){
+        return n
+      }
+    }
+  }
+</script>
+
+<!-- palindrom: 写函数求阶乘 -->
+<script type="norun" id="palindrom">
+  var palindrom = function(n){
+    if (n == 1){
+      return 1;
+    }else{
+      return n * palindrom(n - 1)
+    }
+  }
+</script>
+
+<!-- weekday: 给定年和月，计算这个月的第一天是星期几 -->
+<script xtype="norun" id="weekday">
+  var weekday = function(y,m){
+
+  }
+</script>
+
+<!-- complete-number: 写一个函数求一个数是否为完全数 -->
+<script xtype="norun" id="complete-number">
+  var completeNumber = function(n){
+    var sqrt_n = Math.sqrt(n)
+    var sum = 1
+    for (var i = 2; i <= sqrt_n; i++){
+      if (n % i == 0) {
+        if (i == sqrt_n){
+          sum += i
+        } else {
+          sum = sum + i + n / i
+        }
+      }
+    }
+    if (sum == n) {
+      return true
+    } else {
+      return false
+    }
+  }
+</script>
+
+<!-- complete-numbers: 输出1000以内的所有完数 -->
+<script xtype="norun" id="complete-numbers">
+  var completeNumbers = function(){
+    for (var n = 6; n <= 1000; n++){
+      var sqrt_n = Math.sqrt(n)
+      var sum = 1
+      for (var i = 2; i <= sqrt_n; i++){ //判断i是否是约数，是就一对加入sum
+        if (n % i == 0) {
+          if (i == sqrt_n){
+            sum += i
+          } else {
+            sum = sum + i + n / i
+          }
+        }
+      }
+      if (sum == n) { //判断是否完全数，是则返回n
+        console.log(n)
+      }
+    }
+  }
+</script>
+
+<!-- itob: 不使用隐式类型转换将一个数字转换为字符串 -->
+<script xtype="norun" id="itob">
+  var itob = function(n){
+    return String(n)
+  }
+</script>
+
+<!-- lcf: 写函数求出两个数的最大公约数 -->
+<script xtype="norun" id="lcf">
+  var lcf = function(a, b){ //辗转相除法
+    if (a % b == 0){ //如果b>a,会多一层递归，a % b == a,位置调换
+      return b
+    }else{
+      return lcf(b, a % b)
+    }
+  }
+</script>
