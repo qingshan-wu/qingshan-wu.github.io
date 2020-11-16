@@ -1174,7 +1174,7 @@ debugger
 </script>
 
 <!-- complete-number: 写一个函数求一个数是否为完全数 -->
-<script xtype="norun" id="complete-number">
+<script type="norun" id="complete-number">
   var completeNumber = function(n){
     var sqrt_n = Math.sqrt(n)
     var sum = 1
@@ -1196,7 +1196,7 @@ debugger
 </script>
 
 <!-- complete-numbers: 输出1000以内的所有完数 -->
-<script xtype="norun" id="complete-numbers">
+<script type="norun" id="complete-numbers">
   var completeNumbers = function(){
     for (var n = 6; n <= 1000; n++){
       var sqrt_n = Math.sqrt(n)
@@ -1218,14 +1218,14 @@ debugger
 </script>
 
 <!-- itob: 不使用隐式类型转换将一个数字转换为字符串 -->
-<script xtype="norun" id="itob">
+<script type="norun" id="itob">
   var itob = function(n){
     return String(n)
   }
 </script>
 
 <!-- lcf: 写函数求出两个数的最大公约数 -->
-<script xtype="norun" id="lcf">
+<script type="norun" id="lcf">
   var lcf = function(a, b){ //辗转相除法
     if (a % b == 0){ //如果b>a,会多一层递归，a % b == a,位置调换
       return b
@@ -1233,4 +1233,19 @@ debugger
       return lcf(b, a % b)
     }
   }
+</script>
+
+<!-- lcm: 写函数求出两个数的最小公倍数 -->
+<script type="norun" id="lcm">
+  var lcm = function(n, m){
+    var lcf = function(a,b){
+      if (a % b == 0){
+        return b
+      }else{
+        return lcf(b, a % b)
+      }
+    }
+    return n * m / lcf(n,m) //两数乘积除以最大公约数等于最小公倍数
+  }
+  console.log(lcm(21,28))
 </script>
