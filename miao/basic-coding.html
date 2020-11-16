@@ -853,6 +853,25 @@ debugger
   console.log(offLight.join(","))
 </script>
 
+<script type="norun" id="ch0105/31">
+  var n = Number(prompt("请输入灯的数量:"))
+  var m = Number(prompt("请输入人数:"))
+  var str = ''
+  debugger
+  for (var i = 1; i <= n; i++) { //每个灯经过所有人循环后的状态
+    var light = true
+    for (var p = 1; p <= m; p++){
+      if (i % p){
+        light = !light
+      }
+    }
+    if (light == false){ //每一个灯经过m人后的状态，灭输出序号
+      str = str + i + ","
+    }
+  }
+  console.log(str.slice(0, -1))
+</script>
+
 <!-- 32.分数序列和 -->
 <script type="norun" id="ch0105/32">
   var n = Number(prompt("请输入正整数n(n<=30):"))
