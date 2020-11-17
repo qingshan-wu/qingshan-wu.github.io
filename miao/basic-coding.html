@@ -1117,10 +1117,35 @@ debugger
 </script>
 
 <!-- sqrt: 求一个正数的平方根 -->
+<script xtype="norun" id="sqrt">
+  var sqrt = function(n){
+    var l = 0
+    var r = n
+    while (r - l > 0.0001){
+      var m = (l + r) / 2
+      if (m ** 2 > n){
+        r = m
+      }else{
+        l = m
+      }
+    }
+    return (l + r) / 2
+  }
+</script>
+
+<!-- sqrt: 求一个正数的平方根 -->
 <script type="norun" id="sqrt">
   var sqrt = function(n){
-    return Math.sqrt(n)
+    var x1 = n
+    var x0
+    while (x1 - x0 > 0.00001){
+      x1 = x0
+      var x0 = x1 / 2 + n / (2 * x1)
+      console.log(x1)
+    }
+    return x0
   }
+  console.log(sqrt(90))
 </script>
 
 <!-- narcissistic: 写一个函数判断一个数是否为水仙花数 -->
@@ -1167,7 +1192,7 @@ debugger
 </script>
 
 <!-- weekday: 给定年和月，计算这个月的第一天是星期几 -->
-<script xtype="norun" id="weekday">
+<script type="norun" id="weekday">
   var weekday = function(y,m){
     var days = 0
     for(var dy = 1970; dy < y; dy++){
@@ -1214,11 +1239,7 @@ debugger
         }
       }
     }
-    if (sum == n) {
-      return true
-    } else {
-      return false
-    }
+    return sum == n
   }
 </script>
 
