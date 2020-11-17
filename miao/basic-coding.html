@@ -1117,7 +1117,7 @@ debugger
 </script>
 
 <!-- sqrt: 求一个正数的平方根 -->
-<script type="norun" id="sqrt">
+<script xtype="norun" id="sqrt">
   // var sqrt = function(n){
   //   var l = 0
   //   var r = n
@@ -1137,8 +1137,13 @@ debugger
       var x = (x + n / x) / 2
       console.log(x)
     }
-    return x
+    if (x - Math.floor(x) < 0.000001) {
+      return Math.floor(x)
+    }else{
+      return x
+    }
   }
+  console.log(sqrt(100))
 </script>
 
 
