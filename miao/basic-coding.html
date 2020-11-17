@@ -1288,10 +1288,17 @@ debugger
 </script>
 
 <!-- itob: 不使用隐式类型转换将一个数字转换为字符串 -->
-<script type="norun" id="itob">
-  var itob = function(n){
-
+<script xtype="norun" id="itob">
+  var itob = function(n){ //使用ascii码
+    var str = new String()
+    while (n > 0){
+      var digit = n % 10
+      str += String.fromCharCode(digit + 48)
+      n = (n - digit) / 10
+    }
+    return str
   }
+  console.log(itob(8848))
 </script>
 
 <!-- lcf: 写函数求出两个数的最大公约数 -->
