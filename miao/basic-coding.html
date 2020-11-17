@@ -1169,8 +1169,35 @@ debugger
 <!-- weekday: 给定年和月，计算这个月的第一天是星期几 -->
 <script xtype="norun" id="weekday">
   var weekday = function(y,m){
-
-  }
+    var days = 0
+    for(var dy = 1970; dy < y; dy++){
+      if (dy % 4 == 0 && dy % 100 != 0 || dy % 400 == 0){
+        days += 366
+      }else{
+        days += 365
+      }
+    }
+    for (var dm = 1; dm < m; dm++){
+      if (dm < 8 && dm % 2 != 0 && dm != 2 || dm > 7 && dm % 2 == 0){
+        days += 31
+      }else if (dm == 2){
+        if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0){
+          days += 29
+        }else{
+          days += 28
+        }
+      }else{
+        days += 30
+      }
+    }
+    var day = days % 7 + 4
+    if (day >= 7){
+      return day - 7
+    }else{
+      return day
+    }
+  } // 0代表周日，123456分别代表周一到周六
+  console.log(weekday(2020,12))
 </script>
 
 <!-- complete-number: 写一个函数求一个数是否为完全数 -->
