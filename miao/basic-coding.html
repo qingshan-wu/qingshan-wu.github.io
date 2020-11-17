@@ -1191,13 +1191,13 @@ debugger
       }
     }
     var day = days % 7 + 4
-    if (day >= 7){
+    if (day > 7){
       return day - 7
     }else{
       return day
     }
-  } // 0代表周日，123456分别代表周一到周六
-  console.log(weekday(2020,12))
+  } // 1234567分别代表周一到周日（七）
+  console.log(weekday(2020,11))
 </script>
 
 <!-- complete-number: 写一个函数求一个数是否为完全数 -->
