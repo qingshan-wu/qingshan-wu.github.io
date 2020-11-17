@@ -1131,19 +1131,29 @@ debugger
   //   }
   //   return (l + r) / 2
   // }
+  // var sqrt = function(n){
+  //   var x = n
+  //   while (x ** 2 - n > 0.00001){//x1 = x0 - f(x0) / f'(x0) 牛顿迭代公式
+  //     var x = (x + n / x) / 2
+  //     console.log(x)
+  //   }
+  //   if (x - Math.floor(x) < 0.000001) {
+  //     return Math.floor(x)
+  //   }else{
+  //     return x
+  //   }
+  // }
+  // console.log(sqrt(100))
+//能求出完全平方数的平方根
   var sqrt = function(n){
-    var x = n
-    while (x ** 2 - n > 0.00001){//x1 = x0 - f(x0) / f'(x0) 牛顿迭代公式
+    var x = n / 2
+    while (x ** 2 > n){ //x1 = x0 - f(x0) / f'(x0) 牛顿迭代公式
       var x = (x + n / x) / 2
-      console.log(x)
     }
-    if (x - Math.floor(x) < 0.000001) {
-      return Math.floor(x)
-    }else{
-      return x
-    }
+    return x
   }
   console.log(sqrt(100))
+</script>
 </script>
 
 
