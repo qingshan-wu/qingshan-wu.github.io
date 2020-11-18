@@ -1143,16 +1143,17 @@ debugger
   //     return x
   //   }
   // }
-  // console.log(sqrt(100))
+  // console.log(sqrt(99))
 //能求出完全平方数的平方根
   var sqrt = function(n){
     var x = n / 2
     while (x ** 2 > n){ //x1 = x0 - f(x0) / f'(x0) 牛顿迭代公式
       var x = (x + n / x) / 2
+      console.log(x)
     }
     return x
   }
-  console.log(sqrt(100))
+  console.log(sqrt(9))
 </script>
 </script>
 
