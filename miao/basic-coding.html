@@ -565,6 +565,26 @@ debugger
   console.log(result)
 </script>
 
+<script xtype="norun" id="ch0105/17">
+  var Fibonacci = function(k){
+    var a = 0
+    var b = 1
+    for (var i = 0; i < k; i++){
+      i % 2 ? (a = a + b) : (b = b + a)
+    }
+    var result = i % 2 ? b : a
+    return result
+  }
+  var k = Number(prompt("请输入k："))
+  var a = 0
+  var b = 1
+  for (var i = 0; i < k; i++){
+    i % 2 ? (a = a + b) : (b = b + a)
+  }
+  var result = i % 2 ? b : a
+  console.log(result)
+</script>
+
 <!-- 18.鸡尾酒疗法 -->
 <script type="norun" id="ch0105/18">
   var n = Number(prompt("请输入n："))
@@ -1117,7 +1137,7 @@ debugger
 </script>
 
 <!-- sqrt: 求一个正数的平方根 -->
-<script xtype="norun" id="sqrt">
+<script type="norun" id="sqrt">
   // var sqrt = function(n){
   //   var l = 0
   //   var r = n
@@ -1159,7 +1179,7 @@ debugger
 
 
 <!-- isNarcissistic: 写一个函数判断一个数是否为水仙花数 -->
-<script xtype="norun" id="isNarcissistic">
+<script type="norun" id="isNarcissistic">
   // var isNarcissistic = function(n){
   //   var a = n % 10
   //   var b = (n - a) % 100 / 10
@@ -1304,7 +1324,7 @@ debugger
 </script>
 
 <!-- itob: 不使用隐式类型转换将一个数字转换为字符串 -->
-<script xtype="norun" id="itob">
+<script type="norun" id="itob">
   var itob = function(n){ //使用ascii码
     var str = new String()
     while (n > 0){
@@ -1318,7 +1338,7 @@ debugger
 </script>
 
 <!-- lcf: 写函数求出两个数的最大公约数 -->
-<script xtype="norun" id="lcf">
+<script type="norun" id="lcf">
   // var lcf = function(a, b){ //辗转相除法
   //   if (a % b == 0){ //如果b>a,会多一层递归，a % b == a,位置调换
   //     return b
@@ -1375,3 +1395,129 @@ debugger
     return n * m / lcf(n,m) //两数乘积除以最大公约数等于最小公倍数
   }
 </script>
+
+<script type="norun" id="lcm">
+  var hammingDistance = function(x, y) {
+    var a = []
+    var b = []
+    if (x == y){
+        return 0
+    }
+    var longest = x > y ? x : y
+    for (var i = 0; i < longest; i++){
+        if (i < x){
+            a[a.length - 1] += 1
+            while(a.indexOf(2)){ //逢2进1
+                a.unshift(1)
+                a[a.indexOf(2)] = 0
+            }
+        }else{
+            a.unshift(0)
+        }
+        if (i < y){
+           b[b.length - 1] += 1
+            while(b.indexOf(2)){ //逢2进1
+                b.unshift(1)
+                b[b.indexOf(2)] = 0
+            }
+        }else{
+            b.unshift(0)
+        }
+    }
+    var count = 0
+    for(var i = 0; i < a.length; i++){
+        if (a[i] == b[i]){
+            count++
+        }
+    }
+    return count
+  }
+  console.log(hammingDistance(2,4))
+</script>
+
+
+//     var a = []
+//     var b = []
+//     if (x == y){
+//         return 0
+//     }
+//     var longest = x > y ? x : y
+//     for (var i = 0; i < longest; i++){
+//         if (i < x){
+//             a[a.length - 1] += 1
+//             while(a.indexOf(2)){ //逢2进1
+//                 a.unshift(1)
+//                 a[a.indexOf(2)] = 0
+//             }
+//         }else{
+//             a.unshift(0)
+//         }
+//         if (i < y){
+
+//         }else{
+//             b.unshift(0)
+//         }
+//     }
+
+//     var count = 0
+//     for(var i = 0; i < a.length; i++){
+//         if (a[i] == b[i]){
+//             count++
+//         }
+//     }
+//     return count
+
+Line 51 in solution.js
+}));
+SyntaxError: Unexpected end of input
+    Line 1116: Char 16 in loader.js (wrapSafe)
+    Line 1164: Char 27 in loader.js (Module._compile)
+    Line 1220: Char 10 in loader.js (Object.Module._extensions..js)
+    Line 1049: Char 32 in loader.js (Module.load)
+    Line 937: Char 14 in loader.js (Function.Module._load)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    Line 17: Char 47 in run_main_module.js
+
+
+    var checkPerfectNumber = function(num) {
+      var sqrt_n = Math.sqrt(num)
+      var sum = 1
+      for (var i = 2; i < sqrt_n; i++){
+          if (num % i == 0) {
+              if (i == sqrt_n){
+                  sum += i
+              } else {
+                  sum = sum + i + num / i
+              }
+          }
+      }
+      return sum == num
+    }
+    console.log(checkPerfectNumber(28))
+
+    var convertToBase7 = function(num) {
+      var result = ""
+      var temp
+      var width = 0
+      var divide = 0
+      var flag = true
+      if (num < 0){
+          num = -num
+          flag = false
+      }
+      debugger;
+      while(num > 0){
+          temp = num % (7 ** (width + 1))
+          divide = divide + temp * (7** width)
+          result = temp + result  //添加到前面
+          width++  //处理的位数加一
+          num = num - divide
+      }
+      if (!flag){
+          result = "-"+ result
+          return (result)
+      }else{
+          return(result)
+      }
+   }
+   console.log(convertToBase7(7))
