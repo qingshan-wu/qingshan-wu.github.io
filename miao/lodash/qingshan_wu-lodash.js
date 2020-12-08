@@ -195,7 +195,7 @@ var qingshan_wu = function() {
     return minNum
   }
 
-  function sortIndex(ary, value) {
+  function sortedIndex(ary, value) {
     for (var i = 0; i < ary.length; i++) {
       if (value <= ary[i]) return i
     }
@@ -228,6 +228,6 @@ var qingshan_wu = function() {
 
     min,
     flattenDepth,
-    sortIndex
+    sortedIndex
   }
 }()
