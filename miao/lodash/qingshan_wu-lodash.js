@@ -89,7 +89,8 @@ var qingshan_wu = function() {
   }
 
   function dropRight(ary, n = 1) {
-    return  ary.slice(0, ary.length - n)
+    var idx = ary.length - n
+    return idx >= 0 ? ary.slice(0, idx) : []
   }
 
   function differenceWith(ary, values, comparator) {
