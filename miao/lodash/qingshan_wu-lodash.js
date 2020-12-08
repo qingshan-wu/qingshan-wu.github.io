@@ -177,6 +177,13 @@ var qingshan_wu = function() {
     return undefined
   }
 
+  function fill(ary, value, start = 0, end = ary.length) {
+    for (var i = start; i < end; i++) {
+      ary[i] = value
+    }
+    return ary
+  }
+
   function max(ary) {
     var maxNum = -Infinity
     for (var i = 0; i < ary.length; i++) {
@@ -223,6 +230,7 @@ var qingshan_wu = function() {
     every,
     filter,
     find,
+    fill,
     some,
     max,
 
