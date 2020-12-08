@@ -195,6 +195,13 @@ var qingshan_wu = function() {
     return minNum
   }
 
+  function sortIndex(ary, value) {
+    for (var i = 0; i < ary.length; i++) {
+      if (value <= ary[i]) return i
+    }
+    return ary.length
+  }
+
 
 
 
@@ -220,6 +227,7 @@ var qingshan_wu = function() {
     max,
 
     min,
-    flattenDepth
+    flattenDepth,
+    sortIndex
   }
 }()
