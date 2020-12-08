@@ -96,8 +96,14 @@ var qingshan_wu = function() {
     return res
   }
 
-  function fill(ary, value, start=0, end=array.length) {
-
+  function differenceWith(ary, values, comparator) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      for (var j = 0; j < values.length; j++) {
+        if (!comparator(ary[i], values[j])) res.push(ary[i])
+      }
+    }
+    return res
   }
 
   function flatten(ary) {
@@ -227,6 +233,7 @@ var qingshan_wu = function() {
     compact,
     concat,
     difference,
+    differenceWith,
     join,
     last,
     lastIndexOf,
