@@ -42,7 +42,26 @@ var qingshan_wu = function() {
     return res
   }
 
-  function
+  function join(ary, separator=',') {
+    var str = ''
+    for (var i = 0; i < ary.length - 1; i++) {
+      str += ary[i] + separator
+    }
+    return str + ary[i]
+  }
+
+  function last(ary) {
+    return ary[ary.length - 1]
+  }
+
+  function lastIndexOf(ary, value, fromIndex = ary.length - 1) {
+    for (var i = fromIndex; i >= 0; i--) {
+      if (ary[i] == value) return i
+    }
+    return -1
+  }
+
+
 
 
 
@@ -53,6 +72,9 @@ var qingshan_wu = function() {
     chunk,
     compact,
     concat,
-    difference
+    difference,
+    join,
+    last,
+    lastIndexOf
   }
 }()
