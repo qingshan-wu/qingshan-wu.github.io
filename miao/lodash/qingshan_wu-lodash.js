@@ -17,6 +17,14 @@ var qingshan_wu = function() {
     return res
   }
 
+  function compact(ary) {
+    let res = []
+    for (let i = 0; i < ary.length; i++) {
+      if (ary[i]) res.push(ary[i])
+    }
+    return res
+  }
+
 
 
 
