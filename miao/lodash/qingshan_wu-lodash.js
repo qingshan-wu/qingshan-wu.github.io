@@ -34,7 +34,15 @@ var qingshan_wu = function() {
   }
 
   function difference(ary) {
-    var set2 = new Set(...arguments.slice(1))
+    var set2 = new Set()
+    for (var j = 1; j < arguments.length; j++) {
+      if (arguments[j] instanceof Array) {
+        set2.add(...arguments[j])
+      } else {
+        set2.add(arguments[j])
+      }
+    }
+
     var res = []
     for (var i = 0; i < ary.length; i++) {
       if (!set2.has(ary[i])) res.push(ary[i])
