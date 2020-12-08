@@ -210,6 +210,44 @@ var qingshan_wu = function() {
     return ary.slice(0, ary.length - 1)
   }
 
+  function isEqual(a, b) {
+    if (a === b) return true
+    var ta = Object.getPrototypeOf(a)
+    var tb = Object.getPrototypeOf(b)
+
+    if (ta == tb) { //类型对比
+
+      if (ta == Array.prototype || ta == String.prototype) {  //对比数组
+        if (a.length != b.length) return false
+        for (var i = 0; i < a.length; i++) {
+          var tai = Object.getPrototypeOf(a[i])
+          var tbi = Object.getPrototypeOf(b[i])
+          if (tai != tbi) {
+            return false
+          } else if (tai == Array.prototype || tai == Object.prototype) {
+            isEqual(a[i], b[i])
+          } else if (a[i] != b[i]) return false
+        }
+      }
+
+      if (ta == Object.prototype) { //对比对象
+        for (var key in a) {
+          if (a[key] != b[key]) return false
+        }
+        for (var key in b) {
+          if (a[key] != b[key]) return false
+        }
+      }
+      if (ta == Number.prototype) {
+        if (a != b) return false
+      }
+
+    } else {
+      return false
+    }
+    return true
+  }
+
   function max(ary) {
     var maxNum = -Infinity
     for (var i = 0; i < ary.length; i++) {
@@ -272,6 +310,7 @@ var qingshan_wu = function() {
     head,
     indexOf,
     initial,
+    isEqual,
     some,
     max,
     min,
