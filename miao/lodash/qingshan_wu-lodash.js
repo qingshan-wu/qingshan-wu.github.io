@@ -15,8 +15,8 @@ var qingshan_wu = function() {
   }
 
   function compact(ary) {
-    let res = []
-    for (let i = 0; i < ary.length; i++) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
       if (ary[i]) res.push(ary[i])
     }
     return res
@@ -33,6 +33,15 @@ var qingshan_wu = function() {
     return ary
   }
 
+  function difference(ary, ary2) {
+    var set2 = new Set(ary2)
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      if (!set2.has(ary[i])) res.push(ary[i])
+    }
+    return res
+  }
+
   function
 
 
@@ -41,7 +50,9 @@ var qingshan_wu = function() {
 
 
   return {
-    chunk
-
+    chunk,
+    compact,
+    concat,
+    difference
   }
 }()
