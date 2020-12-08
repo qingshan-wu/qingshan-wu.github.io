@@ -62,6 +62,14 @@ var qingshan_wu = function() {
     return -1
   }
 
+  function reverse(ary) {
+    var res = []
+    for (var i = ary.length - 1; i >= 0; i--) {
+      res.push(ary[i])
+    }
+    return res
+  }
+
 
 
 
@@ -77,6 +85,7 @@ var qingshan_wu = function() {
     difference,
     join,
     last,
-    lastIndexOf
+    lastIndexOf,
+    reverse
   }
 }()
