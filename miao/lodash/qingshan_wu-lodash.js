@@ -22,7 +22,7 @@ var qingshan_wu = function() {
     return res
   }
 
-  function concat(ary, value) {
+  function concat(ary) {
     for (var i = 1; i < arguments.length; i++) {
       if (arguments[i] instanceof Array) {
         ary.push(...arguments[i])
@@ -33,8 +33,8 @@ var qingshan_wu = function() {
     return ary
   }
 
-  function difference(ary, ary2) {
-    var set2 = new Set(ary2)
+  function difference(ary) {
+    var set2 = new Set(...arguments.slice(1))
     var res = []
     for (var i = 0; i < ary.length; i++) {
       if (!set2.has(ary[i])) res.push(ary[i])
@@ -62,7 +62,6 @@ var qingshan_wu = function() {
     return -1
   }
 
-  function
 
 
 
