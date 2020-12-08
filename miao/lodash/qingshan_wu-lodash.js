@@ -173,12 +173,20 @@ var qingshan_wu = function() {
     return maxNum
   }
 
+  function maxBy(ary) {
+
+  }
+
   function min(ary) {
     var minNum = Infinity
     for (var i = 0; i < ary.length; i++) {
       minNum = ary[i] < minNum ? ary[i] : minNum
     }
     return minNum
+  }
+
+  function minBy(ary) {
+
   }
 
 
