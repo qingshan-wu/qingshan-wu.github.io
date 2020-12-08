@@ -190,6 +190,25 @@ var qingshan_wu = function() {
     return ary
   }
 
+  function fromPairs(pairs) {
+    var res = {}
+    for (var i = 0; i < pairs.length; i++) {
+      res[pairs[i][0]] = pairs[i][1]
+    }
+    return res
+  }
+
+  function head(ary) {
+    return ary[0]
+  }
+
+  function indexOf(ary, value, fromIndex = 0) {
+    for (var i = fromIndx; i < ary.length; i++) {
+      if (ary[i] == value) return i
+    }
+    return -1
+  }
+
   function initial(ary) {
     return ary.slice(0, ary.length - 1)
   }
@@ -244,10 +263,13 @@ var qingshan_wu = function() {
     flattenDeep,
     findIndex,
     findLastIndex,
+    fromPairs,
     every,
     filter,
     find,
     fill,
+    head,
+    indexOf,
     initial,
     some,
     max,
