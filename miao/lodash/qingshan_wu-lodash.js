@@ -218,7 +218,7 @@ var qingshan_wu = function() {
     for (var i = 0; i < ary.length; i++) {
       maxNum = ary[i] > maxNum ? ary[i] : maxNum
     }
-    return ary.length == 0 ? undefinded : maxNum
+    return ary.length == 0 ? undefined : maxNum
   }
 
 
@@ -228,7 +228,7 @@ var qingshan_wu = function() {
     for (var i = 0; i < ary.length; i++) {
       minNum = ary[i] < minNum ? ary[i] : minNum
     }
-    return ary.length == 0 ? undefinded : minNum
+    return ary.length == 0 ? undefined : minNum
   }
 
   function nth(ary, n = 0) {
