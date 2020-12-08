@@ -7,6 +7,7 @@ var qingshan_wu = function() {
         b.push(ary[i])
         count++
       } else {
+        i--
         res.push(b)
         b = []
         count = 0
@@ -15,6 +16,8 @@ var qingshan_wu = function() {
     if (b) res.push(b)
     return res
   }
+
+
 
 
 
