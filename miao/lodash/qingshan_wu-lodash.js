@@ -44,8 +44,9 @@ var qingshan_wu = function() {
 
   function join(ary, separator=',') {
     var str = ''
+    var se = String(separator)
     for (var i = 0; i < ary.length - 1; i++) {
-      str += ary[i] + separator
+      str += ary[i] + se
     }
     return str + ary[i]
   }
@@ -60,6 +61,8 @@ var qingshan_wu = function() {
     }
     return -1
   }
+
+  function
 
 
 
