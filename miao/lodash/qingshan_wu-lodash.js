@@ -124,6 +124,18 @@ var qingshan_wu = function() {
     return res
   }
 
+  function flattenDepth(ary, depth = 1) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] instanceof Array && depth > 0) {
+        res.push(...flattenDepth(ary[i], depth - 1))
+      } else {
+        res.push(ary[i])
+      }
+    }
+    return res
+  }
+
   function findIndex(ary, predicate = it => it == val , fromIndex = 0) {
     for (var i = fromIndex; i < ary.length; i++) {
       if (predicate(ary[i])) return i
