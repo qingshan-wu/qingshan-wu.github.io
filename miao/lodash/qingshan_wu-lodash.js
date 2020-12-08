@@ -23,9 +23,17 @@ var qingshan_wu = function() {
   }
 
   function concat(ary, value) {
-    var res = []
-
+    for (var i = 1; i < arguments.length; i++) {
+      if (arguments[i] instanceof Array) {
+        ary.push(...arguments[i])
+      } else {
+        ary.push(arguments[i])
+      }
+    }
+    return ary
   }
+
+  function
 
 
 
