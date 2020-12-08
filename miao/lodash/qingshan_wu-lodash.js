@@ -100,6 +100,18 @@ var qingshan_wu = function() {
 
   }
 
+  function flatten(ary) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] instanceof Array) {
+        res.push(...ary[i])
+      } else {
+        res.push(ary[i])
+      }
+    }
+    return res
+  }
+
 
 
 
@@ -118,6 +130,7 @@ var qingshan_wu = function() {
     lastIndexOf,
     reverse,
     drop,
-    dropRight
+    dropRight,
+    flatten
   }
 }()
