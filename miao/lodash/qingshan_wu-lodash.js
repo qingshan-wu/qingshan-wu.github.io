@@ -184,6 +184,10 @@ var qingshan_wu = function() {
     return ary
   }
 
+  function initial(ary) {
+    return ary.slice(0, ary.length - 1)
+  }
+
   function max(ary) {
     var maxNum = -Infinity
     for (var i = 0; i < ary.length; i++) {
@@ -212,6 +216,7 @@ var qingshan_wu = function() {
 
 
 
+
   return {
     chunk,
     compact,
@@ -231,6 +236,7 @@ var qingshan_wu = function() {
     filter,
     find,
     fill,
+    initial,
     some,
     max,
 
