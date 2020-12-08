@@ -212,6 +212,11 @@ var qingshan_wu = function() {
     }
     return ary.length
   }
+  function sum(ary) {
+    var res = 0
+    for (var i = 0; i < ary.length; i++) res += ary[i];
+    return res
+  }
 
 
 
@@ -242,6 +247,7 @@ var qingshan_wu = function() {
 
     min,
     flattenDepth,
-    sortedIndex
+    sortedIndex,
+    sum
   }
 }()
