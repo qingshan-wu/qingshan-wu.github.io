@@ -125,7 +125,13 @@ var qingshan_wu = function() {
   }
 
   function findIndex(ary, predicate = it => it == val , fromIndex = 0) {
-    for (var i = fromIdex; i < ary.length; i++) {
+    for (var i = fromIndex; i < ary.length; i++) {
+      if (predicate(ary[i])) return i
+    }
+    return -1
+  }
+  function findLastIndex(ary, predicate = it => it == val , fromIndex = ary.length - 1) {
+    for (var i = fromIndex; i >= 0; i--) {
       if (predicate(ary[i])) return i
     }
     return -1
@@ -145,6 +151,7 @@ var qingshan_wu = function() {
     dropRight,
     flatten,
     flattenDeep,
-    findIndex
+    findIndex,
+    findLastIndex
   }
 }()
