@@ -173,9 +173,9 @@ var qingshan_wu = function() {
     return maxNum
   }
 
-  function maxBy(ary) {
+  // function maxBy(ary) {
 
-  }
+  // }
 
   function min(ary) {
     var minNum = Infinity
@@ -185,9 +185,9 @@ var qingshan_wu = function() {
     return minNum
   }
 
-  function minBy(ary) {
+  // function minBy(ary) {
 
-  }
+  // }
 
 
   return {
@@ -210,8 +210,8 @@ var qingshan_wu = function() {
     find,
     some,
     max,
-    maxBy,
+    // maxBy,
     min,
-    minBy
+    // minBy
   }
 }()
