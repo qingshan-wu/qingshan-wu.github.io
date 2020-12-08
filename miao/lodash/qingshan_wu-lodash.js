@@ -203,7 +203,7 @@ var qingshan_wu = function() {
   }
 
   function indexOf(ary, value, fromIndex = 0) {
-    for (var i = fromIndx; i < ary.length; i++) {
+    for (var i = fromIndex; i < ary.length; i++) {
       if (ary[i] == value) return i
     }
     return -1
@@ -229,6 +229,10 @@ var qingshan_wu = function() {
       minNum = ary[i] < minNum ? ary[i] : minNum
     }
     return minNum
+  }
+
+  function nth(ary, n = 0) {
+    return n >= 0 ? ary[n] : ary[ary.length + n]
   }
 
   function sortedIndex(ary, value) {
@@ -273,8 +277,8 @@ var qingshan_wu = function() {
     initial,
     some,
     max,
-
     min,
+    nth,
     flattenDepth,
     sortedIndex,
     sum
