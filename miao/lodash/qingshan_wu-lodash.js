@@ -33,8 +33,14 @@ var qingshan_wu = function() {
     return ary
   }
 
-  function difference(ary) {
-    var set2 = new Set()
+  function difference(ary, ...values) {
+    var vals = []
+    for (var i = 0; i < values.length; i++) {
+      for (var ii = 0; ii < values[i].length; ii++) {
+        vals.push(values[i][ii])
+      }
+    }
+    var set2 = new Set(vals)
     for (var j = 1; j < arguments.length; j++) {
       if (arguments[j] instanceof Array) {
         set2.add(...arguments[j])
@@ -88,6 +94,10 @@ var qingshan_wu = function() {
       res.pop()
     }
     return res
+  }
+
+  function fill(ary, value, start=0, end=array.length) {
+
   }
 
 
