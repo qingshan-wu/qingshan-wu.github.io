@@ -70,6 +70,10 @@ var qingshan_wu = function() {
     return res
   }
 
+  function drop(ary, n = 1) {
+    return ary.slice(n)
+  }
+
 
 
 
@@ -86,6 +90,7 @@ var qingshan_wu = function() {
     join,
     last,
     lastIndexOf,
-    reverse
+    reverse,
+    drop
   }
 }()
