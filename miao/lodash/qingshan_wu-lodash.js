@@ -137,6 +137,29 @@ var qingshan_wu = function() {
     return -1
   }
 
+  function every(ary, predicate) {
+    for (var i = 0; i < ary.length; i++) {
+      if (!predicate(ary[i])) return false
+    }
+    return true
+  }
+  function some(ary, predicate) {
+    for (var i = 0; i < ary.length; i++) {
+      if (predicate(ary[i])) return true
+    }
+    return false
+  }
+
+  function filter(ary, predicate) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      if (predicate(ary[i])) res.push(ary[i])
+    }
+    return res
+  }
+
+  function find(ary, val)
+
 
   return {
     chunk,
@@ -152,6 +175,10 @@ var qingshan_wu = function() {
     flatten,
     flattenDeep,
     findIndex,
-    findLastIndex
+    findLastIndex,
+    every,
+    filter,
+    find,
+    some
   }
 }()
