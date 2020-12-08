@@ -112,12 +112,17 @@ var qingshan_wu = function() {
     return res
   }
 
-
-
-
-
-
-
+  function flattenDeep(ary) {
+    var res = []
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] instanceof Array) {
+        res.push(...flattenDeep(ary[i]))
+      } else {
+        res.push(ary[i])
+      }
+    }
+    return res
+  }
 
 
   return {
@@ -131,6 +136,7 @@ var qingshan_wu = function() {
     reverse,
     drop,
     dropRight,
-    flatten
+    flatten,
+    flattenDeep
   }
 }()
