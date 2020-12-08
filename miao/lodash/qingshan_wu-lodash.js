@@ -124,6 +124,13 @@ var qingshan_wu = function() {
     return res
   }
 
+  function findIndex(ary, predicate = it => it == val , fromIndex = 0) {
+    for (var i = fromIdex; i < ary.length; i++) {
+      if (predicate(ary[i])) return i
+    }
+    return -1
+  }
+
 
   return {
     chunk,
@@ -137,6 +144,7 @@ var qingshan_wu = function() {
     drop,
     dropRight,
     flatten,
-    flattenDeep
+    flattenDeep,
+    findIndex
   }
 }()
