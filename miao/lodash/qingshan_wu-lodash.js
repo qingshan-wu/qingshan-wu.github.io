@@ -158,7 +158,28 @@ var qingshan_wu = function() {
     return res
   }
 
-  function find(ary, val)
+  function find(ary, predicate=_.identity, fromIndex=0) {
+    for (var i = fromIndex; i < ary.length; i++) {
+      if (predicate(ary[i])) return ary[i]
+    }
+    return undefined
+  }
+
+  function max(ary) {
+    var maxNum = -Infinity
+    for (var i = 0; i < ary.length; i++) {
+      maxNum = ary[i] > maxNum ? ary[i] : maxNum
+    }
+    return maxNum
+  }
+
+  function min(ary) {
+    var minNum = Infinity
+    for (var i = 0; i < ary.length; i++) {
+      minNum = ary[i] < minNum ? ary[i] : minNum
+    }
+    return minNum
+  }
 
 
   return {
@@ -179,6 +200,10 @@ var qingshan_wu = function() {
     every,
     filter,
     find,
-    some
+    some,
+    max,
+    maxBy,
+    min,
+    minBy
   }
 }()
