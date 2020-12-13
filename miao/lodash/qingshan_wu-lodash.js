@@ -1,5 +1,86 @@
+/*
+ * @Author: qingshan
+ * @Date: 2020-12-08 15:01:43
+ * @LastEditTime: 2020-12-13 17:38:27
+ * @LastEditors: qingshan
+ * @Description:
+ * @FilePath: \miao\lodash\qingshan_wu-lodash.js
+ * @     Life is a drug
+ */
+
+
 var qingshan_wu = function() {
 
+  /* -------------------- */
+
+  /**
+   * @description:
+   * @param {*} a
+   * @param {*} b
+   * @return {Boolean}
+   */
+  function sameValueZero(a, b) {
+    if (a === b) return a !== 0 || 1 / a === 1 / b;
+    return a !== a && b !== b;
+  }
+  // 1 / +0 == Infinity, 1/ -0 == -Infinity
+  //NaN !== NaN 为true
+
+  // 类型检测工具集
+  const types = ["Null", "Undefined", "Boolean", "Number", "String", "Object", "Array", "Function"]
+  const typeUtils = {}
+
+  types.forEach(type => {
+    typeUtils["is" + type] = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object" + type + "]"
+    }
+  })
+
+
+
+
+
+  /* -------------------- */
+  return {
+    chunk,
+    compact,
+    concat,
+    difference,
+    differenceWith,
+    join,
+    last,
+    lastIndexOf,
+    reverse,
+    drop,
+    dropRight,
+    flatten,
+    flattenDeep,
+    findIndex,
+    findLastIndex,
+    fromPairs,
+    every,
+    filter,
+    find,
+    fill,
+    head,
+    indexOf,
+    initial,
+    isEqual,
+    some,
+    max,
+    min,
+    nth,
+    flattenDepth,
+    sortedIndex,
+    sum
+  };
+
+  /**
+   * @description:
+   * @param {*} ary
+   * @param {*} size
+   * @return {*}
+   */
   function chunk(ary, size = 1) {
     var res = [], temp = []
     for (var i = 0; i < ary.length; i++) {
@@ -286,37 +367,5 @@ var qingshan_wu = function() {
 
 
 
-  return {
-    chunk,
-    compact,
-    concat,
-    difference,
-    differenceWith,
-    join,
-    last,
-    lastIndexOf,
-    reverse,
-    drop,
-    dropRight,
-    flatten,
-    flattenDeep,
-    findIndex,
-    findLastIndex,
-    fromPairs,
-    every,
-    filter,
-    find,
-    fill,
-    head,
-    indexOf,
-    initial,
-    isEqual,
-    some,
-    max,
-    min,
-    nth,
-    flattenDepth,
-    sortedIndex,
-    sum
-  }
+
 }()
