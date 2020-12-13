@@ -1,17 +1,14 @@
 /*
  * @Author: qingshan
  * @Date: 2020-12-08 15:01:43
- * @LastEditTime: 2020-12-13 17:38:27
- * @LastEditors: qingshan
  * @Description:
- * @FilePath: \miao\lodash\qingshan_wu-lodash.js
- * @     Life is a drug
+ * @Life is a drug
  */
 
 
 var qingshan_wu = function() {
 
-  /* -------------------- */
+  /* ---------------------------------------------------------------------------------- */
 
   /**
    * @description:
@@ -40,7 +37,7 @@ var qingshan_wu = function() {
 
 
 
-  /* -------------------- */
+  /* ---------------------------------------------------------------------------------- */
   return {
     chunk,
     compact,
