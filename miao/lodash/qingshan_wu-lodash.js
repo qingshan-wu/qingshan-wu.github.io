@@ -1,21 +1,16 @@
 /*
  * @Author: qingshan
  * @Date: 2020-12-08 15:01:43
- * @Description:
- * @Life is a drug
  */
-
 
 var qingshan_wu = function() {
 
   /* ---------------------------------------------------------------------------------- */
 
   /**
-   * @description: 工具集
-   * @param {*} a
-   * @param {*} b
-   * @return {Boolean}
-   * qhmnb
+   * 工具集
+   * @param {*}
+   * @return {*}
    */
   function sameValueZero(a, b) {
     if (a === b) return a !== 0 || 1 / a === 1 / b;
@@ -75,12 +70,6 @@ var qingshan_wu = function() {
     sum
   };
 
-  /**
-   * @description:
-   * @param {*} ary
-   * @param {*} size
-   * @return {*}
-   */
   function chunk(ary, size = 1) {
     var res = [], temp = []
     for (var i = 0; i < ary.length; i++) {
@@ -220,12 +209,6 @@ var qingshan_wu = function() {
     return res
   }
 
-  // function findIndex(ary, predicate = it => it == val , fromIndex = 0) {
-  //   for (var i = fromIndex; i < ary.length; i++) {
-  //     if (predicate(ary[i])) return i
-  //   }
-  //   return -1
-  // }
   function findIndex(ary, predicate, fromIndex = 0) {
     for (var i = fromIndex; i < ary.length; i++) {
 
@@ -263,9 +246,35 @@ var qingshan_wu = function() {
 
 
 
-  function findLastIndex(ary, predicate = it => it == val , fromIndex = ary.length - 1) {
+  function findLastIndex(ary, predicate, fromIndex = ary.length - 1) {
     for (var i = fromIndex; i >= 0; i--) {
-      if (predicate(ary[i])) return i
+      if (typeUtils.isFunction(predicate)) {
+        if (predicate(ary[i])) {
+          return i
+        }
+      }
+
+      if (typeUtils.isObject(predicate)) {
+        if (isEqual(ary[i], predicate)) {
+          return i
+        }
+      }
+
+      if (typeUtils.isArray(predicate)) {
+        for (var key in ary[i]) {
+          let obj = ary[i]
+          if (key == predicate[0] && obj[key] == predicate[1]) {
+            return i
+          }
+        }
+      }
+
+      if (typeUtils.isString(predicate)) {
+        for (var key in ary[i]) {
+          let obj = ary[i]
+          if (key == predicate && obj[key]) return i
+        }
+      }
     }
     return -1
   }
