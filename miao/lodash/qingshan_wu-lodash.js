@@ -67,6 +67,7 @@ var qingshan_wu = function() {
     indexOf,
     initial,
     isEqual,
+    intersection,
     some,
     max,
     min,
@@ -408,6 +409,17 @@ var qingshan_wu = function() {
     }
 
     return propsInA == propsInB;
+  }
+
+  function intersection(A, ...arys) {
+    let res = []
+    for (let ary of arys) {
+      for (let item of ary) {
+        if (A.includes(item))
+          res.push(item)
+      }
+    }
+    return res
   }
 
   function max(ary) {
