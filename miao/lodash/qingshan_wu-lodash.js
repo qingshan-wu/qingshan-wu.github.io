@@ -78,6 +78,7 @@ var qingshan_wu = function() {
     sum,
     without,
     xor,
+    zip,
   };
 
   function chunk(ary, size = 1) {
@@ -502,6 +503,24 @@ var qingshan_wu = function() {
       })
     }
 
+    return res
+  }
+
+  function zip(...arrays) {
+    let res = []
+
+    let longestArrIdx = 0
+    for (let i = 0; i < arrays.length; i++) {
+      if (arrays[i].length > arrays[longestArrIdx].length)
+        longestArrIdx = i
+    }
+
+    let LA = arrays[longestArrIdx]
+    LA.forEach((_, i) => {
+      res[i] = []
+      for (let j = 0; j < arrays.length; j++)
+        res[i][j] = arrays[j][i]
+    })
     return res
   }
 
