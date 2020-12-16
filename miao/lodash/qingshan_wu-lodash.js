@@ -77,6 +77,7 @@ var qingshan_wu = function() {
     sortedIndex,
     sum,
     without,
+    xor,
   };
 
   function chunk(ary, size = 1) {
@@ -481,6 +482,26 @@ var qingshan_wu = function() {
         res.push(val)
       }
     }
+    return res
+  }
+
+  function xor(...arrays) {
+    let res = []
+    let map = new Map()
+    let pool = flatten(arrays)
+
+    for (let i = 0; i < pool.length; i++) {
+      let item = pool[i]
+      map[item] = !map[item] ? 1 : map[item] + 1
+    }
+
+    for (let i = 0; i < arrays.length; i++) {
+      let ary = arrays[i]
+      ary.forEach(it => {
+        if (map[it] == 1) res.push(it)
+      })
+    }
+
     return res
   }
 
