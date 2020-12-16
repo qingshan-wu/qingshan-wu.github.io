@@ -75,7 +75,8 @@ var qingshan_wu = function() {
     pull,
     flattenDepth,
     sortedIndex,
-    sum
+    sum,
+    without,
   };
 
   function chunk(ary, size = 1) {
@@ -453,7 +454,8 @@ var qingshan_wu = function() {
         res.push(val)
       }
     }
-    return res
+    ary = res.slice()
+    return ary
   }
 
   function sortedIndex(ary, value) {
@@ -467,6 +469,17 @@ var qingshan_wu = function() {
     var res = 0
     for (var i = 0; i < ary.length; i++){
       res += ary[i];
+    }
+    return res
+  }
+
+  function without(ary, ...values) {
+    let res = []
+    for (let i = 0; i < ary.length; i++) {
+      let val = ary[i]
+      if (!values.includes(val)) {
+        res.push(val)
+      }
     }
     return res
   }
