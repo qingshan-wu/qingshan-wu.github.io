@@ -5,7 +5,7 @@
 
 var qingshan_wu = function() {
 
-  /* ---------------------------------------------------------------------------------- */
+  /* ---------------------------------------------------------- */
 
   /**
    * 工具集
@@ -21,12 +21,13 @@ var qingshan_wu = function() {
   //NaN !== NaN 为true
 
   // 类型检测工具集
-  const types = ["Null", "Undefined", "Boolean", "Number", "String", "Object", "Array", "Function"]
+  const types = ["Null", "Undefined", "Boolean",
+  "Number", "String", "Object", "Array", "Function"]
   const typeUtils = {}
 
   types.forEach(type => {
-    typeUtils["is" + type] = function(obj) {
-      return Object.prototype.toString.call(obj) === "[object " + type + "]"
+    typeUtils["is" + type] = obj => {
+      Object.prototype.toString.call(obj) === "[object " + type + "]"
     }
   })
 
@@ -93,16 +94,6 @@ var qingshan_wu = function() {
     return res
   }
 
-  // function concat(ary) {
-  //   for (var i = 1; i < arguments.length; i++) {
-  //     if (arguments[i] instanceof Array) {
-  //       ary.push(...arguments[i])
-  //     } else {
-  //       ary.push(arguments[i])
-  //     }
-  //   }
-  //   return ary
-  // }
   function concat(...values) {
     let result = []
 
@@ -294,6 +285,8 @@ var qingshan_wu = function() {
     return -1
   }
 
+
+  // (a && b && c) === !(!a || !b || !c)
   function every(ary, predicate) {
     for (var i = 0; i < ary.length; i++) {
       if (!predicate(ary[i])) return false
@@ -352,7 +345,7 @@ var qingshan_wu = function() {
     return ary.slice(0, ary.length - 1)
   }
 
-  function isEqual(a, b) {
+  /* function isEqual(a, b) {
     if (a === b) return true
     var ta = Object.getPrototypeOf(a)
     var tb = Object.getPrototypeOf(b)
@@ -388,12 +381,35 @@ var qingshan_wu = function() {
       return false
     }
     return true
+  } */
+
+  //字面量判断
+  // 非复杂值未进入上方if，就会进入下方if语句，return false
+  function isEqual(a, b) {
+    if (a === b) return true;
+
+    if (a == null || typeof a != "object" ||
+        b == null || typeof b != "object")
+      return false;
+
+    var propsInA = 0, propsInB = 0;
+
+    for (var prop in a)
+      propsInA += 1;
+
+    for (var prop in b) {
+      propsInB += 1;
+      if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+        return false;
+    }
+
+    return propsInA == propsInB;
   }
 
   function max(ary) {
     var maxNum = -Infinity
     for (var i = 0; i < ary.length; i++) {
-      maxNum = ary[i] > maxNum ? ary[i] : maxNum
+      maxNum = ary[i] > maxNum ? ary[i] : maxNum;
     }
     return ary.length == 0 ? undefined : maxNum
   }
@@ -418,9 +434,12 @@ var qingshan_wu = function() {
     }
     return ary.length
   }
+
   function sum(ary) {
     var res = 0
-    for (var i = 0; i < ary.length; i++) res += ary[i];
+    for (var i = 0; i < ary.length; i++)
+      res += ary[i];
+
     return res
   }
 
