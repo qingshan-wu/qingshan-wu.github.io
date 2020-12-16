@@ -72,6 +72,7 @@ var qingshan_wu = function() {
     max,
     min,
     nth,
+    pull,
     flattenDepth,
     sortedIndex,
     sum
@@ -442,6 +443,17 @@ var qingshan_wu = function() {
 
   function nth(ary, n = 0) {
     return n >= 0 ? ary[n] : ary[ary.length + n]
+  }
+
+  function pull(ary, ...values) {
+    let res = []
+    for (let i = 0; i < ary.length; i++) {
+      let val = ary[i]
+      if (!values.includes(val)) {
+        res.push(val)
+      }
+    }
+    return res
   }
 
   function sortedIndex(ary, value) {
