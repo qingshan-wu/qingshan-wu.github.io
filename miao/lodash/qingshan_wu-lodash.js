@@ -224,7 +224,7 @@ var qingshan_wu = function() {
     return res
   }
 
-  function findIndex(ary, predicate, fromIndex = 0) {
+  function findIndex(ary, predicate = identity, fromIndex = 0) {
     for (var i = fromIndex; i < ary.length; i++) {
 
       if (typeUtils.isFunction(predicate)) {
@@ -261,7 +261,7 @@ var qingshan_wu = function() {
 
 
 
-  function findLastIndex(ary, predicate, fromIndex = ary.length - 1) {
+  function findLastIndex(ary, predicate = identity, fromIndex = ary.length - 1) {
     for (var i = fromIndex; i >= 0; i--) {
       if (typeUtils.isFunction(predicate)) {
         if (predicate(ary[i])) {
