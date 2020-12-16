@@ -93,15 +93,29 @@ var qingshan_wu = function() {
     return res
   }
 
-  function concat(ary) {
-    for (var i = 1; i < arguments.length; i++) {
-      if (arguments[i] instanceof Array) {
-        ary.push(...arguments[i])
+  // function concat(ary) {
+  //   for (var i = 1; i < arguments.length; i++) {
+  //     if (arguments[i] instanceof Array) {
+  //       ary.push(...arguments[i])
+  //     } else {
+  //       ary.push(arguments[i])
+  //     }
+  //   }
+  //   return ary
+  // }
+  function concat(...values) {
+    let result = []
+
+    for (let i = 0; i < values.length; i++) {
+      var value = values[i]
+      if (Array.isArray(value)) {
+        value.forEach(it => result.push(it))
       } else {
-        ary.push(arguments[i])
+        result.push(value)
       }
     }
-    return ary
+
+    return result
   }
 
   function difference(ary, ...values) {
