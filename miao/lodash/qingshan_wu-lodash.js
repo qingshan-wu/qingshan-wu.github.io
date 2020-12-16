@@ -5,7 +5,7 @@
 
 var qingshan_wu = function() {
 
-  /* ---------------------------------------------------------- */
+/* ---------------------------------------------------------- */
 
   /**
    * 工具集
@@ -22,7 +22,8 @@ var qingshan_wu = function() {
 
   // 类型检测工具集
   const types = ["Null", "Undefined", "Boolean",
-  "Number", "String", "Object", "Array", "Function"]
+              "Number", "String", "Object", "Array",
+              "Function"]
   const typeUtils = {}
 
   types.forEach(type => {
@@ -31,13 +32,16 @@ var qingshan_wu = function() {
     }
   })
 
+  const identity = it => it
 
 
 
 
 
 
-  /* ---------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------- */
+
+
   return {
     chunk,
     compact,
@@ -308,7 +312,7 @@ var qingshan_wu = function() {
     return res
   }
 
-  function find(ary, predicate=_.identity, fromIndex=0) {
+  function find(ary, predicate = identity, fromIndex=0) {
     for (var i = fromIndex; i < ary.length; i++) {
       if (predicate(ary[i])) return ary[i]
     }
@@ -437,9 +441,9 @@ var qingshan_wu = function() {
 
   function sum(ary) {
     var res = 0
-    for (var i = 0; i < ary.length; i++)
+    for (var i = 0; i < ary.length; i++){
       res += ary[i];
-
+    }
     return res
   }
 
