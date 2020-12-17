@@ -545,7 +545,7 @@ var qingshan_wu = function() {
 
   function xor(...arrays) {
     let res = []
-    let map = new Map()
+    let map = {}
     let pool = flatten(arrays)
 
     for (let item of pool)
