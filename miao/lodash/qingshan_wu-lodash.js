@@ -296,37 +296,11 @@ var qingshan_wu = function() {
     return -1;
   }
 
-
-
-  function findLastIndex(ary, predicate = identity, fromIndex = ary.length - 1) {
+  function findLastIndex(ary, predicate, fromIndex = ary.length - 1) {
+    predicate = processType(predicate);
     for (var i = fromIndex; i >= 0; i--) {
-      if (typeUtils.isFunction(predicate)) {
-        if (predicate(ary[i])) {
-          return i
-        }
-      }
-
-      if (typeUtils.isObject(predicate)) {
-        if (isEqual(ary[i], predicate)) {
-          return i
-        }
-      }
-
-      if (typeUtils.isArray(predicate)) {
-        for (var key in ary[i]) {
-          let obj = ary[i]
-          if (key == predicate[0] && obj[key] == predicate[1]) {
-            return i
-          }
-        }
-      }
-
-      if (typeUtils.isString(predicate)) {
-        for (var key in ary[i]) {
-          let obj = ary[i]
-          if (key == predicate && obj[key]) return i
-        }
-      }
+      if (predicate(ary[i]))
+        return i;
     }
     return -1
   }
