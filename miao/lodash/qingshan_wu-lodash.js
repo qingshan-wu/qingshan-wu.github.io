@@ -48,6 +48,11 @@ var qingshan_wu = function() {
         typeUtils.isUndefind(iteratee))
       return val => val;
 
+    if (typeUtils.isString(iteratee)) {
+      strArr = iteratee.split('.')
+      if (strArr.length == 1)
+        return obj => obj[iteratee]
+    }
   }
 
 
@@ -247,7 +252,7 @@ var qingshan_wu = function() {
     return res
   }
 
-  function findIndex(ary, predicate = identity, fromIndex = 0) {
+  /* function findIndex(ary, predicate = identity, fromIndex = 0) {
     for (var i = fromIndex; i < ary.length; i++) {
 
       if (typeUtils.isFunction(predicate)) {
@@ -280,6 +285,15 @@ var qingshan_wu = function() {
 
     }
     return -1
+  } */
+
+  function findIndex(ary, predicate, fromIndex = 0) {
+    predicate = processType(predicate);
+    for (var i = fromIndex; i < ary.length; i++) {
+      if (predicate(ary[i]))
+        return i;
+    }
+    return -1;
   }
 
 
