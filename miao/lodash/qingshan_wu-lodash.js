@@ -532,9 +532,8 @@ var qingshan_wu = function() {
     let map = new Map()
     let pool = flatten(arrays)
 
-    for (let item of pool) {
-      map[item] = !map[item] ? 1 : map[item] + 1
-    }
+    for (let item of pool)
+      map[item] = !map[item] ? 1 : map[item] + 1;
 
     for (let ary of arrays) {
       ary.forEach(item => {
