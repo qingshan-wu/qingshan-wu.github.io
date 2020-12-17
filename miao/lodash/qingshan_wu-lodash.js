@@ -32,7 +32,9 @@ var qingshan_wu = function() {
     }
   })
 
-  const identity = it => it
+
+
+
 
 
 
@@ -68,6 +70,7 @@ var qingshan_wu = function() {
     initial,
     isEqual,
     intersection,
+    identity,
     some,
     max,
     min,
@@ -439,6 +442,10 @@ var qingshan_wu = function() {
         res.push(item)
     })
     return res
+  }
+
+  function identity(value) {
+    return value
   }
 
   function max(ary) {
