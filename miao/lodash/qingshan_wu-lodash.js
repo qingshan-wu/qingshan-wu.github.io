@@ -408,7 +408,7 @@ var qingshan_wu = function() {
 
     for (var prop in b) {
       propsInB += 1;
-      if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+      if (!(prop in a) || !isEqual(a[prop], b[prop]))
         return false;
     }
 
