@@ -136,7 +136,7 @@ var qingshan_wu = function() {
     let res = []
 
     for (let val of values) {
-      if (Array.isArray(value)) {
+      if (Array.isArray(val)) {
         val.forEach(it => res.push(it))
       } else {
         result.push(val)
