@@ -27,8 +27,8 @@ var qingshan_wu = function() {
   const typeUtils = {}
 
   types.forEach(type => {
-    typeUtils["is" + type] = obj => {
-      Object.prototype.toString.call(obj) === "[object " + type + "]"
+    typeUtils["is" + type] = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object " + type + "]";
     }
   })
 
