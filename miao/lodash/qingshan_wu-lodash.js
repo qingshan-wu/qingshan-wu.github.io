@@ -32,6 +32,8 @@ var qingshan_wu = function() {
     }
   })
 
+  // <= iteratee 可以迭代的结构
+  // => function
   function processType(iteratee) {
     if (typeUtils.isFunction(iteratee))
       return iteratee;
@@ -118,9 +120,9 @@ var qingshan_wu = function() {
   }
 
   function compact(ary) {
-    var res = []
-    for (var i = 0; i < ary.length; i++) {
-      if (ary[i]) res.push(ary[i])
+    let res = []
+    for (let item of ary) {
+      if (item) res.push(item)
     }
     return res
   }
@@ -128,12 +130,11 @@ var qingshan_wu = function() {
   function concat(...values) {
     let result = []
 
-    for (let i = 0; i < values.length; i++) {
-      var value = values[i]
+    for (let val of values) {
       if (Array.isArray(value)) {
-        value.forEach(it => result.push(it))
+        val.forEach(it => result.push(it))
       } else {
-        result.push(value)
+        result.push(val)
       }
     }
 
