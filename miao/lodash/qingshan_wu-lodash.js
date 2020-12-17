@@ -415,7 +415,7 @@ var qingshan_wu = function() {
     return propsInA == propsInB;
   }
 
-  function intersection(A, ...arys) {
+  /* function intersection(A, ...arys) {
     let res = []
     for (let ary of arys) {
       for (let item of ary) {
@@ -423,6 +423,21 @@ var qingshan_wu = function() {
           res.push(item)
       }
     }
+    return res
+  } */
+  function intersection(A, ...arys) {
+    let res = []
+    A.forEach(item => {
+      let count = 0
+
+      arys.forEach(ary => {
+        if (ary.includes(item))
+          count++
+      })
+
+      if (count == arys.length)
+        res.push(item)
+    })
     return res
   }
 
