@@ -78,6 +78,7 @@ var qingshan_wu = function() {
     every,
     filter,
     find,
+    findLast,
     fill,
     head,
     indexOf,
@@ -332,7 +333,18 @@ var qingshan_wu = function() {
 
   function find(ary, predicate, fromIndex=0) {
     predicate = processType(predicate)
-    for (let e of ary) {
+    for (let i = fromIndex; i < ary.length; i++) {
+      let e = ary[i]
+      if (predicate(e))
+        return e;
+    }
+    return undefined
+  }
+
+  function findLast(ary, predicate, fromIndex=ary.length-1) {
+    predicate = processType(predicate)
+    for (let i = fromIndex; i >= 0; i--) {
+      let e = ary[i]
       if (predicate(e))
         return e;
     }
