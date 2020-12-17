@@ -448,7 +448,8 @@ var qingshan_wu = function() {
     A.forEach(item => {
       let count = 0
 
-      arys.forEach(ary => count += ary.includes(item) ? 1 : 0 )
+      arys.forEach(ary =>
+        count += ary.includes(item) ? 1 : 0 )
 
       if (count == arys.length)
         res.push(item)
