@@ -307,30 +307,43 @@ var qingshan_wu = function() {
 
 
   // (a && b && c) === !(!a || !b || !c)
-  function every(ary, predicate) {
+  /* function every(ary, predicate) {
     for (var i = 0; i < ary.length; i++) {
       if (!predicate(ary[i])) return false
     }
     return true
+  } */
+  function every(ary, predicate) {
+    predicate = processType(predicate)
+    for (let e of ary) {
+      if (!predicate(e)) return false
+    }
+    return true
   }
   function some(ary, predicate) {
-    for (var i = 0; i < ary.length; i++) {
-      if (predicate(ary[i])) return true
+    predicate = processType(predicate)
+    for (let e of ary) {
+      if (predicate(e))
+        return true;
     }
     return false
   }
 
   function filter(ary, predicate) {
-    var res = []
-    for (var i = 0; i < ary.length; i++) {
-      if (predicate(ary[i])) res.push(ary[i])
+    let res = []
+    predicate = processType(predicate)
+    for (let e of ary) {
+      if (predicate(e))
+        res.push(e);
     }
     return res
   }
 
-  function find(ary, predicate = identity, fromIndex=0) {
-    for (var i = fromIndex; i < ary.length; i++) {
-      if (predicate(ary[i])) return ary[i]
+  function find(ary, predicate, fromIndex=0) {
+    predicate = processType(predicate)
+    for (let e of ary) {
+      if (predicate(e))
+        return e;
     }
     return undefined
   }
