@@ -441,17 +441,6 @@ var qingshan_wu = function() {
     return true;
   }
 
-  /* function intersection(A, ...arys) {
-    let res = []
-    for (let ary of arys) {
-      for (let item of ary) {
-        if (A.includes(item))
-          res.push(item)
-      }
-    }
-    return res
-  } */
-
   // intersection([1,2,3], [1,2,4], [3])
   // []
   function intersection(A, ...arys) {
@@ -543,15 +532,13 @@ var qingshan_wu = function() {
     let map = new Map()
     let pool = flatten(arrays)
 
-    for (let i = 0; i < pool.length; i++) {
-      let item = pool[i]
+    for (let item of pool) {
       map[item] = !map[item] ? 1 : map[item] + 1
     }
 
-    for (let i = 0; i < arrays.length; i++) {
-      let ary = arrays[i]
-      ary.forEach(it => {
-        if (map[it] == 1) res.push(it)
+    for (let ary of arrays) {
+      ary.forEach(item => {
+        if (map[item] == 1) res.push(item)
       })
     }
 
