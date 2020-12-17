@@ -41,6 +41,8 @@ var qingshan_wu = function() {
 
 
 
+
+
 /* ---------------------------------------------------------- */
 
 
@@ -71,6 +73,7 @@ var qingshan_wu = function() {
     isEqual,
     intersection,
     identity,
+    matches,
     some,
     max,
     min,
@@ -419,6 +422,25 @@ var qingshan_wu = function() {
     return propsInA == propsInB;
   }
 
+  //  s = source, t = target
+  //  => boolean
+  //  ({ 'a': 4, 'c': 6 },{ 'a': 4, 'b': 5, 'c': 6 })
+  //  true
+  function partialDeepEqual(s, t) {
+    if (s === t) return true;
+
+    if (s == null || typeof s != "object" ||
+        t == null || typeof t != "object")
+      return false;
+
+    for (var prop in s) {
+      if (!(prop in t) || !partialDeepEqual(s[prop], t[prop]))
+        return false;
+    }
+
+    return true;
+  }
+
   /* function intersection(A, ...arys) {
     let res = []
     for (let ary of arys) {
@@ -450,6 +472,11 @@ var qingshan_wu = function() {
 
   function identity(value) {
     return value
+  }
+
+  // => function
+  function matches(obj) {
+    return partialDeepEqual.bind(null, obj)
   }
 
   function max(ary) {
