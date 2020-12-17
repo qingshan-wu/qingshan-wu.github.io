@@ -42,10 +42,10 @@ var qingshan_wu = function() {
       return matches(iteratee);
 
     if (typeUtils.isArray(iteratee))
-      return obj => obj(iteratee[0]) === iteratee[1];
+      return obj => obj[iteratee[0]] === iteratee[1];
 
     if (typeUtils.isNull(iteratee) ||
-        typeUtils.isUndefind(iteratee))
+        typeUtils.isUndefined(iteratee))
       return val => val;
 
     if (typeUtils.isString(iteratee)) {
