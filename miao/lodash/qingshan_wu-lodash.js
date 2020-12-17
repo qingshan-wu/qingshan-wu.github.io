@@ -5,7 +5,7 @@
 
 var qingshan_wu = function() {
 
-/* ---------------------------------------------------------- */
+/* --------------------------------------------------- */
 
   /**
    * 工具集
@@ -55,18 +55,7 @@ var qingshan_wu = function() {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-/* ---------------------------------------------------------- */
+/* --------------------------------------------------- */
 
 
   return {
@@ -108,6 +97,8 @@ var qingshan_wu = function() {
     without,
     xor,
     zip,
+    mapKeys,
+    mapValues
   };
 
   function chunk(ary, size = 1) {
@@ -472,6 +463,29 @@ var qingshan_wu = function() {
       if (count == arys.length)
         res.push(item)
     })
+    return res
+  }
+
+  // => obj and obj[newKey] = oldVal
+  function mapKeys(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let res = {}
+    for (let key in obj) {
+      let val = obj[key]
+      let newKey = iteratee(val, key, obj)
+      res[newKey] = val
+    }
+    return res
+  }
+
+  // iteratee的传参类比自 arr.map(it, idx, arr)
+  // => obj and obj[oldKey] = newVal
+  function mapValues(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let res = {}
+    for (let key in obj) {
+      res[key] = iteratee(obj[key], key, obj)
+    }
     return res
   }
 
