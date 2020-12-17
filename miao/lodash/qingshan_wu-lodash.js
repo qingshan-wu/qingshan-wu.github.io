@@ -128,17 +128,17 @@ var qingshan_wu = function() {
   }
 
   function concat(...values) {
-    let result = []
+    let res = []
 
     for (let val of values) {
       if (Array.isArray(value)) {
-        val.forEach(it => result.push(it))
+        val.forEach(it => res.push(it))
       } else {
         result.push(val)
       }
     }
 
-    return result
+    return res
   }
 
   function difference(ary, ...values) {
@@ -212,12 +212,12 @@ var qingshan_wu = function() {
   }
 
   function flatten(ary) {
-    var res = []
-    for (var i = 0; i < ary.length; i++) {
-      if (ary[i] instanceof Array) {
-        res.push(...ary[i])
+    let res = []
+    for (let item of ary) {
+      if (item instanceof Array) {
+        res.push(...item)
       } else {
-        res.push(ary[i])
+        res.push(item)
       }
     }
     return res
