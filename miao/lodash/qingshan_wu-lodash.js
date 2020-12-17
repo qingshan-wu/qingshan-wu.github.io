@@ -32,6 +32,22 @@ var qingshan_wu = function() {
     }
   })
 
+  function processType(iteratee) {
+    if (typeUtils.isFunction(iteratee))
+      return iteratee;
+
+    if (typeUtils.isObject(iteratee))
+      return matches(iteratee);
+
+    if (typeUtils.isArray(iteratee))
+      return obj => obj(iteratee[0]) === iteratee[1];
+
+    if (typeUtils.isNull(iteratee) ||
+        typeUtils.isUndefind(iteratee))
+      return val => val;
+
+  }
+
 
 
 
