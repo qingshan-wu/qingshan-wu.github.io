@@ -364,14 +364,15 @@ var qingshan_wu = function() {
 
     if (ta == tb) { //类型对比
 
-      if (ta == Array.prototype || ta == String.prototype) {  //对比数组
+      if (ta == Array.prototype || ta == String.prototype) {
         if (a.length != b.length) return false
         for (var i = 0; i < a.length; i++) {
           var tai = Object.getPrototypeOf(a[i])
           var tbi = Object.getPrototypeOf(b[i])
           if (tai != tbi) {
             return false
-          } else if (tai == Array.prototype || tai == Object.prototype) {
+          } else if (tai == Array.prototype ||
+                    tai == Object.prototype) {
             isEqual(a[i], b[i])
           } else if (a[i] != b[i]) return false
         }
@@ -428,6 +429,9 @@ var qingshan_wu = function() {
     }
     return res
   } */
+
+  // intersection([1,2,3], [1,2,4], [3])
+  // []
   function intersection(A, ...arys) {
     let res = []
     A.forEach(item => {
@@ -472,8 +476,7 @@ var qingshan_wu = function() {
 
   function pull(ary, ...values) {
     let res = []
-    for (let i = 0; i < ary.length; i++) {
-      let val = ary[i]
+    for (let val of ary) {
       if (!values.includes(val)) {
         res.push(val)
       }
