@@ -79,6 +79,7 @@ var qingshan_wu = function() {
     filter,
     find,
     findLast,
+    map,
     groupBy,
     fill,
     head,
@@ -350,6 +351,26 @@ var qingshan_wu = function() {
         return e;
     }
     return undefined
+  }
+
+  function map(collection, iteratee) {
+    iteratee = processType(iteratee)
+    let res = []
+
+    if (typeUtils.isArray(collection)) {
+      collection.forEach((e, idx, ary) => {
+        res.push(iteratee(e, idx, ary))
+      })
+    }
+
+    if (typeUtils.isObject(collection)) {
+      for (let key in collection) {
+        let val = collection[key]
+        res.push(iteratee(val, key, collection))
+      }
+    }
+
+    return res
   }
 
   // => arr, (iteratee = identity)
