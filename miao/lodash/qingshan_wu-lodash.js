@@ -79,6 +79,7 @@ var qingshan_wu = function() {
     filter,
     find,
     findLast,
+    groupBy,
     fill,
     head,
     indexOf,
@@ -349,6 +350,22 @@ var qingshan_wu = function() {
         return e;
     }
     return undefined
+  }
+
+  // => arr, (iteratee = identity)
+  // => obj
+  function groupBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let res = {}
+    for (let e of arr) {
+      let key = iteratee(e)
+      if (!res[key]) {
+        res[key] = [e]
+      } else {
+        res[key].push(e)
+      }
+    }
+    return res
   }
 
   function fill(ary, value, start = 0, end = ary.length) {
