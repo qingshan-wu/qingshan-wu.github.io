@@ -117,6 +117,9 @@ var qingshan_wu = function() {
     sortedLastIndexOf,
     sortedUniq,
     sortedUniqBy,
+    tail,
+    take,
+    takeRight,
     sum,
     without,
     xor,
@@ -716,6 +719,21 @@ var qingshan_wu = function() {
     })
     map.forEach(idx => res.push(arr[idx]))
     return res
+  }
+
+  function tail(arr) {
+    return arr.slice(1)
+  }
+
+  function take(arr, n = 1) {
+    return arr.slice(0, n)
+  }
+
+  function takeRight(arr, n = 1) {
+    if (n > arr.length) {
+      return arr.slice()
+    }
+    return arr.slice(arr.length - n)
   }
 
   function sum(ary) {
