@@ -120,6 +120,7 @@ var qingshan_wu = function() {
     tail,
     take,
     takeRight,
+    takeRightWhile,
     sum,
     without,
     xor,
@@ -741,6 +742,18 @@ var qingshan_wu = function() {
     var res = 0
     for (var i = 0; i < ary.length; i++){
       res += ary[i];
+    }
+    return res
+  }
+
+  function takeRightWhile(arr, predicate) {
+    predicate = processType(predicate)
+    let res = []
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (!predicate(arr[i], i, arr)) {
+        break
+      }
+      res.unshift(arr[i])
     }
     return res
   }
