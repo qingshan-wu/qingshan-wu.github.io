@@ -96,6 +96,7 @@ var qingshan_wu = function() {
     pull,
     flattenDepth,
     sortedIndex,
+    sortedIndexBy,
     sum,
     without,
     xor,
@@ -584,6 +585,15 @@ var qingshan_wu = function() {
   function sortedIndex(ary, value) {
     for (var i = 0; i < ary.length; i++) {
       if (value <= ary[i]) return i
+    }
+    return ary.length
+  }
+
+  function sortedIndexBy(ary, val, iteratee) {
+    iteratee = processType(iteratee)
+    for (let i = 0; i < ary.length; i++) {
+      if (iteratee(ary[i]) >= iteratee(val))
+        return i
     }
     return ary.length
   }
