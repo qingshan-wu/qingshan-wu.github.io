@@ -97,6 +97,8 @@ var qingshan_wu = function() {
     flattenDepth,
     sortedIndex,
     sortedIndexBy,
+    sortedIndexOf,
+    sortedLastIndex,
     sum,
     without,
     xor,
@@ -596,6 +598,22 @@ var qingshan_wu = function() {
         return i
     }
     return ary.length
+  }
+
+  function sortedIndexOf(ary, value) {
+    for (let i in ary) {
+      if (value == ary[i])
+        return i
+    }
+    return -1
+  }
+
+  function sortedLastIndex(ary, value) {
+    for (let i = ary.length; i >= 0; i--) {
+      if (value == ary[i])
+        return i
+    }
+    return -1
   }
 
   function sum(ary) {
