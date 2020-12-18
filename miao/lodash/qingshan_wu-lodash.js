@@ -88,6 +88,7 @@ var qingshan_wu = function() {
     isEqual,
     intersection,
     identity,
+    isMatch,
     matches,
     some,
     max,
@@ -108,7 +109,7 @@ var qingshan_wu = function() {
     xor,
     zip,
     mapKeys,
-    mapValues
+    mapValues,
   };
 
   function chunk(ary, size = 1) {
@@ -550,6 +551,10 @@ var qingshan_wu = function() {
     return value
   }
 
+  function isMatch(obj, source) {
+    return partialDeepEqual(source, obj)
+  }
+
   // => function
   function matches(obj) {
     return partialDeepEqual.bind(null, obj)
@@ -729,9 +734,6 @@ var qingshan_wu = function() {
     })
     return res
   }
-
-
-
 
 
 
