@@ -126,6 +126,7 @@ var qingshan_wu = function() {
     zip,
     mapKeys,
     mapValues,
+    cloneDeep
   };
 
   function chunk(ary, size = 1) {
@@ -787,6 +788,38 @@ var qingshan_wu = function() {
       for (let j = 0; j < arrays.length; j++)
         res[i][j] = arrays[j][i]
     })
+    return res
+  }
+
+  function cloneDeep(value) {
+    if (typeUtils.isArray(value)) {
+      let res = []
+      for (let ele of value) {
+        if (typeUtils.isObject(ele) ||
+            typeUtils.isArray(ele)) {
+          res.push(cloneDeep(ele))
+        } else {
+          res.push(ele)
+        }
+      }
+      return res
+    }
+
+    if (typeUtils.isObject(value)) {
+      let res = {}
+      for (let key in value) {
+        let val = value[key]
+        if (typeUtils.isObject(val) ||
+            typeUtils.isArray(val)) {
+          res[key] = cloneDeep(val)
+        } else {
+          res[key] = val
+        }
+      }
+      return res
+    }
+
+    let res = value
     return res
   }
 
