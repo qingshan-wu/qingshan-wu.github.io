@@ -100,6 +100,7 @@ var qingshan_wu = function() {
     sortedIndexOf,
     sortedLastIndex,
     sortedLastIndexBy,
+    sortedLastIndexOf,
     sum,
     without,
     xor,
@@ -631,6 +632,26 @@ var qingshan_wu = function() {
       if (iteratee(ary[i]) == value)
         return i
     }
+    return -1
+  }
+
+  function sortedLastIndexOf(ary, value) {
+    let left = 0, right = ary.length - 1;
+    while (left < right) {
+      let mid = (right + left) >> 1
+
+      if (ary[mid] > value) {
+        right = mid - 1
+      } else {
+        left = mid
+      }
+
+      if (right - left <= 1)
+        break;
+    }
+    if (ary[left] == value)
+      return left;
+
     return -1
   }
 
