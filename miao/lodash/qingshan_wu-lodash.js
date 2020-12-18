@@ -99,6 +99,7 @@ var qingshan_wu = function() {
     sortedIndexBy,
     sortedIndexOf,
     sortedLastIndex,
+    sortedLastIndexBy,
     sum,
     without,
     xor,
@@ -611,6 +612,15 @@ var qingshan_wu = function() {
   function sortedLastIndex(ary, value) {
     for (let i = ary.length; i >= 0; i--) {
       if (value == ary[i])
+        return i
+    }
+    return -1
+  }
+
+  function sortedLastIndexBy(ary, value, iteratee) {
+    iteratee = processType(iteratee)
+    for (let i = ary.length; i >= 0; i--) {
+      if (iteratee(ary[i]) == value)
         return i
     }
     return -1
