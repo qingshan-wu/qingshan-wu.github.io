@@ -103,7 +103,9 @@ var qingshan_wu = function() {
     matches,
     some,
     max,
+    maxBy,
     min,
+    minBy,
     nth,
     pull,
     flattenDepth,
@@ -579,7 +581,16 @@ var qingshan_wu = function() {
     return ary.length == 0 ? undefined : maxNum
   }
 
-
+  function maxBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let maxEle = arr[0]
+    for (let e of arr) {
+      if (iteratee(maxEle) < iteratee(e)) {
+        maxEle = e;
+      }
+    }
+    return maxEle
+  }
 
   function min(ary) {
     var minNum = Infinity
@@ -587,6 +598,17 @@ var qingshan_wu = function() {
       minNum = ary[i] < minNum ? ary[i] : minNum
     }
     return ary.length == 0 ? undefined : minNum
+  }
+
+  function minBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let minEle = arr[0]
+    for (let e of arr) {
+      if (iteratee(minEle) > iteratee(e)) {
+        minEle = e
+      }
+    }
+    return minEle
   }
 
   function nth(ary, n = 0) {
