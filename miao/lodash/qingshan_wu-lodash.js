@@ -662,18 +662,18 @@ var qingshan_wu = function() {
   }
 
   function sortedLastIndex(ary, value) {
-    for (let i = ary.length; i >= 0; i--) {
+    for (let i = ary.length - 1; i >= 0; i--) {
       if (value == ary[i])
-        return i
+        return i + 1
     }
     return -1
   }
 
   function sortedLastIndexBy(ary, value, iteratee) {
     iteratee = processType(iteratee)
-    for (let i = ary.length; i >= 0; i--) {
-      if (iteratee(ary[i]) == value)
-        return i
+    for (let i = ary.length - 1; i >= 0; i--) {
+      if (iteratee(ary[i]) == iteratee(value))
+        return i + 1
     }
     return -1
   }
