@@ -133,7 +133,7 @@ var qingshan_wu = function() {
       if (Array.isArray(val)) {
         val.forEach(it => res.push(it))
       } else {
-        result.push(val)
+        res.push(val)
       }
     }
 
