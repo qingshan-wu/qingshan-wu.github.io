@@ -101,6 +101,8 @@ var qingshan_wu = function() {
     sortedLastIndex,
     sortedLastIndexBy,
     sortedLastIndexOf,
+    sortedUniq,
+    sortedUniqBy,
     sum,
     without,
     xor,
@@ -653,6 +655,25 @@ var qingshan_wu = function() {
       return left;
 
     return -1
+  }
+
+  function sortedUniq(arr) {
+    let res = []
+    for (let e of arr) {
+      if (!res.includes(e))
+        res.push(e)
+    }
+    return res
+  }
+
+  function sortedUniqBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let res = []
+    for (let e of arr) {
+      if (!res.includes(iteratee(e)))
+        res.push(e)
+    }
+    return res
   }
 
   function sum(ary) {
