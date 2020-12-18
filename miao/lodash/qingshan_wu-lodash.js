@@ -602,10 +602,18 @@ var qingshan_wu = function() {
   }
 
   function sortedIndexOf(ary, value) {
-    for (let i in ary) {
-      if (value == ary[i])
-        return i
+    let left = 0, right = ary.length - 1;
+    while (left < right) {
+      let mid = (right + left) >> 1
+      if (ary[mid] < value) {
+        left = mid + 1
+      } else {
+        right = mid
+      }
     }
+    if (ary[right] == value)
+      return right;
+
     return -1
   }
 
