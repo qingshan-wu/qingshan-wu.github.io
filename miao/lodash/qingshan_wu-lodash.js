@@ -49,9 +49,20 @@ var qingshan_wu = function() {
       return val => val;
 
     if (typeUtils.isString(iteratee)) {
-      strArr = iteratee.split('.')
-      if (strArr.length == 1)
+      pathArr = iteratee.split('.')
+      if (pathArr.length == 1) {
         return obj => obj[iteratee]
+      } else {
+        return obj => pathArr.reduce((prev, cur) => prev[cur] , obj)
+      }
+      // function (obj) {
+      //   let prev = obj
+      //   for (let key of pathArr) {
+      //     prev = prev[cur]
+      //   }
+      //   return prev
+      // }
+
     }
   }
 
@@ -374,7 +385,7 @@ var qingshan_wu = function() {
     if (typeUtils.isObject(collection)) {
       for (let key in collection) {
         let val = collection[key]
-        res.push(iteratee(val, key, collection))
+        res.push(iteratee(val))
       }
     }
 
