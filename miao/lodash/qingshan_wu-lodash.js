@@ -738,14 +738,7 @@ var qingshan_wu = function() {
     return arr.slice(arr.length - n)
   }
 
-  function sum(ary) {
-    var res = 0
-    for (var i = 0; i < ary.length; i++){
-      res += ary[i];
-    }
-    return res
-  }
-
+  // => []
   function takeRightWhile(arr, predicate) {
     predicate = processType(predicate)
     let res = []
@@ -754,6 +747,14 @@ var qingshan_wu = function() {
         break
       }
       res.unshift(arr[i])
+    }
+    return res
+  }
+
+  function sum(ary) {
+    var res = 0
+    for (var i = 0; i < ary.length; i++){
+      res += ary[i];
     }
     return res
   }
