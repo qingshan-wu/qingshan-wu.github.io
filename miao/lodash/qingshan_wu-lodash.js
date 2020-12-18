@@ -674,10 +674,14 @@ var qingshan_wu = function() {
   function sortedUniqBy(arr, iteratee) {
     iteratee = processType(iteratee)
     let res = []
-    for (let e of arr) {
-      if (!res.includes(iteratee(e)))
-        res.push(e)
-    }
+    let map = new Map()
+    arr.forEach((ele, idx) => {
+      let key = iteratee(ele)
+      if (!map.has(key)) {
+        map.set(key, idx)
+      }
+    })
+    map.forEach(idx => res.push(arr[idx]))
     return res
   }
 
