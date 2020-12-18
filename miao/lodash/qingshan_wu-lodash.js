@@ -122,6 +122,7 @@ var qingshan_wu = function() {
     takeRight,
     takeRightWhile,
     takeWhile,
+    union,
     sum,
     without,
     xor,
@@ -763,6 +764,16 @@ var qingshan_wu = function() {
       res.push(arr[i])
     }
     return res
+  }
+
+  function union(...arrs) {
+    let set = new Set()
+    arrs.forEach(arr => {
+      arr.forEach(it => {
+        set.add(it)
+      })
+    })
+    return Array.from(set)
   }
 
   function sum(ary) {
