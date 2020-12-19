@@ -789,7 +789,8 @@ var qingshan_wu = function() {
 
   function pullAll(arr, values) {
     for (let i = 0; i < arr.length; i++) {
-      if (values.includes(arr[i])) {
+      let it = arr[i]
+      if (values.includes(it)) {
         arr.splice(i, 1)
         i--
       }
@@ -802,7 +803,8 @@ var qingshan_wu = function() {
     let val = values.map(it => iteratee(it))
 
     for (let i = 0; i < arr.length; i++) {
-      if (val.includes(iteratee(arr[i]))){
+      let it = iteratee(arr[i])
+      if (val.includes(it)){
         arr.splice(i, 1)
         i--
       }
