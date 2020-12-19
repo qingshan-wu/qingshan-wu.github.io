@@ -97,6 +97,7 @@ var qingshan_wu = function() {
     initial,
     isEqual,
     intersection,
+    intersectionBy,
     identity,
     isMatch,
     matches,
@@ -657,6 +658,22 @@ var qingshan_wu = function() {
       if (count == arys.length)
         res.push(item)
     })
+    return res
+  }
+
+  // => []
+  function intersectionBy(...args) {
+    let firstArr = args.shift()
+    iteratee = processType(args.pop())
+    let arr = flatten(args).map(it => iteratee(it))
+
+    let res = []
+    firstArr.forEach(it => {
+      if (arr.includes(iteratee(it))) {
+        res.push(it)
+      }
+    })
+
     return res
   }
 
