@@ -810,6 +810,8 @@ var qingshan_wu = function() {
     return arr.slice()
   }
 
+
+
   function pullAllWith(arr, values, iteratee) {
     let count = new Array(arr.length).fill(true)
     for (var i = 0; i < arr.length; i++) {
@@ -819,7 +821,18 @@ var qingshan_wu = function() {
         }
       }
     }
-    return arr.filter((_, i) => count[i])
+
+    let p = 0
+    for (let i = 0; i < arr.length; i++) {
+      let j = i + p
+      if (!count[j]) {
+        arr.splice(i, 1)
+        i--
+        p++
+      }
+    }
+    return arr
+    // return arr.filter((_, i) => count[i])
   }
 
   function sortedIndex(ary, value) {
