@@ -138,6 +138,7 @@ var qingshan_wu = function() {
     xorWith,
     zip,
     zipObject,
+    zipWith,
     unzip,
     unzipWith,
     mapKeys,
@@ -1188,6 +1189,13 @@ var qingshan_wu = function() {
       res[props[i]] = vals[i]
     }
     return res
+  }
+
+  function zipWith(...args) {
+    let iteratee = processType(args.pop())
+    return args[0].map((_, i) => {
+      return iteratee(...(args.map(row => row[i])))
+    })
   }
 
   // 翻转矩阵
