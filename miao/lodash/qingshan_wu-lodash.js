@@ -980,7 +980,7 @@ var qingshan_wu = function() {
     return res
   }
 
-  // 返回独特的
+  // 返回转化后仍独特的
   function xorBy(...args){
     let iteratee = processType(args.pop())
 
@@ -1004,6 +1004,16 @@ var qingshan_wu = function() {
         res.push(e)
     })
     return res
+
+  }
+
+  function xorWith(...args) {
+    let iteratee = processType(args.pop())
+    let arr = []
+    args.forEach(it => arr.push(...it))
+
+    let map = new Map()
+
 
   }
 
