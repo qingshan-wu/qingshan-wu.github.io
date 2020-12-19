@@ -136,7 +136,10 @@ var qingshan_wu = function() {
     isArray,
     toArray,
 
-    /* -- Math ----- */
+    /* -- collection ----- */
+    countBy,
+
+    /* -- Math ----------- */
 
     add,
     divide,
@@ -144,7 +147,7 @@ var qingshan_wu = function() {
     meanBy,
     multiply,
 
-    /* -- Object --- */
+    /* -- Object --------- */
 
     toPairs,
     keys,
@@ -1051,6 +1054,19 @@ var qingshan_wu = function() {
     }
     if (typeUtils.isString(val)) {
       return val.split('')
+    }
+    return res
+  }
+
+  /* -- collecetion ------------------------------------ */
+
+  // => {}
+  function countBy(val, iteratee) {
+    iteratee = processType(iteratee)
+    let res = {}
+    for (let e of val) {
+      let key = iteratee(e)
+      res[key] = res[key] ? res[key] + 1 : 1
     }
     return res
   }
