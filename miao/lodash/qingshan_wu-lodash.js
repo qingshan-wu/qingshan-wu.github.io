@@ -1288,7 +1288,7 @@ var qingshan_wu = function() {
 
   function flatMapDepth(col, iteratee, depth = 1) {
     iteratee = processType(iteratee)
-    return flattenDepth(col.map(it => iteratee(it)))
+    return flattenDepth(col.map(it => iteratee(it)), depth)
   }
 
 
