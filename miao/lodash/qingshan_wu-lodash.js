@@ -133,10 +133,15 @@ var qingshan_wu = function() {
     cloneDeep,
     isArray,
     toArray,
+
     /* -- Math ----- */
+
     add,
     divide,
+    mean,
+
     /* -- Object --- */
+
     toPairs,
     keys,
     values,
@@ -1039,6 +1044,15 @@ var qingshan_wu = function() {
 
   function divide(a, b) {
     return a / b
+  }
+
+  /* function mean(arr) {
+    return arr.reduce((avr, cur, idx) =>
+      (avr * idx + cur) / (idx + 1))
+  } */
+
+  function mean(arr) {
+    return arr.reduce((sum, it) => sum + it) / arr.length
   }
 
   /* -- Object ----------------------------------------- */
