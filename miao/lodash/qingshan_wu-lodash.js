@@ -5,14 +5,8 @@
 
 var qingshan_wu = function() {
 
-/* --------------------------------------------------- */
+/* -- 工具集 ------------------------------------------ */
 
-  /**
-   * 工具集
-   * @param {*}
-   * @return {*}
-   * qhmnb
-   */
   function sameValueZero(a, b) {
     if (a === b) return a !== 0 || 1 / a === 1 / b;
     return a !== a && b !== b;
