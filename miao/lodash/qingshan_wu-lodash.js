@@ -139,6 +139,7 @@ var qingshan_wu = function() {
     /* -- Object --- */
     toPairs,
     keys,
+    values,
   };
 
   function chunk(ary, size = 1) {
@@ -1054,6 +1055,15 @@ var qingshan_wu = function() {
     for (let key in obj){
       if (obj.hasOwnProperty(key))
         res.push(key)
+    }
+    return res
+  }
+
+  function values(obj) {
+    let res = []
+    for (let key in obj){
+      if (obj.hasOwnProperty(key))
+        res.push(obj[key])
     }
     return res
   }
