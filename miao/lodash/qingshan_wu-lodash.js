@@ -86,6 +86,7 @@ var qingshan_wu = function() {
     findIndex,
     findLastIndex,
     reduce,
+    reduceRight,
     fromPairs,
     every,
     filter,
@@ -340,7 +341,7 @@ var qingshan_wu = function() {
   function reduce(coll, iteratee, acc) {
     iteratee = processType(iteratee)
     if (acc == undefined) {
-      if (typeUtils.isArray(coll)) {
+      if (typeUtils.isArray(coll) && coll.length > 0) {
         acc = coll[0]
       }
       if (typeUtils.isObject(coll)) {
@@ -363,6 +364,24 @@ var qingshan_wu = function() {
         acc = iteratee(acc, coll[key], key, coll)
       }
     }
+    return acc
+  }
+
+  // obj应该没有左右之分?
+  function reduceRight(coll, iteratee, acc) {
+    iteratee = processType(iteratee)
+
+    if (acc == undefined) {
+      acc = coll[coll.length - 1]
+    } else {
+      let lastIdx = coll.length - 1
+      acc = iteratee(acc, coll[lastIdx], lastIdx, coll)
+    }
+
+    for (let i = coll.length - 2; i >= 0; i--) {
+      acc = iteratee(acc, coll[i], i, coll)
+    }
+
     return acc
   }
 
