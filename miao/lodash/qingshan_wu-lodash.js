@@ -137,6 +137,8 @@ var qingshan_wu = function() {
     mapKeys,
     mapValues,
     cloneDeep,
+    isArray,
+    toArray,
     /* -- Math -- */
     add,
     divide,
@@ -1013,6 +1015,22 @@ var qingshan_wu = function() {
     }
 
     let res = value
+    return res
+  }
+
+  function isArray(val) {
+    return typeUtils.isArray(val)
+  }
+
+  function toArray(val) {
+    let res = []
+    if (typeUtils.isObject(val)) {
+      for (let key in val)
+        res.push(val[key])
+    }
+    if (typeUtils.isString(val)) {
+      return val.split('')
+    }
     return res
   }
 
