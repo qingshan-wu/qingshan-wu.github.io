@@ -129,7 +129,10 @@ var qingshan_wu = function() {
     zip,
     mapKeys,
     mapValues,
-    cloneDeep
+    cloneDeep,
+    /* -- Math -- */
+    add,
+    divide,
   };
 
   function chunk(ary, size = 1) {
@@ -861,6 +864,16 @@ var qingshan_wu = function() {
     let res = value
     return res
   }
+
+  /* -- Math ------------------------------------------- */
+  function add(a, b) {
+    return a + b
+  }
+
+  function divide(a, b) {
+    return a / b
+  }
+
 
 
 
