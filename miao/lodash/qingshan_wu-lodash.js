@@ -162,7 +162,7 @@ var qingshan_wu = function() {
 
     toPairs,
     keys,
-    values,
+    values
   };
 
   function chunk(ary, size = 1) {
