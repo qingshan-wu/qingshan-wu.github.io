@@ -149,6 +149,9 @@ var qingshan_wu = function() {
 
     /* -- collection ----- */
     countBy,
+    flatMap,
+    flatMapDeep,
+    flatMapDepth,
 
     /* -- Math ----------- */
 
@@ -1272,6 +1275,17 @@ var qingshan_wu = function() {
     }
     return res
   }
+
+  function flatMap(col, iteratee) {
+    iteratee = processType(iteratee)
+    return flatten(col.map(it => iteratee(it)))
+  }
+
+  function flatMapDeep(col, iteratee) {
+    iteratee = processType(iteratee)
+    return flattenDeep(col.map(it => iteratee(it)))
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
