@@ -85,6 +85,7 @@ var qingshan_wu = function() {
     flattenDeep,
     findIndex,
     findLastIndex,
+    reduce,
     fromPairs,
     every,
     filter,
@@ -333,6 +334,36 @@ var qingshan_wu = function() {
         return i;
     }
     return -1
+  }
+
+  // coll => collection, acc => accumulator
+  function reduce(coll, iteratee, acc) {
+    iteratee = processType(iteratee)
+    if (acc == undefined) {
+      if (typeUtils.isArray(coll)) {
+        acc = coll[0]
+      }
+      if (typeUtils.isObject(coll)) {
+        acc = {}
+      }
+    } else {
+      if (typeUtils.isArray(coll)) {
+        acc = iteratee(acc, coll[0], 0, coll)
+      }
+    }
+
+    if (typeUtils.isArray(coll)) {
+      for (let i = 1; i < coll.length; i++) {
+        acc = iteratee(acc, coll[i], i, coll)
+      }
+    }
+
+    if (typeUtils.isObject(coll)) {
+      for (let key in coll) {
+        acc = iteratee(acc, coll[key], key, coll)
+      }
+    }
+    return acc
   }
 
 
