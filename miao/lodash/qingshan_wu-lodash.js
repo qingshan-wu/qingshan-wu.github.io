@@ -68,6 +68,7 @@ var qingshan_wu = function() {
     compact,
     concat,
     difference,
+    differenceBy,
     differenceWith,
     join,
     last,
@@ -212,6 +213,26 @@ var qingshan_wu = function() {
     for (var i = 0; i < ary.length; i++) {
       if (!set2.has(ary[i])) res.push(ary[i])
     }
+    return res
+  }
+
+  function differenceBy(arr, ...values) {
+    let iteratee = values[values.length - 1]
+    if (Array.isArray(iteratee)) {
+      iteratee = undefined
+    } else {
+      values.pop()
+    }
+    iteratee = processType(iteratee)
+    let res = []
+    let val = flatten(values).map(it => iteratee(it))
+
+    for (let e of arr) {
+      if (!val.includes(iteratee(e))) {
+        res.push(e)
+      }
+    }
+
     return res
   }
 
