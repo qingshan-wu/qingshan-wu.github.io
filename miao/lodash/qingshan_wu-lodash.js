@@ -124,6 +124,9 @@ var qingshan_wu = function() {
     takeWhile,
     union,
     unionBy,
+    unionWith,
+    uniq,
+    uniqBy,
     sum,
     without,
     xor,
@@ -800,6 +803,24 @@ var qingshan_wu = function() {
           res.push(it)
         }
       })
+    })
+    return res
+  }
+
+  function uniq(arr) {
+    return Array.from(new Set(arr))
+  }
+
+  // => []
+  function uniqBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let set = new Set()
+    let res = []
+    arr.forEach(it => {
+      if (!set.has(iteratee(it))) {
+        set.add(iteratee(it))
+        res.push(it)
+      }
     })
     return res
   }
