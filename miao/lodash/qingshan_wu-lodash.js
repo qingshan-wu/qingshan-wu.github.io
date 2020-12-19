@@ -127,6 +127,7 @@ var qingshan_wu = function() {
     unionWith,
     uniq,
     uniqBy,
+    uniqWith,
     sum,
     without,
     xor,
@@ -807,10 +808,11 @@ var qingshan_wu = function() {
     return res
   }
 
-  function unionWith(...args) {
+
+  /* function unionWith(...args) {
     let iteratee = args.pop()
     let A = []
-    args.forEach(arr => A.concat(arr))
+    args.forEach(arr => A.push(...arr))
 
     let count = new Array(A.length).fill(0)
     let res = []
@@ -828,6 +830,15 @@ var qingshan_wu = function() {
       }
     }
     return res
+  } */
+
+  // => []
+  function unionWith(...args) {
+    let iteratee = args.pop()
+    let A = []
+    args.forEach(arr => A.push(...arr))
+
+    return uniqWith(A, iteratee)
   }
 
   function uniq(arr) {
@@ -845,6 +856,26 @@ var qingshan_wu = function() {
         res.push(it)
       }
     })
+    return res
+  }
+
+  function uniqWith(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let count = new Array(arr.length).fill(0)
+    let res = []
+
+    for (let i = 0; i < arr.length; i++) {
+      if (count[i] == 1) //即已经被标记过，res中已存在
+        continue;
+
+      let val = arr[i]
+      res.push(val)
+
+      for (let j = i + 1; j < arr.length; j++) {
+        if (count[j] == 0 && iteratee(val, arr[j]))
+          count[j] = 1
+      }
+    }
     return res
   }
 
