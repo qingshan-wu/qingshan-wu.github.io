@@ -807,6 +807,29 @@ var qingshan_wu = function() {
     return res
   }
 
+  function unionWith(...args) {
+    let iteratee = args.pop()
+    let A = []
+    args.forEach(arr => A.concat(arr))
+
+    let count = new Array(A.length).fill(0)
+    let res = []
+
+    for (let i = 0; i < A.length; i++) {
+      if (count[i] == 1) //即已经被标记过，res中已存在
+        continue;
+
+      let val = A[i]
+      res.push(val)
+
+      for (let j = i + 1; j < A.length; j++) {
+        if (count[j] == 0 && iteratee(val, A[j]))
+          count[j] = 1
+      }
+    }
+    return res
+  }
+
   function uniq(arr) {
     return Array.from(new Set(arr))
   }
