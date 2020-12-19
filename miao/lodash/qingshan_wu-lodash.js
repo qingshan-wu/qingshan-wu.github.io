@@ -138,6 +138,7 @@ var qingshan_wu = function() {
     divide,
     /* -- Object --- */
     toPairs,
+    keys,
   };
 
   function chunk(ary, size = 1) {
@@ -1044,6 +1045,15 @@ var qingshan_wu = function() {
     let res = []
     for (let key in obj) {
       res.push([key, obj[key]])
+    }
+    return res
+  }
+
+  function keys(obj) {
+    let res = []
+    for (let key in obj){
+      if (obj.hasOwnProperty(key))
+        res.push(key)
     }
     return res
   }
