@@ -3,6 +3,8 @@
  * @Date: 2020-12-08 15:01:43
  */
 
+const { iteratee } = require("lodash");
+
 var qingshan_wu = function() {
 
 /* -- 工具集 ------------------------------------------ */
@@ -98,6 +100,7 @@ var qingshan_wu = function() {
     isEqual,
     intersection,
     intersectionBy,
+    intersectionWith,
     identity,
     isMatch,
     matches,
@@ -672,6 +675,22 @@ var qingshan_wu = function() {
       if (arr.includes(iteratee(it))) {
         res.push(it)
       }
+    })
+
+    return res
+  }
+
+  function intersectionWith(...args) {
+    let firstArr = args.shift()
+    iteratee = processType(args.pop())
+    let arr = flatten(args)
+
+    let res = []
+    firstArr.forEach(A => {
+      arr.forEach(a => {
+        if (iteratee(A, a))
+          res.push(A)
+      })
     })
 
     return res
