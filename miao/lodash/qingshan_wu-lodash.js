@@ -77,6 +77,7 @@ var qingshan_wu = function() {
     drop,
     dropRight,
     dropRightWhile,
+    dropWhile,
     flatten,
     flattenDeep,
     findIndex,
@@ -278,11 +279,21 @@ var qingshan_wu = function() {
   function dropRightWhile(arr, predicate) {
     predicate = processType(predicate)
     for (var i = arr.length - 1; i >= 0; i--) {
-      if (!predicate(arr[i])) {
+      if (!predicate(arr[i], i, arr)) {
         break
       }
     }
     return arr.slice(0, i + 1)
+  }
+
+  function dropWhile(arr, predicate) {
+    predicate = processType(predicate)
+    for (var i = 0; i < arr.length; i++) {
+      if (!predicate(arr[i], i, arr)) {
+        break
+      }
+    }
+    return arr.slice(i)
   }
 
   function differenceWith(ary, values, comparator) {
