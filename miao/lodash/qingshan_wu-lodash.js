@@ -140,6 +140,7 @@ var qingshan_wu = function() {
     divide,
     mean,
     meanBy,
+    multiply,
 
     /* -- Object --- */
 
@@ -1063,6 +1064,10 @@ var qingshan_wu = function() {
       sum += iteratee(ele)
     }
     return sum / arr.length
+  }
+
+  function multiply(a, b) {
+    return a * b
   }
 
   /* -- Object ----------------------------------------- */
