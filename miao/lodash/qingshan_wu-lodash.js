@@ -1090,7 +1090,8 @@ var qingshan_wu = function() {
   function toPairs(obj) {
     let res = []
     for (let key in obj) {
-      res.push([key, obj[key]])
+      if (obj.hasOwnProperty(key))
+        res.push([key, obj[key]])
     }
     return res
   }
