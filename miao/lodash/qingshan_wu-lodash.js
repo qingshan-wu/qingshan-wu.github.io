@@ -786,15 +786,15 @@ var qingshan_wu = function() {
     return ary
   }
 
-  function pullAll(arr, values) {
-    for (let i = 0; i < arr.length; i++) {
-      if (values.includes(arr[i])) {
-        arr.splice(i, 1)
-        i--
-      }
-    }
-    return arr
-  }
+  // function pullAll(arr, values) {
+  //   for (let i = 0; i < arr.length; i++) {
+  //     if (values.includes(arr[i])) {
+  //       arr.splice(i, 1)
+  //       i--
+  //     }
+  //   }
+  //   return arr
+  // }
 
   function sortedIndex(ary, value) {
     for (var i = 0; i < ary.length; i++) {
