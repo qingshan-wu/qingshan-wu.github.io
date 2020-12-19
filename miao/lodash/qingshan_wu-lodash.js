@@ -139,9 +139,11 @@ var qingshan_wu = function() {
     cloneDeep,
     isArray,
     toArray,
-    /* -- Math -- */
+    /* -- Math ----- */
     add,
     divide,
+    /* -- Object --- */
+    toPairs,
   };
 
   function chunk(ary, size = 1) {
@@ -1043,6 +1045,14 @@ var qingshan_wu = function() {
     return a / b
   }
 
+  /* -- Object ----------------------------------------- */
+  function toPairs(obj) {
+    let res = []
+    for (let key in obj) {
+      res.push([key, obj[key]])
+    }
+    return res
+  }
 
 
 
