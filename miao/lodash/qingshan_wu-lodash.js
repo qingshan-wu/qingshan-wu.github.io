@@ -112,6 +112,7 @@ var qingshan_wu = function() {
     nth,
     pull,
     pullAll,
+    pullAllBy,
     flattenDepth,
     sortedIndex,
     sortedIndexBy,
@@ -789,6 +790,19 @@ var qingshan_wu = function() {
   function pullAll(arr, values) {
     for (let i = 0; i < arr.length; i++) {
       if (values.includes(arr[i])) {
+        arr.splice(i, 1)
+        i--
+      }
+    }
+    return arr
+  }
+
+  function pullAllBy(arr, values, iteratee) {
+    iteratee = processType(iteratee)
+    let val = values.map(it => iteratee(it))
+
+    for (let i = 0; i < arr.length; i++) {
+      if (val.includes(iteratee(arr[i]))){
         arr.splice(i, 1)
         i--
       }
