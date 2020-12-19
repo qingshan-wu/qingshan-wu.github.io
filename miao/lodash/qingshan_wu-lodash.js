@@ -1050,6 +1050,7 @@ var qingshan_wu = function() {
     return res
   }
 
+  // "" => new String => key即idx
   function keys(obj) {
     let res = []
     for (let key in obj){
