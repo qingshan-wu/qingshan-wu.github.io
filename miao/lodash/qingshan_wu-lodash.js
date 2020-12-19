@@ -1009,12 +1009,28 @@ var qingshan_wu = function() {
 
   function xorWith(...args) {
     let iteratee = processType(args.pop())
-    let arr = []
-    args.forEach(it => arr.push(...it))
 
-    let map = new Map()
+    // let arr = []
+    // args.forEach(it => arr.push(...it))
+    let arr = args.reduce((res, it) => res.concat(it), [])
 
+    let count = new Array(arr.length).fill(0)
 
+    for (let i = 0; i < arr.length; i++) {
+      if (count[i] == 1) //即已经被标记过，已有重复的
+        continue;
+
+      let val = arr[i];
+
+      for (let j = i + 1; j < arr.length; j++) {
+        if (count[j] == 0 && iteratee(val, arr[j])) {
+          count[j] = 1
+          count[i] = 1
+        }
+      }
+    }
+
+    return arr.filter((_, i) => count[i] == 0)
   }
 
   function zip(...arrays) {
