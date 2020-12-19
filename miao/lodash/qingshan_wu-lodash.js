@@ -110,6 +110,7 @@ var qingshan_wu = function() {
     pull,
     pullAll,
     pullAllBy,
+    pullAllWith,
     flattenDepth,
     sortedIndex,
     sortedIndexBy,
@@ -807,6 +808,18 @@ var qingshan_wu = function() {
       }
     }
     return arr.slice()
+  }
+
+  function pullAllWith(arr, values, iteratee) {
+    let count = new Array(arr.length).fill(true)
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < values.length; j++) {
+        if (iteratee(arr[i], values[j])){
+          count[i] = false
+        }
+      }
+    }
+    return arr.filter((_, i) => count[i])
   }
 
   function sortedIndex(ary, value) {
