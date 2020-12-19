@@ -129,6 +129,7 @@ var qingshan_wu = function() {
     xor,
     zip,
     unzip,
+    unzipWith,
     mapKeys,
     mapValues,
     cloneDeep,
@@ -993,8 +994,17 @@ var qingshan_wu = function() {
   }
 
   // 翻转矩阵
+  // => []
   function unzip(arrs) {
     return arrs[0].map((_, i) => arrs.map(arr => arr[i]))
+  }
+
+  function unzipWith(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let regrouped = unzip(arr)
+    return regrouped.map(group => {
+      return group.reduce((res, it) => iteratee(res, it))
+    })
   }
 
   function cloneDeep(value) {
