@@ -139,6 +139,7 @@ var qingshan_wu = function() {
     add,
     divide,
     mean,
+    meanBy,
 
     /* -- Object --- */
 
@@ -1053,6 +1054,15 @@ var qingshan_wu = function() {
 
   function mean(arr) {
     return arr.reduce((sum, it) => sum + it) / arr.length
+  }
+
+  function meanBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    let sum = 0
+    for (let ele of arr) {
+      sum += iteratee(ele)
+    }
+    return sum / arr.length
   }
 
   /* -- Object ----------------------------------------- */
