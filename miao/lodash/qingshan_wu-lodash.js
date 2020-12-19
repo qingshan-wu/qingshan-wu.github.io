@@ -127,6 +127,8 @@ var qingshan_wu = function() {
     sum,
     without,
     xor,
+    xorBy,
+    xorWith,
     zip,
     unzip,
     unzipWith,
@@ -907,7 +909,7 @@ var qingshan_wu = function() {
   function uniq(arr) {
     return Array.from(new Set(arr))
   }
-
+  // <= [], function
   // => []
   function uniqBy(arr, iteratee) {
     iteratee = processType(iteratee)
@@ -976,6 +978,33 @@ var qingshan_wu = function() {
     }
 
     return res
+  }
+
+  // 返回独特的
+  function xorBy(...args){
+    let iteratee = processType(args.pop())
+
+    let arr = []
+    args.forEach(it => arr.push(...it))
+
+    let map = new Map()
+
+    for (let e of arr) {
+      let val = iteratee(e)
+      if (!map.has(val)) {
+        map.set(val, 1)
+      } else {
+        map.set(val, map.get(val) + 1)
+      }
+    }
+
+    let res = []
+    arr.forEach(e => {
+      if (map.get(iteratee(e)) < 2)
+        res.push(e)
+    })
+    return res
+
   }
 
   function zip(...arrays) {
