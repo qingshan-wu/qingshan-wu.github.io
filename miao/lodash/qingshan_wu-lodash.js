@@ -76,6 +76,7 @@ var qingshan_wu = function() {
     reverse,
     drop,
     dropRight,
+    dropRightWhile,
     flatten,
     flattenDeep,
     findIndex,
@@ -271,6 +272,17 @@ var qingshan_wu = function() {
   function dropRight(ary, n = 1) {
     var idx = ary.length - n
     return idx >= 0 ? ary.slice(0, idx) : []
+  }
+
+  // => a slice of arr
+  function dropRightWhile(arr, predicate) {
+    predicate = processType(predicate)
+    for (var i = arr.length - 1; i >= 0; i--) {
+      if (!predicate(arr[i])) {
+        break
+      }
+    }
+    return arr.slice(0, i + 1)
   }
 
   function differenceWith(ary, values, comparator) {
