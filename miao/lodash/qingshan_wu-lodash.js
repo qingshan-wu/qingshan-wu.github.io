@@ -137,6 +137,7 @@ var qingshan_wu = function() {
     xorBy,
     xorWith,
     zip,
+    zipObject,
     unzip,
     unzipWith,
     mapKeys,
@@ -1178,6 +1179,14 @@ var qingshan_wu = function() {
       for (let j = 0; j < arrays.length; j++)
         res[i][j] = arrays[j][i]
     })
+    return res
+  }
+
+  function zipObject(props, vals) {
+    let res = {}
+    for (let i = 0; i < props.length; i++) {
+      res[props[i]] = vals[i]
+    }
     return res
   }
 
