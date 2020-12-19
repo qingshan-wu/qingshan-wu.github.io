@@ -795,7 +795,7 @@ var qingshan_wu = function() {
         i--
       }
     }
-    return arr
+    return arr.slice()
   }
 
   function pullAllBy(arr, values, iteratee) {
@@ -809,7 +809,7 @@ var qingshan_wu = function() {
         i--
       }
     }
-    return arr
+    return arr.slice()
   }
 
   function sortedIndex(ary, value) {
