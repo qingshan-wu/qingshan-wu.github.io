@@ -123,6 +123,7 @@ var qingshan_wu = function() {
     takeRightWhile,
     takeWhile,
     union,
+    unionBy,
     sum,
     without,
     xor,
@@ -769,6 +770,7 @@ var qingshan_wu = function() {
     return res
   }
 
+  // => [no-repeat]
   function union(...arrs) {
     let set = new Set()
     arrs.forEach(arr => {
@@ -777,6 +779,29 @@ var qingshan_wu = function() {
       })
     })
     return Array.from(set)
+  }
+
+  // => []
+  function unionBy(...args) {
+    let iteratee = args[args.length - 1]
+    if (Array.isArray(iteratee)) {
+      return union(args)
+    }
+
+    iteratee = processType(iteratee)
+    let set = new Set()
+    let arrs = args.slice(0, -1)
+    let res = []
+
+    arrs.forEach(arr => {
+      arr.forEach(it => {
+        if (!set.has(iteratee(it))) {
+          set.add(iteratee(it))
+          res.push(it)
+        }
+      })
+    })
+    return res
   }
 
   function sum(ary) {
