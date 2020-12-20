@@ -1404,6 +1404,7 @@ var qingshan_wu = function() {
   function shuffle(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
       let rdIdx = Math.random() * (i + 1) | 0
+      //经少量测试好像 * i 也行
 
       let temp = arr[rdIdx]
       arr[rdIdx] = arr[i]
