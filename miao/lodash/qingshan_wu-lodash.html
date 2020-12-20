@@ -1302,6 +1302,18 @@
     return arr
   }
 
+  function size(coll) {
+    if (typeUtils.isObject(coll)) {
+      let s = 0
+      for (let key in coll)
+        s++
+
+      return s
+    } else {
+      return coll.length
+    }
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {

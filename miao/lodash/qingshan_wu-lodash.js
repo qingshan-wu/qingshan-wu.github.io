@@ -162,6 +162,7 @@ var qingshan_wu = function() {
     sample,
     sampleSize,
     shuffle,
+    size,
 
     /* -- Math ----------- */
 
@@ -1412,6 +1413,17 @@ var qingshan_wu = function() {
     }
     return arr
   }
+
+  function size(coll) {
+    if (typeUtils.isObject(coll)) {
+      let s = 0
+      for (let key in coll) s++;
+
+      return s
+    }
+    return coll.length
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
