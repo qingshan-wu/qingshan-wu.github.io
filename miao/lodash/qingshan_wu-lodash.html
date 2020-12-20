@@ -1463,6 +1463,17 @@
     return value <= other
   }
 
+  function forOwn(obj, iteratee) {
+    iteratee = processType(iteratee)
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        let res = iteratee(obj[key], key, obj)
+        if (!res) break;
+      }
+    }
+    return obj
+  }
+
 
   </script>
 </head>

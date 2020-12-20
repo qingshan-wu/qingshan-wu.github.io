@@ -183,6 +183,7 @@ var qingshan_wu = function() {
 
     toPairs,
     keys,
+    forOwn,
     values
   };
 
@@ -1576,6 +1577,17 @@ var qingshan_wu = function() {
         res.push(obj[key])
     }
     return res
+  }
+
+  function forOwn(obj, iteratee) {
+    iteratee = processType(iteratee)
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        let res = iteratee(obj[key], key, obj)
+        if (!res) break;
+      }
+    }
+    return obj
   }
 
   function sortBy(coll, iteratees) {
