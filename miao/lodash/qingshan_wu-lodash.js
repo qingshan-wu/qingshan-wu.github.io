@@ -1293,6 +1293,14 @@ var qingshan_wu = function() {
     return value >= other
   }
 
+  function lt(value, other) {
+    return value < other
+  }
+
+  function lte(value, other) {
+    return value <= other
+  }
+
   /* -- collecetion ------------------------------------ */
 
   // => {}
