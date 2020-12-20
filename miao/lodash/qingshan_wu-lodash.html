@@ -1438,6 +1438,11 @@
     return a - b
   }
 
+  function sumBy(arr, iteratee) {
+    iteratee = processType(iteratee)
+    return  arr.reduce((res, it) => res + iteratee(it), 0)
+  }
+
 
 
 
