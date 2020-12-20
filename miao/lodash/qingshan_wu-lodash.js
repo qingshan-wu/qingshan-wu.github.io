@@ -1584,7 +1584,7 @@ var qingshan_wu = function() {
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         let res = iteratee(obj[key], key, obj)
-        if (!res) break;
+        if (res === false) break;
       }
     }
     return obj
