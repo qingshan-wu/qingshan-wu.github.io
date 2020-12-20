@@ -173,6 +173,7 @@ var qingshan_wu = function() {
     mean,
     meanBy,
     multiply,
+    subtract,
 
     /* -- Object --------- */
 
@@ -1514,6 +1515,10 @@ var qingshan_wu = function() {
 
   function multiply(a, b) {
     return a * b
+  }
+
+  function subtract(a, b) {
+    return a - b
   }
 
   /* -- Object ----------------------------------------- */
