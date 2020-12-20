@@ -152,6 +152,8 @@ var qingshan_wu = function() {
     flatMap,
     flatMapDeep,
     flatMapDepth,
+    forEach,
+    forEachRight,
 
     /* -- Math ----------- */
 
@@ -1289,6 +1291,32 @@ var qingshan_wu = function() {
   function flatMapDepth(col, iteratee, depth = 1) {
     iteratee = processType(iteratee)
     return flattenDepth(col.map(it => iteratee(it)), depth)
+  }
+
+  // coll == collection
+  function forEach(coll, iteratee) {
+    iteratee = processType(iteratee)
+    if (typeUtils.isArray(coll)) {
+      for (let i = 0; i < coll.length; i++) {
+        iteratee(coll[i], i, coll)
+      }
+    } else { //可以迭代string
+      for (let key in coll) {
+        iteratee(coll[key], key, coll)
+      }
+    }
+    return coll
+  }
+
+  function forEachRight(coll, iteratee) {
+    if (typeUtils.isArray(coll) || typeUtils.isString(coll)) {
+      for (let i = coll.length - 1; i >= 0; i--) {
+        iteratee(coll[i], i, coll)
+      }
+    } else {
+      forEach(coll, iteratee)
+    }
+    return coll
   }
 
 
