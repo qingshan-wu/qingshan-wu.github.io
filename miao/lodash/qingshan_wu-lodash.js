@@ -157,7 +157,7 @@ var qingshan_wu = function() {
     includes,
     invokeMap,
     keyBy,
-    predicate,
+    partition,
 
     /* -- Math ----------- */
 
