@@ -156,6 +156,7 @@ var qingshan_wu = function() {
     forEachRight,
     includes,
     invokeMap,
+    keyBy,
 
     /* -- Math ----------- */
 
@@ -1351,6 +1352,13 @@ var qingshan_wu = function() {
     if (typeUtils.isFunction(path)) {
       return coll.map(it => path.call(it, args))
     }
+  }
+
+  function keyBy(coll, iteratee){
+    let res = {}
+    iteratee = processType(iteratee)
+    coll.forEach(it => res[iteratee(it)] = it)
+    return res
   }
 
 

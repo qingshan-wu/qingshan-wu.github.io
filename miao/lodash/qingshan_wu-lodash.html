@@ -1250,6 +1250,15 @@
     }
   }
 
+  // <= [{}, {}]
+  // => {newKey: {}, nK: {}}
+  function keyBy(coll, iteratee){
+    let res = {}
+    iteratee = processType(iteratee)
+    coll.forEach(it => res[iteratee(it)] = it)
+    return res
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
