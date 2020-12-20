@@ -155,6 +155,7 @@ var qingshan_wu = function() {
     forEach,
     forEachRight,
     includes,
+    invokeMap,
 
     /* -- Math ----------- */
 
@@ -1340,6 +1341,16 @@ var qingshan_wu = function() {
       }
     }
     return false
+  }
+
+  // 面向测试用例编程
+  function invokeMap(coll, path, args) {
+    if (typeUtils.isString(path)) {
+      return coll.map(it =>  it[path](args))
+    }
+    if (typeUtils.isFunction(path)) {
+      return coll.map(it => path.call(it, args))
+    }
   }
 
 
