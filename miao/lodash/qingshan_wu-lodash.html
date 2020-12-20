@@ -1269,6 +1269,11 @@
     return [t, f]
   }
 
+  function reject(coll, predicate) {
+    predicate = processType(predicate)
+    return coll.filter(it => !predicate(it))
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {

@@ -158,6 +158,7 @@ var qingshan_wu = function() {
     invokeMap,
     keyBy,
     partition,
+    reject,
 
     /* -- Math ----------- */
 
@@ -1372,6 +1373,11 @@ var qingshan_wu = function() {
       predicate(it) ? t.push(it) : f.push(it)
     )
     return [t, f]
+  }
+
+  function reject(coll, predicate) {
+    predicate = processType(predicate)
+    return coll.filter(it => !predicate(it))
   }
 
 
