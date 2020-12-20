@@ -157,12 +157,14 @@ var qingshan_wu = function() {
     includes,
     invokeMap,
     keyBy,
+    orderBy,
     partition,
     reject,
     sample,
     sampleSize,
     shuffle,
     size,
+    sortBy,
 
     /* -- Math ----------- */
 
@@ -1369,6 +1371,41 @@ var qingshan_wu = function() {
     return res
   }
 
+  function swap(arr, i, j) {
+    let temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+
+  // <= ([], [], [])
+  // => []
+  // 冒泡排序 bubble sort
+  function orderBy(coll, iteratees, orders) {
+    let fs = iteratees.map(it => processType(it))
+
+    for (let n = 0; n < iteratees.length; n++) {
+
+      let f = fs[n]
+      let order = orders[n]
+
+      for (let i = coll.length - 2; i >= 0; i--) {
+        for (let j = 0; j <= i; j++) {
+
+          if (n == 0 || fs[n - 1](coll[j]) == fs[n - 1](coll[j + 1])) { //即不改变上次排序分组结果
+
+            if (order == "asc" && f(coll[j]) > f(coll[j + 1]))  //升序
+              swap(coll, j, j + 1);
+
+            if (order == "desc" && f(coll[j]) < f(coll[j + 1]))  //降序
+              swap(coll, j, j + 1);
+
+          }
+        }
+      }
+    }
+    return coll
+  }
+
   function partition(coll, predicate) {
     predicate = processType(predicate)
     let t = []
@@ -1422,6 +1459,28 @@ var qingshan_wu = function() {
       return s
     }
     return coll.length
+  }
+
+
+  /* function sortBy(coll, iteratees) {
+    for (let f of iteratees) {
+
+      f = processType(f)
+      for (let i = coll.length - 2; i >= 0; i++) {
+
+        for (let j = 0; j <= i; j++) {
+          if (f(coll[j]) > f(coll[j + 1]))
+            swap(coll, j, j + 1);
+        }
+
+      }
+    }
+    return coll
+  } */
+
+  function sortBy(coll, iteratees) {
+    let orders = new Array(iteratees.length).fill("asc")
+    return orderBy(coll, iteratees, orders)
   }
 
 
