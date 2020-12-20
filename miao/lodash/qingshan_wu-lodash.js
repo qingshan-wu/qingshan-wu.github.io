@@ -154,6 +154,7 @@ var qingshan_wu = function() {
     flatMapDepth,
     forEach,
     forEachRight,
+    includes,
 
     /* -- Math ----------- */
 
@@ -1317,6 +1318,28 @@ var qingshan_wu = function() {
       forEach(coll, iteratee)
     }
     return coll
+  }
+
+  function includes(coll, val, fromIdx = 0) {
+    if (typeUtils.isArray(coll)) {
+      for (let i = fromIdx; i < coll.length; i++) {
+        if (sameValueZero(coll[i], val))
+          return true
+      }
+    }
+    if (typeUtils.isString(coll) && typeUtils.isString(val)) {
+      for (let i = fromIdx; i < coll.length; i++) {
+        if (sameValueZero(coll.slice(i, i + val.length), val))
+          return true
+      }
+    }
+    if (typeUtils.isObject(coll)) {
+      for (let key in coll) {
+        if (sameValueZero(coll[key], val))
+          return true
+      }
+    }
+    return false
   }
 
 
