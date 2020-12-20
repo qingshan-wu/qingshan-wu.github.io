@@ -161,6 +161,7 @@ var qingshan_wu = function() {
     reject,
     sample,
     sampleSize,
+    shuffle,
 
     /* -- Math ----------- */
 
@@ -1399,6 +1400,17 @@ var qingshan_wu = function() {
     return res
   }
 
+  // Fisher–Yates shuffle 洗牌算法
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+      let rdIdx = Math.random() * (i + 1) | 0
+
+      let temp = arr[rdIdx]
+      arr[rdIdx] = arr[i]
+      arr[i] = temp
+    }
+    return arr
+  }
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
