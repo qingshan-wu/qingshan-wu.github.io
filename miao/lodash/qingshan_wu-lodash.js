@@ -146,6 +146,9 @@ var qingshan_wu = function() {
     cloneDeep,
     isArray,
     toArray,
+    eq,
+    gt,
+    gte,
 
     /* -- collection ----- */
     countBy,
@@ -1278,6 +1281,18 @@ var qingshan_wu = function() {
     return res
   }
 
+  function eq(value, other) {
+    return sameValueZero(value, other)
+  }
+
+  function gt(value, other) {
+    return value > other
+  }
+
+  function gte(value, other) {
+    return value >= other
+  }
+
   /* -- collecetion ------------------------------------ */
 
   // => {}
@@ -1481,10 +1496,9 @@ var qingshan_wu = function() {
     return coll
   } */
 
-  function sortBy(coll, iteratees) {
-    let orders = new Array(iteratees.length).fill("asc")
-    return orderBy(coll, iteratees, orders)
-  }
+
+
+
 
 
   /* -- Math ------------------------------------------- */
@@ -1554,6 +1568,11 @@ var qingshan_wu = function() {
         res.push(obj[key])
     }
     return res
+  }
+
+  function sortBy(coll, iteratees) {
+    let orders = new Array(iteratees.length).fill("asc")
+    return orderBy(coll, iteratees, orders)
   }
 
 
