@@ -1429,7 +1429,8 @@ var qingshan_wu = function() {
     let res = []
 
     while (n > 0 && res.length < coll.length) {
-      if (!res.includes(sample(coll))) {
+      let rd = sample(coll)
+      if (!res.includes(rd)) {
         res.push(rd)
         n--
       }
