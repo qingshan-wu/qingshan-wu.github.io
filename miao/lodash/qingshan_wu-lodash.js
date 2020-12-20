@@ -1354,6 +1354,8 @@ var qingshan_wu = function() {
     }
   }
 
+  // <= [{}, {}]
+  // => {newKey: {}, nK: {}}
   function keyBy(coll, iteratee){
     let res = {}
     iteratee = processType(iteratee)
