@@ -157,6 +157,7 @@ var qingshan_wu = function() {
     includes,
     invokeMap,
     keyBy,
+    predicate,
 
     /* -- Math ----------- */
 
@@ -1361,6 +1362,16 @@ var qingshan_wu = function() {
     iteratee = processType(iteratee)
     coll.forEach(it => res[iteratee(it)] = it)
     return res
+  }
+
+  function partition(coll, predicate) {
+    predicate = processType(predicate)
+    let t = []
+    let f = []
+    coll.forEach(it =>
+      predicate(it) ? t.push(it) : f.push(it)
+    )
+    return [t, f]
   }
 
 

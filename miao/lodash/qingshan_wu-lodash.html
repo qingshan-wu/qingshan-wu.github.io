@@ -1259,6 +1259,16 @@
     return res
   }
 
+  function partition(coll, predicate) {
+    predicate = processType(predicate)
+    let t = []
+    let f = []
+    coll.forEach(it =>
+      predicate(it) ? t.push(it) : f.push(it)
+    )
+    return [t, f]
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
