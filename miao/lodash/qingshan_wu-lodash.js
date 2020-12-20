@@ -159,6 +159,7 @@ var qingshan_wu = function() {
     keyBy,
     partition,
     reject,
+    sample,
 
     /* -- Math ----------- */
 
@@ -1378,6 +1379,10 @@ var qingshan_wu = function() {
   function reject(coll, predicate) {
     predicate = processType(predicate)
     return coll.filter(it => !predicate(it))
+  }
+
+  function sample(coll) {
+    return coll[coll.length * Math.random() | 0]
   }
 
 

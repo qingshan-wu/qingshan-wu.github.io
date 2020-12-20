@@ -1274,6 +1274,10 @@
     return coll.filter(it => !predicate(it))
   }
 
+  function sample(coll) {
+    return coll[coll.length * Math.random() | 0]
+  }
+
 
   /* -- Math ------------------------------------------- */
   function add(a, b) {
