@@ -160,6 +160,7 @@ var qingshan_wu = function() {
     partition,
     reject,
     sample,
+    sampleSize,
 
     /* -- Math ----------- */
 
@@ -1383,6 +1384,19 @@ var qingshan_wu = function() {
 
   function sample(coll) {
     return coll[coll.length * Math.random() | 0]
+  }
+
+  function sampleSize(coll, n = 1) {
+    let res = []
+
+    while (n > 0 && res.length < coll.length) {
+      if (!res.includes(sample(coll))) {
+        res.push(rd)
+        n--
+      }
+    }
+
+    return res
   }
 
 
