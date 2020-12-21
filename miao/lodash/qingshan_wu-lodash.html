@@ -1478,6 +1478,14 @@
     return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
   }
 
+  function castArray(val) {
+    let res = []
+    for (let i = 0; i < arguments.length; i++) {
+      res.push(arguments[i])
+    }
+    return res
+  }
+
 
   </script>
 </head>

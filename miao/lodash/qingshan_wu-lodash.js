@@ -174,6 +174,7 @@ var qingshan_wu = function() {
     shuffle,
     size,
     sortBy,
+    castArray,
 
     /* -- Math ----------- */
 
@@ -1533,6 +1534,15 @@ var qingshan_wu = function() {
   } */
 
 
+  function castArray(val) {
+    let res = []
+    for (let i = 0; i < arguments.length; i++) {
+      res.push(arguments[i])
+    }
+    return res
+  }
+
+
 
 
 
@@ -1621,6 +1631,8 @@ var qingshan_wu = function() {
     let orders = new Array(iteratees.length).fill("asc")
     return orderBy(coll, iteratees, orders)
   }
+
+
 
 
 
