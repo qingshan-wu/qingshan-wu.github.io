@@ -146,10 +146,13 @@ var qingshan_wu = function() {
     cloneDeep,
     isArray,
     isArrayBuffer,
+    isArrayLike,
     toArray,
     eq,
     gt,
     gte,
+    lt,
+    lte,
     isBoolean,
 
     /* -- collection ----- */
@@ -1274,6 +1277,15 @@ var qingshan_wu = function() {
 
   function isArrayBuffer(val) {
     return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
+  }
+
+  function isArrayLike(val) {
+    if (!typeUtils.isFunction) {
+      if (val.lengh >= 0 || val.length < Number.MAX_SAFE_INTEGER){
+        return true
+      }
+    }
+    return false
   }
 
   function toArray(val) {
