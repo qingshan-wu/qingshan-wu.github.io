@@ -149,6 +149,7 @@ var qingshan_wu = function() {
     eq,
     gt,
     gte,
+    isBoolean,
 
     /* -- collection ----- */
     countBy,
@@ -1300,6 +1301,10 @@ var qingshan_wu = function() {
 
   function lte(value, other) {
     return value <= other
+  }
+
+  function isBoolean(val) {
+    return Object.prototype.toString.call(val) === "[object Boolean]"
   }
 
   /* -- collecetion ------------------------------------ */
