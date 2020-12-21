@@ -145,6 +145,7 @@ var qingshan_wu = function() {
     mapValues,
     cloneDeep,
     isArray,
+    isArrayBuffer,
     toArray,
     eq,
     gt,
@@ -1269,6 +1270,10 @@ var qingshan_wu = function() {
 
   function isArray(val) {
     return typeUtils.isArray(val)
+  }
+
+  function isArrayBuffer(val) {
+    return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
   }
 
   function toArray(val) {

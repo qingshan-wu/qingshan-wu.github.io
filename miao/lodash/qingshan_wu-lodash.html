@@ -13,7 +13,7 @@
   <script>
 
 /* -- 工具集 ------------------------------------------ */
-
+  "use strict"
   function sameValueZero(a, b) {
     if (a === b) return a !== 0 || 1 / a === 1 / b;
     return a !== a && b !== b;
@@ -1472,6 +1472,10 @@
       }
     }
     return obj
+  }
+
+  function isArrayBuffer(val) {
+    return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
   }
 
 
