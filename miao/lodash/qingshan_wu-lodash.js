@@ -16,7 +16,7 @@ var qingshan_wu = function() {
   // 类型检测工具集
   const types = ["Null", "Undefined", "Boolean",
               "Number", "String", "Object", "Array",
-              "Function"]
+              "Function", "Date"]
   const typeUtils = {}
 
   types.forEach(type => {
@@ -154,6 +154,7 @@ var qingshan_wu = function() {
     lt,
     lte,
     isBoolean,
+    isDate,
 
     /* -- collection ----- */
     countBy,
@@ -1322,6 +1323,10 @@ var qingshan_wu = function() {
 
   function isBoolean(val) {
     return Object.prototype.toString.call(val) === "[object Boolean]"
+  }
+
+  function isDate(val) {
+    return typeUtils.isDate(val)
   }
 
   /* -- collecetion ------------------------------------ */
