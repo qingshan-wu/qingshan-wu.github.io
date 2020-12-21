@@ -1283,7 +1283,7 @@ var qingshan_wu = function() {
 
   function isArrayLike(val) {
     if (!typeUtils.isFunction) {
-      if (val.lengh >= 0 || val.length < Number.MAX_SAFE_INTEGER){
+      if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
         return true
       }
     }
