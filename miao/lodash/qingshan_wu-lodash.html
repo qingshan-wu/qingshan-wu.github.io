@@ -1487,6 +1487,21 @@
   }
 
 
+
+  function random(lower = 0, upper = 1, floating = false) {
+
+    let ans = (upper - lower) * Math.random() + lower
+
+    let isFloat = Math.floor(upper) !== upper //floating point
+
+    if (isFloat || floating) { // return floating
+      return ans
+    }
+
+    return Math.floor(ans)
+  }
+
+
   </script>
 </head>
 <body>

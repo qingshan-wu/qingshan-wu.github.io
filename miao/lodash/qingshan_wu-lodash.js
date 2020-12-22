@@ -185,6 +185,7 @@ var qingshan_wu = function() {
     multiply,
     subtract,
     sumBy,
+    random,
 
     /* -- Object --------- */
 
@@ -1585,6 +1586,20 @@ var qingshan_wu = function() {
   function sumBy(arr, iteratee) {
     iteratee = processType(iteratee)
     return  arr.reduce((res, it) => res + iteratee(it), 0)
+  }
+
+
+  function random(lower = 0, upper = 1, floating = false) {
+
+    let ans = (upper - lower) * Math.random() + lower
+
+    let isFloat = Math.floor(upper) !== upper //floating point
+
+    if (isFloat || floating) { // return floating
+      return ans
+    }
+
+    return Math.floor(ans)
   }
 
   /* -- Object ----------------------------------------- */
