@@ -200,6 +200,7 @@ var qingshan_wu = function() {
     subtract,
     sumBy,
     clamp,
+    inRange,
     random,
 
     /* -- Object --------- */
@@ -1680,6 +1681,22 @@ var qingshan_wu = function() {
     } else {
       return number
     }
+  }
+
+  function inRange(n, start, end) {
+    if (end == undefined) {
+      end = start
+      start = 0
+    }
+    if (start > end) {
+      let t = end
+      end = start
+      start = t
+    }
+    if (start < end && start <= n && n < end) {
+      return true
+    }
+    return false
   }
 
 
