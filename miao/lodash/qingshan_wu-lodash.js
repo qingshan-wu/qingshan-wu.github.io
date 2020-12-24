@@ -95,6 +95,8 @@ var qingshan_wu = function() {
     indexOf,
     initial,
     isEqual,
+    isError,
+    isFinite,
     intersection,
     intersectionBy,
     intersectionWith,
@@ -665,6 +667,14 @@ var qingshan_wu = function() {
     }
 
     return propsInA == propsInB;
+  }
+
+  function isError(val) {
+    return typeUtils.isError(val)
+  }
+
+  function isFinite(val) {
+    return Number.isFinite(val)
   }
 
   //  s = source, t = target
