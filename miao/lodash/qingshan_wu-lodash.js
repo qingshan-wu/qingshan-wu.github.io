@@ -97,11 +97,16 @@ var qingshan_wu = function() {
     isEqual,
     isError,
     isFinite,
+    isFunction,
+    isInteger,
+    isMap,
     intersection,
     intersectionBy,
     intersectionWith,
     identity,
     isMatch,
+    isMatchWith,
+    isNaN,
     matches,
     some,
     max,
@@ -651,6 +656,8 @@ var qingshan_wu = function() {
   function isEqual(a, b) {
     if (a === b) return true;
 
+    if (a !== a && b !== b) return true;
+
     if (a == null || typeof a != "object" ||
         b == null || typeof b != "object")
       return false;
@@ -677,24 +684,19 @@ var qingshan_wu = function() {
     return Number.isFinite(val)
   }
 
-  //  s = source, t = target
-  //  => boolean
-  //  ({ 'a': 4, 'c': 6 },{ 'a': 4, 'b': 5, 'c': 6 })
-  //  true
-  function partialDeepEqual(s, t) {
-    if (s === t) return true;
-
-    if (s == null || typeof s != "object" ||
-        t == null || typeof t != "object")
-      return false;
-
-    for (var prop in s) {
-      if (!(prop in t) || !partialDeepEqual(s[prop], t[prop]))
-        return false;
-    }
-
-    return true;
+  function isFunction(val) {
+    return Object.prototype.toString.call(val) === '[object Function]'
   }
+
+  function isInteger(val) {
+    return isFinite(val) && Math.floor(val) === val
+  }
+
+  function isMap(val) {
+    return Object.prototype.toString.call(val) === "[object Map]"
+  }
+
+
 
   // intersection([1,2,3], [1,2,4], [3])
   // []
@@ -771,13 +773,43 @@ var qingshan_wu = function() {
     return value
   }
 
-  function isMatch(obj, source) {
-    return partialDeepEqual(source, obj)
+    //  ({ 'a': 4, 'c': 6 },{ 'a': 4, 'b': 5, 'c': 6 })
+  //  true
+  function isMatchReverse(source, obj) {
+    return isMatch(obj, source)
+  }
+
+
+  function isMatch(obj, src) { //确定 object 是否含有和 source 完全相等的属性值。
+    if (obj === src) return true;
+
+    if (obj == null || typeof obj != "object" ||
+        src == null || typeof src != "object")
+      return false;
+
+    for (var prop in src) {
+      if (!(prop in obj) || !isMatch(obj[prop], src[prop]))
+        return false;
+    }
+
+    return true;
+  }
+
+  function isMatchWith(obj, src, customizer) {
+    for (let key in src) {
+      if (!(key in obj) || !customizer(obj[key], src[key]))
+        return false;
+    }
+    return true
+  }
+
+  function isNaN(val) {
+    return val !== val
   }
 
   // => function
-  function matches(obj) {
-    return partialDeepEqual.bind(null, obj)
+  function matches(source) {
+    return isMatchReverse.bind(null, source)
   }
 
   function max(ary) {
