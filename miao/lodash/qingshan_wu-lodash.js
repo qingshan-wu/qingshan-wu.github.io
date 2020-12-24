@@ -16,7 +16,7 @@ var qingshan_wu = function() {
   // 类型检测工具集
   const types = ["Null", "Undefined", "Boolean",
               "Number", "String", "Object", "Array",
-              "Function", "Date"]
+              "Function", "Date", "Error"]
   const typeUtils = {}
 
   types.forEach(type => {
