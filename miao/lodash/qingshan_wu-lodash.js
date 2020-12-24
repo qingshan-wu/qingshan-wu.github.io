@@ -107,6 +107,13 @@ var qingshan_wu = function() {
     isMatch,
     isMatchWith,
     isNaN,
+    isSet,
+    isString,
+    isSymbol,
+    isUndefined,
+    isWeakMap,
+    isWeakSet,
+    isRegExp,
     matches,
     some,
     max,
@@ -805,6 +812,34 @@ var qingshan_wu = function() {
 
   function isNaN(val) {
     return val !== val
+  }
+
+  function isSet(val) {
+    return Object.prototype.toString.call(val) === "[object Set]"
+  }
+
+  function isString(val) {
+    return Object.prototype.toString.call(val) === "[object String]"
+  }
+
+  function isSymbol(val) {
+    return Object.prototype.toString.call(val) === "[object Symbol]"
+  }
+
+  function isUndefined(val) {
+    return Object.prototype.toString.call(val) === "[object Undefined]"
+  }
+
+  function isWeakMap(val) {
+    return Object.prototype.toString.call(val) === "[object WeakMap]"
+  }
+
+  function isWeakSet(val) {
+    return Object.prototype.toString.call(val) === "[object WeakSet]"
+  }
+
+  function isRegExp(val) {
+    return Object.prototype.toString.call(val) === "[object RegExp]"
   }
 
   // => function

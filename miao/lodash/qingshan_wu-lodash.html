@@ -24,7 +24,7 @@
   // 类型检测工具集
   const types = ["Null", "Undefined", "Boolean",
               "Number", "String", "Object", "Array",
-              "Function", "Error"]
+              "Function", "Error", "Set"]
   const typeUtils = {}
 
   types.forEach(type => {
@@ -1552,6 +1552,34 @@
 
   function isMap(val) {
     return Object.prototype.toString.call(val) === "[object Map]"
+  }
+
+  function isSet(val) {
+    return Object.prototype.toString.call(val) === "[object Set]"
+  }
+
+  function isString(val) {
+    return Object.prototype.toString.call(val) === "[object String]"
+  }
+
+  function isSymbol(val) {
+    return Object.prototype.toString.call(val) === "[object Symbol]"
+  }
+
+  function isUndefined(val) {
+    return Object.prototype.toString.call(val) === "[object Undefined]"
+  }
+
+  function isWeakMap(val) {
+    return Object.prototype.toString.call(val) === "[object WeakMap]"
+  }
+
+  function isWeakSet(val) {
+    return Object.prototype.toString.call(val) === "[object WeakSet]"
+  }
+
+  function isRegExp(val) {
+    return Object.prototype.toString.call(val) === "[object RegExp]"
   }
 
 
