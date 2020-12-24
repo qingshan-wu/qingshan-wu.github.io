@@ -1582,6 +1582,16 @@
     return Object.prototype.toString.call(val) === "[object RegExp]"
   }
 
+  function clamp(number, lower, upper) {
+    if (number < lower) {
+      return lower
+    } else if (number > upper) {
+      return upper
+    } else {
+      return number
+    }
+  }
+
 
 
   </script>

@@ -199,6 +199,7 @@ var qingshan_wu = function() {
     multiply,
     subtract,
     sumBy,
+    clamp,
     random,
 
     /* -- Object --------- */
@@ -1669,6 +1670,16 @@ var qingshan_wu = function() {
   function sumBy(arr, iteratee) {
     iteratee = processType(iteratee)
     return  arr.reduce((res, it) => res + iteratee(it), 0)
+  }
+
+  function clamp(number, lower, upper) {
+    if (number < lower) {
+      return lower
+    } else if (number > upper) {
+      return upper
+    } else {
+      return number
+    }
   }
 
 
