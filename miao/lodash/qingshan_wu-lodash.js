@@ -107,6 +107,7 @@ var qingshan_wu = function() {
     isMatch,
     isMatchWith,
     isNaN,
+    isObject,
     isSet,
     isString,
     isSymbol,
@@ -814,7 +815,14 @@ var qingshan_wu = function() {
   }
 
   function isNaN(val) {
-    return val !== val
+    if (isObject(val)) {
+      return val.valueOf() !== val.valueOf()
+    }
+    return Number(val) !== Number(val)
+  }
+
+  function isObject(val) {
+    return Object.prototype.toString.call(val) === "[object Object]"
   }
 
   function isSet(val) {
@@ -1376,11 +1384,12 @@ var qingshan_wu = function() {
   }
 
   function isArrayLike(val) {
-    if (!typeUtils.isFunction) {
-      if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
-        return true
-      }
+    if (typeUtils.isNumber(val) || isFunction(val)) return false;
+
+    if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
+      return true
     }
+
     return false
   }
 

@@ -1615,6 +1615,22 @@
   // f.length 形参个数
   }
 
+  // function defer(func, ...args) {
+  //   let timer = setTimeout(func, 0, ...args)
+  //   return timer - 1
+  // }
+
+
+  function isArrayLike(val) {
+    if (typeUtils.isNumber(val) || isFunction(val)) return false;
+
+    if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
+      return true
+    }
+
+    return false
+  }
+
 
 
   </script>
