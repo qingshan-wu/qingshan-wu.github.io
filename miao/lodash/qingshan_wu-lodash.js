@@ -192,7 +192,13 @@ var qingshan_wu = function() {
     toPairs,
     keys,
     forOwn,
-    values
+    values,
+
+    /* -- Function ------- */
+
+    flip,
+    ary,
+    negative,
   };
 
   function chunk(ary, size = 1) {
@@ -1648,7 +1654,25 @@ var qingshan_wu = function() {
   }
 
 
+  /* -- Function --------------------------------------- */
 
+  function flip(f) {
+    return function (...args) {
+      return f(...(args.reverse()))
+    }
+  }
+
+  function ary(f, n = f.length) {
+    return function (...args) {
+      return f(args.slice(0, n))
+    }
+  }
+
+  function negative(predicate) {
+    return function(...args) {
+      return !predicate(...args)
+    }
+  }
 
 
 }()
