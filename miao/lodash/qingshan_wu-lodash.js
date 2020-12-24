@@ -159,6 +159,7 @@ var qingshan_wu = function() {
     mapValues,
     cloneDeep,
     isArray,
+    isArguments,
     isArrayBuffer,
     isArrayLike,
     toArray,
@@ -1360,7 +1361,14 @@ var qingshan_wu = function() {
   }
 
   function isArray(val) {
-    return typeUtils.isArray(val)
+    return Object.prototype.toString.call(val) === "[object Array]"
+  }
+
+  function isArguments(val) {
+    if (isArray(val)) return false;
+    return typeof val == "object" && "length" in val;
+  //   typeof (function() { return arguments; }()) == "object"
+  // f.length 形参个数
   }
 
   function isArrayBuffer(val) {
