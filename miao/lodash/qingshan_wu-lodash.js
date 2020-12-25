@@ -1401,6 +1401,10 @@ var qingshan_wu = function() {
 
   }
 
+  function isArrayLikeObject(val) {
+    return typeof val == "object" && isArrayLike(val)
+  }
+
   function isObject(val) {
     return (typeof val == "object" || isFunction(val)) && !isNull(val)
   }
