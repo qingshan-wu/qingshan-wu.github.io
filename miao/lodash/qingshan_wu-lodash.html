@@ -1624,15 +1624,20 @@
   function isArrayLike(val) {
     if (typeUtils.isNumber(val) || isFunction(val)) return false;
 
-    if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
-      return true
-    }
+    return val.length >= 0 && val.length< Number.MAX_SAFE_INTEGER
 
-    return false
   }
 
   function isNumber(val) {
     return Object.prototype.toString.call(val) === "[object Number]"
+  }
+
+  function isArrayLikeObject(val) {
+    return typeof val == "object" && isArrayLike(val)
+  }
+
+  function isObject(val) {
+    return Object.prototype.toString.call(val) === "[object Object]"
   }
 
   </script>

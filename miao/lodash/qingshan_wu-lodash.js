@@ -164,6 +164,7 @@ var qingshan_wu = function() {
     isArguments,
     isArrayBuffer,
     isArrayLike,
+    isArrayLikeObject,
     toArray,
     eq,
     gt,
@@ -1391,11 +1392,12 @@ var qingshan_wu = function() {
   function isArrayLike(val) {
     if (typeUtils.isNumber(val) || isFunction(val)) return false;
 
-    if (val.length >= 0 || val.length < Number.MAX_SAFE_INTEGER){
-      return true
-    }
+    return val.length >= 0 && val.length < Number.MAX_SAFE_INTEGER
 
-    return false
+  }
+
+  function isArrayLikeObject(val) {
+    return typeof val == "object" && isArrayLike(val)
   }
 
   function toArray(val) {
