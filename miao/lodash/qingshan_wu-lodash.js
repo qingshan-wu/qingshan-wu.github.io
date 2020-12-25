@@ -107,6 +107,7 @@ var qingshan_wu = function() {
     isMatch,
     isMatchWith,
     isNaN,
+    isNumber,
     isObject,
     isSet,
     isString,
@@ -819,6 +820,10 @@ var qingshan_wu = function() {
       return val.valueOf() !== val.valueOf()
     }
     return Number(val) !== Number(val)
+  }
+
+  function isNumber(val) {
+    return Object.prototype.toString.call(val) === "[object Number]"
   }
 
   function isObject(val) {
