@@ -1637,7 +1637,11 @@
   }
 
   function isObject(val) {
-    return Object.prototype.toString.call(val) === "[object Object]"
+    return (typeof val == "object" || isFunction(val)) && !isNull(val)
+  }
+
+  function isNull(val) {
+    return Object.prototype.toString.call(val) === "[object Null]"
   }
 
   </script>

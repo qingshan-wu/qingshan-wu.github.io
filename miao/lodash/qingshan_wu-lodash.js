@@ -107,6 +107,7 @@ var qingshan_wu = function() {
     isMatch,
     isMatchWith,
     isNaN,
+    isNull,
     isNumber,
     isObject,
     isSet,
@@ -823,12 +824,16 @@ var qingshan_wu = function() {
     return Number(val) !== Number(val)
   }
 
+  function isNull(val) {
+    return Object.prototype.toString.call(val) === "[object Null]"
+  }
+
   function isNumber(val) {
     return Object.prototype.toString.call(val) === "[object Number]"
   }
 
   function isObject(val) {
-    return Object.prototype.toString.call(val) === "[object Object]"
+    return typeof val == "object" || isFunction(val)
   }
 
   function isSet(val) {
@@ -1396,8 +1401,8 @@ var qingshan_wu = function() {
 
   }
 
-  function isArrayLikeObject(val) {
-    return typeof val == "object" && isArrayLike(val)
+  function isObject(val) {
+    return (typeof val == "object" || isFunction(val)) && !isNull(val)
   }
 
   function toArray(val) {
