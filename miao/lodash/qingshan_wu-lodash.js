@@ -42,7 +42,7 @@ var qingshan_wu = function() {
       return val => val;
 
     if (typeUtils.isString(iteratee)) {
-      pathArr = iteratee.split('.')
+      let pathArr = iteratee.split('.')
       if (pathArr.length == 1) {
         return obj => obj[iteratee]
       } else {
@@ -212,8 +212,15 @@ var qingshan_wu = function() {
 
     toPairs,
     keys,
+    keysIn,
     forOwn,
     values,
+    at,
+    defaults,
+    defaultsDeep,
+    cloneDeep,
+    findKey,
+    findLastKey,
 
     /* -- Function ------- */
 
@@ -1756,12 +1763,34 @@ var qingshan_wu = function() {
     return res
   }
 
+  function at(obj, paths) {
+    let reg = /\w+/g
+    let pathsArr = paths.map(it => it.match(reg))
+    let res = []
+    for (let path of pathsArr) {
+      let t = obj
+      for (let key of path) {
+        t = t[key]
+      }
+      res.push(t)
+    }
+    return res
+  }
+
   // "" => new String => key即idx
   function keys(obj) {
     let res = []
     for (let key in obj){
       if (obj.hasOwnProperty(key))
         res.push(key)
+    }
+    return res
+  }
+
+  function keysIn(obj) {
+    let res = []
+    for (let key in obj) {
+      res.push(key)
     }
     return res
   }
@@ -1789,6 +1818,79 @@ var qingshan_wu = function() {
   function sortBy(coll, iteratees) {
     let orders = new Array(iteratees.length).fill("asc")
     return orderBy(coll, iteratees, orders)
+  }
+
+  function defaults(obj, ...sources) {
+    for (let src of sources) {
+      for (let key in src) {
+        if (!(key in obj)) {
+          obj[key] = src[key]
+        }
+      }
+    }
+    return obj
+  }
+
+  function defaultsDeep(obj, ...sources) {
+    function defaultsHelper(obj, src) {
+      for (let key in src) {
+        if (!(key in obj)) {
+          obj[key] = cloneDeep(src[key])
+        }
+        if (isObject(src[key])) {
+          defaultsHelper(obj[key], src[key])
+        }
+      }
+    }
+    for (let src of sources) {
+      defaultsHelper(obj, src)
+    }
+    return obj
+  }
+
+  function cloneDeep(val) {
+    let result
+    if (isRegExp(val)) {
+      result = val
+      return result
+    }
+    if (!isObject(val)) {
+      result = val
+      return result
+    } else {
+      if (isArray(val)) {
+        result = []
+        for (let e of val) {
+          result.push(cloneDeep(e))
+        }
+      } else {
+        result = {}
+        for (let key in val) {
+          result[key] = cloneDeep(val[key])
+        }
+      }
+    }
+    return result
+  }
+
+  function findKey(obj, predicate) {
+    predicate = processType(predicate)
+    for (let key in obj) {
+      if (predicate(obj[key])) {
+        return key
+      }
+    }
+  }
+
+  function findLastKey(obj, predicate) {
+    predicate = processType(predicate)
+    var res
+    for (let key in obj) {
+      if (predicate(obj[key])) {
+        res = key
+      }
+    }
+    return res
   }
 
 
