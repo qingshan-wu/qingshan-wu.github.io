@@ -107,6 +107,8 @@ var qingshan_wu = function() {
     isMatch,
     isMatchWith,
     isNaN,
+    isNil,
+    isNative,
     isNull,
     isNumber,
     isObject,
@@ -829,6 +831,16 @@ var qingshan_wu = function() {
       return val.valueOf() !== val.valueOf()
     }
     return Number(val) !== Number(val)
+  }
+
+  function isNative(val) {
+    if (val == undefined) return false;
+    return Function.prototype.toString.call(val).includes
+                    ("[native code]")
+  }
+
+  function isNil(val) {
+    return isNull(val) || isUndefined(val)
   }
 
   function isNull(val) {

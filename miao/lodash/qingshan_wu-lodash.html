@@ -1739,6 +1739,18 @@
     return res
   }
 
+  function isNative(val) {
+    if (val == undefined) return false;
+    return Function.prototype.toString.call(val).includes
+                    ("[native code]")
+  }
+
+  function isNil(val) {
+    return isNull(val) || isUndefined(val)
+  }
+
+
+
 
 
   </script>
