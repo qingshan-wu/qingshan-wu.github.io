@@ -95,6 +95,9 @@ var qingshan_wu = function() {
     indexOf,
     initial,
     isEqual,
+    isEqualWith,
+    isElement,
+    isEmpty,
     isError,
     isFinite,
     isFunction,
@@ -635,6 +638,23 @@ var qingshan_wu = function() {
     return ary.slice(0, ary.length - 1)
   }
 
+  function isElement(val) {
+    return Object.prototype.toString.call(val) === "[object HTMLElement]"
+  }
+
+  function isEmpty(val) {
+    if (isArray(val))
+      return val.length == 0;
+
+    if (isObject(val)) {
+      if (typeUtils.isObject(val)) {
+        return Object.keys(val).length == 0
+      }
+      return val.size == 0;
+    }
+    return arguments.length <= 1
+  }
+
   /* function isEqual(a, b) {
     if (a === b) return true
     var ta = Object.getPrototypeOf(a)
@@ -697,6 +717,32 @@ var qingshan_wu = function() {
     }
 
     return propsInA == propsInB;
+  }
+
+  function isEqualWith(obj, oth, customizer) {
+    if (customizer == undefined) {
+      return isEqual(obj, oth)
+    }
+    customizer = processType(customizer)
+    if (isArray(obj) && isArray(oth) && obj.length == oth.length) {
+      for (let i = 0; i < obj.length; i++) {
+        if (!customizer(obj[i], oth[i], i, obj, oth))
+          return false;
+
+        return true;
+      }
+    }
+    if (typeUtils.isObject(obj) && typeUtils.isObject(oth)
+        && Object.keys(obj).length == Object.keys(oth).length) {
+      for (let key in obj) {
+        if (!customizer(obj[key], oth[key], key, obj, oth))
+          return false;
+
+        return true;
+      }
+    }
+
+    return customizer(obj, oth)
   }
 
   function isError(val) {
