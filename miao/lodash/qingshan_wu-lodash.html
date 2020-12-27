@@ -1801,6 +1801,15 @@
     return p === Object.prototype || p === null;
   }
 
+  function isSafeInteger(val) {
+    return Number.isSafeInteger(val)
+    // Number.isSafeInteger(Number.MIN_VALUE) == false
+    // Number.isSafeInteger(Infinity) == false
+  }
+
+  function isTypedArray(val) {
+    return Object.prototype.toString.call(val) === "[object Uint8Array]"
+  }
 
 
 

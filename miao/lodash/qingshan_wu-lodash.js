@@ -117,9 +117,11 @@ var qingshan_wu = function() {
     isObject,
     isObjectLike,
     isPlainObject,
+    isSafeInteger,
     isSet,
     isString,
     isSymbol,
+    isTypedArray,
     isUndefined,
     isWeakMap,
     isWeakSet,
@@ -419,41 +421,6 @@ var qingshan_wu = function() {
     return res
   }
 
-  /* function findIndex(ary, predicate = identity, fromIndex = 0) {
-    for (var i = fromIndex; i < ary.length; i++) {
-
-      if (typeUtils.isFunction(predicate)) {
-        if (predicate(ary[i])) {
-          return i
-        }
-      }
-
-      if (typeUtils.isObject(predicate)) {
-        if (isEqual(ary[i], predicate)) {
-          return i
-        }
-      }
-
-      if (typeUtils.isArray(predicate)) {
-        for (var key in ary[i]) {
-          let obj = ary[i]
-          if (key == predicate[0] && obj[key] == predicate[1]) {
-            return i
-          }
-        }
-      }
-
-      if (typeUtils.isString(predicate)) {
-        for (var key in ary[i]) {
-          let obj = ary[i]
-          if (key == predicate && obj[key]) return i
-        }
-      }
-
-    }
-    return -1
-  } */
-
   function findIndex(ary, predicate, fromIndex = 0) {
     predicate = processType(predicate);
     for (var i = fromIndex; i < ary.length; i++) {
@@ -656,46 +623,6 @@ var qingshan_wu = function() {
     }
     return arguments.length <= 1
   }
-
-  /* function isEqual(a, b) {
-    if (a === b) return true
-    var ta = Object.getPrototypeOf(a)
-    var tb = Object.getPrototypeOf(b)
-
-    if (ta == tb) { //类型对比
-
-      if (ta == Array.prototype || ta == String.prototype) {
-        if (a.length != b.length) return false
-        for (var i = 0; i < a.length; i++) {
-          var tai = Object.getPrototypeOf(a[i])
-          var tbi = Object.getPrototypeOf(b[i])
-          if (tai != tbi) {
-            return false
-          } else if (tai == Array.prototype ||
-                    tai == Object.prototype) {
-            isEqual(a[i], b[i])
-          } else if (a[i] != b[i]) return false
-        }
-      }
-
-      if (ta == Object.prototype) { //对比对象
-        for (var key in a) {
-          if (a[key] != b[key]) return false
-        }
-        for (var key in b) {
-          if (a[key] != b[key]) return false
-        }
-      }
-      if (ta == Number.prototype) {
-        if (a != b) return false
-      }
-
-    } else {
-      return false
-    }
-    return true
-  } */
-
   //字面量判断
   // 非复杂值未进入上方if，就会进入下方if语句，return false
   function isEqual(a, b) {
@@ -912,6 +839,12 @@ var qingshan_wu = function() {
     return p === Object.prototype || p === null;
   }
 
+  function isSafeInteger(val) {
+    return Number.isSafeInteger(val)
+    // Number.isSafeInteger(Number.MIN_VALUE) == false
+    // Number.isSafeInteger(Infinity) == false
+  }
+
   function isSet(val) {
     return Object.prototype.toString.call(val) === "[object Set]"
   }
@@ -922,6 +855,10 @@ var qingshan_wu = function() {
 
   function isSymbol(val) {
     return Object.prototype.toString.call(val) === "[object Symbol]"
+  }
+
+  function isTypedArray(val) {
+    return Object.prototype.toString.call(val) === "[object Uint8Array]"
   }
 
   function isUndefined(val) {
