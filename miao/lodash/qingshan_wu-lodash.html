@@ -645,6 +645,7 @@
   }
 
   function isNaN(val) {
+    if (isObject(val)) return val.valueOf() !== val.valueOf();
     return val !== val
   }
 
@@ -2112,7 +2113,9 @@
     return true
   }
 
-  function result()
+  function result(obj, path, defaultVal) {
+
+  }
 
 
 

@@ -837,7 +837,7 @@ var qingshan_wu = function() {
     if (isObject(val)) {
       return val.valueOf() !== val.valueOf()
     }
-    return Number(val) !== Number(val)
+    return val !== val
   }
 
   function isNative(val) {
