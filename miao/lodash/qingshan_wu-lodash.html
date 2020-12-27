@@ -2173,7 +2173,26 @@
     return res
   }
 
-  function transform()
+  function repeat(str = "", n = 1) {
+    let res = ""
+    while (n-- > 0) {
+      res += str
+    }
+    return res
+  }
+
+  function replace(str = "", pattern, replacement) {
+    return str.replace(pattern, replacement)
+  }
+
+  function snakeCase(str) {
+    let reg = /[a-z]+|[A-Z]+[a-z]*/g
+    return str.match(reg).join("_")
+  }
+
+  function split(str = "", sepr, limit) {
+    return str.split(sepr).slice(0, limit)
+  }
 
 
 
