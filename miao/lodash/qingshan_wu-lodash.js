@@ -226,6 +226,7 @@ var qingshan_wu = function() {
     toLength,
     toNumber,
     assign,
+    assignIn,
     toSafeInteger,
     floor,
     round,
@@ -1816,10 +1817,19 @@ var qingshan_wu = function() {
   }
 
   function assign(obj, ...sources) {
+    // hasOwnproperty
     sources.forEach(src => {
       Object.keys(src).forEach(key =>
         obj[key] = src[key])
       })
+    return obj
+  }
+
+  function assignIn(obj, ...sources) {
+    sources.forEach(src => {
+      for (let key in src)
+        obj[key] = src[key];
+    })
     return obj
   }
 

@@ -2018,6 +2018,14 @@
     return temp[method](...args)
   }
 
+  function assignIn(obj, ...sources) {
+    sources.forEach(src => {
+      for (let key in src)
+        obj[key] = src[key];
+    })
+    return obj
+  }
+
 
 
 
