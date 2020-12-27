@@ -59,6 +59,11 @@ var qingshan_wu = function() {
     }
   }
 
+  function processPathStr(pathStr) {
+    let reg = /\w+/g
+    return pathStr.match(reg)
+  }
+
 /* --------------------------------------------------- */
 
 
@@ -242,6 +247,7 @@ var qingshan_wu = function() {
     forInRight,
     functions,
     functionsIn,
+    get,
 
     /* -- Function ------- */
 
@@ -2012,6 +2018,22 @@ var qingshan_wu = function() {
       }
     }
     return res
+  }
+
+  function get(obj, path, defaultval) {
+    if (isString(path)) {
+      path = processPathStr(path);
+    }
+    let temp = obj
+    let flag = false
+    for (let key of path) {
+      if (temp[key] == undefined) {
+        flag = true
+        return defaultval
+      }
+      temp = temp[key]
+    }
+    return temp
   }
 
 
