@@ -262,6 +262,7 @@ var qingshan_wu = function() {
     pickBy,
     omit,
     omitBy,
+    result,
 
     /* -- Function ------- */
 
@@ -2225,6 +2226,24 @@ var qingshan_wu = function() {
       }
     }
     return res
+  }
+
+  function result(obj, path, defaultVal) {
+    let pathArr = processPathStr(path)
+
+    let parent
+    let temp = obj
+    for (let key of pathArr) {
+      parent = temp
+      temp = temp[key]
+    }
+    if (isFunction(temp)) {
+      return temp.bind(null, parent)()
+    }
+
+    if (temp == undefined) return defaultVal;
+
+    return temp;
   }
 
 
