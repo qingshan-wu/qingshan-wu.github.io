@@ -2086,7 +2086,7 @@ var qingshan_wu = function() {
     }
     let temp = obj
     for (let key of path) {
-      if (!obj.hasOwnProperty(key) || temp[key] == undefined)
+      if (!temp.hasOwnProperty(key) || temp[key] == undefined)
         return false;
 
       temp = temp[key]
