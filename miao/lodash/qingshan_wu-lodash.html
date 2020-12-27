@@ -1478,16 +1478,7 @@
     return value <= other
   }
 
-  function forOwn(obj, iteratee) {
-    iteratee = processType(iteratee)
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        let res = iteratee(obj[key], key, obj)
-        if (res === false) break;
-      }
-    }
-    return obj
-  }
+
 
   function isArrayBuffer(val) {
     return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
@@ -1931,6 +1922,29 @@
       temp = temp[key]
     }
     return temp
+  }
+
+  function forOwn(obj, iteratee) {
+    iteratee = processType(iteratee)
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        let res = iteratee(obj[key], key, obj)
+        if (res === false) break;
+      }
+    }
+    return obj
+  }
+
+  function forOwnRight(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let keys = Object.keys(obj)
+    keys.reverse()
+    let sign
+    for (let key of keys) {
+      sign = iteratee(obj[key], key, obj)
+      if (sign === false) break;
+    }
+    return obj
   }
 
 

@@ -236,6 +236,7 @@ var qingshan_wu = function() {
     keys,
     keysIn,
     forOwn,
+    forOwnRight,
     values,
     at,
     defaults,
@@ -1899,6 +1900,18 @@ var qingshan_wu = function() {
         let res = iteratee(obj[key], key, obj)
         if (res === false) break;
       }
+    }
+    return obj
+  }
+
+  function forOwnRight(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let keys = Object.keys(obj)
+    keys.reverse()
+    let sign
+    for (let key of keys) {
+      sign = iteratee(obj[key], key, obj)
+      if (sign === false) break;
     }
     return obj
   }
