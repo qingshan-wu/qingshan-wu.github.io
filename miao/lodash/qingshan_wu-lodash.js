@@ -238,6 +238,10 @@ var qingshan_wu = function() {
     cloneDeep,
     findKey,
     findLastKey,
+    forIn,
+    forInRight,
+    functions,
+    functionsIn,
 
     /* -- Function ------- */
 
@@ -1966,6 +1970,45 @@ var qingshan_wu = function() {
     for (let key in obj) {
       if (predicate(obj[key])) {
         res = key
+      }
+    }
+    return res
+  }
+
+  function forIn(obj, iteratee) {
+    iteratee = processType(iteratee)
+    for (let key in obj) {
+      let sign = iteratee(obj[key], key, obj)
+      if (sign === false) break
+    }
+    return obj
+  }
+
+  function forInRight(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let keys = []
+    for (let key in obj)
+      keys.push(key);
+    // Object.keys(obj) 不包含prototype设定的属性
+    keys.reverse();
+
+    var sign
+    for (let key of keys) {
+      sign = iteratee(obj[key], key, obj)
+      if (sign === false) break;
+    }
+    return obj;
+  }
+
+  function functions(obj) {
+    return Object.keys(obj).filter(key => isFunction(obj[key]))
+  }
+
+  function functionsIn(obj) {
+    let res = []
+    for (let key in obj) {
+      if (isFunction(obj[key])) {
+        res.push(key)
       }
     }
     return res
