@@ -249,6 +249,11 @@ var qingshan_wu = function() {
     functions,
     functionsIn,
     get,
+    has,
+    hasIn,
+    invert,
+    invertBy,
+    invoke,
 
     /* -- Function ------- */
 
@@ -2047,6 +2052,77 @@ var qingshan_wu = function() {
       temp = temp[key]
     }
     return temp
+  }
+
+  function has(obj, path) {
+    if (isString(path)) {
+      path = processPathStr(path)
+    }
+    let temp = obj
+    for (let key of path) {
+      if (!obj.hasOwnProperty(key) || temp[key] == undefined)
+        return false;
+
+      temp = temp[key]
+    }
+    return true
+  }
+
+  function hasIn(obj, path) {
+    if (isString(path)) {
+      path = processPathStr(path)
+    }
+    let temp = obj
+    for (let key of path) {
+      if (temp[key] == undefined)
+        return false;
+
+      temp = temp[key]
+    }
+    return true
+  }
+
+  function invert(obj) {
+    let keys = Object.keys(obj)
+    keys.reverse()
+
+    let res = {}
+    for (let key of keys) {
+      let val = obj[key]
+      if (res[val] == undefined) {
+        res[val] = key
+      }
+    }
+
+    return res
+  }
+
+  function invertBy(obj, iteratee) {
+    iteratee = processType(iteratee)
+    let res = {}
+
+    for (let key in obj) {
+      let val = iteratee(obj[key])
+      if (res[val] == undefined) {
+        res[val] = [key]
+      } else {
+        res[val].push(key)
+      }
+    }
+    return res
+  }
+
+  function invoke(obj, path, ...args) {
+    if (isString(path)) {
+      path = processPathStr(path)
+    }
+    let method = path.pop()
+    let temp = obj
+    for (let key of path) {
+      if (temp[key] == undefined) break;
+      temp = temp[key];
+    }
+    return temp[method](...args)
   }
 
 
