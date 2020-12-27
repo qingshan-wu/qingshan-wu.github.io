@@ -267,6 +267,7 @@ var qingshan_wu = function() {
     omitBy,
     result,
     set,
+    setWith,
 
     /* -- Function ------- */
 
@@ -2261,6 +2262,23 @@ var qingshan_wu = function() {
       t = t[key]
     }
   }
+
+  function setWith(obj, path, value, customizer) {
+    path = processPath(path)
+    let t = obj
+    for (let i = 0; i < path.length; i++) {
+      let key = path[i]
+      if (i == path.length - 1) {
+          t[key] = value
+          return obj
+      }
+      if (t[key] == undefined) {
+        t[key] = new customizer()
+      }
+      t = t[key]
+    }
+  }
+
 
 
   /* -- Function --------------------------------------- */
