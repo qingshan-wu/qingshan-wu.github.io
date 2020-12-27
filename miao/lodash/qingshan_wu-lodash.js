@@ -2295,7 +2295,7 @@ var qingshan_wu = function() {
 
   function snakeCase(str) {
     let reg = /[a-z]+|[A-Z]+[a-z]*/g
-    return str.match(reg).join("_")
+    return str.match(reg).join("_").toLowerCase()
   }
 
   function split(str = "", sepr, limit) {
