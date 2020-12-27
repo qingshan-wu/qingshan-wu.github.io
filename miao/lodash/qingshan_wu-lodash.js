@@ -115,6 +115,8 @@ var qingshan_wu = function() {
     isNull,
     isNumber,
     isObject,
+    isObjectLike,
+    isPlainObject,
     isSet,
     isString,
     isSymbol,
@@ -899,6 +901,15 @@ var qingshan_wu = function() {
 
   function isObject(val) {
     return typeof val == "object" || isFunction(val)
+  }
+
+  function isObjectLike(val) {
+    return !isNull(val) && typeof val === "object"
+  }
+
+  function isPlainObject(val) {
+    let p = Object.getPrototypeOf(val)
+    return p === Object.prototype || p === null;
   }
 
   function isSet(val) {

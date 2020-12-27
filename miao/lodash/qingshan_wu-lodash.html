@@ -1792,6 +1792,15 @@
     return customizer(obj, oth)
   }
 
+  function isObjectLike(val) {
+    return !isNull(val) && typeof val === "object"
+  }
+
+  function isPlainObject(val) {
+    let p = Object.getPrototypeOf(val)
+    return p === Object.prototype || p === null;
+  }
+
 
 
 
