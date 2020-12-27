@@ -255,6 +255,12 @@ var qingshan_wu = function() {
     invert,
     invertBy,
     invoke,
+    merge,
+    mergeWith,
+    pick,
+    pickBy,
+    omit,
+    omitBy,
 
     /* -- Function ------- */
 
@@ -2133,6 +2139,82 @@ var qingshan_wu = function() {
       temp = temp[key];
     }
     return temp[method](...args)
+  }
+
+  function merge(obj, ...sources) {
+    sources.forEach(src => {
+
+      for (let key in src) {
+        let srcVal = src[key], objVal = obj[key];
+
+        if (isArray(objVal) && isArray(srcVal)) {
+          srcVal.forEach((e, idx) => merge(objVal[idx], e))
+          continue
+        }
+
+        obj[key] = src[key]
+      }
+
+    })
+    return obj
+  }
+
+  function mergeWith(obj, src, customizer) {
+    if (customizer == undefined)
+      return merge(obj, [src]);
+
+    for (let key in src) {
+      let objVal = obj[key], srcVal = src[key];
+      obj[key] = customizer(objVal, srcVal, key, obj, src)
+    }
+    return obj
+  }
+
+  function pick(obj, paths) {
+    let res = {}
+    paths.forEach(pathStr => {
+      let pathArr = processPathStr(pathStr)
+      let temp = obj
+      for (var key of pathArr)
+        temp = temp[key];
+
+      res[key] = temp
+    })
+    return res
+  }
+
+  function pickBy(obj, predicate) {
+    predicate = processType(predicate)
+    let res = {}
+    for (let key in obj) {
+      let val = obj[key]
+      if (predicate(val)) {
+        res[key] = val;
+      }
+    }
+    return res
+  }
+
+  function omit(obj, paths) {
+    let res = {}
+    for (let key in obj) {
+      if (!paths.includes(key)) {
+        res[key] = obj[key]
+      }
+    }
+    return res
+  }
+
+  function omitBy(obj, predicate) {
+    predicate = processType(predicate)
+    let res = {}
+    for (let key in obj) {
+      let val = obj[key]
+      if (!predicate(val)) {
+        res[key] = val;
+      }
+    }
+    return res
   }
 
 
