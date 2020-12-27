@@ -192,7 +192,6 @@ var qingshan_wu = function() {
     isBoolean,
     isDate,
     toFinite,
-
     /* -- collection ----- */
     countBy,
     flatMap,
@@ -213,9 +212,7 @@ var qingshan_wu = function() {
     sortBy,
     castArray,
     conformsTo,
-
     /* -- Math ----------- */
-
     add,
     divide,
     mean,
@@ -234,10 +231,9 @@ var qingshan_wu = function() {
     toSafeInteger,
     floor,
     round,
-
     /* -- Object --------- */
-
     toPairs,
+    toPairsIn,
     keys,
     keysIn,
     forOwn,
@@ -268,9 +264,7 @@ var qingshan_wu = function() {
     result,
     set,
     setWith,
-
     /* -- Function ------- */
-
     flip,
     ary,
     negative,
@@ -1885,6 +1879,19 @@ var qingshan_wu = function() {
     for (let key in obj) {
       if (obj.hasOwnProperty(key))
         res.push([key, obj[key]])
+    }
+    return res
+  }
+
+  function toPairsIn(obj) {
+    if (isMap(obj) || isSet(obj)) {
+      return obj.entries()
+      // MapIterator {1 => 3, 2 => 3, 4 => 5}
+      // SetIterator {3 => 3, 4 => 4, 2 => 2, 5 => 5}
+    }
+    let res = []
+    for (let key in obj) {
+      res.push([key, obj[key]])
     }
     return res
   }
