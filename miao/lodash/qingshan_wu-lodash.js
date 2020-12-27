@@ -59,9 +59,12 @@ var qingshan_wu = function() {
     }
   }
 
-  function processPathStr(pathStr) {
-    let reg = /\w+/g
-    return pathStr.match(reg)
+  function processPath(path) {
+    if (isString(path)) {
+      let reg = /\w+/g
+      return path.match(reg)
+    }
+    return path
   }
 
 /* --------------------------------------------------- */
@@ -263,6 +266,7 @@ var qingshan_wu = function() {
     omit,
     omitBy,
     result,
+    set,
 
     /* -- Function ------- */
 
@@ -2066,9 +2070,8 @@ var qingshan_wu = function() {
   }
 
   function get(obj, path, defaultval) {
-    if (isString(path)) {
-      path = processPathStr(path);
-    }
+    path = processPath(path);
+
     let temp = obj
     let flag = false
     for (let key of path) {
@@ -2082,9 +2085,8 @@ var qingshan_wu = function() {
   }
 
   function has(obj, path) {
-    if (isString(path)) {
-      path = processPathStr(path)
-    }
+    path = processPath(path)
+
     let temp = obj
     for (let key of path) {
       if (!temp.hasOwnProperty(key) || temp[key] == undefined)
@@ -2096,9 +2098,8 @@ var qingshan_wu = function() {
   }
 
   function hasIn(obj, path) {
-    if (isString(path)) {
-      path = processPathStr(path)
-    }
+    path = processPath(path)
+
     let temp = obj
     for (let key of path) {
       if (temp[key] == undefined)
@@ -2140,9 +2141,8 @@ var qingshan_wu = function() {
   }
 
   function invoke(obj, path, ...args) {
-    if (isString(path)) {
-      path = processPathStr(path)
-    }
+      path = processPath(path)
+
     let method = path.pop()
     let temp = obj
     for (let key of path) {
@@ -2184,7 +2184,7 @@ var qingshan_wu = function() {
   function pick(obj, paths) {
     let res = {}
     paths.forEach(pathStr => {
-      let pathArr = processPathStr(pathStr)
+      let pathArr = processPath(pathStr)
       let temp = obj
       for (var key of pathArr)
         temp = temp[key];
@@ -2229,7 +2229,7 @@ var qingshan_wu = function() {
   }
 
   function result(obj, path, defaultVal) {
-    let pathArr = processPathStr(path)
+    let pathArr = processPath(path)
 
     let parent
     let temp = obj
@@ -2244,6 +2244,22 @@ var qingshan_wu = function() {
     if (temp == undefined) return defaultVal;
 
     return temp;
+  }
+
+  function set(obj, path, value) {
+    path = processPath(path)
+    let t = obj
+    for (let i = 0; i < path.length; i++) {
+      let key = path[i]
+      if (i == path.length - 1) {
+          t[key] = value
+          return obj
+      }
+      if (t[key] == undefined) {
+        t[key] = isNaN(Number(path[i + 1])) ? {} : []
+      }
+      t = t[key]
+    }
   }
 
 
