@@ -177,7 +177,6 @@ var qingshan_wu = function() {
     unzipWith,
     mapKeys,
     mapValues,
-    cloneDeep,
     isArray,
     isArguments,
     isArrayBuffer,
@@ -1397,38 +1396,6 @@ var qingshan_wu = function() {
     })
   }
 
-  function cloneDeep(value) {
-    if (typeUtils.isArray(value)) {
-      let res = []
-      for (let ele of value) {
-        if (typeUtils.isObject(ele) ||
-            typeUtils.isArray(ele)) {
-          res.push(cloneDeep(ele))
-        } else {
-          res.push(ele)
-        }
-      }
-      return res
-    }
-
-    if (typeUtils.isObject(value)) {
-      let res = {}
-      for (let key in value) {
-        let val = value[key]
-        if (typeUtils.isObject(val) ||
-            typeUtils.isArray(val)) {
-          res[key] = cloneDeep(val)
-        } else {
-          res[key] = val
-        }
-      }
-      return res
-    }
-
-    let res = value
-    return res
-  }
-
   function isArray(val) {
     return Object.prototype.toString.call(val) === "[object Array]"
   }
@@ -2008,6 +1975,7 @@ var qingshan_wu = function() {
       result = val
       return result
     } else {
+
       if (isArray(val)) {
         result = []
         for (let e of val) {
@@ -2019,6 +1987,7 @@ var qingshan_wu = function() {
           result[key] = cloneDeep(val[key])
         }
       }
+
     }
     return result
   }

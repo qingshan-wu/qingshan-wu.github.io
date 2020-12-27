@@ -1132,37 +1132,37 @@
     })
   }
 
-  function cloneDeep(value) {
-    if (typeUtils.isArray(value)) {
-      let res = []
-      for (let ele of value) {
-        if (typeUtils.isObject(ele) ||
-            typeUtils.isArray(ele)) {
-          res.push(cloneDeep(ele))
-        } else {
-          res.push(ele)
-        }
-      }
-      return res
-    }
+  // function cloneDeep(value) {
+  //   if (typeUtils.isArray(value)) {
+  //     let result = []
+  //     for (let ele of value) {
+  //       if (typeUtils.isObject(ele) ||
+  //           typeUtils.isArray(ele)) {
+  //         result.push(cloneDeep(ele))
+  //       } else {
+  //         result.push(ele)
+  //       }
+  //     }
+  //     return result
+  //   }
 
-    if (typeUtils.isObject(value)) {
-      let res = {}
-      for (let key in value) {
-        let val = value[key]
-        if (typeUtils.isObject(val) ||
-            typeUtils.isArray(val)) {
-          res[key] = cloneDeep(val)
-        } else {
-          res[key] = val
-        }
-      }
-      return res
-    }
+  //   if (typeUtils.isObject(value)) {
+  //     let result = {}
+  //     for (let key in value) {
+  //       let val = value[key]
+  //       if (typeUtils.isObject(val) ||
+  //           typeUtils.isArray(val)) {
+  //         result[key] = cloneDeep(val)
+  //       } else {
+  //         result[key] = val
+  //       }
+  //     }
+  //     return result
+  //   }
 
-    let res = value
-    return res
-  }
+  //   let result = value
+  //   return result
+  // }
 
   function isArray(val) {
     return Object.prototype.toString.call(val) === "[object Array]"
