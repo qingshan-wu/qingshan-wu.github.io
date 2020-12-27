@@ -209,6 +209,7 @@ var qingshan_wu = function() {
     size,
     sortBy,
     castArray,
+    conformsTo,
 
     /* -- Math ----------- */
 
@@ -1713,6 +1714,15 @@ var qingshan_wu = function() {
       res.push(arguments[i])
     }
     return res
+  }
+
+  function conformsTo(obj, src) {
+    for (let key in src) {
+      if (!src[key](obj[key])) {
+        return false
+      }
+    }
+    return true
   }
 
 
