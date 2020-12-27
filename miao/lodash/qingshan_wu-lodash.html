@@ -2133,33 +2133,31 @@
   function set(obj, path, value) {
     path = processPath(path)
     let t = obj
-    for (let i = 0; i < path.length; i++) {
+    for (var i = 0; i < path.length - 1; i++) {
       let key = path[i]
-      if (i == path.length - 1) {
-          t[key] = value
-          return obj
-      }
-      if (t[key] == undefined) {
-        t[key] = isNaN(Number(path[i + 1])) ? {} : []
-      }
+
+      if (t[key] == undefined)
+        t[key] = isNaN(Number(path[i + 1])) ? {} : [];
+
       t = t[key]
     }
+
+    t[path[i]] = value
+    return obj
   }
 
   function setWith(obj, path, value, customizer) {
     path = processPath(path)
     let t = obj
-    for (let i = 0; i < path.length; i++) {
+    for (var i = 0; i < path.length - 1; i++) {
       let key = path[i]
-      if (i == path.length - 1) {
-          t[key] = value
-          return obj
-      }
       if (t[key] == undefined) {
-        t[key] = new customizer()
+        t[key] = new customizer(t[key], key, t)
       }
       t = t[key]
     }
+    t[path[i]] = value
+    return obj
   }
 
 
