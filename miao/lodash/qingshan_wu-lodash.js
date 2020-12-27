@@ -183,6 +183,7 @@ var qingshan_wu = function() {
     lte,
     isBoolean,
     isDate,
+    toFinite,
 
     /* -- collection ----- */
     countBy,
@@ -216,6 +217,13 @@ var qingshan_wu = function() {
     clamp,
     inRange,
     random,
+    toInteger,
+    toLength,
+    toNumber,
+    assign,
+    toSafeInteger,
+    floor,
+    round,
 
     /* -- Object --------- */
 
@@ -1462,6 +1470,16 @@ var qingshan_wu = function() {
     return typeUtils.isDate(val)
   }
 
+  function toFinite(val) {
+    if (val == -Infinity) return Number.MIN_VALUE;
+
+    if (val == Infinity) return Number.MAX_VALUE;
+
+    if (!isNumber(val)) return Number(val);
+
+    return val;
+  }
+
   /* -- collecetion ------------------------------------ */
 
   // => {}
@@ -1758,6 +1776,60 @@ var qingshan_wu = function() {
 
     return Math.floor(ans)
   }
+
+  function toInteger(val) {
+    if (val == Infinity) return Number.MAX_VALUE;
+
+    if (val == -Infinity)return 0;
+
+    if (!isNumber(val)) return Number(val) | 0;
+
+    return val | 0;
+  }
+
+  function toLength(val) {
+    val = toInteger(val)
+    if (val < 0) return 0;
+    if (val > 4294967295) return 4294967295;
+    return val;
+  }
+
+  function toNumber(val) {
+    if (isNumber(val)) return val;
+    return Number(val);
+  }
+
+  function assign(obj, ...sources) {
+    sources.forEach(src => {
+      Object.keys(src).forEach(key =>
+        obj[key] = src[key])
+      })
+    return obj
+  }
+
+  function toSafeInteger(val) {
+    if (val == Infinity) return Number.MAX_SAFE_INTEGER;
+
+    if (isNumber(val)) return val | 0;
+    // -Infinity | 0 == 0
+    // Number.MIN_VALUE | 0 == 0
+
+    return Number(val) | 0;
+  }
+
+  function floor(num, precision = 0) {
+    if (precision == 0) return Math.floor(num)
+
+    return Math.floor(num * (10 ** precision)) / (10 ** precision)
+  }
+
+  function round(num, precision = 0) {
+    if (precision == 0) return Math.round(num)
+
+    return Math.round(num * (10 ** precision)) / (10 ** precision)
+  }
+
+
 
   /* -- Object ----------------------------------------- */
   function toPairs(obj) {
