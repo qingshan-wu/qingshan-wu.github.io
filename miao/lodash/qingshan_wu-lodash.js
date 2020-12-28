@@ -1966,30 +1966,30 @@ var qingshan_wu = function() {
   }
 
   function cloneDeep(val) {
-    let result
+    let res
     if (isRegExp(val)) {
-      result = val
-      return result
+      res = val
+      return res
     }
     if (!isObject(val)) {
-      result = val
-      return result
+      res = val
+      return res
     } else {
 
       if (isArray(val)) {
-        result = []
+        res = []
         for (let e of val) {
-          result.push(cloneDeep(e))
+          res.push(cloneDeep(e))
         }
       } else {
-        result = {}
+        res = {}
         for (let key in val) {
-          result[key] = cloneDeep(val[key])
+          res[key] = cloneDeep(val[key])
         }
       }
 
     }
-    return result
+    return res
   }
 
   function findKey(obj, predicate) {
