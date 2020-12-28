@@ -2232,6 +2232,37 @@
     }
   }
 
+  function pad(str = "", length = 0, chars = " ") {
+    let res = str, flag = "right";
+    while(res.length < length) {
+      if (flag == "right") {
+        res += chars
+        flag = "left"
+      } else {
+        res = chars + res
+        flag = "right"
+      }
+    }
+    return res.slice(0, length)
+  }
+
+  function padEnd(str = "", length = 0, chars = " ") {
+    let res = str
+    while(res.length < length) {
+      res += chars
+    }
+    return res.slice(0, length)
+  }
+
+  function padStart(str = "", length = 0, chars = " ") {
+    let res = chars
+    while(res.length < length) {
+      res += res
+    }
+    return res.slice(0, length - str.length) + str
+  }
+
+
 
 
   </script>

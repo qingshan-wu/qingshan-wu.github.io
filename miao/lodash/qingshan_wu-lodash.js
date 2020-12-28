@@ -270,6 +270,9 @@ var qingshan_wu = function() {
     ary,
     negative,
     /* -- String --------- */
+    pad,
+    padEnd,
+    padStart,
     repeat,
     replace,
     snakeCase,
@@ -2299,6 +2302,36 @@ var qingshan_wu = function() {
   }
 
   /* -- String ----------------------------------------- */
+  function pad(str = "", length = 0, chars = " ") {
+    let res = str, flag = "right";
+    while(res.length < length) {
+      if (flag == "right") {
+        res += chars
+        flag = "left"
+      } else {
+        res = chars + res
+        flag = "right"
+      }
+    }
+    return res.slice(0, length)
+  }
+
+  function padEnd(str = "", length = 0, chars = " ") {
+    let res = str
+    while(res.length < length) {
+      res += chars
+    }
+    return res.slice(0, length)
+  }
+
+  function padStart(str = "", length = 0, chars = " ") {
+    let res = chars
+    while(res.length < length) {
+      res += res
+    }
+    return res.slice(0, length - str.length) + str
+  }
+
   function repeat(str = "", n = 1) {
     let res = ""
     while (n-- > 0) {
@@ -2319,5 +2352,6 @@ var qingshan_wu = function() {
   function split(str = "", sepr, limit) {
     return str.split(sepr).slice(0, limit)
   }
+
 
 }()
