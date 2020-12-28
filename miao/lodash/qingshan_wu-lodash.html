@@ -2112,7 +2112,7 @@
     return true
   }
 
-  function result(obj, path, defaultVal) {
+  /* function result(obj, path, defaultVal) {
     let pathArr = processPath(path)
 
     let parent
@@ -2121,13 +2121,23 @@
       parent = temp
       temp = temp[key]
     }
-    if (isFunction(temp)) {
-      return temp.bind(null, parent)()
+    if (isFunction(temp))
+      return temp.bind(null, parent)();
+
+    if (temp == undefined) {
+      if (isFunction(defaultVal)) {
+        return defaultVal()
+      }
+      return defaultVal;
     }
 
-    if (temp == undefined) return defaultVal;
-
     return temp;
+  } */
+
+  function result(obj, path, defaultVal) {
+    let val = get(obj, path, defaultVal)
+    if (isFunction(val)) return val()
+    return val
   }
 
   function set(obj, path, value) {
