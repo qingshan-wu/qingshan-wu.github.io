@@ -263,6 +263,8 @@ var qingshan_wu = function() {
     result,
     set,
     setWith,
+    property,
+    propertyOf,
     /* -- Function ------- */
     flip,
     ary,
@@ -2244,6 +2246,34 @@ var qingshan_wu = function() {
     }
     t[path[i]] = value
     return obj
+  }
+
+  function property(path) {
+    pathArr = processPath(path)
+    return function(obj){
+      let temp = obj
+      for (let key of pathArr) {
+        if (temp[key] == undefined)
+          return undefined;
+
+        temp = temp[key];
+      }
+      return temp
+    }
+  }
+
+  function propertyOf(obj) {
+    return function(path) {
+      pathArr = processPath(path)
+      let temp = obj
+      for (let key of pathArr) {
+        if (temp[key] == undefined)
+          return undefined;
+
+        temp = temp[key]
+      }
+      return temp
+    }
   }
 
 
