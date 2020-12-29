@@ -282,6 +282,8 @@ var qingshan_wu = function() {
     toLower,
     toUpper,
     trim,
+    trimEnd,
+    trimStart,
   };
 
   function chunk(ary, size = 1) {
@@ -2381,6 +2383,16 @@ var qingshan_wu = function() {
   function trim(str, char = " ") {
     let reg = new RegExp("[" + char + "]+", "g")
     return str.replace(reg, "")
+  }
+
+  function trimEnd(str, char = " ") {
+    let re = new RegExp("[" + char + "]+$")
+    return str.replace(re, "")
+  }
+
+  function trimStart(str, char = " ") {
+    let re = new RegExp("^[" + char + "]+")
+    return str.replace(re, "")
   }
 
 

@@ -2287,6 +2287,16 @@
     return str.replace(reg, "")
   }
 
+  function trimEnd(str, char = " ") {
+    let re = new RegExp("[" + char + "]+$")
+    return str.replace(re, "")
+  }
+
+  function trimStart(str, char = " ") {
+    let re = new RegExp("^[" + char + "]+")
+    return str.replace(re, "")
+  }
+
 
 
 
