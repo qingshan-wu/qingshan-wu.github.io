@@ -2330,6 +2330,10 @@
     return str.replace(/^\w/, x => x.toUpperCase())
   }
 
+  function words(str = "", pattern = /\w+/g) {
+    return str.match(pattern)
+  }
+
 
 
 
