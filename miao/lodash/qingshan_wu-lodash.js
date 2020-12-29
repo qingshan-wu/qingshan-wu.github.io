@@ -286,6 +286,7 @@ var qingshan_wu = function() {
     trimStart,
     truncate,
     upperCase,
+    upperFirst,
   };
 
   function chunk(ary, size = 1) {
@@ -2424,6 +2425,10 @@ var qingshan_wu = function() {
     return str.match(re)
               .map(x => x.toUpperCase())
               .join(" ")
+  }
+
+  function upperFirst(str) {
+    return str.replace(/^\w/, x => x.toUpperCase())
   }
 
 
