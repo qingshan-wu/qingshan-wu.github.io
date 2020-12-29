@@ -284,6 +284,7 @@ var qingshan_wu = function() {
     trim,
     trimEnd,
     trimStart,
+    truncate,
   };
 
   function chunk(ary, size = 1) {
@@ -2393,6 +2394,28 @@ var qingshan_wu = function() {
   function trimStart(str, char = " ") {
     let re = new RegExp("^[" + char + "]+")
     return str.replace(re, "")
+  }
+
+  function truncate(str = "", opt) {
+
+    let omi = opt?.omission ? opt.omission : "..."
+    let len = opt?.length ? opt.length : 30
+    let sep = opt?.separator
+
+    if (isUndefined(sep)) {
+      return str.slice(0, len - omi.length) + omi
+    } else {
+      let match, lastIdx;
+      sep = new RegExp(sep, "g");
+      // 如果sep本就是正则，就会被加上"g"选项
+      while (str.length + omi.length > len) {
+        while (match = sep.exec(str))
+          lastIdx = match.index;
+
+        str = str.slice(0, lastIdx)
+      }
+      return str + omi
+    }
   }
 
 
