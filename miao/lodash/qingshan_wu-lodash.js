@@ -277,6 +277,11 @@ var qingshan_wu = function() {
     replace,
     snakeCase,
     split,
+    startCase,
+    startsWith,
+    toLower,
+    toUpper,
+    trim,
   };
 
   function chunk(ary, size = 1) {
@@ -2351,6 +2356,31 @@ var qingshan_wu = function() {
 
   function split(str = "", sepr, limit) {
     return str.split(sepr).slice(0, limit)
+  }
+
+  function startCase(str) {
+    let reg = /[a-z]{1,}|[A-Z]{1,}[a-z]{0,}/g
+    let arr = str.match(reg)
+    return arr.map(it =>
+      it.replace(/\b\w/, s => s.toUpperCase()))
+      .join(" ")
+  }
+
+  function startsWith(str, target, pos = 0) {
+    return str.substring(pos, target.length + pos) == target
+  }
+
+  function toLower(str) {
+    return str.toLowerCase()
+  }
+
+  function toUpper(str) {
+    return str.toUpperCase()
+  }
+
+  function trim(str, char = " ") {
+    let reg = new RegExp("[" + char + "]+", "g")
+    return str.replace(reg, "")
   }
 
 
