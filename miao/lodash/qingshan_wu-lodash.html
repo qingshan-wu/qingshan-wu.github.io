@@ -2319,6 +2319,13 @@
     }
   }
 
+  function upperCase(str) {
+    let re = /[a-z]+|[A-Z]{1,}[a-z]*/g
+    return str.match(re)
+              .map(x => x.toUpperCase())
+              .join(" ")
+  }
+
 
 
 
