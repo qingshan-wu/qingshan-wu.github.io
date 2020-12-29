@@ -2282,17 +2282,17 @@
     return str.toUpperCase()
   }
 
-  function trim(str, char = " ") {
+  function trim(str, char = "\\s") {
     let reg = new RegExp("[" + char + "]+", "g")
     return str.replace(reg, "")
   }
 
-  function trimEnd(str, char = " ") {
+  function trimEnd(str, char = "\\s") {
     let re = new RegExp("[" + char + "]+$")
     return str.replace(re, "")
   }
 
-  function trimStart(str, char = " ") {
+  function trimStart(str, char = "\\s") {
     let re = new RegExp("^[" + char + "]+")
     return str.replace(re, "")
   }
