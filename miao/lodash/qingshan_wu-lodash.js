@@ -191,6 +191,7 @@ var qingshan_wu = function() {
     isBoolean,
     isDate,
     toFinite,
+    range,
     /* -- collection ----- */
     countBy,
     flatMap,
@@ -1507,6 +1508,47 @@ var qingshan_wu = function() {
     if (!isNumber(val)) return Number(val);
 
     return val;
+  }
+
+  function range(s = 0, e, step) {
+    let res = []
+
+    if (s < 0) {
+      if (isUndefined(e) && isUndefined(step)) {
+        for (let i = 0; i > s; i += -1) {
+          res.push(i)
+        }
+        return res
+      }
+    }
+    if (s > e) {
+      if (isUndefined(step)) {
+        return []
+      }
+      for (let i = 0; i > e; i += step) {
+        res.push(i)
+      }
+    }
+    if (step == 0) {
+      return new Array(e - 1).fill(s)
+    }
+    if (isUndefined(step)) {
+      if (isUndefined(e)) {
+        for (let i = 0; i < s; i++) {
+          res.push(i)
+        }
+        return res
+      }
+      for (let i = s; i < e; i++) {
+        res.push(i)
+      }
+      return res
+    }
+
+    for (let i = s; i < e; i+= step) {
+      res.push(i)
+    }
+    return res
   }
 
   /* -- collecetion ------------------------------------ */

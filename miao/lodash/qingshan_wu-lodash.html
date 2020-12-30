@@ -2480,10 +2480,47 @@
     return val
   }
 
-  function range(start = 0, end, step = 1) {
-    if (start < 0 && (end == undefined || step == undefined))
-    for (let i = start; i < end; i+= step)
+  function range(s = 0, e, step) {
+    let res = []
+
+    if (s < 0) {
+      if (isUndefined(e) && isUndefined(step)) {
+        for (let i = 0; i > s; i += -1) {
+          res.push(i)
+        }
+        return res
+      }
+    }
+    if (s > e) {
+      if (isUndefined(step)) {
+        return []
+      }
+      for (let i = 0; i > e; i += step) {
+        res.push(i)
+      }
+    }
+    if (step == 0) {
+      return new Array(e - 1).fill(s)
+    }
+    if (isUndefined(step)) {
+      if (isUndefined(e)) {
+        for (let i = 0; i < s; i++) {
+          res.push(i)
+        }
+        return res
+      }
+      for (let i = s; i < e; i++) {
+        res.push(i)
+      }
+      return res
+    }
+
+    for (let i = s; i < e; i+= step) {
+      res.push(i)
+    }
+    return res
   }
+
 
 
 
