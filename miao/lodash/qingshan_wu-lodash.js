@@ -285,9 +285,11 @@ var qingshan_wu = function() {
     trimEnd,
     trimStart,
     truncate,
+    unescape,
     upperCase,
     upperFirst,
     words,
+
   };
 
   function chunk(ary, size = 1) {
@@ -2421,6 +2423,22 @@ var qingshan_wu = function() {
     }
   }
 
+  function unescape(str) {
+    return str.replace(/&amp;|&lt;| &gt;|&quot;|&#39/g,
+     x => {
+      if (x == "&amp;")
+        return "&";
+      if (x == "&lt;")
+        return "<";
+      if (x == "&gt;")
+        return ">";
+      if (x == "&quot;")
+        return '"'
+      if (x == "&#39")
+        return "'"
+    })
+  }
+
   function upperCase(str) {
     let re = /[a-z]+|[A-Z]{1,}[a-z]*/g
     return str.match(re)
@@ -2435,6 +2453,8 @@ var qingshan_wu = function() {
   function words(str = "", pattern = /\w+/g) {
     return str.match(pattern)
   }
+
+
 
 
 }()

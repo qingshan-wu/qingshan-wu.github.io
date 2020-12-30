@@ -2334,6 +2334,22 @@
     return str.match(pattern)
   }
 
+  function unescape(str) {
+    return str.replace(/&amp;|&lt;| &gt;|&quot;|&#39/g,
+     x => {
+      if (x == "&amp;")
+        return "&";
+      if (x == "&lt;")
+        return "<";
+      if (x == "&gt;")
+        return ">";
+      if (x == "&quot;")
+        return '"'
+      if (x == "&#39")
+        return "'"
+    })
+  }
+
 
 
 
