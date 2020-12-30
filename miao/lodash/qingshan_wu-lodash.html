@@ -2358,7 +2358,132 @@
     .join("")
   }
 
+  // accumulator = ac
+  function transform(obj, iteratee, ac) {
+    iteratee = processType(iteratee)
+    if (ac == undefined)
+      ac = new obj.constructor;
 
+    let keys = Object.keys(obj)
+    for (let i = 0; i < keys.length; i++) {
+      if (iteratee(ac, obj[keys[i]], keys[i], obj) === false)
+        break;
+    }
+    return ac
+  }
+
+  function unset(obj, path) {
+    path = processPath(path)
+    let temp = obj
+    for (var i = 0; i < path.length - 1; i++) {
+      if (temp[path[i]] == undefined)
+        return false;
+      temp = temp[path[i]]
+    }
+    if (temp[path[i]] == undefined)
+      return false;
+    else {
+      delete temp[path[i]]
+      return true
+    }
+  }
+
+  function update(obj, path, updater) {
+    path = processPath(path)
+    set(obj, path, updater(get(obj, path)))
+    return obj
+  }
+
+  function updateWith(obj, path, updater, customizer) {
+    if (customizer == undefined) {
+      return update(obj, path, updater)
+    }
+    path = processPath(path)
+    let temp = obj, key
+    for (var i = 0; i < path.length - 1; i++) {
+      key = path[i]
+      if (temp[key] === undefined) {
+        temp[key] = new customizer
+      }
+      temp = temp[key]
+    }
+    temp[path[i]] = updater(temp[path[i]])
+    return obj
+  }
+
+  function valuesIn(obj) {
+    let res = []
+    for (let key in obj)
+      res.push(obj[key]);
+
+    return res
+  }
+
+  function capitalize(str = "") {
+    return str.replace(/(^\w)(\w+)/, (_, a, b)=>
+        a.toUpperCase() + b.toLowerCase())
+  }
+
+  function endsWith(str = "", target, pos = str.length) {
+    let re = new RegExp(target + (pos === str.length ? "$":""))
+    return re.test(str.slice(pos - 1))
+    // if (pos === str.length)
+    //   re = new RegExp(target + "$" );
+    // else
+    //   re = new RegExp(target);
+  }
+
+  function escape(str) {
+    return str.replace(/\&|\<|\>|\"|\'/g,
+      x => {
+      if (x == "&")
+        return "&amp;";
+      if (x == "<")
+        return "&lt;";
+      if (x == ">")
+        return "&gt;";
+      if (x == '"')
+        return "&quot;";
+      if (x == "'")
+        return "&#39";
+    })
+  }
+
+  function escapeRegExp(str) {
+    return str.replace(/[\^\$\.\*\+\?\(\)\[\]\{\}\|]/g,
+      x => `\\${x}`)
+  }
+
+  function kebabCase(str) {
+    return str.match(/[a-z]+|[A-Z]+[a-z]*/g)
+              .map(x => x.toLowerCase())
+              .join('-')
+  }
+
+  function lowerCase(str) {
+    return str.match(/[a-z]+|[A-Z]+[a-z]*/g)
+              .map(x => x.toLowerCase())
+              .join(' ')
+  }
+
+  function lowerFirst(str) {
+    return str.replace(/^\w/, x => x.toLowerCase())
+  }
+
+  function parseInt(str, radix = 10) {
+    return Number.parseInt(str, radix = 10)
+  }
+
+  function defalutTo(val, defaultVal) {
+    if (isNaN(val) || isNull(val) || isUndefined(val))
+      return defaultVal;
+    return val
+  }
+
+  function range(start = 0, end, step = 1) {
+    if (start < 0 && (end == undefined || step == undefined))
+    for (let i = start; i < end; i+= step)
+  }
 
 
 
