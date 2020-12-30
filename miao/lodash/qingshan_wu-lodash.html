@@ -2535,6 +2535,14 @@
     }
   }
 
+  function spread(f, start = 0) {
+    return function(args) {
+      return f(...args.slice(start))
+    }
+  }
+
+
+
 
 
 
