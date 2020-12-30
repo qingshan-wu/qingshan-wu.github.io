@@ -289,6 +289,7 @@ var qingshan_wu = function() {
     upperCase,
     upperFirst,
     words,
+    camelCase,
 
   };
 
@@ -2452,6 +2453,14 @@ var qingshan_wu = function() {
 
   function words(str = "", pattern = /\w+/g) {
     return str.match(pattern)
+  }
+
+  function camelCase(str) {
+    return str.match(/[a-zA-Z]+/g)
+    .map(char => char.toLowerCase())
+    .map((x, i) =>
+        i == 0 ? x : x.replace(/^\w/, c => c.toUpperCase()))
+    .join("")
   }
 
 

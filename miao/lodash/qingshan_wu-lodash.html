@@ -2350,6 +2350,14 @@
     })
   }
 
+  function camelCase(str) {
+    return str.match(/[a-zA-Z]+/g)
+    .map(char => char.toLowerCase())
+    .map((x, i) =>
+        i == 0 ? x : x.replace(/^\w/, c => c.toUpperCase()))
+    .join("")
+  }
+
 
 
 
