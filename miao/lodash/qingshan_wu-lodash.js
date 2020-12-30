@@ -270,6 +270,9 @@ var qingshan_wu = function() {
     flip,
     ary,
     negative,
+    toPath,
+    unary,
+    spread,
     /* -- String --------- */
     pad,
     padEnd,
@@ -2368,6 +2371,20 @@ var qingshan_wu = function() {
   function negative(predicate) {
     return function(...args) {
       return !predicate(...args)
+    }
+  }
+
+  function toPath(str) {
+    return processPath(path)
+  }
+
+  function unary(f) {
+    return ary(f, 1)
+  }
+
+  function spread(f, start = 0) {
+    return function(args) {
+      return f(...args.slice(start))
     }
   }
 

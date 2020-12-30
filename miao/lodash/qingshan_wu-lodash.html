@@ -2521,6 +2521,19 @@
     return res
   }
 
+  function toPath(str) {
+    return processPath(path)
+  }
+
+  function unary(f) {
+    return ary(f, 1)
+  }
+
+  function negative(predicate) {
+    return function(...args) {
+      return !predicate(...args)
+    }
+  }
 
 
 
