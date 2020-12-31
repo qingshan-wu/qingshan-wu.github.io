@@ -2146,14 +2146,11 @@ var qingshan_wu = function() {
 
   function get(obj, path, defaultval) {
     path = processPath(path);
-
     let temp = obj
-    let flag = false
     for (let key of path) {
-      if (temp[key] == undefined) {
-        flag = true
-        return defaultval
-      }
+      if (isUndefined(temp[key]))
+        return defaultval;
+
       temp = temp[key]
     }
     return temp
