@@ -2077,30 +2077,15 @@ var qingshan_wu = function() {
     return obj
   }
 
-  function cloneDeep(val) {
-    let res
-    if (isRegExp(val)) {
-      res = val
-      return res
-    }
-    if (!isObject(val)) {
-      res = val
-      return res
-    } else {
+  function cloneDeep(obj) {
+    if (isRegExp(obj) || !isObject(obj)) return obj;
 
-      if (isArray(val)) {
-        res = []
-        for (let e of val) {
-          res.push(cloneDeep(e))
-        }
-      } else {
-        res = {}
-        for (let key in val) {
-          res[key] = cloneDeep(val[key])
-        }
-      }
+    var res = isArray(obj) ? [] : {},
+        keys = Object.keys(obj);
 
-    }
+    for (let key of keys)
+      res[key] = isObject(obj[key]) ? cloneDeep(obj[key]) : obj[key];
+
     return res
   }
 
