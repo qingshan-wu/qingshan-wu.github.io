@@ -2703,10 +2703,20 @@ var qingshan_wu = function() {
     return res
   }
 
-  // 面向测试用例编程...
+  // // 面向测试用例编程...
+  // function conforms(source) {
+  //   return function (obj) {
+  //     for (let key in source) {
+  //       if (!source[key](obj[key]))
+  //         return false;
+  //     }
+  //     return true
+  //   }
+  // }
   function conforms(source) {
+    let keys = Object.keys(source)
     return function (obj) {
-      for (let key in source) {
+      for (let key of keys) {
         if (!source[key](obj[key]))
           return false;
       }
