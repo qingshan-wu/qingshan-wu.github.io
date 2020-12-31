@@ -924,36 +924,40 @@ var qingshan_wu = function() {
     // Number.isSafeInteger(Infinity) == false
   }
 
+  function whatType(val) {
+    return Object.prototype.toString.call(val)
+  }
+
   function isSet(val) {
-    return Object.prototype.toString.call(val) === "[object Set]"
+    return whatType(val) === "[object Set]"
   }
 
   function isString(val) {
-    return Object.prototype.toString.call(val) === "[object String]"
+    return whatType(val) === "[object String]"
   }
 
   function isSymbol(val) {
-    return Object.prototype.toString.call(val) === "[object Symbol]"
+    return whatType(val) === "[object Symbol]"
   }
 
   function isTypedArray(val) {
-    return Object.prototype.toString.call(val) === "[object Uint8Array]"
+    return whatType(val) === "[object Uint8Array]"
   }
 
   function isUndefined(val) {
-    return Object.prototype.toString.call(val) === "[object Undefined]"
+    return whatType(val) === "[object Undefined]"
   }
 
   function isWeakMap(val) {
-    return Object.prototype.toString.call(val) === "[object WeakMap]"
+    return whatType(val) === "[object WeakMap]"
   }
 
   function isWeakSet(val) {
-    return Object.prototype.toString.call(val) === "[object WeakSet]"
+    return whatType(val) === "[object WeakSet]"
   }
 
   function isRegExp(val) {
-    return Object.prototype.toString.call(val) === "[object RegExp]"
+    return whatType(val) === "[object RegExp]"
   }
 
   // => function
