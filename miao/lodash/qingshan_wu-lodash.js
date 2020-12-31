@@ -308,7 +308,7 @@ var qingshan_wu = function() {
     lowerCase,
     lowerFirst,
     parseInt,
-    defalutTo,
+    defaultTo,
 
   };
 
@@ -2677,7 +2677,7 @@ var qingshan_wu = function() {
     return Number.parseInt(str, radix = 10)
   }
 
-  function defalutTo(val, defaultVal) {
+  function defaultTo(val, defaultVal) {
     if (isNaN(val) || isNull(val) || isUndefined(val))
       return defaultVal;
     return val
