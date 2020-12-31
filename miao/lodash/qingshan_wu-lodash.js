@@ -231,6 +231,7 @@ var qingshan_wu = function() {
     toSafeInteger,
     floor,
     round,
+    ceil,
     /* -- Object --------- */
     toPairs,
     toPairsIn,
@@ -1921,6 +1922,11 @@ var qingshan_wu = function() {
     return Math.round(num * (10 ** precision)) / (10 ** precision)
   }
 
+  function ceil(num, precision = 0) {
+    let a = 10 ** precision
+    return Math.ceil(num * a) / a
+  }
+
 
 
   /* -- Object ----------------------------------------- */
@@ -2375,7 +2381,7 @@ var qingshan_wu = function() {
   }
 
   function toPath(str) {
-    return processPath(path)
+    return processPath(str)
   }
 
   function unary(f) {
