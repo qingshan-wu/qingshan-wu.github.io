@@ -1,75 +1,4 @@
-/*
- * @Author: qingshan
- * @Date: 2020-12-08 15:01:43
- */
-
 var qingshan_wu = function() {
-/* -- 工具集 ------------------------------------------ */
-
-  function sameValueZero(a, b) {
-    if (a === b) return a !== 0 || 1 / a === 1 / b;
-    return a !== a && b !== b;
-  }
-  // 1 / +0 == Infinity, 1/ -0 == -Infinity
-  //NaN !== NaN 为true
-
-  // 类型检测工具集
-  const types = ["Null", "Undefined", "Boolean",
-              "Number", "String", "Object", "Array",
-              "Function", "Date", "Error"]
-  const typeUtils = {}
-
-  types.forEach(type => {
-    typeUtils["is" + type] = function(obj) {
-      return Object.prototype.toString.call(obj) === "[object " + type + "]";
-    }
-  })
-
-  // <= iteratee 可以迭代的结构
-  // => function
-  function processType(iteratee) {
-    if (typeUtils.isFunction(iteratee))
-      return iteratee;
-
-    if (typeUtils.isObject(iteratee))
-      return matches(iteratee);
-
-    if (typeUtils.isArray(iteratee))
-      return obj => obj[iteratee[0]] === iteratee[1];
-
-    if (typeUtils.isNull(iteratee) ||
-        typeUtils.isUndefined(iteratee))
-      return val => val;
-
-    if (typeUtils.isString(iteratee)) {
-      let pathArr = iteratee.split('.')
-      if (pathArr.length == 1) {
-        return obj => obj[iteratee]
-      } else {
-        return obj => pathArr.reduce((prev, cur) => prev[cur] , obj)
-      }
-      // function (obj) {
-      //   let prev = obj
-      //   for (let key of pathArr) {
-      //     prev = prev[cur]
-      //   }
-      //   return prev
-      // }
-
-    }
-  }
-
-  function processPath(path) {
-    if (isString(path)) {
-      let reg = /\w+/g
-      return path.match(reg)
-    }
-    return path
-  }
-
-/* --------------------------------------------------- */
-
-
   return {
     chunk,
     compact,
@@ -314,8 +243,71 @@ var qingshan_wu = function() {
     conforms,
     constant,
     flow,
-
   };
+/* --------------------------------------------------- */
+  function sameValueZero(a, b) {
+    if (a === b) return a !== 0 || 1 / a === 1 / b;
+    return a !== a && b !== b;
+  }
+  // 1 / +0 == Infinity, 1/ -0 == -Infinity
+  //NaN !== NaN 为true
+
+  const types = ["Null", "Undefined", "Boolean",
+              "Number", "String", "Object", "Array",
+              "Function", "Date", "Error"]
+  const typeUtils = {}
+
+  types.forEach(type => {
+    typeUtils["is" + type] = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object " + type + "]";
+    }
+  })
+
+  // <= iteratee 可以迭代的结构
+  // => function
+  function processType(iteratee) {
+    if (typeUtils.isFunction(iteratee))
+      return iteratee;
+
+    if (typeUtils.isObject(iteratee))
+      return matches(iteratee);
+
+    if (typeUtils.isArray(iteratee))
+      return obj => obj[iteratee[0]] === iteratee[1];
+
+    if (typeUtils.isNull(iteratee) ||
+        typeUtils.isUndefined(iteratee))
+      return val => val;
+
+    if (typeUtils.isString(iteratee)) {
+      let pathArr = iteratee.split('.')
+      if (pathArr.length == 1) {
+        return obj => obj[iteratee]
+      } else {
+        return obj => pathArr.reduce((prev, cur) => prev[cur] , obj)
+      }
+      // function (obj) {
+      //   let prev = obj
+      //   for (let key of pathArr) {
+      //     prev = prev[cur]
+      //   }
+      //   return prev
+      // }
+    }
+  }
+
+  function processPath(path) {
+    if (isString(path)) {
+      let reg = /\w+/g
+      return path.match(reg)
+    }
+    return path
+  }
+
+/* --------------------------------------------------- */
+
+
+
 
   function chunk(ary, size = 1) {
     var res = [], temp = []

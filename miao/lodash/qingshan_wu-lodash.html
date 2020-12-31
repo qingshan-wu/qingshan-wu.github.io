@@ -67,6 +67,10 @@
     }
   }
 
+  function whatType(val) {
+    return Object.prototype.toString.call(val)
+  }
+
 /* --------------------------------------------------- */
 
   function chunk(ary, size = 1) {
