@@ -2197,9 +2197,10 @@ var qingshan_wu = function() {
 
   function invertBy(obj, iteratee) {
     iteratee = processType(iteratee)
-    let res = {}
+    let res = {},
+        keys = Object.keys(obj);
 
-    for (let key in obj) {
+    for (let key of keys) {
       let val = iteratee(obj[key])
       if (res[val] == undefined) {
         res[val] = [key]
