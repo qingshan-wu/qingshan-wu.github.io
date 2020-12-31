@@ -815,12 +815,12 @@ var qingshan_wu = function() {
   // => obj and obj[newKey] = oldVal
   function mapKeys(obj, iteratee) {
     iteratee = processType(iteratee)
-    let res = {}
-    for (let key in obj) {
-      let val = obj[key]
-      let newKey = iteratee(val, key, obj)
-      res[newKey] = val
-    }
+    let res = {},
+        keys = Object.keys(obj);
+
+    keys.forEach(key =>
+      res[iteratee(obj[key], key, obj)] = obj[key])
+
     return res
   }
 
@@ -828,10 +828,11 @@ var qingshan_wu = function() {
   // => obj and obj[oldKey] = newVal
   function mapValues(obj, iteratee) {
     iteratee = processType(iteratee)
-    let res = {}
-    for (let key in obj) {
-      res[key] = iteratee(obj[key], key, obj)
-    }
+    let res = {},
+        keys = Object.keys(obj);
+    keys.forEach(key =>
+      res[key] = iteratee(obj[key], key, obj))
+
     return res
   }
 
