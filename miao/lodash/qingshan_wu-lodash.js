@@ -2044,13 +2044,11 @@ var qingshan_wu = function() {
   }
 
   function defaults(obj, ...sources) {
-    for (let src of sources) {
-      for (let key in src) {
-        if (!(key in obj)) {
-          obj[key] = src[key]
-        }
-      }
-    }
+    sources.forEach(src => {
+      Object.keys(src).forEach(key => {
+        if (!(key in obj)) obj[key] = src[key];
+      })
+    })
     return obj
   }
 
