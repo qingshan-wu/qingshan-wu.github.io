@@ -2495,14 +2495,15 @@ var qingshan_wu = function() {
   }
 
   function truncate(str = "", opt) {
-    let omi = opt?.omission ? opt.omission : "..."
-    let len = opt?.length ? opt.length : 30
-    let sep = opt?.separator
+    let omi = opt?.omission ? opt.omission : "...",
+        len = opt?.length ? opt.length : 30,
+        sep = opt?.separator;
 
     if (isUndefined(sep))
       return str.slice(0, len - omi.length) + omi;
 
     let match, lastIdx;
+
     sep = new RegExp(sep, "g"); // 如果sep本就是正则，就会被加上"g"选项
 
     while (str.length + omi.length > len) {
