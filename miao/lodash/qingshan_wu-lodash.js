@@ -2224,8 +2224,8 @@ var qingshan_wu = function() {
 
   function merge(obj, ...sources) {
     sources.forEach(src => {
-
-      for (let key in src) {
+      var keys = Object.keys(src)
+      for (let key of keys){
         let srcVal = src[key], objVal = obj[key];
 
         if (isArray(objVal) && isArray(srcVal)) {
@@ -2235,7 +2235,6 @@ var qingshan_wu = function() {
 
         obj[key] = src[key]
       }
-
     })
     return obj
   }
@@ -2244,7 +2243,8 @@ var qingshan_wu = function() {
     if (customizer == undefined)
       return merge(obj, [src]);
 
-    for (let key in src) {
+    let keys = Object.keys(key)
+    for (let key of keys) {
       let objVal = obj[key], srcVal = src[key];
       obj[key] = customizer(objVal, srcVal, key, obj, src)
     }
