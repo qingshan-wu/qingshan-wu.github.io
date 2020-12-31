@@ -193,6 +193,7 @@ var qingshan_wu = function() {
     toFinite,
     range,
     rangeRight,
+    times,
     /* -- collection ----- */
     countBy,
     flatMap,
@@ -271,7 +272,7 @@ var qingshan_wu = function() {
     /* -- Function ------- */
     flip,
     ary,
-    negative,
+    negate,
     toPath,
     unary,
     spread,
@@ -2398,7 +2399,7 @@ var qingshan_wu = function() {
     }
   }
 
-  function negative(predicate) {
+  function negate(predicate) {
     return function(...args) {
       return !predicate(...args)
     }
@@ -2686,6 +2687,18 @@ var qingshan_wu = function() {
     if (isNaN(val) || isNull(val) || isUndefined(val))
       return defaultVal;
     return val
+  }
+
+  function times(n, iteratee) {
+    let res = []
+    for (let i = 0; i < n; i++) {
+      if (isFunction(iteratee)) {
+        res.push(iteratee(i))
+      } else {
+        res.push(iteratee)
+      }
+    }
+    return res
   }
 
 
