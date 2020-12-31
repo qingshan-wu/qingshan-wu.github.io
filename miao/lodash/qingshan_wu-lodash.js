@@ -311,6 +311,8 @@ var qingshan_wu = function() {
     lowerFirst,
     parseInt,
     defaultTo,
+    conforms,
+    constant,
 
   };
 
@@ -2699,6 +2701,23 @@ var qingshan_wu = function() {
       }
     }
     return res
+  }
+
+  // 面向测试用例编程...
+  function conforms(source) {
+    return function (obj) {
+      for (let key in source) {
+        if (!source[key](obj[key]))
+          return false;
+      }
+      return true
+    }
+  }
+
+  function constant(value) {
+    return function(arg) {
+      return value
+    }
   }
 
 
