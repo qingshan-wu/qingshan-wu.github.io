@@ -1514,7 +1514,7 @@ var qingshan_wu = function() {
     return val;
   }
 
-  function range(s = 0, e, step) {
+  /* function range(s = 0, e, step) {
     let res = []
 
     if (s < 0) {
@@ -1553,6 +1553,25 @@ var qingshan_wu = function() {
       res.push(i)
     }
     return res
+  } */
+
+  function loopHelper(s, e, step, res = []) {
+    if (step == 0)
+      for (var i = 1; i < e; i += 1) res.push(s);
+    else
+      for (var i = s; Math.abs(i) < Math.abs(e); i += step) res.push(i);
+
+    return res;
+  }
+
+  function range(...args) {
+    if (args.length == 1)
+      return args[0] == 0 ? [] : loopHelper(0, args[0], args[0] > 0 ? 1 : -1);
+
+    if (args.length == 2)
+      return args[0] > args[1] ? [] : loopHelper(args[0], args[1], 1);
+
+    return loopHelper(args[0], args[1], args[2]);
   }
 
   /* -- collecetion ------------------------------------ */
