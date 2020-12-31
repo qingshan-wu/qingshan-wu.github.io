@@ -192,6 +192,7 @@ var qingshan_wu = function() {
     isDate,
     toFinite,
     range,
+    rangeRight,
     /* -- collection ----- */
     countBy,
     flatMap,
@@ -1572,6 +1573,10 @@ var qingshan_wu = function() {
       return args[0] > args[1] ? [] : loopHelper(args[0], args[1], 1);
 
     return loopHelper(args[0], args[1], args[2]);
+  }
+
+  function rangeRight(...args) {
+    return range(...args).reverse()
   }
 
   /* -- collecetion ------------------------------------ */
