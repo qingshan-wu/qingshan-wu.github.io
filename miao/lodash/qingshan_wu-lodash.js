@@ -313,6 +313,7 @@ var qingshan_wu = function() {
     defaultTo,
     conforms,
     constant,
+    flow,
 
   };
 
@@ -2727,6 +2728,19 @@ var qingshan_wu = function() {
   function constant(value) {
     return function(arg) {
       return value
+    }
+  }
+
+  function flow(funcs) {
+    if (!isArray(funcs)) {
+      return funcs
+    }
+    return function(...args) {
+      let ans = funcs[0](...args)
+      for (let i = 1; i < funcs.length; i++) {
+        ans = funcs[i](ans)
+      }
+      return ans
     }
   }
 
