@@ -694,26 +694,21 @@ var qingshan_wu = function() {
   //字面量判断
   // 非复杂值未进入上方if，就会进入下方if语句，return false
   function isEqual(a, b) {
-    if (a === b) return true;
+    if (whatType(a) !== whatType(b)) return false;
 
-    if (a !== a && b !== b) return true;
+    if (typeof a == "object") {
+      var keysA = 0, keysB = 0;
+      for (var keysA in a) keysA++
 
-    if (a == null || typeof a != "object" ||
-        b == null || typeof b != "object")
-      return false;
-
-    var propsInA = 0, propsInB = 0;
-
-    for (var prop in a)
-      propsInA += 1;
-
-    for (var prop in b) {
-      propsInB += 1;
-      if (!(prop in a) || !isEqual(a[prop], b[prop]))
-        return false;
+      for (var key in b) {
+        keysB++
+        if (!(key in a) || !isEqual(a[key], b[key]))
+          return false;
+      }
+      return keysA == keysB
     }
 
-    return propsInA == propsInB;
+    return sameValueZero(a, b)
   }
 
   function isEqualWith(obj, oth, customizer) {
