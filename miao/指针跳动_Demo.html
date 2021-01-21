@@ -1,0 +1,36 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-14 10:59:25
+-->
+<body>
+  <div class="second"></div>
+  <style>
+    .second {
+      width: 5px;
+      height: 150px;
+      margin: 200px;
+      transform-origin: bottom center;
+      background-color: red;
+      animation: second 60s steps(60) infinite;
+    }
+    @keyframes second {
+      from {
+        transform: rotate(0deg);
+      } to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    var second = document.querySelector('.second')
+    // second.style.animationDelay = '-' + d.getSeconds() + 's'
+    second.style.display = 'none'
+    setTimeout(() => {
+      var d = new Date()
+      console.log(1)
+      second.style.display = 'block'
+      second.style.animationDelay = '-' + d.getSeconds() + 's'
+    }, 1000 - Date.now() % 1000)
+  </script>
+
+</body>

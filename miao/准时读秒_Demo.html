@@ -1,0 +1,15 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-14 10:47:59
+-->
+<body>
+  <span></span>
+  <script>
+    setTimeout(() => {
+      document.body.firstChild.textContent = Date()
+      setInterval(() => {
+        document.body.firstChild.textContent = Date()
+      }, 1000);
+    }, 1000 - Date.now() % 1000)
+  </script>
+</body>

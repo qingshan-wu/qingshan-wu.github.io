@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background-color: violet;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    var speed = 5
+    var dx = 0
+    var dy = 0
+
+    var x = 0
+    var y = 0
+
+
+    var upPressed = false
+    var downPressed = false
+    var leftPressed = false
+    var rightPressed = false
+
+    var div = document.querySelector('div')
+
+    var lastTime = null
+
+    requestAnimationFrame(function animate(time) {
+      if (lastTime !== null) {
+        y += dy * (time - lastTime) / 100;
+        x += dx * (time - lastTime) / 100;
+      }
+      lastTime = time
+
+      div.style.left = x + 'px'
+      div.style.top = y + 'px'
+
+      requestAnimationFrame(animate)
+    })
+
+    document.body.addEventListener('keydown', function(e){
+      console.log(e)
+      switch(e.key) {
+        case 'ArrowUp':
+          dy = -speed
+          upPressed = true
+          break
+        case 'ArrowDown':
+          dy = speed
+          downPressed = true
+          break
+        case 'ArrowLeft':
+          dx = -speed
+          leftPressed = true
+          break
+        case 'ArrowRight':
+          dx = speed
+          rightPressed = true
+          break
+      }
+    })
+
+    document.body.addEventListener('keyup', function(e) {
+      switch(e.key) {
+        case 'ArrowUp' :
+          upPressed = false
+          if (downPressed) {
+            dy = speed
+          } else {
+            dy = 0
+          }
+          break
+        case 'ArrowDown' :
+          downPressed = false
+          if (upPressed) {
+            dy = -speed
+          } else {
+            dy = 0
+          }
+          break
+        case 'ArrowLeft' :
+          leftPressed = false
+          if (rightPressed) {
+            dx = speed
+          } else {
+            dx = 0
+          }
+          break
+        case 'ArrowRight' :
+          rightPressed = false
+          if (leftPressed) {
+            dx = -speed
+          } else {
+            dx = 0
+          }
+          break
+      }
+    })
+  </script>
+
+</body>
+</html>

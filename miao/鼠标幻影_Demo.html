@@ -1,0 +1,59 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-13 21:49:43
+-->
+<html>
+<body>
+  <style>
+    span.mouse {
+      width: 12px;
+      height: 12px;
+      border-radius: 30%;
+      background-color: lightcoral;
+      position: fixed;
+    }
+  </style>
+
+  <script>
+    // var span = document.querySelector('span')
+    var mx, my, ms = [], recycled = []
+    window.addEventListener("mousemove", (e) => {
+      mx = e.clientX
+      my = e.clientY
+    })
+
+    //模仿window鼠标残影数量不超过8
+    // 思路: 创建span节点，
+
+    requestAnimationFrame(function animate() {
+      console.log('sometmove')
+      var span = document.createElement('span')
+      span.className = 'mouse'
+      span.style.left = mx + 'px'
+      span.style.top = my + 'px'
+
+      document.body.append(span)
+      ms.push(span)
+
+      if (ms.length > 8) {
+        var x = ms.shift()
+        document.body.removeChild(x)
+      }
+
+      for (let i = 0 , l = ms.length; i < l; i++) {
+        ms[i].opacity = (l - i) / l
+      }
+
+      setTimeout(() => {
+        if (ms.includes(span)) {
+          ms = ms.filter(it => it !== span) //ms包含很多节点，先过滤
+          document.body.removeChild(span)
+        }
+      }, 3000)
+      requestAnimationFrame(animate)
+    })
+
+  </script>
+
+</body>
+</html>

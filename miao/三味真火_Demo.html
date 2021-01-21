@@ -1,0 +1,76 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-12 16:13:37
+-->
+
+<span id="a"></span>
+<span id="b"></span>
+<span id="c"></span>
+<style>
+  span {
+    --size: 30px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 30%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    animation: roll 1s linear infinite;
+
+  }
+  span:nth-of-type(1) {
+    background-color: rgb(235, 62, 62);
+  }
+  span:nth-of-type(2) {
+    background-color: rgb(62, 235, 97);
+  }
+  span:nth-of-type(3) {
+    background-color: rgb(209, 189, 73);
+  }
+  @keyframes roll {
+    from {
+      transform: rotate(0deg)
+    } to {
+      transform: rotate(360deg)
+    }
+  }
+
+</style>
+<script>
+  var a = document.querySelector("#a")
+  var b = document.querySelector("#b")
+  var c = document.querySelector("#c")
+
+  var r = 70
+  var mx = 0
+  var my = 0
+  var angle = 0
+
+  window.addEventListener('mousemove', function(e) {
+    mx = e.clientX
+    my = e.clientY
+  })
+  var lastTime = null
+  function ani(time) {
+    if (lastTime != null) {
+      angle += (time - lastTime) * 0.004
+    }
+    lastTime = time
+    a.style.left = r * Math.sin(angle) + mx + "px"
+    a.style.top = r * Math.cos(angle) + my + "px"
+    b.style.left = r * Math.sin(angle + 0.66666 * 3.14) + mx +　"px"
+    b.style.top = r * Math.cos(angle + 0.66666 * 3.14) + my +　"px"
+    c.style.left = r * Math.sin(angle + 0.66666 * 3.14 * 2) + mx +　"px"
+    c.style.top = r * Math.cos(angle + 0.66666 * 3.14 * 2) + my +　"px"
+    requestAnimationFrame(ani)
+  }
+
+  requestAnimationFrame(ani)
+  // for (let i = 0; i < divs.length; i++) {
+  //   addEventListener("mousemove", function(e) {
+  //     var x = e.clientX, y = e.clientY
+  //     divs[i].style.left = x + "px"
+  //     divs[i].style.top = y + "px"
+  //   })
+  // }
+
+</script>

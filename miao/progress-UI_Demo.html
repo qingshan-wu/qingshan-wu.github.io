@@ -1,0 +1,50 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-13 10:35:33
+-->
+<style>
+  .progress-wrapper div {
+    background-color: lightblue;
+    width: 100%;
+    transition: 0.6s;
+  }
+  .progress-wrapper {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+  }
+</style>
+<script>
+  class ProgressJS {
+    constructor() {
+      this.val = 0
+      var wrapper = document.createElement("div")
+      wrapper.className = "progress-wrapper"
+      var inner = document.createElement('div')
+      wrapper.appendChild(inner)
+      this.wrapper = wrapper
+      this.inner = inner
+    }
+    start() {
+      document.body.append(this.wrapper)
+      this.val = 1
+      this.inner.style.width = this.val + "%"
+      this.inner.style.height = "100%"
+    }
+    end() {
+      this.val = 100
+      this.inner.style.width = this.val + "%"
+    }
+    set(val) {
+      this.val = val
+      this.inner.style.width = this.val + "%"
+    }
+    increase(val) {
+      this.set(this.val + val)
+      this.inner.style.width = this.val + "%"
+    }
+  }
+  var p = new ProgressJS()
+</script>

@@ -1359,26 +1359,15 @@
 
   function orderBy(coll, iteratees, orders) {
     let fs = iteratees.map(it => processType(it))
-
-    for (let n = 0; n < iteratees.length; n++) {
-
-      let f = fs[n]
-      let order = orders[n]
-
+    for (let n = 0; n < fs.length; n++) {
+      let f = fs[n], order = orders[n];
       for (let i = coll.length - 2; i >= 0; i--) {
-
         for (let j = 0; j <= i; j++) {
-
           if (n == 0 || fs[n - 1](coll[j]) == fs[n - 1](coll[j + 1])) { //即不改变上次排序分组结果
-
-            if (order == "asc" && f(coll[j]) > f(coll[j + 1]))  //升序
+            if (order == "asc" && f(coll[j]) > f(coll[j + 1]) || //升序
+                order == "desc" && f(coll[j]) < f(coll[j + 1]))  //降序
               swap(coll, j, j + 1);
-
-            if (order == "desc" && f(coll[j]) < f(coll[j + 1]))  //降序
-              swap(coll, j, j + 1);
-
           }
-
         }
       }
     }
@@ -2662,6 +2651,50 @@
       return ans
     }
   }
+
+  function parseJson(str) {
+
+  }
+
+  // function stringifyJson(val) {
+  //   if (Array.isArray(val)) {
+  //     let result = "["
+  //     for (let i = 0, l = val.length; i < l; i++) {
+  //       result += stringifyJson(val[i]) + ","
+  //     }
+  //     result = result.slice(0, -1) + "]"
+  //     return result
+  //   }
+  //   if (typeof val == "object") {
+  //     let result = "{"
+  //     for (let key in val) {
+  //       result += '"'+ key + '":' + stringifyJson(val[key])
+  //     }
+  //     result += "}"
+  //     return result
+  //   }
+  //   return '"' + val + '"'
+  // }
+
+  function stringifyJson(val) {
+    if (Array.isArray(val)) {
+      return '[' + val.map(stringifyJson).join() + ']'
+    }
+    if (val && typeof val == "object") {
+      var result = "{"
+      for (let key in val) {
+        result += '"' + key + '":'
+        result += stringifyJson(val[key]) + ','
+      }
+      return result.slice(0, -1) + "}"
+    }
+    //true,false,number,string
+    if (typeof val == "string") {
+      return '"' + val + '"'
+    }
+    return '' + val
+  }
+
 
 
 

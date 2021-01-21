@@ -1,0 +1,45 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-14 20:08:10
+-->
+<html>
+<body>
+  <style>
+    #drag-area {
+      width: 500px;
+      height: 300px;
+      border: 2px solid grey;
+      margin: auto;
+    }
+  </style>
+
+  <div id="drag-area">将文件拖至此处</div>
+  <script>
+    var div = document.body.querySelector("div")
+    function readFile(file) {
+      var fr = new FileReader()
+      fr.onload = function (e) {
+        console.log(fr.result)
+      }
+      fr.readAsText(file)
+    }
+    div.addEventListener('drop', function(e) {
+      console.log(e.dataTransfer.files)
+      readFile(e.dataTransfer.files[0])
+      e.preventDefault()
+    })
+    div.addEventListener('dragenter', function(e) {
+      div.textContent = '松开鼠标'
+    })
+    div.addEventListener('dragleave', function(e) {
+      div.textContent = '将文件拖至此处'
+    })
+    div.addEventListener('dragover', function(e) {
+      // console.log(e)
+      e.preventDefault()
+    })
+  </script>
+
+</body>
+
+</html>

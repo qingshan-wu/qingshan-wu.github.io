@@ -2503,16 +2503,11 @@ var qingshan_wu = function() {
   function unescape(str) {
     return str.replace(/&amp;|&lt;| &gt;|&quot;|&#39/g,
      x => {
-      if (x == "&amp;")
-        return "&";
-      if (x == "&lt;")
-        return "<";
-      if (x == "&gt;")
-        return ">";
-      if (x == "&quot;")
-        return '"'
-      if (x == "&#39")
-        return "'"
+      if (x == "&amp;") return "&";
+      if (x == "&lt;") return "<";
+      if (x == "&gt;") return ">";
+      if (x == "&quot;") return '"';
+      if (x == "&#39") return "'";
     })
   }
 
@@ -2711,6 +2706,14 @@ var qingshan_wu = function() {
       }
       return ans
     }
+  }
+
+  function parseJson(str) {
+
+  }
+
+  function stringifyJson(str) {
+
   }
 
 

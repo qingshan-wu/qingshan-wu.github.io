@@ -1,0 +1,60 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-13 19:53:31
+-->
+<div class="dragable" style="left: 0; top: 0; background-color: lightblue"></div>
+<div class="dragable" style="left: 0; top: 0; background-color: lightcoral"></div>
+<div class="dragable" style="left: 0; top: 0; background-color: lightsalmon"></div>
+
+<style>
+  div {
+    position: fixed;
+    width: 160px;
+    height: 100px;
+  }
+</style>
+
+<script>
+  var cssX, cssY, x, y, dx, dy, mousedownX, mousedownY, theEl
+  var maxZ = 4, adsorb = 20
+
+  window.addEventListener("mousedown", function(e) {
+    if (e.target.matches(".dragable")) {
+      // console.log("startmove")
+      theEl = e.target
+      theEl.style.zIndex = maxZ++
+      mousedownX = e.clientX //相对于浏览器窗口的鼠标点击事件坐标x
+      mousedownY = e.clientY
+      cssX = parseInt(theEl.style.left) //被点击的element的css定位坐标
+      cssY = parseInt(theEl.style.top)
+      window.addEventListener("mousemove", move)
+    }
+  })
+
+  function move(e) {
+    // console.log("move")
+    // console.log(e)
+    if (e.which == 0) {
+      theEl.removeEventListener("mousemove", move) //解除绑定
+    } else if (e.which == 1){
+      dx = e.clientX - mousedownX //mousemove事件的坐标减去mousedown事件的坐标, get distance
+      dy = e.clientY - mousedownY
+      x = cssX + dx  //css定位的坐标加上按下鼠标到移动鼠标之间的差值，达到拖拽效果
+      y = cssY + dy
+
+      if (x < adsorb) { //边缘吸附
+        x = 0
+      } else if (x + theEl.offsetWidth > window.innerWidth - adsorb) {
+        x = window.innerWidth - theEl.offsetWidth
+      }
+      if (y < adsorb) {
+        y = 0
+      } else if (y + theEl.offsetHeight > window.innerHeight - adsorb) {
+        y = window.innerHeight - theEl.offsetHeight
+      }
+
+      theEl.style.left = x + "px"
+      theEl.style.top = y + "px"
+    }
+  }
+</script>

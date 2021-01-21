@@ -1,0 +1,119 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-07 19:02:06
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      background-color: black;
+    }
+    div {
+      border-radius: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+
+    }
+    #sun {
+      background-color: rgb(241, 238, 44);
+      width: 80px;
+      height: 80px;
+      left: 500px;
+      top: 300px;
+
+    }
+    #earth {
+      background-color: rgb(42, 175, 219);
+      width: 40px;
+      height: 40px;
+      left: 150px;
+      top: 150px;
+    }
+    #moon {
+      background-color: lightgoldenrodyellow;
+      width: 10px;
+      height: 10px;
+      left: 120px;
+      top: 120px;
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div id="sun"></div>
+  <div id="earth"></div>
+  <div id="moon"></div>
+  <script>
+    var sun = document.querySelector('div#sun')
+    var earth = document.querySelector('div#earth')
+    var moon = document.querySelector('div#moon')
+    var earthAngle = 0, moonAngle = 0;lastTime = null;
+
+    function animate(time) {
+      if (lastTime != null) {
+        earthAngle += (time - lastTime) * 0.001
+        moonAngle += (time - lastTime) * 0.001 * 3
+      }
+      lastTime = time
+      let eTop = (Math.sin(earthAngle) * 250) + 300
+      let eLeft = (Math.cos(earthAngle) * 150) + 500
+      earth.style.top = eTop + "px"
+      earth.style.left = eLeft + "px"
+      moon.style.top = (Math.sin(moonAngle) * 50) + eTop + "px"
+      moon.style.left = (Math.cos(moonAngle) * 50) + eLeft + "px"
+      requestAnimationFrame(animate)
+    }
+    requestAnimationFrame(animate)
+
+
+
+
+    var MOUNTAINS = [
+  {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
+  {name: "Everest", height: 8848, country: "Nepal"},
+  {name: "Mount Fuji", height: 3776, country: "Japan"},
+  {name: "Mont Blanc", height: 4808, country: "Italy/France"},
+  {name: "Vaalserberg", height: 323, country: "Netherlands"},
+  {name: "Denali", height: 6168, country: "United States"},
+  {name: "Popocatepetl", height: 5465, country: "Mexico"}
+];
+  function drawTable(data) {
+    let keys = Object.keys(data[0])
+    let res = document.createElement("table")
+    let trHead = document.createElement("tr")
+    keys.forEach((name, idx) => {
+      let col = document.createElement("th")
+      col.appendChild(document.createTextNode(name))
+      if (idx == 1) {
+        col.style.textAlign = "right"
+      }
+      trHead.appendChild(col)
+    })
+    res.appendChild(trHead)
+    data.forEach(montain =>  {
+      let tableRow = document.createElement("tr")
+      for (let key in montain) {
+        let m = document.createElement("td")
+        m.appendChild(document.createTextNode(montain[key]))
+        if (/\d/.test(montain[key])) {
+          m.style.textAlign = "right"
+        }
+        tableRow.appendChild(m)
+      }
+      res.appendChild(tableRow)
+    })
+    return res
+  }
+
+  document.body.appendChild(drawTable(MOUNTAINS))
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-11 20:59:05
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+    }
+    div:nth-of-type(1) {
+      top: 300px;
+      left: 200px;
+    }
+    div:nth-of-type(2) {
+      top: 300px;
+      left: 500px;
+    }
+    div:nth-of-type(3) {
+      top: 600px;
+      left: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: lightsalmon"></div>
+  <div style="background-color: lightblue"></div>
+  <div style="background-color: lightcoral "></div>
+  <script>
+    var lastX;
+    var lastY;
+    var posX;
+    var posY;
+    var divs = document.querySelectorAll("div")
+    // var rect = document.querySelector("div")
+    for (let i = 0; i < divs.length; i++) {
+      let rect = divs[i]
+      rect.addEventListener("mousedown", function (event) {
+        if (event.which == 1) {
+          lastX = event.clientX;
+          lastY = event.clientY;
+          relativeX = event.offsetX;
+          relativeY = event.offsetY;
+          addEventListener("mousemove", moved)
+          event.preventDefault();
+        }
+      })
+      function buttonPressed(event) {
+        if (event.buttons == null) {
+          return event.which != 0;
+        } else {
+          return event.buttons != 0;
+        }
+      }
+
+      function moved(event) {
+        if (!buttonPressed(event)) {
+          removeEventListener("mousemove", moved)
+        } else {
+          var dx = event.clientX - lastX;
+          var dy = event.clientY - lastY;
+          console.log(event.pageY)
+
+          var newLeft = event.pageX - dx - relativeX
+          var newTop = event.pageY - dy - relativeY
+
+          var width = document.body.clientWidth - 100
+          var height = document.body.clientHeight - 100
+
+          if (newLeft < 20) {
+            rect.style.left = 0 + "px";
+          } else if (newLeft > width) {
+            rect.style.left = width + 20 + "px";
+          } else {
+            rect.style.left = newLeft + "px";
+          }
+          if (newTop < 20) {
+            rect.style.top = 0 + "px";
+          } else {
+            rect.style.top = newTop + "px";
+          }
+
+          lastX = event.clientX;
+          lastY = event.clientY;
+        }
+      }
+    }
+  </script>
+
+
+</body>
+</html>

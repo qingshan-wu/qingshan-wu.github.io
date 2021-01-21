@@ -1,0 +1,77 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-12 20:52:31
+-->
+<div></div>
+<input type="text" value="what">
+<style>
+  div {
+    height: 20px;
+    width: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    position: fixed;
+    background-color: red;
+  }
+</style>
+<script>
+  var a = document.querySelector("div"), lastX, lastY
+  var temp, divArr = [], count = 0
+  for (let i = 0; i < 300; i++) {
+    temp = document.createElement("div")
+    divArr.push(temp)
+    document.body.appendChild(temp)
+  }
+  var percent
+  addEventListener("mousemove", function(event) {
+    lastX = event.clientX
+    lastY = event.clientY
+    for (let i = 0; i < 300; i++) {
+      count += 5
+      divArr[i].style.left = lastX + "px"
+      divArr[i].style.top = lastY + "px"
+      divArr[i].style.opacity = (300 - i) / 300
+        setTimeout(function f() {
+
+          // divArr[i].style.height = 30 * percent + "px"
+          // divArr[i].style.width = 30 * percent + "px"
+
+        }, count)
+    }
+  })
+
+  var input = document.querySelector("input")
+  input.addEventListener("keypress", function(e) {
+    e.preventDefault()
+    var str = input.value
+    let char = String.fromCharCode(e.charCode)
+    if (!(/[qwx]/i.test(char))) {
+      str += char
+    }
+    input.value = str
+  })
+
+
+</script>
+<input type="checkbox" name="" id="checkbox">
+<script>
+  function simulateClick() {
+    const event = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    });
+    const cb = document.getElementById('checkbox');
+    const cancelled = !cb.dispatchEvent(event);
+
+    if (cancelled) {
+      // A handler called preventDefault.
+      alert("cancelled");
+    } else {
+      // None of the handlers called preventDefault.
+      alert("not cancelled");
+    }
+  }
+  simulateClick()
+
+</script>
