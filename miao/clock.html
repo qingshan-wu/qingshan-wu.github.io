@@ -1,0 +1,32 @@
+<!--
+ * @Author: qingshan
+ * @Date: 2021-01-25 19:01:04
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .clock {
+    width: 500px;
+    height: 500px;
+    background-color: #202121;
+    margin: 50px auto;
+    border-radius: 100px;
+  }
+</style>
+<body>
+  <div class="clock">
+    <canvas id="clock" width="500" height="500"></canvas>
+  </div>
+
+  <script type="text/javascript" src="js/clock.js"></script>
+  <script type="text/javascript">
+  new Clock().init();
+  </script>
+
+</body>
+</html>
