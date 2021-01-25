@@ -12,7 +12,7 @@
     hours = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2],
     t = null;
 
-  console.log(ctx)
+  // console.log(ctx)
 
   // function drawRotateLine(t, factor, color = "#000", addminutes) {
   //   var radius, mRadius = 0;
@@ -51,7 +51,7 @@
     draw() {
       ctx.clearRect(0, 0, cWidth, cHeight)
       var { hours, minutes, seconds } = getTime()
-      console.log(hours, minutes, seconds)
+      // console.log(hours, minutes, seconds)
       ctx.save()
       this.drawPanel()
       this.drawHourNums()
@@ -68,7 +68,7 @@
       ctx.beginPath();
       ctx.translate(this.r, this.r)
       ctx.fillStyle = '#fff'
-      ctx.arc(0, 0, this.r - 25, 0, 2 * Math.PI, false)
+      ctx.arc(0, 0, this.r - 13, 0, 2 * Math.PI, false)
       ctx.fill()
     }
 
@@ -78,14 +78,14 @@
         y;
 
 
-      ctx.font = "40px sans-serif"
+      ctx.font = "20px sans-serif"
       ctx.fillStyle = '#000'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       hours.forEach((it, index) => {
         radius = 2 * Math.PI / 12 * index
-        x = (this.r - 60) * Math.cos(radius)
-        y = (this.r - 60) * Math.sin(radius)
+        x = (this.r - 30) * Math.cos(radius)
+        y = (this.r - 30) * Math.sin(radius)
         ctx.beginPath()
         ctx.fillText(it, x, y)
       })
@@ -95,12 +95,12 @@
     drawCentralPointer() {
       ctx.beginPath();
       ctx.fillStyle = '#333'
-      ctx.arc(0, 0, 13, 0, 2 * Math.PI, false)
+      ctx.arc(0, 0, 6, 0, 2 * Math.PI, false)
       ctx.fill()
 
       ctx.beginPath();
       ctx.fillStyle = '#666'
-      ctx.arc(0, 0, 6, 0, 2 * Math.PI, false)
+      ctx.arc(0, 0, 3, 0, 2 * Math.PI, false)
       ctx.fill()
     }
 
@@ -110,7 +110,7 @@
 
       ctx.save()
       ctx.beginPath();
-      ctx.lineWidth = 5
+      ctx.lineWidth = 3
       ctx.lineCap = 'round'
       ctx.rotate(radius + mRadius)
       ctx.moveTo(0, 0)
@@ -124,7 +124,7 @@
 
       ctx.save()
       ctx.beginPath();
-      ctx.lineWidth = 5
+      ctx.lineWidth = 2.5
       ctx.lineCap = 'round'
       ctx.rotate(radius)
       ctx.moveTo(0, 0) //起点坐标
@@ -139,7 +139,7 @@
       ctx.save() //绘制前保存
       ctx.beginPath();
       ctx.strokeStyle = 'orange'
-      ctx.lineWidth = 5
+      ctx.lineWidth = 2
       ctx.lineCap = 'round'
       ctx.rotate(radius)
       ctx.moveTo(0, 0)
