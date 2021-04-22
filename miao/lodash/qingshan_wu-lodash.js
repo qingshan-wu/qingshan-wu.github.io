@@ -262,6 +262,7 @@ var qingshan_wu = function() {
     toPath,
     unary,
     spread,
+    before,
     /* -- String --------- */
     pad,
     padEnd,
@@ -2391,6 +2392,18 @@ var qingshan_wu = function() {
       return f(...args.slice(start))
     }
   }
+
+  function before(n, func) {
+    let c = 0
+    let result
+    return function(...args) {
+      if (c++ < n) {
+        result = func.call(this, ...args)
+      }
+      return result
+    }
+  }
+
 
   /* -- String ----------------------------------------- */
   function pad(str = "", length = 0, chars = " ") {
