@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .time {
+      display: flex;
+    }
+    @property --h {
+      syntax: '<integer>';
+      inherits: false;
+      initial-value: 0;
+    }
+    @keyframes hour {
+      to {
+        --h: 24
+      }
+    }
+    @property --m {
+      syntax: '<integer>';
+      inherits: false;
+      initial-value: 0;
+    }
+    @keyframes minitus {
+      to {
+        --m: 60
+      }
+    }
+    @property --s {
+      syntax: '<integer>';
+      inherits: false;
+      initial-value: 0;
+    }
+    @keyframes seconds {
+      to {
+        --s: 60
+      }
+    }
+    @property --ss {
+      syntax: '<integer>';
+      inherits: false;
+      initial-value: 0;
+    }
+    @keyframes ss {
+      to {
+        --ss: 60
+      }
+    }
+    .hour::after {
+      counter-reset: hour var(--h);
+      content: counter(hour, decimal-leading-zero);/*添加计数器样式*/
+      animation: hour calc(60s * 60 * 24) infinite steps(24);
+      animation-delay: calc( -60s * 60 * var(--dh) );
+    }
+    .mins::after {
+      counter-reset: mins var(--m);
+      content: counter(mins, decimal-leading-zero);/*添加计数器样式*/
+      animation: minitus calc(60s * 60) infinite steps(60);
+      animation-delay: calc( -60s * var(--dm) );
+    }
+    .seconds::after {
+      counter-reset: seconds var(--s);
+      content: counter(seconds, decimal-leading-zero);/*添加计数器样式*/
+      animation: seconds calc(1s * 60) infinite steps(60);
+      animation-delay: calc( -1s * var(--ds) );
+    }
+    .ss::after {
+      counter-reset: ss var(--ss);
+      content: counter(ss, decimal-leading-zero);/*添加计数器样式*/
+      animation: ss calc(1s) infinite steps(60);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="time">
+    <h2 class="hour"></h2>
+    <h2>:</h2>
+    <h2 class="mins"></h2>
+    <h2>:</h2>
+    <h2 class="seconds"></h2>
+    <h2>:</h2>
+    <h2 class="ss"></h2>
+  </div>
+</body>
+<script>
+  const d = new Date()
+  
+  const h = d.getHours();
+  const m = d.getMinutes();
+  const s = d.getSeconds();
+
+  document.body.style.setProperty('--ds', s)
+  document.body.style.setProperty('--dm', m + s / 60)
+  document.body.style.setProperty('--dh', h + m / 60 + s / 3600)
+</script>
+
+</html>
