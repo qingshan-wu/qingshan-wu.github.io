@@ -1,11 +1,63 @@
-<html>
-    <body>
-        <h1>hello world</h1>
-        <select>
-            <option>something done</option>
-            <option>something done</option>
-            <option>something done</option>
-            <option>something done</option>
-        </select>
-    </body>
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=720px, initial-scale=1.0">
+  <title>清山</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/2.3.0/css/reset.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+    }
+    #select {
+      width: fit-content;
+    }
+    .iframe-wrap {
+      flex-grow: 1;
+      position: absolute;
+      top: 32px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    #iframe {
+      width: 100%;
+      height: 100%;
+      flex-grow: 1;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <select id="select">
+    <option value="./demos/inputMode.html">input输入模式</option>
+    <option value="./demos/underScore.html">悬停下滑线动效</option>
+    <option value="./miao/css-clock.html">css时钟</option>
+    <option value="./miao/ios-checkbox.html">iOS CheckBox</option>
+    <option value="./miao/gradient.html">渐变</option>
+    <option value="./miao/css-menu.html">css菜单</option>
+    <option value="./miao/dragExercise.html">拖拽练习</option>
+    <option value="./miao/progress-UI_Demo.html">进度条</option>
+    <option value="./miao/css-glassy.html">css玻璃</option>
+  </select>
+  <div class="iframe-wrap">
+    <iframe  
+      src="./demos/inputMode.html"
+      id="iframe"
+    ></iframe>
+  </div>
+  <script>
+    const iframeDom = document.querySelector('#iframe')
+    const selectDom = document.querySelector('#select')
+    selectDom.addEventListener('change', (e) => {
+      iframeDom.setAttribute('src', e.target.value)
+    })
+  </script>
+</body>
+
 </html>

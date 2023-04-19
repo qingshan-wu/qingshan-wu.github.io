@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      color: #333;
+      line-height: 2;
+    }
+
+    .title span {
+      background: linear-gradient(to right, #ec695c, #61c454) no-repeat right bottom;
+      background-size: 0px 2px;
+      transition: background-size 500ms;
+    }
+
+    .title span:hover {
+      background-position-x: left;
+      background-size: 100% 2px;
+
+    }
+  </style>
+</head>
+
+<body>
+  text: <input type="text" inputmode="text"/>
+  <br/>
+  tel: <input type="text" inputmode="tel"/>
+  <br/>
+  numeric:<input type="text" inputmode="numeric"/>
+  <br/>
+  search: <input type="text" inputmode="search"/>
+  <br/>
+  <input type="text" accesskey="b"/>
+  <br/>
+  date: <input type="date" id="date-input">
+  <br/>
+  datetime-local: <input type="datetime-local" id="date-input">
+  <br/>
+  <div contenteditable spellcheck="true">hllo word</div>
+  <br/>
+  <div translate="yes">how are you</div>
+</body>
+<script>
+  const dateInput = document.querySelector('#date-input')
+  dateInput.addEventListener('change', (e) => {
+    console.log(e, e.target, e.target.value, Date(e.target.value))
+  })
+</script>
+
+</html>
