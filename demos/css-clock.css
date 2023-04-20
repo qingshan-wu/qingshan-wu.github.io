@@ -7,11 +7,15 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  display: grid;
+  --size: 400px;
+}
 
 section {
-  width: 400px;
-  height: 400px;
-  margin: 200px auto;
+  width: var(--size);
+  height: var(--size);
+  margin: 100px auto;
   position: relative;
   border-radius: 50%;
   /* 所有的元素都是叠加的，所以绝对定位 */
@@ -45,8 +49,8 @@ section div div::before {
 
 section .out, section .out-under {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: var(--size);
+  height: var(--size);
   top: 0;
   bottom: 0;
   left: 0;
