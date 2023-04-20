@@ -83,6 +83,7 @@ section .pan div:nth-child(5n)::after {
 
 section .sec {
   animation: second 60s infinite steps(60);
+  animation-delay: calc(-1s * var(--ds));
 }
 
 section .sec div {
@@ -123,7 +124,8 @@ section .sec .circle {
 }
 
 section .min {
-  animation: m 3600s steps(360) infinite;
+  animation: second 3600s steps(3600) infinite;
+  animation-delay: calc(-60s * var(--dm));
 }
 
 section .min div::after {
@@ -136,7 +138,8 @@ section .min div::after {
 }
 
 section .hour {
-  animation: h 43200s linear infinite;
+  animation: second 43200s steps(360) infinite;
+  animation-delay: calc(-60s * 60 * var(--dh));
 }
 
 section .hour div::after {
@@ -151,6 +154,7 @@ section .hour div::after {
 @keyframes second {
   from {
     transform: rotatez(0deg);
+    /* transform: rotatez(calc(var(--ds) * 1deg)); */
   }
   to {
     transform: rotatez(360deg);
@@ -178,12 +182,12 @@ section .hour div::after {
   }
 }
 
-@keyframes m {
+/* @keyframes m {
   0% {
-    transform: rotateZ(60deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotateZ(420deg);
+    transform: rotateZ(360deg);
   }
 }
 
@@ -194,7 +198,7 @@ section .hour div::after {
   100% {
     transform: rotateZ(300deg);
   }
-}
+} */
 
 .pan div:nth-child(1) {
   transform: rotatez(6deg);

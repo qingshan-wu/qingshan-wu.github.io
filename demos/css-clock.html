@@ -86,6 +86,16 @@
       <span class="circle"></span>
     </div>
   </section>
+<script>
+  const d = new Date()
 
+  const h = d.getHours();
+  const m = d.getMinutes();
+  const s = d.getSeconds();
+
+  document.body.style.setProperty('--ds', s + 1)
+  document.body.style.setProperty('--dm', m + s / 60)
+  document.body.style.setProperty('--dh', h + m / 60 + s / 3600)
+</script>
 </body>
 </html>

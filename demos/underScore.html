@@ -10,21 +10,22 @@
       color: #333;
       line-height: 2;
     }
-    .title span {
+    .title :is(span, p) {
       background: linear-gradient(to right, #ec695c, #61c454) no-repeat right bottom;
       background-size: 0px 2px;
       transition: background-size 500ms;
     }
-    .title span:hover {
+    .title :is(span, p):hover {
       background-position-x: left;
       background-size: 100% 2px;
-      
     }
   </style>
 </head>
 <body>
-  <h1 class="title">
-    <span>听我说，css怎么都学不会呀</span>
-  </h1>
+  <h2 class="title">
+    <span>
+      他看到羊皮卷卷首的提要在尘世时空中完美显现：家族的第一个人被捆在树上，最后一个人正被蚂蚁吃掉。
+    </span>
+  </h2>
 </body>
 </html>
